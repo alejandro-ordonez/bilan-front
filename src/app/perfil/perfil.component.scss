@@ -1,0 +1,209 @@
+.profile__title {
+  color: #5e4228;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+
+.profile__container {
+  min-height: calc(100vh - 96px - 57px);
+}
+.profile__details {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  // background-image: url("assets/images/iconos/Separador@2x.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-right: 20px;
+}
+.profile__details__img {
+  width: 110px;
+  height: 110px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.profile__details__stats .btn_intro {
+  margin-top: 10px;
+}
+
+.profile__details__text__title {
+  text-align: center;
+}
+.profile__details i {
+  display: block;
+}
+
+.profile__statics {
+  grid-column: 2/ 4;
+}
+.profile__statics .splide__arrow {
+  top: 90%;
+  left: 45%;
+}
+
+.profile__statics .splide__arrow--next {
+  left: 55%;
+}
+
+// .profile .modal-content {
+//   margin-bottom: 30px;
+// }
+// .profile .modal-container {
+//   display: grid;
+//   grid-gap: 10px;
+//   grid-template-columns: 1fr 2fr;
+// }
+
+.profile__statics__title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.profile__statics__text {
+  height: 80%;
+}
+
+.modulo-progress-bar {
+  display: flex;
+  align-items: center;
+}
+
+.modulo-progress-bar__img {
+  width: 40px;
+}
+.modulo-progress-bar__text {
+  width: 100%;
+  padding: 10px;
+}
+
+.modulo-progress-bar__text__title {
+  text-align: start;
+  margin-bottom: 15px;
+}
+
+.progress-bar {
+  background-color: #fff3e8;
+  border: 1px solid #fff3e8;
+  border-radius: 20px;
+  height: 10px;
+  overflow: hidden;
+}
+.progress-bar__bar {
+  background-color: #2d3141;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.modulo-progress-bar__text__progress {
+  display: flex;
+  align-items: center;
+}
+.modulo-progress-bar__text__progress .progress-bar {
+  width: 100%;
+}
+.modulo-progress-bar__text__progress__percentage {
+  width: 15%;
+  margin: 0;
+}
+
+.profile .modal-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+}
+
+.modal-container {
+  height: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(254, 254, 254);
+  border-image: initial;
+  padding: 12px;
+}
+
+.profile__details {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.profile__details__img {
+  width: 110px;
+  height: 110px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(255, 255, 255);
+  border-image: initial;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0px auto 16px auto;
+}
+
+.splide__list {
+  padding: 20px 0px !important;
+}
+.splide {
+  height: 100%;
+}
+
+.modal-content {
+  background-color: rgb(254, 254, 254);
+  color: rgb(255, 255, 255);
+  width: 800px;
+  background-size: cover;
+  height: unset;
+  margin: auto;
+  padding: 20px;
+  background-repeat: no-repeat;
+}
+/*ESTILOS PARA DATOS EN EL PERFIL*/
+.modulo-desempeño__img h3 {
+  margin-left: -40px;
+  text-align: left;
+  font-size: 20px;
+}
+.modulo-desempeño__statics {
+  margin-left: 25px;
+}
+.modulo-desempeño__statics__bar p {
+  min-width: 10px;
+  padding-top: 15px;
+}
+
+.modulo-desempeño__statics {
+  &.nivel-0,
+  &.nivel-1 {
+    .modulo-desempeño__statics__bar:nth-child(4) {
+      .modulo-desempeño__statics__bar__line {
+        background-color: red;
+      }
+    }
+  }
+  &.nivel-2 {
+    .modulo-desempeño__statics__bar:nth-child(3) {
+      .modulo-desempeño__statics__bar__line {
+        background-color: orange;
+      }
+    }
+  }
+  &.nivel-3 {
+    .modulo-desempeño__statics__bar:nth-child(2) {
+      .modulo-desempeño__statics__bar__line {
+        background-color: yellow;
+      }
+    }
+  }
+  &.nivel-4 {
+    .modulo-desempeño__statics__bar:nth-child(1) {
+      .modulo-desempeño__statics__bar__line {
+        background-color: #8da871;
+      }
+    }
+  }
+}

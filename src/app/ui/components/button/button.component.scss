@@ -1,0 +1,22 @@
+.app-button {
+  background-image: url(./btn.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  color: #fff;
+  min-width: 280px;
+  height: 50px;
+  background-color: transparent;
+  -webkit-transition: background-image 0.2s ease-in-out;
+  transition: background-image 0.2s ease-in-out;
+
+  &:hover {
+    background-image: url(./btn_hover.png);
+    background-color: transparent;
+  }
+
+  &:disabled,
+  &[disabled] {
+    opacity: 0.75;
+  }
+}

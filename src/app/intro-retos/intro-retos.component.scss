@@ -1,0 +1,146 @@
+.act_mod-act {
+  background: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 273px;
+  text-align: center !important;
+}
+.p-800-p {
+  margin: 0 auto;
+  max-width: 1040px;
+}
+.puntaje_mod-act {
+  width: 110px;
+  float: unset;
+  margin-left: 0px;
+  margin-top: 0px;
+  font-size: 30px;
+  font-weight: 700;
+  padding-left: 24px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  background: url("../../assets/images/Imagenes\ modulos/bg_puntos_mod.png");
+  background-repeat: no-repeat;
+  background-position: top left, top 8px left 6px;
+  background-size: 100%, 28px;
+  height: 43px;
+  width: 90px;
+  border-radius: 4px;
+  color: #606060;
+  margin: 0 auto;
+  font-family: "Fredoka One", cursive;
+  font-weight: 500;
+}
+.title_mod-act {
+  max-width: 200px;
+  text-align: center;
+  float: unset;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin: 0 auto;
+  padding-bottom: 18px;
+  letter-spacing: 1.7px;
+}
+.icono_prin_modulo-act {
+  float: unset;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin: 0 auto;
+  width: 100px;
+  padding-top: 70px;
+  padding-bottom: 8px;
+}
+.modulo {
+  margin: auto;
+  width: 100%;
+  height: 362px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+.modulo_uno-act.matematicas {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-11.jpg");
+}
+.modulo_dos-act.matematicas {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-01.jpg");
+}
+.modulo_tres-act.matematicas {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-21.jpg");
+}
+
+.modulo_uno-act.competencias-ciudadanas {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/Presentacion%20personaje-15.jpg");
+}
+.modulo_dos-act.competencias-ciudadanas {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-05.jpg");
+}
+.modulo_tres-act.competencias-ciudadanas {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-25.jpg");
+}
+
+.modulo_uno-act.competencias-socioemocionales {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-19.jpg");
+}
+.modulo_dos-act.competencias-socioemocionales {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-09.jpg");
+}
+.modulo_tres-act.competencias-socioemocionales {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-29.jpg");
+}
+
+.modulo_uno-act.ciencias-naturales {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-13.jpg");
+}
+.modulo_dos-act.ciencias-naturales {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-03.jpg");
+}
+.modulo_tres-act.ciencias-naturales {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-23.jpg");
+}
+
+.modulo_uno-act.lenguaje {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/Presentacion%20personaje-17.jpg");
+}
+.modulo_dos-act.lenguaje {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-07.jpg");
+}
+.modulo_tres-act.lenguaje {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-27.jpg");
+}
+
+.sir-acts {
+  width: 200px;
+  float: right;
+  height: 100%;
+  right: 20%;
+  position: relative;
+}
+.sir-acts img {
+  width: auto;
+  height: 99%;
+  float: right;
+  padding: 20px;
+  /* right: 100px; */
+}
+.t-f {
+  float: left;
+}
+.t-s {
+  margin-left: 5px;
+  margin-top: 0px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.icon_back {
+  display: inline-block;
+  vertical-align: middle;
+  width: 45px;
+  height: 45px;
+  background: url(https://bilan.pi-interactiva.com/fotos/var/albums/retos/arrow-back-white%402x.png)
+    no-repeat center center;
+  background-size: 50p;
+  margin: 10px;
+  position: absolute;
+  left: 30px;
+}

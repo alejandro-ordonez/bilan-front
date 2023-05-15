@@ -1,0 +1,142 @@
+<div class="module-bar module-bar--panel-control--ministerio">
+
+  <h2 class="module-card__header__text__title">PANEL DE CONTROL</h2>
+  <button class="create-button" routerLink="/admin/panel-directivo">
+    Editar usuarios
+  </button>
+</div>
+<main class="panel-control--ministerio"> 
+  <section class="panel-control--ministerio__statics">
+    <figure class="img-title">
+      <img src="../../assets/images/logos/Colegio@2x.png" alt="" />
+    </figure>
+    <h1 class="panel-control--ministerio__statics__title">
+      {{ dashboardData.data[0].name }}
+    </h1>
+    <div class="stactics-cards__container">
+      <div class="statics-cards">
+        <div class="statics-cards__content">
+          <figure class="statics-card__content__img">
+            <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+          </figure>
+          <div class="statics-card__content__text">
+            <p class="statics-card__content__text__description">
+              Estudiantes registrados
+            </p>
+            <h2 class="statics-card__content__text__data">
+              {{ dashboardData.students }}
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="statics-cards">
+        <div class="statics-cards__content">
+          <figure class="statics-card__content__img">
+            <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+          </figure>
+          <div class="statics-card__content__text">
+            <p class="statics-card__content__text__description">
+              Tiempo de los estudiantes en la app
+            </p>
+            <h2 class="statics-card__content__text__data">
+              {{ dashboardData.timeInApp }}h
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="statics-cards">
+        <div class="statics-cards__content">
+          <figure class="statics-card__content__img">
+            <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+          </figure>
+          <div class="statics-card__content__text">
+            <p class="statics-card__content__text__description">
+              Total respuestas en foros
+            </p>
+            <h2 class="statics-card__content__text__data">0</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="assets/images/fondos/linea@2x.png" class="divicion_image" />
+    <div class="student-table">
+      <h2 class="student-table__title">Módulo</h2>
+      <h2 class="student-table__title">Estado de ingreso de los estudiantes</h2>
+      <div>
+        <h2 class="student-table__title">
+          Nivel de desempeño alcanzado por área en actividades
+        </h2>
+      </div>
+      <div>
+        <h2 class="student-table__title">
+          Nivel de desempeño alcanzado en el juego
+        </h2>
+      </div>
+
+      <div
+        class="student-table__data"
+        *ngFor="let module of dashboardData.data[0].modules"
+      >
+        <div class="student-table__data__student">
+          <figure class="student-table__data__student__img">
+            <img
+              [src]="
+                '../../assets/images/iconos/Elementos/modules/name/' +
+                module.name +
+                '.png'
+              "
+            />
+          </figure>
+          <p class="student-table__data__student__name">{{ module.name }}</p>
+        </div>
+        <div class="student-table__data__date student">
+          <p class="student-table__data__student__name">{{ module.logins }}</p>
+        </div>
+        <div class="student-table__data__nivel-actividad">
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__number">
+              {{ module.performanceActivityScore }}
+            </div>
+          </div>
+        </div>
+        <div class="student-table__data__nivel-juego">
+          <div class="nivel-actividad__result">
+            <div
+              class="modulo-desempeño__statics"
+              [ngClass]="'nivel-' + module.performanceGameScore.toString()"
+            >
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div
+                  class="modulo-desempeño__statics__bar__line"
+                  style="width: calc(100% - 9px)"
+                ></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div
+                  class="modulo-desempeño__statics__bar__line"
+                  style="width: calc(75% - 9px)"
+                ></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div
+                  class="modulo-desempeño__statics__bar__line"
+                  style="width: calc(50% - 9px)"
+                ></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div
+                  class="modulo-desempeño__statics__bar__line"
+                  style="width: calc(25% - 9px)"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,105 @@
+figure {
+  margin: 0;
+}
+
+.module-bar {
+  background-color: black;
+  color: white;
+  border-top: 10px solid grey;
+  height: 116px;
+  padding: 0 200px;
+  display: flex;
+  align-items: center;
+}
+
+.module-bar--matematicas {
+  background-color: #b85545;
+  border-color: #d4978d;
+}
+.module-bar--competencias-ciudadanas {
+  background-color: #537e82;
+  border-top-color: #96b0b3;
+}
+.module-bar--competencias-socioemocionales {
+  background-color: #9a6c31;
+  border-top-color: #c1a581;
+}
+.module-bar--ciencias-naturales {
+  background-color: #42678b;
+  border-top-color: #8ba2b8;
+}
+.module-bar--lenguaje {
+  background-color: #50806b;
+  border-color: #94b1a4;
+}
+
+.module-bar--panel-control--ministerio {
+  background-color: #404040;
+  border-color: #666666;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+}
+
+.module-bar--maloka {
+  background-color: #efd9c5;
+  border-color: #f5e8dc;
+  color: #5e4228;
+}
+.module-bar--maloka h3 {
+  color: #5e4228;
+}
+.module-bar--maloka svg .cls-1 {
+  fill: #5e4228;
+}
+
+.conteedor_main_menu {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+}
+
+.module-card__header {
+  padding: 0;
+}
+
+.module-bar--matematicas {
+  background-color: #b85545;
+  border-color: #d4978d;
+}
+.module-bar--competencias-ciudadanas {
+  background-color: #537e82;
+  border-top-color: #96b0b3;
+}
+.module-bar--competencias-socioemocionales {
+  background-color: #9a6c31;
+  border-top-color: #c1a581;
+}
+.module-bar--ciencias-naturales {
+  background-color: #42678b;
+  border-top-color: #8ba2b8;
+}
+.module-bar--lenguaje {
+  background-color: #50806b;
+  border-color: #94b1a4;
+}
+.module-bar--panel-control--ministerio {
+  background-color: #404040;
+  border-color: #666666;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+}
+
+.module-bar--maloka {
+  background-color: #efd9c5;
+  border-color: #f5e8dc;
+  color: #5e4228;
+}
+.module-bar--maloka h3 {
+  color: #5e4228;
+}
+.module-bar--maloka svg .cls-1 {
+  fill: #5e4228;
+}

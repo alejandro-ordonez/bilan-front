@@ -1,0 +1,226 @@
+<div class="if-container">
+  <div class="texture_brgd">
+    <main class="main_modulo">
+      <section class="power-top" id="game-top-bar">
+        <article class="padding_1280px">
+          <section class="power-right">
+            <div class="power-boxes">
+              <p id="question-counter" class="power-quest">
+                Pregunta {{ currentQuestionNumber }} /
+                {{ totalQuestions }}
+              </p>
+            </div>
+            <div class="power-boxes">
+              <a class="power-stars" href="#"></a>
+            </div>
+          </section>
+        </article>
+      </section>
+      <div class="padding_1280pxx">
+        <section class="p-800-p">
+          <br />
+          <li class="dom-tricks-retos-se" [id]="currentTribe.id">
+            <div class="el-domt" [id]="currentTribe.id">
+              <div class="eldom">
+                <div class="dom-t">
+                  <img
+                    src="../../assets/images/iconos/Chaman(Iconos,Retos)/MAgia@2x.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </li>
+          <h1 class="marg-h1">{{ challengeName }}</h1>
+          <br />
+          <br />
+          <br />
+          <br />
+          <img
+            class="divicion_image"
+            src="assets/images/fondos/Fondo_division_mod.png"
+          />
+
+          <div id="question-container" class="">
+            <div class="context tx-t" id="context">
+              <div class="context tx-t" id="context">
+                <div [innerHTML]="currentQuestion?.context"></div>
+                <br />
+              </div>
+              <br />
+            </div>
+            <h3
+              id="question"
+              class="tx-t"
+              [innerHTML]="currentQuestion?.statement"
+            ></h3>
+            <ul class="answers mb-5" id="answer-buttons">
+              <button
+                class="btn"
+                *ngFor="let answer of currentQuestion?.answers"
+                (click)="selectAnswer(answer)"
+                [disabled]="answer?.id === selectedAnswer?.id"
+                [innerHTML]="answer.statement"
+              ></button>
+            </ul>
+
+            <div
+              class="flow-buttons"
+              *ngIf="!!currentQuestion && !!selectedAnswer"
+            >
+              <app-button
+                text="Responder y Parar"
+                (handleOnClick)="onAnswer(true)"
+              ></app-button>
+              <app-button
+                *ngIf="quitButton"
+                text="Abandonar"
+                (handleOnClick)="quitChallenge()"
+              ></app-button>
+              <app-button
+                text="Responder y Continuar"
+                (handleOnClick)="onAnswer()"
+              ></app-button>
+            </div>
+            <br /><br /><br />
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+
+<ng-template #answerCorrect let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>Respuesta correcta</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <h2>
+        {{ difficulty * 1 }}
+        Puntos ganados
+      </h2>
+      <p [innerHTML]="currentQuestion?.justification"></p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #answerWrong let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>Mejora tu nivel de desempeño</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <div>
+        <p [innerHTML]="currentQuestion?.errorMessage"></p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #challengeFinished let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>Reto Completado</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>Ganaste:</p>
+      <p _ngcontent-avr-c169="" class="puntaje_mod-act">
+        +{{ challengePoints }}
+      </p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #challengeQuited let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>Abandonaste</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>Ganas la mitad de los puntos.</p>
+      <p _ngcontent-avr-c169="" class="puntaje_mod-act">
+        +{{ challengePoints }}
+      </p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #challengeFailed let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>Respuesta incorrecta</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>pierdes todos los puntos recolectados y fallas la prueba</p>
+      <p _ngcontent-avr-c169="" class="puntaje_mod-act">
+        {{ challengePoints }}
+      </p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #challengeStoped let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>Decidiste No Continuar</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Ganas los puntos recolectado hasta el momento y se termina la prueba.
+      </p>
+      <p *ngIf="!townPoint">
+        Para ganar el punto de pueblo debe al menos enfrentarse a dos preguntas.
+      </p>
+      <p *ngIf="townPoint">Ganaste el punto de pueblo.</p>
+    </div>
+  </div>
+</ng-template>

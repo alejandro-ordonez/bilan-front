@@ -1,0 +1,75 @@
+<div *ngIf="!stats" class="mt-5">
+  <h1>Esta sección es solo para estudiantes </h1>
+  <!-- <h1>Materia:  {{courseData}}</h1> -->
+</div>
+<section *ngIf="stats" class="info_seccion mod_{{ stats.currentCycle }}">
+  <h2 class="name_ciclo_info_header">
+    CICLO DE
+    {{ currentCycle | uppercase }}
+  </h2>
+  <app-espiritus-bar
+    [espiritus]="stats.currentSpirits || 3"
+  ></app-espiritus-bar>
+</section>
+<div class="texture_brgd">
+  <main class="">
+    <h1>ELIGE UN MÓDULO</h1>
+    <ul class="bloque_modulos">
+      <a
+        *ngFor="let tribe of tribes; let i = index"
+        routerLink="/modulos/{{
+          tribe.name?.replace(' ', '-')?.replace('á', 'a') | lowercase
+        }}"
+      >
+        <li class="modulo modulo_{{ tribe.id }}">
+          <div class="iz_mod">
+            <img
+              class="icono_prin_modulo"
+              src="assets/images/iconos/Elementos/{{
+                tribe.element | titlecase
+              }}_tribu-full.png"
+            />
+            <h3 class="title_mod">
+              {{ tribe.name }}
+              <br />
+              <span class="tribu_mod italic_">
+                {{ tribe.culture || "Culture name" }}
+              </span>
+            </h3>
+            <p class="puntaje_mod" *ngIf="stats">
+              {{ getTribePoints(tribe.id || 0) }}
+            </p>
+          </div>
+          <div class="der_mod">
+            <ul class="tiem_in_game" *ngIf="stats">
+              <li *ngFor="let value of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                <img
+                  src="assets/images/iconos/balance{{
+                    !!balance[i] && balance[i].score === value
+                      ? value === 1 || value === 9
+                        ? '_bajo'
+                        : value === 2 || value === 8
+                        ? '_medio'
+                        : value === 3 || value === 7
+                        ? '_medio'
+                        : value >= 4 || value <= 6
+                        ? '_alto'
+                        : ''
+                      : ''
+                  }}.png"
+                />
+              </li>
+            </ul>
+            <img
+              class="img_prim_modulo"
+              src="assets/images/Personajes/{{
+                tribe.element | titlecase
+              }}_cut.png"
+            />
+          </div>
+        </li>
+      </a>
+    </ul>
+  </main>
+</div>
+

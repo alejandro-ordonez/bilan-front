@@ -1,0 +1,29 @@
+.credits {
+  float: left;
+  width: 100%;
+  background-color: #fff;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 15%;
+}
+
+.container_credits {
+  float: left;
+  width: 960px;
+  margin-left: 20%;
+}
+.container_credits img {
+  max-width: 300px;
+  float: left;
+  display: block;
+  margin-right: 50px;
+}
+.container_credits img:first-child {
+  display: block;
+  clear: both;
+  float: left;
+  margin-bottom: 30px;
+}
+.container_credits img:nth-child(2) {
+  clear: both;
+}

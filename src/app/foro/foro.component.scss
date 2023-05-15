@@ -1,0 +1,124 @@
+.foro {
+  display: flex;
+  margin: 20px 0;
+}
+
+.foro__buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.foro__content {
+  width: 100%;
+  padding: 20px 50px;
+  margin: 0 20px;
+  background-image: url("https://i.postimg.cc/2SS5C6Yx/background-foro.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.foro__content__info {
+  text-align: start;
+}
+.foro__content .foro__content__resume * {
+  text-align: start;
+}
+
+.foro__content__info__title {
+  color: #5e4228;
+}
+.foro__content__info__span {
+  margin: 0;
+}
+
+.foro__content__head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.foro__header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.foro__header__text {
+  width: 100%;
+}
+
+.foro__header .foro__buttons {
+  flex-direction: row;
+}
+
+.foro-answer {
+  border-bottom: 1px solid #5e4228;
+  margin-bottom: 20px;
+}
+.foro-answer__head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: start;
+  gap: 20px;
+}
+
+.foro-answer__head__text * {
+  color: #5e4228;
+}
+
+.foro-answer__head__img {
+  border-radius: 50%;
+  border: 1px solid #5e4228;
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foro-answer__content p,
+.foro__text p {
+  text-align: start;
+}
+
+.foro-answer__footer {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  justify-content: space-between;
+}
+
+.star-score {
+  width: fit-content;
+  border: 1px solid #5f412c;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.modal-form-evaluation__input::-webkit-outer-spin-button,
+.modal-form-evaluation__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.modal-form-evaluation__input {
+  text-align: center;
+}
+.modal-form-evaluation__text {
+  text-align: end;
+  display: flex;
+  align-items: center;
+}
+
+.commentButton {
+  font-style: italic;
+  color: #8e6040;
+  display: block;
+  text-align: end;
+  padding: 20px;
+  margin-left: 75%;
+  z-index: 9;
+  cursor: pointer;
+}

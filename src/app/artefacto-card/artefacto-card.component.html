@@ -1,0 +1,214 @@
+<div class="texture_brgd">
+  <main>
+    <div class="section-title">
+      <a href="">
+        <img src="assets/images/" alt="" />
+      </a>
+      <div class="information-title">
+        <h2>MIS ARTEFACTOS</h2>
+      
+      </div>
+    </div>
+    <div class="artefact__slider">
+      <div
+        class="splide splide--loop splide--ltr splide--draggable is-active"
+        id="splide01"
+        style="visibility: visible"
+      >
+        <div class="splide__arrows">
+          <button
+            *ngIf="slidesButtons.left"
+            class="splide__arrow splide__arrow--prev"
+            aria-controls="splide01-track"
+            aria-label="Go to last slide"
+            (click)="sliderPrev()"
+          >
+            <svg
+              id="forwrd"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="30"
+              height="34.595"
+              viewBox="0 0 30 34.595"
+            >
+              <image
+                id="forwrd-2"
+                data-name="forwrd"
+                width="30"
+                height="34.595"
+                xlink:href="data:image/png;base64,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"
+              ></image>
+            </svg>
+          </button>
+          <button
+            *ngIf="slidesButtons.right"
+            class="splide__arrow splide__arrow--next"
+            aria-controls="splide01-track"
+            aria-label="Next slide"
+            (click)="sliderNext()"
+          >
+            <svg
+              id="forwrd"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="30"
+              height="34.595"
+              viewBox="0 0 30 34.595"
+            >
+              <image
+                id="forwrd-2"
+                data-name="forwrd"
+                width="30"
+                height="34.595"
+                xlink:href="data:image/png;base64,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"
+              ></image>
+            </svg>
+          </button>
+        </div>
+
+        <div class="splide__track" id="splide01-track">
+          <ul
+            class="splide__list"
+            [style]="'transform: translateX(' + artefactsPosition + 'px);'"
+            id="slidesContainer"
+          >
+            <li
+              class="splide__slide artefact__card artefact__card--agua"
+              *ngFor="let artefact of artefacts"
+            >
+              <figure class="artefact__card__logo">
+                <img
+                  src="assets/images/Tarjetas-artefactos/A_img_Negro@2x.png"
+                  alt=""
+                />
+              </figure>
+              <figure class="artefact__card__divisor">
+                <img src="assets/images/Fondos/Fondo_division.png" alt="" />
+              </figure>
+              <p class="artefact__card__text">
+                {{ artefact.know }}
+              </p>
+            </li>
+            {{
+              initArtefacts()
+            }}
+            <!-- <li class="splide__slide artefact__card artefact__card--aire">
+              <figure class="artefact__card__logo">
+                <img
+                  src="https://i.postimg.cc/zfL75Yqv/A-img-Indigena-2x.png"
+                />
+              </figure>
+              <figure class="artefact__card__divisor">
+                <img src="assets/images/Fondos/Fondo_division.png" alt="" />
+              </figure>
+              <p class="artefact__card__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse magna tortor.Lorem… ipsum dolor sit amet,
+                consectetur adipiscing elit.
+              </p>
+            </li> -->
+            <!-- <li class="splide__slide artefact__card artefact__card--luz">
+              <figure class="artefact__card__logo">
+                <img
+                  src="assets/images/Tarjetas-artefactos/T-A_img_ROM@2x.png"
+                  alt=""
+                />
+              </figure>
+              <figure class="artefact__card__divisor">
+                <img src="assets/images/Fondos/Fondo_division.png" alt="" />
+              </figure>
+              <p class="artefact__card__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse magna tortor.Lorem… ipsum dolor sit amet,
+                consectetur adipiscing elit.
+              </p>
+            </li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li>
+            <li class="splide__slide artefact__card artefact__card--block"></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="artefact__slider__counter">
+      <i id="artefactSliderCounter">
+        {{ artefactIndex + 1 }}/{{ artefactsList.length }}
+      </i>
+    </div>
+  </main>
+</div>
+
+<ng-template #artefactoModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>artefactos</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Los tótems son los recursos que usas para jugar los retos. Tienes en
+        total 10 tótems: 4 básicos, 3 tótems de pensamiento analítico y 3 tótems
+        de pensamiento estratégico.
+      </p>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img src="assets/images/Botones_menu/Asset_6@2x.png" alt="" />
+        </figure>
+        <h3>TÓTEMS BÁSICOS</h3>
+        <p>
+          Estos se regeneran de uno en uno automáticamente cada seis horas,
+          hasta tener un máximo de 4 tótems.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="assets/images/Botones_menu/totem_estrategico@2x.png"
+            alt=""
+          />
+        </figure>
+        <h3>PENSAMIENTO ESTRATÉGICO</h3>
+        <p>
+          Estos se regeneran de uno en uno automáticamente cada seis horas,
+          hasta tener un máximo de 4 tótems.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img src="assets/images/Botones_menu/totem_analitico@2x.png" alt="" />
+        </figure>
+        <h3>PENSAMIENTO ANALÍTICO</h3>
+        <p>
+          Estos se regeneran de uno en uno automáticamente cada seis horas,
+          hasta tener un máximo de 4 tótems.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>

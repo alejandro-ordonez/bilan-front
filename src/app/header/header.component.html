@@ -1,0 +1,388 @@
+<nav class="nav_principal" *ngIf="!mobile">
+  <section class="conteedor_main_menu" *ngIf="switchToUpdate">
+    <section class="avatar_space" *ngIf="user">
+      <img class="avatar" src="assets/images/avatars/A__2Aire.jpg" />
+      <p class="name_profile">{{ user.name }}</p>
+    </section>
+    <ul class="main_menu">
+      <a routerLink="/foros/1" routerLinkActive="active">
+        <li class="btn_foro">
+          <span>
+            <a>Foros</a>
+          </span>
+        </li>
+      </a>
+      <a routerLink="/perfil" routerLinkActive="active" *ngIf="!isTeacher">
+        <li class="btn_perfil">
+          <span>
+            <a routerLink="/perfil" routerLinkActive="active">Perfil</a>
+          </span>
+        </li>
+      </a>
+      <a ngirouterLink="/modulos" routerLinkActive="active">
+        <li class="btn_modulos">
+          <span>
+            <a routerLink="/modulos" routerLinkActive="active"
+              >M&oacute;dulos
+            </a>
+          </span>
+        </li>
+      </a>
+    </ul>
+    <img
+      [routerLink]="homeLink"
+      class="logo_bilan"
+      src="assets/images/logos/logo_bilan_opt.png"
+    />
+    <section class="more_info">
+      <button
+        *ngIf="!isTeacher"
+        class="btn-modal"
+        id="myModal"
+        (click)="openModal(content)"
+      >
+        <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+      </button>
+      <a routerLink="/acerca-de-bilan/aprendizaje">
+        <img src="assets/images/Botones_menu/boton_pregunta@2x_opt.png" />
+      </a>
+      <button class="px-3" (click)="logout()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          fill="#eabc67"
+          class="bi bi-box-arrow-right"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+          />
+        </svg>
+      </button>
+    </section>
+    <app-totem-special *ngIf="stats" [activeTotems]="stats.analyticalTotems">
+    </app-totem-special>
+
+    <ul class="totems">
+      <li class="division_totems">
+        <img src="assets/images/Botones_menu/division_totem_opt.png" />
+      </li>
+    </ul>
+
+    <ul class="totems" *ngIf="isTeacher">
+      <button (click)="onClick()" class="link-button">
+        Tablero de control
+      </button>
+    </ul>
+    <app-totem-basic *ngIf="stats" [activeTotems]="stats.generalTotems">
+    </app-totem-basic>
+    <app-timer
+      (updateTotems)="updateUserStats()"
+      *ngIf="stats && stats.generalTotems < 4"
+    ></app-timer>
+  </section>
+
+  <section class="conteedor_main_menu" *ngIf="!switchToUpdate">
+    <section class="avatar_space" *ngIf="user">
+      <img class="avatar" src="assets/images/avatars/A__2Aire.jpg" />
+      <p class="name_profile">{{ user.name }}</p>
+    </section>
+    <ul class="main_menu">
+      <a  routerLink="/foros/1" routerLinkActive="active">
+        <li class="btn_foro">
+          <span>
+            <a>Foros</a>
+          </span>
+        </li>
+      </a>
+      <a routerLink="/perfil" routerLinkActive="active">
+        <li class="btn_perfil">
+          <span>
+            <a routerLink="/perfil" routerLinkActive="active">Perfil</a>
+          </span>
+        </li>
+      </a>
+      <a routerLink="/modulos" routerLinkActive="active">
+        <li class="btn_modulos">
+          <span>
+            <a routerLink="/modulos" routerLinkActive="active"
+              >M&oacute;dulos
+            </a>
+          </span>
+        </li>
+      </a>
+    </ul>
+    <img
+      [routerLink]="homeLink"
+      class="logo_bilan"
+      src="assets/images/logos/logo_bilan_opt.png"
+    />
+    <section class="more_info">
+      <button
+        *ngIf="!isTeacher"
+        class="btn-modal"
+        id="myModal"
+        (click)="openModal(content)"
+      >
+        <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+      </button>
+      <a routerLink="/acerca-de-bilan/aprendizaje">
+        <img src="assets/images/Botones_menu/boton_pregunta@2x_opt.png" />
+      </a>
+      <button class="px-3" (click)="logout()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          fill="#eabc67"
+          class="bi bi-box-arrow-right"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+          />
+        </svg>
+      </button>
+    </section>
+    <app-totem-special *ngIf="stats" [activeTotems]="stats.analyticalTotems">
+    </app-totem-special>
+
+    <ul class="totems">
+      <li class="division_totems">
+        <img src="assets/images/Botones_menu/division_totem_opt.png" />
+      </li>
+    </ul>
+
+    <ul
+      class="totems"
+      *ngIf="user.userType !== 'Teacher' && user.userType !== 'Student'"
+    >
+      <button (click)="onClick()" class="link-button">
+        Tablero de control
+      </button>
+    </ul>
+    <app-totem-basic *ngIf="stats" [activeTotems]="stats.generalTotems">
+    </app-totem-basic>
+    <app-timer
+      (updateTotems)="updateUserStats()"
+      *ngIf="stats && stats.generalTotems < 4"
+    ></app-timer>
+  </section>
+</nav>
+
+<header class="responsive-header" *ngIf="mobile && switchToUpdate">
+  <div class="header-top">
+    <div class="avatar_space" *ngIf="user">
+      <img src="assets/images/avatars/A__2Aire.jpg" class="avatar" />
+      <p class="name_profile">{{ user.name }}</p>
+    </div>
+    <div class="button-container">
+      <button id="myModal" class="btn-modal">
+        <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+      </button>
+      <button
+        [ngClass]="{ 'is-active': menu }"
+        type="button"
+        class="hamburger"
+        (click)="menuClick()"
+      >
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="header-bot">
+    <div class="totems-container" *ngIf="stats">
+      <app-totem-basic [activeTotems]="stats.generalTotems"> </app-totem-basic>
+      <ul class="totems">
+        <li class="division_totems">
+          <img src="assets/images/Botones_menu/division_totem_opt.png" />
+        </li>
+      </ul>
+      <app-totem-special [activeTotems]="stats.analyticalTotems">
+      </app-totem-special>
+    </div>
+  </div>
+  <nav class="nav nav--header" [ngClass]="{ 'is-active': menu }">
+    <div class="nav-top">
+      <h4 class="button">
+        <button
+          type="button"
+          aria-label="Close"
+          (click)="menuClick()"
+          class="close"
+        >
+          <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+        </button>
+      </h4>
+      <img
+        routerLink="/home"
+        src="assets/images/logos/logo_bilan_opt.png"
+        class="logo_bilan"
+        tabindex="0"
+      />
+      <h4 class="nav-title">MENÚ</h4>
+    </div>
+    <ul class="nav__list">
+      <a routerLink="/foros/1" class="button-link">
+        <img src="assets/images/Botones_menu/boton_foro@2x_opt.png" />
+        <h5>Foros</h5>
+      </a>
+      <a routerLink="/perfil" class="button-link">
+        <img src="assets/images/Botones_menu/boton_perfil@2x_opt.png" />
+        <h5>Perfil</h5>
+      </a>
+      <a routerLink="/modulos" class="button-link">
+        <img src="assets/images/Botones_menu/boton_modulos@2x_opt.png" />
+        <h5>Módulos</h5>
+      </a>
+      <a routerLink="/acerca-de-bilan/aprendizaje" class="button-link">
+        <img src="assets/images/Botones_menu/boton_pregunta@2x_opt.png" />
+        <h5>Acerca de Bilan</h5></a
+      >
+    </ul>
+  </nav>
+</header>
+<header class="responsive-header" *ngIf="mobile && !switchToUpdate">
+  <div class="header-top">
+    <div class="avatar_space" *ngIf="user">
+      <img src="assets/images/avatars/A__2Aire.jpg" class="avatar" />
+      <p class="name_profile">{{ user.name }}</p>
+    </div>
+    <div class="button-container">
+      <button id="myModal" class="btn-modal">
+        <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+      </button>
+      <button
+        [ngClass]="{ 'is-active': menu }"
+        type="button"
+        class="hamburger"
+        (click)="menuClick()"
+      >
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="header-bot">
+    <div class="totems-container" *ngIf="stats">
+      <app-totem-basic [activeTotems]="stats.generalTotems"> </app-totem-basic>
+      <ul class="totems">
+        <li class="division_totems">
+          <img src="assets/images/Botones_menu/division_totem_opt.png" />
+        </li>
+      </ul>
+      <app-totem-special [activeTotems]="stats.analyticalTotems">
+      </app-totem-special>
+    </div>
+  </div>
+  <nav class="nav nav--header" [ngClass]="{ 'is-active': menu }">
+    <div class="nav-top">
+      <h4 class="button">
+        <button
+          type="button"
+          aria-label="Close"
+          (click)="menuClick()"
+          class="close"
+        >
+          <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+        </button>
+      </h4>
+      <img
+        routerLink="/home"
+        src="assets/images/logos/logo_bilan_opt.png"
+        class="logo_bilan"
+        tabindex="0"
+      />
+      <h4 class="nav-title">MENÚ</h4>
+    </div>
+    <ul class="nav__list">
+      <a routerLink="/foros/1" class="button-link">
+        <img src="assets/images/Botones_menu/boton_foro@2x_opt.png" />
+        <h5>Foros</h5>
+      </a>
+      <a routerLink="/perfil" class="button-link">
+        <img src="assets/images/Botones_menu/boton_perfil@2x_opt.png" />
+        <h5>Perfil</h5>
+      </a>
+      <a routerLink="/modulos" class="button-link">
+        <img src="assets/images/Botones_menu/boton_modulos@2x_opt.png" />
+        <h5>Módulos</h5>
+      </a>
+      <a routerLink="/acerca-de-bilan/aprendizaje" class="button-link">
+        <img src="assets/images/Botones_menu/boton_pregunta@2x_opt.png" />
+        <h5>Acerca de Bilan</h5></a
+      >
+    </ul>
+  </nav>
+</header>
+
+<ng-template #content let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>TÓTEMS</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Los tótems son los recursos que usas para jugar los retos. Tienes en
+        total 10 tótems: 4 básicos, 3 tótems de pensamiento analítico y 3 tótems
+        de pensamiento estratégico.
+      </p>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img src="assets/images/Botones_menu/Asset_6@2x.png" alt="" />
+        </figure>
+        <h3>TÓTEMS BÁSICOS</h3>
+        <p>
+          Estos se regeneran de uno en uno automáticamente cada 20 minutos,
+          hasta tener un máximo de 4 tótems.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="assets/images/Botones_menu/totem_estrategico@2x.png"
+            alt=""
+          />
+        </figure>
+        <h3>PENSAMIENTO ESTRATÉGICO</h3>
+        <p>
+          Son tótems que ganas por mantener la mayor cantidad de pueblos en
+          balance. Estos te permitiran jugar mas retos.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img src="assets/images/Botones_menu/totem_analitico@2x.png" alt="" />
+        </figure>
+        <h3>PENSAMIENTO ANALÍTICO</h3>
+        <p>
+          Son tótems que ganas por responder con el maximo nivel de desempeño
+          las trivias, y con ellos tienes la posibilidad de jugar retos
+          adicionales.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>

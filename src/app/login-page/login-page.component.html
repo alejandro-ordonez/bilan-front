@@ -1,0 +1,197 @@
+<div class="login-page" *ngIf="href == '/login'">
+  <img class="logo" src="assets/images/logos/Billan_cabezote@2x.png" />
+  <h1 class="title">INGRESAR</h1>
+
+  <form
+    *ngIf="!newStudentFormIsActive && !newTeacherFormIsActive"
+    class="login-form"
+    [formGroup]="loginForm"
+    (submit)="onLogin($event)"
+    novalidate
+  >
+    <app-radio-select
+      label="Tipo de perfil"
+      class="input"
+      formControlName="userType"
+      [options]="radioOptions"
+    ></app-radio-select>
+
+    <app-select
+      label="Tipo de documento"
+      class="input"
+      formControlName="documentType"
+      [options]="documentTypeOptions"
+      placeholder="Tipo de documento"
+    ></app-select>
+
+    <app-textfield
+      label="Documento"
+      class="input"
+      formControlName="document"
+      type="text"
+      pattern="^[a-zA-Z0-9_.-]*$"
+      placeholder="Número de documento"
+    ></app-textfield>
+
+    <p *ngIf="loginForm.controls.document.errors?.['pattern']">
+      <ngb-alert type="danger" [dismissible]="false">
+        Digitos no permitidos
+      </ngb-alert>
+    </p>
+    <p *ngIf="loginForm.controls.document.errors?.['maxlength']">
+      <ngb-alert type="danger" [dismissible]="false">
+        verifica la información ingresada. Excede el número de dígitos
+        permitidos
+      </ngb-alert>
+    </p>
+
+    <app-textfield
+      label="Contraseña"
+      class="input"
+      formControlName="password"
+      type="password"
+      placeholder="Contraseña"
+    ></app-textfield>
+
+    <p *ngIf="loginForm.invalid && loginButtonClicked">
+      <ngb-alert type="danger" [dismissible]="false">
+        Completa <strong>todos</strong> los <strong>campos</strong>
+      </ngb-alert>
+    </p>
+
+    <app-button
+      type="submit"
+      [isDisabled]="loginForm.invalid"
+      (click)="loginButtonClicked = true"
+      text="Iniciar sesión"
+    ></app-button>
+  </form>
+
+  <form
+    *ngIf="newStudentFormIsActive"
+    class="login-form"
+    [formGroup]="newStudentForm"
+    (submit)="updatePassword()"
+    novalidate
+  >
+    <app-textfield
+      label="Correo electrónico"
+      class="input"
+      formControlName="email"
+      type="email"
+      email="true"
+      placeholder="ejemplo@bilan.com"
+    ></app-textfield>
+    <p
+      *ngIf="
+        newStudentForm.controls.email.dirty &&
+        newStudentForm.controls.email.invalid
+      "
+    >
+      <ngb-alert type="danger" [dismissible]="false">
+        Ingresa un correo valido
+      </ngb-alert>
+    </p>
+    <app-textfield
+      label="Contraseña"
+      class="input"
+      formControlName="password"
+      type="password"
+      placeholder="Contraseña"
+    ></app-textfield>
+
+    <app-textfield
+      label="Confirmar Contraseña"
+      class="input"
+      formControlName="passwordRepeat"
+      type="password"
+      placeholder="Contraseña"
+    ></app-textfield>
+
+    <p
+      *ngIf="
+        newStudentForm.controls.passwordRepeat.valid &&
+        newStudentForm.controls.passwordRepeat.value !=
+          newStudentForm.controls.password.value
+      "
+    >
+      <ngb-alert type="danger" [dismissible]="false">
+        Las contraseñas <strong>no coinciden</strong>
+      </ngb-alert>
+    </p>
+
+    <app-button
+      type="submit"
+      [isDisabled]="
+        newStudentForm.invalid ||
+        newStudentForm.controls.passwordRepeat.value !=
+          newStudentForm.controls.password.value
+      "
+      text="Actualizar datos"
+    ></app-button>
+  </form>
+
+  <form
+    *ngIf="newTeacherFormIsActive"
+    class="login-form"
+    [formGroup]="newTeacherForm"
+    (submit)="updatePassword()"
+    novalidate
+  >
+    <app-textfield
+      label="Correo electronico"
+      class="input"
+      formControlName="email"
+      type="email"
+      placeholder="ejemplo@bilan.com"
+      email="true"
+    ></app-textfield>
+    <p
+      *ngIf="
+        newTeacherForm.controls.email.dirty &&
+        newTeacherForm.controls.email.invalid
+      "
+    >
+      <ngb-alert type="danger" [dismissible]="false">
+        Ingresa un correo valido
+      </ngb-alert>
+    </p>
+
+    <app-textfield
+      label="Contraseña"
+      class="input"
+      formControlName="password"
+      type="password"
+      placeholder="Contraseña"
+    ></app-textfield>
+
+    <app-textfield
+      label="Confirmar Contraseña"
+      class="input"
+      formControlName="passwordRepeat"
+      type="password"
+      placeholder="Contraseña"
+    ></app-textfield>
+    <p
+      *ngIf="
+        newTeacherForm.controls.passwordRepeat.valid &&
+        newTeacherForm.controls.passwordRepeat.value !=
+          newTeacherForm.controls.password.value
+      "
+    >
+      <ngb-alert type="danger" [dismissible]="false">
+        Las contraseñas <strong>no coinciden</strong>
+      </ngb-alert>
+    </p>
+
+    <app-button
+      type="submit"
+      [isDisabled]="
+        newTeacherForm.invalid ||
+        newTeacherForm.controls.passwordRepeat.value !=
+          newTeacherForm.controls.password.value
+      "
+      text="Actualizar datos"
+    ></app-button>
+  </form>
+</div>

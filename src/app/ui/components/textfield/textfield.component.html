@@ -1,0 +1,13 @@
+<div class="app-textfield">
+  <label class="label" ngif="label !== ''" [for]="id">{{ label }}</label>
+  <input
+    #input
+    class="app-textfield-input"
+    [placeholder]="placeholder"
+    [value]="value"
+    (input)="onChange(input.value)"
+    [id]="id"
+    [pattern]="pattern"
+    [type]="type"
+  />
+</div>

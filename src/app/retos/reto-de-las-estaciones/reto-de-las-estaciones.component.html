@@ -1,0 +1,186 @@
+<div class="if-container">
+  <div class="texture_brgd">
+    <main class="main_modulo">
+      <section class="power-top" id="game-top-bar">
+        <article class="padding_1280px">
+          <section class="power-right">
+            <div class="power-boxes">
+              <p id="question-counter" class="power-quest">
+                Pregunta {{ currentQuiz + 1 }} /
+                {{ questions.length }}
+              </p>
+            </div>
+            <div class="power-boxes">
+              <a class="power-stars" href="#"></a>
+            </div>
+          </section>
+        </article>
+      </section>
+      <div class="padding_1280pxx">
+        <section class="p-800-p">
+          <br />
+          <li class="dom-tricks-retos-se" [id]="materia">
+            <div class="el-domt" [id]="materia">
+              <div class="eldom">
+                <div class="dom-t">
+                  <img
+                    src="../../assets/images/iconos/Chaman(Iconos,Retos)/MAgia@2x.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </li>
+          <h1 class="marg-h1">{{challengeName}}</h1>
+          <br />
+          <br />
+    
+          <br />
+          <br />
+          <img
+            class="divicion_image"
+            src="assets/images/fondos/Fondo_division_mod.png"
+          />
+
+          <div id="question-container" class="">
+            <div class="context tx-t" id="context">
+              <div class="context tx-t" id="context">
+                <div [innerHTML]="questions[currentQuiz].context"></div>
+                <br />
+              </div>
+              <br />
+            </div>
+            <h3
+              id="question"
+              class="tx-t"
+              [innerHTML]="questions[currentQuiz].statement"
+            ></h3>
+            <ul class="answers mb-5" id="answer-buttons">
+              <button
+                class="btn"
+                *ngFor="let quiz of questions[currentQuiz].answers"
+                (click)="selectAnswer(quiz)"
+                [disabled]="quiz.selected"
+                [innerHTML]="quiz.statement"
+              ></button>
+            </ul>
+
+            <div
+              class="flow-buttons"
+              *ngIf="
+                questions[currentQuiz].answers[0].hasOwnProperty('selected')
+              "
+            >
+              <app-button
+                text="Siguiente"
+                (handleOnClick)="onAnswer()"
+              ></app-button>
+            </div>
+            <br /><br /><br />
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+
+<ng-template #answerCorrect let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>Has Ganado</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <h2
+        *ngIf="
+          questionsBurneds[materia][grade][questions[currentQuiz].id]
+            .positiveFeedback.stars
+        "
+      >
+        {{
+          questionsBurneds[materia][grade][questions[currentQuiz].id]
+            .positiveFeedback.stars
+        }}
+        Estrellas
+      </h2>
+      <h2
+        *ngIf="
+          questionsBurneds[materia][grade][questions[currentQuiz].id]
+            .positiveFeedback.totems
+        "
+      >
+        {{
+          questionsBurneds[materia][grade][questions[currentQuiz].id]
+            .positiveFeedback.totems
+        }}
+        Totems
+      </h2>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #answerWrong let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>Mejora tu nivel de desempeño</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <div
+        *ngFor="
+          let answer of questionsBurneds[materia][grade][
+            questions[currentQuiz].id
+          ].negativeFeedback
+        "
+      >
+        <p *ngIf="answer.text">
+          {{ answer.text }}
+        </p>
+        <p *ngIf="answer.url">
+          <a [href]="answer.url" target="_blank">{{ answer.url }}</a>
+        </p>
+
+        <button
+          _ngcontent-owp-c175=""
+          class="btn"
+          [innerHTML]="correctAnswer.statement"
+        ></button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #challengeFinished let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>Reto Completado</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>Ganaste:</p>
+      <p _ngcontent-avr-c169="" class="puntaje_mod-act">
+        +{{ challengePoints }}
+      </p>
+    </div>
+  </div>
+</ng-template>

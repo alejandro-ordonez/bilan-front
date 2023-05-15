@@ -1,0 +1,208 @@
+<div class="texture_brgd profile__container">
+  <main class="profile">
+    <h2 class="profile__title">PERFIL</h2>
+    <div class="modal-content">
+      <div class="modal-container">
+        <div class="profile__details">
+          <div class="profile__details__user" *ngIf="user">
+            <figure class="profile__details__img">
+              <img src="assets/images/avatars/A__2Aire.jpg" alt="" />
+            </figure>
+            <div class="profile__details__text">
+              <h2 class="profile__details__text__title">
+                {{ user.name }}
+              </h2>
+            </div>
+          </div>
+          <div class="profile__details__stats">
+            <a routerLink="../artefactos" class="btn_intro">Artefactos</a>
+          </div>
+          <p>
+            Colecciona artefactos y conoce de nuestra diversidad cultural.  Al finalizar cada ciclo obtendrás un artefacto.
+          </p>
+        </div>
+        <div class="profile__statics">
+          <div
+            class="splide splide--slide splide--ltr splide--draggable is-active"
+            id="splide01"
+            style="visibility: visible"
+          >
+            <div class="splide__arrows" (click)="changeSlide()">
+              <button
+                class="splide__arrow splide__arrow--prev"
+                aria-controls="splide01-track"
+                disabled=""
+                aria-label="Previous slide"
+              >
+                <svg
+                  id="forwrd"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="30"
+                  height="34.595"
+                  viewBox="0 0 30 34.595"
+                >
+                  <image
+                    id="forwrd-2"
+                    data-name="forwrd"
+                    width="30"
+                    height="34.595"
+                    xlink:href="data:image/png;base64,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"
+                  ></image>
+                </svg>
+              </button>
+              <button
+                class="splide__arrow splide__arrow--next"
+                aria-controls="splide01-track"
+                aria-label="Next slide"
+              >
+                <svg
+                  id="forwrd"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="30"
+                  height="34.595"
+                  viewBox="0 0 30 34.595"
+                >
+                  <image
+                    id="forwrd-2"
+                    data-name="forwrd"
+                    width="30"
+                    height="34.595"
+                    xlink:href="data:image/png;base64,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"
+                  ></image>
+                </svg>
+              </button>
+            </div>
+
+            <div id="splide01-track" class="splide__track">
+              <ul
+                id="splide01-list"
+                class="splide__list"
+                style="transform: translateX(0px)"
+              >
+                <li
+                  id="splide01-slide01"
+                  aria-hidden="false"
+                  tabindex="0"
+                  class="splide__slide is-active is-visible"
+                  style="width: 446px; height: 356px"
+                  *ngIf="slideBoolean"
+                >
+                  <h2 class="profile__statics__title">PROGRESO</h2>
+                  <div class="scroll-container profile__statics__text">
+                    <div
+                      class="modulo-progress-bar"
+                      *ngFor="let module of usuario.__zone_symbol__value.data"
+                    >
+                      <figure class="modulo-progress-bar__img">
+                        <img
+                          src="Assets/Iconos/Elementos/agua_full@2x-opt.png"
+                          alt=""
+                        />
+                      </figure>
+                      <div class="modulo-progress-bar__text">
+                        <h3 class="modulo-progress-bar__text__title">
+                          {{ module.name }}
+                        </h3>
+                        <div class="modulo-progress-bar__text__progress">
+                          <div class="progress-bar">
+                            <div
+                              class="progress-bar__bar"
+                              [style]="
+                                'width: ' +
+                                (module.preActivePhase +
+                                  module.interactivePhase +
+                                  module.postActivePhase) *
+                                  (100 / 3) +
+                                '%'
+                              "
+                            ></div>
+                          </div>
+                          <p
+                            class="
+                              modulo-progress-bar__text__progress__percentage
+                            "
+                          >
+                            {{
+                              (module.preActivePhase +
+                                module.interactivePhase +
+                                module.postActivePhase) *
+                                (100 / 3) | number: "1.0-0"
+                            }}%
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li
+                  id="splide01-slide02"
+                  class="splide__slide"
+                  style="width: 446px; height: 356px"
+                  *ngIf="!slideBoolean"
+                >
+                  <h2 class="profile__statics__title">DESEMPEÑO</h2>
+                  <div
+                    class="scroll-container profile__statics__text"
+                    style="padding: 20px"
+                  >
+                    <div
+                      class="modulo-desempeño"
+                      *ngFor="let module of usuario.__zone_symbol__value.data"
+                    >
+                      <figure class="modulo-desempeño__img">
+                        <img
+                          [src]="
+                            '../../assets/images/iconos/Elementos/modules/name/' +
+                            module.name +
+                            '.png'
+                          "
+                          alt=""
+                        />
+                        <h3>{{ module.name }}</h3>
+                      </figure>
+                      <div
+                        class="modulo-desempeño__statics"
+                        [ngClass]="'nivel-' + module.performanceGameScore"
+                      >
+                        <div class="modulo-desempeño__statics__bar">
+                          <p class="modulo-desempeño__statics__bar__text">4</p>
+                          <div
+                            class="modulo-desempeño__statics__bar__line"
+                            style="width: 100%"
+                          ></div>
+                        </div>
+                        <div class="modulo-desempeño__statics__bar">
+                          <p class="modulo-desempeño__statics__bar__text">3</p>
+                          <div
+                            class="modulo-desempeño__statics__bar__line"
+                            style="width: 75%"
+                          ></div>
+                        </div>
+                        <div class="modulo-desempeño__statics__bar">
+                          <p class="modulo-desempeño__statics__bar__text">2</p>
+                          <div
+                            class="modulo-desempeño__statics__bar__line"
+                            style="width: 50%"
+                          ></div>
+                        </div>
+                        <div class="modulo-desempeño__statics__bar">
+                          <p class="modulo-desempeño__statics__bar__text">1</p>
+                          <div
+                            class="modulo-desempeño__statics__bar__line"
+                            style="width: 25%"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

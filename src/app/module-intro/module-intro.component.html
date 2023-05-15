@@ -1,0 +1,2090 @@
+<div class="texture_brgd" *ngIf="isValidMateria">
+  <app-module-bar></app-module-bar>
+  <main class="main_modulo">
+    <ul class="nav_intro_actividades_retos">
+      <li>
+        <a routerLink="./actividades/10/1">
+          <img
+            [src]="
+              'assets/images/fondos/Fondo Reto y Actividad/module-intro/actividades-' +
+              materia +
+              '.png'
+            "
+          />
+          <p class="btn_intro_actyretos">Actividades</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="./retos">
+          <img
+            [src]="
+              'assets/images/fondos/Fondo Reto y Actividad/module-intro/retos-' +
+              materia +
+              '.png'
+            "
+          />
+          <p class="btn_intro_actyretos">Retos</p>
+        </a>
+      </li>
+    </ul>
+    <img src="assets/images/fondos/Fondo_division.png" />
+    <ul class="submenu_retosyactividades" [ngSwitch]="materia">
+
+
+      <li class="btn_modulos" (click)="openModal(bibliografiaModalMatematicas11)" *ngSwitchCase="'matematicas'">
+        <span><strong>Bibliografía</strong></span>
+      </li>
+
+      <li class="btn_maloka" (click)="openModal(tuRolEstudianteModal)" *ngSwitchCase="'matematicas'">
+        <span><strong>Tu rol</strong></span>
+      </li>
+      <li
+        class="btn_perfil"
+        (click)="openModal(estandaresBasicModalMatematicas)"
+        *ngSwitchCase="'matematicas'"
+      >
+        <span><strong>Estándares básicos que se privilegian</strong></span>
+      </li>
+
+      <li
+        class="btn_modulos"
+        (click)="openModal(odsModalMatematicas)"
+        *ngSwitchCase="'matematicas'"
+      >
+        <span><strong>ODS</strong></span>
+      </li>
+
+      <li class="btn_modulos" (click)="openModal(bibliografiaModalCiudadanas11)" *ngSwitchCase="'competencias-ciudadanas'">
+        <span><strong>Bibliografía</strong></span>
+      </li>
+      <li class="btn_maloka" (click)="openModal(tuRolEstudianteModal)" *ngSwitchCase="'competencias-ciudadanas'">
+        <span><strong>Tu rol</strong></span>
+      </li>
+      <li
+        class="btn_perfil"
+        (click)="openModal(estandaresBasicModalCiudadanas)"
+        *ngSwitchCase="'competencias-ciudadanas'"
+      >
+        <span><strong>Estándares básicos que se privilegian</strong></span>
+      </li>
+
+      <li
+        class="btn_modulos"
+        (click)="openModal(odsModalCiudadanas)"
+        *ngSwitchCase="'competencias-ciudadanas'"
+      >
+        <span><strong>ODS</strong></span>
+      </li>
+
+      <li class="btn_modulos" (click)="openModal(bibliografiaModalSocioemocionales11)" *ngSwitchCase="'competencias-socioemocionales'">
+        <span><strong>Bibliografía</strong></span>
+      </li>
+      <li class="btn_maloka" (click)="openModal(tuRolEstudianteModal)" *ngSwitchCase="'competencias-socioemocionales'">
+        <span><strong>Tu rol</strong></span>
+      </li>
+      <li
+        class="btn_perfil"
+        (click)="openModal(estandaresBasicModalSocioemocionales)"
+        *ngSwitchCase="'competencias-socioemocionales'"
+      >
+        <span><strong>Estándares básicos que se privilegian</strong></span>
+      </li>
+
+      <li
+        class="btn_modulos"
+        (click)="openModal(odsModalSocioemocionales)"
+        *ngSwitchCase="'competencias-socioemocionales'"
+      >
+        <span><strong>ODS</strong></span>
+      </li>
+
+      <li class="btn_modulos" (click)="openModal(bibliografiaModalCiencias11)" *ngSwitchCase="'ciencias-naturales'">
+        <span><strong>Bibliografía</strong></span>
+      </li>
+      <li class="btn_maloka" (click)="openModal(tuRolEstudianteModal)" *ngSwitchCase="'ciencias-naturales'">
+        <span><strong>Tu rol</strong></span>
+      </li>
+      <li
+        class="btn_perfil"
+        (click)="openModal(estandaresBasicModalCiencias)"
+        *ngSwitchCase="'ciencias-naturales'"
+      >
+        <span><strong>Estándares básicos que se privilegian</strong></span>
+      </li>
+
+      <li
+        class="btn_modulos"
+        (click)="openModal(odsModalCiencias)"
+        *ngSwitchCase="'ciencias-naturales'"
+      >
+        <span><strong>ODS</strong></span>
+      </li>
+
+
+      <li class="btn_modulos" (click)="openModal(bibliografiaModalLenguaje11)" *ngSwitchCase="'lenguaje'">
+        <span><strong>Bibliografía</strong></span>
+      </li>
+      <li class="btn_maloka" (click)="openModal(tuRolEstudianteModal)" *ngSwitchCase="'lenguaje'">
+        <span><strong>Tu rol</strong></span>
+      </li>
+
+      <li
+        class="btn_perfil"
+        (click)="openModal(estandaresBasicModalLenguaje)"
+        *ngSwitchCase="'lenguaje'"
+      >
+        <span><strong>Estándares básicos que se privilegian</strong></span>
+      </li>
+
+      <li
+        class="btn_modulos"
+        (click)="openModal(odsModalLenguaje)"
+        *ngSwitchCase="'lenguaje'"
+      >
+        <span><strong>ODS</strong></span>
+      </li>
+
+    </ul>
+  </main>
+</div>
+
+<app-page-not-found *ngIf="!isValidMateria"></app-page-not-found>
+
+
+<ng-template #tuRolEstudianteModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">TU ROL</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Si bien el docente es importante en esta propuesta, el estudiante es
+        quien hace posible y garantiza el logro de todo lo propuesto, para tener
+        éxito en esta propuesta algunas tareas y habilidades que deben tener
+        como estudiantes son:
+      </p>
+      <div class="exp-container">
+        <p>
+          • Ser proactivo, desarrollar habilidades de autoaprendizaje, es decir
+          asumir la responsabilidad de aprender.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Estar motivado y tener actitudes positivas frente a la investigación
+          y la consulta.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Estar dispuesto a trabajar de forma colaborativa en grupos, es
+          decir, donde todos los integrantes del grupo aportan con el mismo
+          interés, disposición y responsabilidad para el aprendizaje y el bien
+          común.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Participar activamente en la solución de los problemas propuestos,
+          investigando, aprendiendo y aplicando.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #tuRolProfesorModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">TU ROL</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Estimado docente, su rol de acompañamiento, apoyo y orientación a los
+        estudiantes es decisivo para lograr los resultados esperados, por esto,
+        agradecemos de antemano el esfuerzo que se llevará a cabo en beneficio
+        de la calidad del proceso formativo. Por ello, le invitamos a:
+      </p>
+      <div class="exp-container">
+        <p>
+          • Crear las condiciones de aprendizaje que les permitan a los
+          estudiantes organizarse en equipos de trabajo para desarrollar el
+          proyecto.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Orientarlos y motivarlos en el autoaprendizaje en la organización
+          metodológica para desarrollar el proyecto.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Acompañar a los equipos de trabajo en el desarrollo del proyecto.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Crear espacios colectivos para precisar y profundizar conceptos y
+          aspectos necesarios.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Evaluar los productos académicos, valorar, junto con los estudiantes
+          el desarrollo del proyecto.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #estandaresBasicModalMatematicas let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">ESTÁNDARES QUE SE PRIVILEGIAN</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        • Establezco relaciones y diferencias entre diferentes notaciones de
+        números reales para decidir sobre su uso en una situación dada.
+      </p>
+      <div class="exp-container">
+        <p>
+          • Resuelvo problemas en los que se usen las propiedades geométricas de
+          figuras cónicas por medio de transformaciones de las representaciones
+          algebraicas de esas figuras.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Uso argumentos geométricos para resolver y formular problemas en
+          contextos matemáticos y en otras ciencias.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Describo y modelo fenómenos periódicos del mundo real usando
+          relaciones y funciones trigonométricas.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Diseño estrategias para abordar situaciones de medición que
+          requieran grados de precisión específicos.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Interpreto nociones básicas relacionadas con el manejo de
+          información como población, muestra, variable aleatoria, distribución
+          de frecuencias, parámetros y estadígrafos.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Analizo las relaciones y propiedades entre las expresiones
+          algebraicas y las gráficas de funciones polinómicas y racionales y de
+          sus derivadas.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Establezco relaciones y diferencias entre diferentes notaciones de
+          números reales para decidir sobre su uso en una situación dada.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Diseño estrategias para abordar situaciones de medición que
+          requieran grados de precisión específicos.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #estandaresBasicModalCiudadanas let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">ESTÁNDARES QUE SE PRIVILEGIAN</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+
+      <div class="exp-container">
+        <figure>
+          <img
+            src="../../assets/images/imagenes de Explicacion/estandares/competencias ciudadanas-01.png"
+            alt=""
+          />
+        </figure>
+        <figure>
+          <img
+            src="../../assets/images/imagenes de Explicacion/estandares/competencias ciudadanas-02.png"
+            alt=""
+          />
+        </figure>
+        <figure>
+          <img
+            src="../../assets/images/imagenes de Explicacion/estandares/competencias ciudadanas-03.png"
+            alt=""
+          />
+        </figure>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #estandaresBasicModalSocioemocionales let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">ESTÁNDARES QUE SE PRIVILEGIAN</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <div class="exp-container">
+        <!-- <figure> -->
+          <img
+            src="../../assets/images/imagenes de Explicacion/estandares/competencias socioemocionales-01.png"
+            alt=""
+          />
+        <!-- </figure> -->
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #estandaresBasicModalCiencias let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">ESTÁNDARES QUE SE PRIVILEGIAN</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        En la Figura 1 se evidencia la articulación entre los estándares básicos
+        de competencias en Ciencias Naturales planteados por el Ministerio de
+        Educación Nacional (MEN) y el módulo del presente proyecto.
+      </p>
+      <div class="exp-container">
+        <p><strong>Figura 1.</strong></p>
+        <p>
+          Articulación del proyecto “El consumo de comida chatarra vs la
+          alimentación saludable y balanceada: análisis sistémico de sus causas
+          y efectos en la salud humana” y los Estándares básicos de competencias
+          en Ciencias Naturales del Ministerio de Educación Nacional.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          Nota. Elaboración propia a partir de Ministerio de Educación Nacional
+          (2006). En:
+        </p>
+      </div>
+      <div class="exp-container">
+        <a
+          target="_blank"
+          href="https://www.mineducacion.gov.co/portal/men/Publicaciones/Guias/116042:
+Estandares-Basicos-de-Competencias-en-Lenguaje-MatematicasCiencias-y-Ciudadanas"
+        >
+          https://www.mineducacion.gov.co/portal/men/Publicaciones/Guias/116042:
+          Estandares-Basicos-de-Competencias-en-Lenguaje-MatematicasCiencias-y-Ciudadanas
+        </a>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Expreso respeto por la diversidad cultural y social del mundo
+          contemporáneo, en las situaciones comunicativas en las que intervengo.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure>
+          <img
+            src="../../assets/images/imagenes de Explicacion/estandares/EstandaresBasicosCienciasNaturales.png"
+            alt=""
+          />
+        </figure>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #estandaresBasicModalLenguaje let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">ESTÁNDARES QUE SE PRIVILEGIAN</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        El desarrollo del módulo está articulado con los estándares básicos de
+        competencia del lenguaje e integra las competencias básicas y
+        socioemocionales para potenciar el desarrollo del proceso formativo de
+        los estudiantes. En la siguiente tabla se especifican estos elementos.
+      </p>
+      <div class="exp-container">
+        <figure>
+          <img
+            src="../../assets/images/imagenes de Explicacion/estandares/lenguaje-01.png"
+            alt=""
+          />
+        </figure>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #odsModalMatematicas let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">
+        ARTICULACIÓN CON LOS OBJETIVOS DE DESARROLLO SOSTENIBLE
+      </h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Adicionalmente, podrán aportar a la región, al país y al mundo a través
+        de la consecución de algunos de los ODS (Objetivos de Desarrollo
+        Sostenible) propuestos por la Organización de las Naciones Unidas para
+        el 2030 y que se listan a continuación:
+      </p>
+      <h1 class="text-white">ODS Décimo</h1>
+      <div class="exp-container">
+        <p>• ODS 4: Educación de calidad</p>
+      </div>
+      <div class="exp-container">
+        <p>• ODS 6: Agua limpia y saneamiento</p>
+      </div>
+      <div class="exp-container">
+        <p>• ODS 11: Ciudades y comunidades sostenibles</p>
+      </div>
+      <div class="exp-container">
+        <p>• ODS 13: Acción por el clima</p>
+      </div>
+      <div class="exp-container">
+        <p>• ODS 15: Vida de ecosistemas terrestres</p>
+      </div>
+      <h1 class="text-white">ODS Once</h1>
+      <div class="exp-container">
+        <p>• ODS 3: Salud y Bienestar</p>
+      </div>
+      <div class="exp-container">
+        <p>• ODS 4: Educación de calidad</p>
+      </div>
+      <div class="exp-container">
+        <p>• ODS 10: Reducción de las desigualdades</p>
+      </div>
+      <div class="exp-container">
+        <p>• ODS 16: Paz, justicia e instituciones sólidas</p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #odsModalCiudadanas let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">
+        ARTICULACIÓN CON LOS OBJETIVOS DE DESARROLLO SOSTENIBLE
+      </h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <div class="exp-container">
+        <p>
+          • Lograr la igualdad entre los géneros y el empoderamiento de todas
+          las mujeres y niñas.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Promover sociedades pacíficas e inclusivas para el desarrollo
+          sostenible, facilitar acceso a la justicia para todos y crear
+          instituciones eficaces, responsables e inclusivas a todos los niveles.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #odsModalSocioemocionales let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">
+        ARTICULACIÓN CON LOS OBJETIVOS DE DESARROLLO SOSTENIBLE
+      </h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <h1 class="text-white">ODS Décimo</h1>
+      <div class="exp-container">
+        <p>
+          <strong> ODS 4. Educación de calidad </strong>
+          El desarrollo de competencias socioemocionales hace parte de una
+          apuesta de educación inclusiva y amplía las oportunidades de
+          aprendizaje en la medida en que da una base emocional como fundamento
+          de los procesos cognitivos.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          <strong> ODS 12. Producción y consumo responsable. </strong>
+          Desarrollar estrategias para el pensamiento crítico y trabajar sobre
+          el proyecto de vida en el marco de distintas alternativas aporta a una
+          postura reflexiva de consumo responsable.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          <strong> ODS 16. Paz, justicia e instituciones sólidas. </strong>
+          El desarrollo de las competencias socioemocionales en su conjunto
+          aporta en la formación de ciudadanos capaces de actuar en función del
+          fortalecimiento de las instituciones y la democracia.
+        </p>
+      </div>
+      <h1 class="text-white">ODS Once</h1>
+      <div class="exp-container">
+        <p>
+          <strong> ODS 3. Salud y bienestar</strong>
+          Aspectos como el manejo del estrés y la postergación de la gratificación
+          apuntan al cultivo de una salud mental que en tiempos de pandemia ha
+          sido valorada como parte constitutiva del bienestar de todos.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          <strong> ODS 4. Educación de calidad </strong>
+          El desarrollo de competencias socioemocionales hace parte de una
+          apuesta de educación inclusiva y amplía las oportunidades de
+          aprendizaje en la medida en que da una base emocional como fundamento
+          de los procesos cognitivos.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          <strong> ODS 12. Producción y consumo responsable. </strong>
+          Desarrollar estrategias para el pensamiento crítico y trabajar sobre
+          el proyecto de vida en el marco de distintas alternativas aporta a una
+          postura reflexiva de consumo responsable.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          <strong> ODS 16. Paz, justicia e instituciones sólidas. </strong>
+          El desarrollo de las competencias socioemocionales en su conjunto
+          aporta en la formación de ciudadanos capaces de actuar en función del
+          fortalecimiento de las instituciones y la democracia.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #odsModalCiencias let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">
+        ARTICULACIÓN CON LOS OBJETIVOS DE DESARROLLO SOSTENIBLE
+      </h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        El proyecto “Hacia la soberanía alimentaria: una estrategia que
+        contribuye a la mitigación y adaptación frente al Cambio Climático”, se
+        relaciona con diez de los Objetivos de Desarrollo Sostenible planteados
+        por las Naciones Unidas, estos son:
+      </p>
+      <div class="exp-container">
+        <p>• Hambre cero</p>
+      </div>
+      <div class="exp-container">
+        <p>• Salud y Bienestar</p>
+      </div>
+      <div class="exp-container">
+        <p>• Educación de Calidad</p>
+      </div>
+      <div class="exp-container">
+        <p>• Agua limpia y saneamiento</p>
+      </div>
+      <div class="exp-container">
+        <p>• Trabajo decente y crecimiento económico</p>
+      </div>
+      <div class="exp-container">
+        <p>• Ciudades y comunidades sostenibles</p>
+      </div>
+      <div class="exp-container">
+        <p>• Producción y consumos responsables</p>
+      </div>
+      <div class="exp-container">
+        <p>• Acción por el clima</p>
+      </div>
+      <div class="exp-container">
+        <p>• Vida submarina</p>
+      </div>
+      <div class="exp-container">
+        <p>• Vida de ecosistemas terrestres</p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #odsModalLenguaje let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">
+        ARTICULACIÓN CON LOS OBJETIVOS DE DESARROLLO SOSTENIBLE
+      </h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <h1 class="text-white">ODS Décimo</h1>
+      <div class="exp-container">
+        <p>
+          <strong> OBJETIVO 4 </strong>
+          . Garantizar una educación inclusiva, equitativa y de calidad y
+          promover oportunidades de aprendizaje durante toda la vida para todos.
+          Este ODS se articula con uno de los pactos por la equidad que formuló
+          el Plan Nacional de Desarrollo 2018-2022, denominado educación de
+          calidad para un futuro con oportunidades para todos y que plantea como
+          uno de los objetivos proporcionar una educación media con calidad y
+          pertinencia para los jóvenes colombianos.
+        </p>
+      </div>
+      <h1 class="text-white">ODS Once</h1>
+      <div class="exp-container">
+        <p>
+          <strong> OBJETIVO 4 </strong>
+          . Educación de calidad. Garantizar una educación inclusiva, equitativa
+          y de calidad y promover oportunidades de aprendizaje durante toda la vida
+          para todos.
+          En relación con este ODS, la UNESCO propone orientar los procesos
+          educativos para favorecer unos objetivos de aprendizaje. Dentro de estos
+          hay algunos relacionados directamente con el presente módulo, que son:
+          el estudiante comprende el importante rol de la cultura para alcanzar la
+          sostenibilidad; el estudiante es capaz de reconocer la importancia de sus
+          propias habilidades para mejorar su vida y en especial para el trabajo y el
+          emprendimiento.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          <strong> OBJETIVO 8 </strong>
+          . Trabajo decente y crecimiento económico. Promover el crecimiento
+          económico sostenido, inclusivo y sostenible, el empleo pleno y productivo
+          y el trabajo decente para todos. Los objetivos de aprendizaje propuestos
+          por la UNESCO y que están relacionados con este ODS son: el estudiante
+          es capaz de pensar y evaluar ideas para la innovación y el emprendimiento
+          impulsados por la sostenibilidad; el estudiante es capaz de idear una visión
+          y planes para su vida económica personal de acuerdo con un análisis de
+          sus competencias y contextos.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #bibliografiaModalMatematicas11 let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">BIBLIOGRAFÍA</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text" style="overflow-x: hidden">
+
+      <div class="exp-container">
+        <p>
+          • DIAN. Salud mental en Colombia: una aproximación desde las estadísticas
+          oficiales en el contexto de pandemia. 2020. Consultar en:
+
+        </p>
+        <a href="https://www.dane.gov.co/files/webinar/presentacion-webinar-salud-mental-en-colombia-21-10-2020.pdf" target="_blank" rel="noopener noreferrer">https://www.dane.gov.co/files/webinar/presentacion-webinar-salud-mental-en-colombia-21-10-2020.pdf</a>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Xplore Health. Reflexiones sobre Salud Mental.
+          <a href="https://www.xplorehealth.eu/end/index.html?es/juegos-de-dialogo-salud-mental" target="_blank" rel="noopener noreferrer">https://www.xplorehealth.eu/end/index.html?es/juegos-de-dialogo-salud-mental</a>
+        </p>
+      </div>
+
+
+      <div class="exp-container">
+        <p>
+          • Minsalud. Boletín de Prensa No 815 de 2020.
+          <a href="https://www.minsalud.gov.co/Paginas/Minsalud-ratifica-su-compromiso-con-la-salud-mental-de-los-colombianos.aspx" target="_blank" rel="noopener noreferrer">https://www.minsalud.gov.co/Paginas/Minsalud-ratifica-su-compromiso-con-la-salud-mental-de-los-colombianos.aspx</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • ICFES (2020). Evaluar para Avanzar 3° a 11°.
+          <a href="https://www.icfes.gov.co/web/guest/objetivo" target="_blank" rel="noopener noreferrer">
+            https://www.icfes.gov.co/web/guest/objetivo
+          </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • ICFES (2020). El ICFES tiene un preicfes. Regresa para quedarse (2012).
+
+          <a href="https://www.icfes.gov.co/inicio/-/asset_publisher/KIDrCFycXolG/blog/-el-icfes-tiene-un-preicfes-
+          regresa-para-quedarse" target="_blank" rel="noopener noreferrer">https://www.icfes.gov.co/inicio/-/asset_publisher/KIDrCFycXolG/blog/-el-icfes-tiene-un-preicfes-
+          regresa-para-quedarse</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • ICFES. Cuadernillo de preguntas Saber 11o (2018).
+
+          <a href="https://www.icfes.gov.co/documents/20143/1713188/Cuadernillo+de+c
+          iencias+naturales+Saber-11.pdf/3403af2e-e8f4-2a61-ea31-
+          9c5f8497ab68?t=1591660319581" target="_blank" rel="noopener noreferrer">
+          https://www.icfes.gov.co/documents/20143/1713188/Cuadernillo+de+c
+          iencias+naturales+Saber-11.pdf/3403af2e-e8f4-2a61-ea31-
+          9c5f8497ab68?t=1591660319581</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • ICFES Cuadernillo de preguntas Saber 11o (2016).
+          <a href="https://matematicasievg.files.wordpress.com/2011/10/9-matemc3a1ticas-icfes-banco-de-preguntas.pdf" target="_blank" rel="noopener noreferrer">
+            https://matematicasievg.files.wordpress.com/2011/10/9-matemc3a1ticas-icfes-banco-de-preguntas.pdf
+          </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Ministerio de Educación. Gobierno Nacional (2020). Aprender digital.
+          Contenido para todos.
+
+          <a href="https://contenidos.colombiaaprende.edu.co/acceda-contenidos-en-
+          programacion-talento-digital-e-industrias-creativas-y-culturales" target="_blank" rel="noopener noreferrer">
+          https://contenidos.colombiaaprende.edu.co/acceda-contenidos-en-
+          programacion-talento-digital-e-industrias-creativas-y-culturales" target="_blank" rel="noopener noreferrer</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • MEN (2020). Colombia Aprende, Contenidos para aprender.
+          <a href="https://www.colombiaaprende.edu.co/contenidos-para-
+          aprender?Nombre=&field_nivel_value=3&field_grado_target_id=3335&field_asignatura_target_id=3322&page=0" target="_blank" rel="noopener noreferrer">
+          https://www.colombiaaprende.edu.co/contenidos-para-
+          aprender?Nombre=&field_nivel_value=3&field_grado_target_id=3335&field_asignatura_target_id=3322&page=0</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • MEN. (2020). Estrategia pedagógica en programación para educación
+          media. Matemáticas.
+          <a href="http://instaladores-curriculos.sucerman.com/1-curriculo-
+          matematicas/matematicas/" target="_blank" rel="noopener noreferrer">
+          http://instaladores-curriculos.sucerman.com/1-curriculo-
+          matematicas/matematicas/</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Stone, M. (2003) La enseñanza para la comprensión. Vinculación entre la
+          investigación y la práctica. Barcelona: Paidos.
+        </p>
+        <p>
+          • Unicef. Encuesta #ENCOVID19Infancia. Efectos de COVID-19 en el
+          bienestar de las niñas, niños y adolescentes. 2020. Consultar en:
+
+          <a href="https://www.unicef.org/mexico/informes/encuesta-encovid19infancia" target="_blank" rel="noopener noreferrer">https://www.unicef.org/mexico/informes/encuesta-encovid19infancia" target="_blank" rel="noopener noreferrer</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Universidad Javeriana. Salud mental y resiliencia en adultos jóvenes de
+          Sudamérica durante el aislamiento (distanciamiento social
+          obligatorio) por la pandemia de COVID-19. 2020.Consultar en:
+          <a href="https://medicina.javeriana.edu.co/documents/3185897/0/ESM+Jo%C2
+          %BFvenes+-+Present+MinSalud+versi%C3%B3n+3.pdf/c5414e93-
+          e078-4e0a-971f-99dfd9adbdbd" target="_blank" rel="noopener noreferrer">https://medicina.javeriana.edu.co/documents/3185897/0/ESM+Jo%C2
+          %BFvenes+-+Present+MinSalud+versi%C3%B3n+3.pdf/c5414e93-
+          e078-4e0a-971f-99dfd9adbdbd</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #bibliografiaModalMatematicas10 let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">BIBLIOGRAFÍA</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text" style="overflow-x: hidden">
+
+      <div class="exp-container">
+        <p>
+          • Aroca Araújo Armando (2007). Una propuesta curricular en geometría a
+          partir de los diseños de las mochilas arhuacas. Encuentro
+          Colombiano de Matemática Educativa.
+          • Blanco-Álvarez, H., Higuita Ramírez, C., & Oliveras, M. L. (2014). Una mirada
+          a la Etnomatemática y la Educación Matemática en Colombia:
+          caminos recorridos. Revista Latinoamericana de Etnomatemática,
+          7(2), 245-269.
+          • Bermejo David (2012). Reutilización de aguas residuales domésticas.
+          Estudio y comparativa de tipologías edificatorias: depuradoras
+          naturales como alternativa sostenible. Universidad de Alicante.
+
+        </p>
+        <a href="https://rua.ua.es/dspace/bitstream/10045/29576/1/MEMORIA_TFM_se
+        p_2012_David_Bermejo.pdf" target="_blank" rel="noopener noreferrer">https://rua.ua.es/dspace/bitstream/10045/29576/1/MEMORIA_TFM_se
+        p_2012_David_Bermejo.pdf</a>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • EcuRed (2020). Los Makaguaje.
+          <a href="https://www.ecured.cu/Los_Makaguaje" target="_blank" rel="noopener noreferrer">
+            https://www.ecured.cu/Los_Makaguaje
+          </a>
+        </p>
+      </div>
+
+
+      <div class="exp-container">
+        <p>
+          • ICFES (2020). Evaluar para Avanzar 3° a 11°.
+
+          <a href="https://www.icfes.gov.co/web/guest/objetivo" target="_blank" rel="noopener noreferrer">https://www.icfes.gov.co/web/guest/objetivo</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • ICFES (2020). El ICFES tiene un preicfes. Regresa para quedarse (2012).
+
+          <a href="https://www.icfes.gov.co/inicio/-/asset_publisher/KIDrCFycXolG/blog/-el-icfes-tiene-un-preicfes-
+          regresa-para-quedars" target="_blank" rel="noopener noreferrer">
+          https://www.icfes.gov.co/inicio/-/asset_publisher/KIDrCFycXolG/blog/-el-icfes-tiene-un-preicfes-
+          regresa-para-quedarse
+          </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • IICFES. Cuadernillo de preguntas Saber 11o (2018).
+
+          <a href="https://www.icfes.gov.co/documents/20143/1713188/Cuadernillo+de+ciencia
+          s+naturales+Saber-11.pdf/3403af2e-e8f4-2a61-ea31-
+          9c5f8497ab68?t=1591660319581" target="_blank" rel="noopener noreferrer">https://www.icfes.gov.co/documents/20143/1713188/Cuadernillo+de+ciencia
+          s+naturales+Saber-11.pdf/3403af2e-e8f4-2a61-ea31-
+          9c5f8497ab68?t=1591660319581</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • ICFES Cuadernillo de preguntas Saber 11o (2016).
+
+          <a href="https://matematicasievg.files.wordpress.com/2011/10/9-matemc3a1ticas-
+          icfes-banco-de-preguntas.pdf" target="_blank" rel="noopener noreferrer">
+          https://matematicasievg.files.wordpress.com/2011/10/9-matemc3a1ticas-
+          icfes-banco-de-preguntas.pdf</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Ministerio de Educación. Gobierno Nacional (2020). Aprender digital.
+          Contenido para todos.
+
+          <a href="https://contenidos.colombiaaprende.edu.co/acceda-contenidos-en-
+          programacion-talento-digital-e-industrias-creativas-y-culturales" target="_blank" rel="noopener noreferrer">
+          https://contenidos.colombiaaprende.edu.co/acceda-contenidos-en-
+          programacion-talento-digital-e-industrias-creativas-y-culturales
+          </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • MEN (2006). Documento Orientador Foro Educativo Nacional 2014:
+          Ciudadanos Matemáticamente Competentes.
+          MEN (2020). Colombia Aprende, Contenidos para aprender.
+
+          <a href="https://www.colombiaaprende.edu.co/contenidos-para-
+          aprender?Nombre=&field_nivel_value=3&field_grado_target_id=3335&
+
+          field_asignatura_target_id=3322&page=0" target="_blank" rel="noopener noreferrer">
+          https://www.colombiaaprende.edu.co/contenidos-para-
+          aprender?Nombre=&field_nivel_value=3&field_grado_target_id=3335&
+
+          field_asignatura_target_id=3322&page=0</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • MEN. (2020). Estrategia pedagógica en programación para educación
+          media. Matemáticas.
+          <a href="http://instaladores-curriculos.sucerman.com/1-
+          curriculo-matematicas/matematicas/" target="_blank" rel="noopener noreferrer">
+          http://instaladores-curriculos.sucerman.com/1-
+          curriculo-matematicas/matematicas/</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • IDEAM (2020). Atlas Climatológico de Colombia.
+
+          <a href="http://atlas.ideam.gov.co/visorAtlasClimatologico.html" target="_blank" rel="noopener noreferrer">
+            http://atlas.ideam.gov.co/visorAtlasClimatologico.html</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+
+        <p>
+          • Organización de la Naciones Unidas. Objetivos de Desarrollo Sostenible.
+          Conferencia de las Naciones Unidas sobre desarrollo sostenible
+          2012. Rio de Janeiro.
+
+          <a href="https://www.un.org/sustainabledevelopment/es/  " target="_blank" rel="noopener noreferrer">
+            https://www.un.org/sustainabledevelopment/es/  </a>
+
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Stone, M. (2003) La enseñanza para la comprensión. Vinculación entre la
+          investigación y la práctica. Barcelona: Paidos.
+          Urquijo Merchán Carolina, Vargas Gámez Maribel (2013). Caracterización
+          territorial y de inundaciones en la región de la mojana. Universidad
+          Católica De Colombia, Bogotá.
+
+          <a href="https://repository.ucatolica.edu.co/bitstream/10983/911/2/Caracteriza
+
+          ci%C3%B3n-territorial-inundaciones-regi%C3%B3n-
+          La%20Mojana.pdf" target="_blank" rel="noopener noreferrer">https://repository.ucatolica.edu.co/bitstream/10983/911/2/Caracteriza
+
+          ci%C3%B3n-territorial-inundaciones-regi%C3%B3n-
+          La%20Mojana.pdf</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Winpenny James, Heinz Ingo, Oshima Sasha (2013). FAO, Informe sobre
+          temas hídricos. Reutilización del agua en la agricultura: ¿Beneficio
+          para todos? Roma.
+
+          <a href="http://www.fao.org/3/a-i1629s.pdf" target="_blank" rel="noopener noreferrer">
+            http://www.fao.org/3/a-i1629s.pdf
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #bibliografiaModalCiudadanas11 let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">BIBLIOGRAFÍA</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text" style="overflow-x: hidden">
+      <p>
+        • Cámara de Comercio del Chocó (sf). Puerto de Tribugá: sostenibilidad
+        ambiental y desarrollo económico, no son expresiones antagónicas
+
+        sino compatibles.
+
+        <a href="https://www.camarachoco.org.co/noticias/puerto-
+        de-tribuga-sostenibilidad-ambiental-y-desarrollo-economico-no-
+        son-expresiones-antagonicas-sino-compatibles" target="_blank" rel="noopener noreferrer">https://www.camarachoco.org.co/noticias/puerto-
+        de-tribuga-sostenibilidad-ambiental-y-desarrollo-economico-no-
+        son-expresiones-antagonicas-sino-compatibles</a>
+      </p>
+      <div class="exp-container">
+        <p>
+          • Cohen, E. (s.f.). eclac.org. Manual formulación, evaluación y monitoreo de
+          proyectos sociales. CEPAL.
+
+          <a href="https://dds.cepal.org/redesoc/archivos_recursos/242/Manual_dds_20
+          0408.pdf" target="_blank" rel="noopener noreferrer">https://dds.cepal.org/redesoc/archivos_recursos/242/Manual_dds_20
+          0408.pdf</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Constitución política de Colombia [Const.] (1991) 2da Ed. Legis.
+          Corte Constitucional de Colombia. Sentencia T-154/13. (MP. Nilson Pinilla
+          Pinilla: 21 de marzo de 2013).
+          Formulación y evaluación de proyectos, Blog (2011). Árbol de
+          Objetivos (EML).
+
+          <a href="https://formulacionyevaluacioncruno.wordpress.com/arbol-de-
+          objetivos-eml/" target="_blank" rel="noopener noreferrer">https://formulacionyevaluacioncruno.wordpress.com/arbol-de-
+          objetivos-eml/</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Gutiérrez Q., M. (2011). Pluralismo jurídico y cultural en Colombia. Revista
+          Derecho del Estado. 26 (1), 85-105.
+          ICFES (2018). Cuadernillo de preguntas saber 11. Prueba de Sociales y
+          Ciudadanas.
+
+          <a href="https://www.icfes.gov.co/documents/20143/490699/Cuadernillo+de+p
+          reguntas+Saber+11-+Sociales+y+ciudadanas.pdf/627f988c-bfd3-
+          7be4-212f-5a32a4b85ff2">https://www.icfes.gov.co/documents/20143/490699/Cuadernillo+de+p
+          reguntas+Saber+11-+Sociales+y+ciudadanas.pdf/627f988c-bfd3-
+          7be4-212f-5a32a4b85ff2</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Ministerio de Educación Nacional. (2017). Estrategia de formación de
+          competencias socioemocionales en la educación secundaria y
+          media. Bogotá, Colombia
+          https://www.mineducacion.gov.co/1759/articles-385321_recurso.pdf
+          Morales C. (02 Mayo 2019). RCN Radio. Advierten grave daño ambiental si
+          se construye Puerto Tribugá (Chocó).
+
+          <a href="https://www.rcnradio.com/colombia/pacifico/advierten-grave-dano-
+          ambiental-si-se-construye-puerto-tribuga-choco" target="_blank" rel="noopener noreferrer">
+          https://www.rcnradio.com/colombia/pacifico/advierten-grave-dano-
+          ambiental-si-se-construye-puerto-tribuga-choco</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Stone, M. (2003) La enseñanza para la comprensión. Vinculación entre la
+          investigación y la práctica. Barcelona: Paidós.
+          Valencia Hernández, J. G. (2007). Los principios y valores del estado social
+          de derecho como marco jurídico político para la resolución de los
+          conflictos. Gestión y Ambiente, 10(1), 105-112.
+
+          <a href="https://revistas.unal.edu.co/index.php/gestion/article/view/1382">
+            https://revistas.unal.edu.co/index.php/gestion/article/view/1382
+          </a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Vélez Torres, Irene, & Rátiva Gaona, Sandra, & Varela Corredor, Daniel
+          (2012). Cartografía social como metodología participativa y
+          colaborativa de investigación en el territorio afrodescendiente de la
+          cuenca alta del río Cauca. Cuadernos de Geografía: Revista
+          Colombiana de Geografía, 21(2),59-73.[fecha de Consulta 1 de
+          Febrero de 2021]. ISSN: 0121-215X. Disponible en:
+
+          <a href="https://www.redalyc.org/articulo.oa?id=2818/281823592005" target="_blank" rel="noopener noreferrer">
+            https://www.redalyc.org/articulo.oa?id=2818/281823592005
+          </a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Villar Borda, L. derechos humanos: responsabilidad y multiculturalismo,
+          Bogotá, Universidad Externado de Colombia, 2005.
+        </p>
+        <p>
+          • Villar Borda, L. 1. Estado de derecho y Estado social de derecho. Revista
+          Derecho del Estado. 20 (1), 73-96.
+        </p>
+        <p>
+          •Younes, S. (2005). Estado social de derecho: estructura crítica y
+          prospectiva. Bogotá: Universidad Autónoma de Colombia
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • UNESCO, (2014). Revista Cultura y Desarrollo. No. 14. Recuperada de:
+          <a href="http://www.lacult.unesco.org/docc/CyD_12_es.pdf" target="_blank" rel="noopener noreferrer">http://www.lacult.unesco.org/docc/CyD_12_es.pdf</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • UNESCO, (2005). Convención sobre la protección y promoción de la
+          diversidad de las expresiones culturales. París. Recuperado de:
+          <a href="https://unesdoc.unesco.org/ark:/48223/pf0000142919_spa">
+            https://unesdoc.unesco.org/ark:/48223/pf0000142919_spa
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #bibliografiaModalCiudadanas10 let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">BIBLIOGRAFÍA</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text" style="overflow-x: hidden">
+      <p>
+        •Alarcón. García, Welp y Font (2018). Informe ¿Firmar para influir en
+        política? Modelos y experiencias de iniciativa ciudadana local.
+
+        <a href="https://www.oidp.net/docs/repo/doc483.pdf" target="_blank" rel="noopener noreferrer">
+          https://www.oidp.net/docs/repo/doc483.pdf
+        </a>
+
+      </p>
+      <div class="exp-container">
+        <p>
+          • Aragón Reyes, Manuel. (1986). La iniciativa legislativa. Revista Española de
+          Derecho Constitucional, 6 (16), pp. 287-312. 2.
+          Aranda Álvarez, Elvira. (2006). La nueva Ley de la iniciativa legislativa
+          popular. Revista Española de Derecho Constitucional, 26 (78), pp.
+          187-218.
+          Caro de Hernández, D. (Ed.) (1998). Preicfes. Bogotá: Universidad de La
+          Salle.
+          Constitución política de Colombia [Const.] (1991) 2da Ed. Legis.
+          Feo, F. (Coord.) (2005). Informe Preicfes. Bogotá: Universidad de La Salle.
+          Feo, F. (Coord.) (2009). Informe Preicfes. Bogotá: Universidad de La Salle.
+          Feo, F. (Coord.) (2001). Informe Preicfes. Bogotá: Universidad de La Salle.
+          Gutiérrez Q., M. (2011). Pluralismo jurídico y cultural en Colombia. Revista
+          Derecho del Estado. 26 (1), 85-105.
+          ICFES (2018). Cuadernillo de preguntas saber 11. Prueba de Sociales y
+          Ciudadanas.
+
+          <a href="https://www.icfes.gov.co/documents/20143/490699/Cuadernillo+de+preguntas+S
+          aber+11-+Sociales+y+ciudadanas.pdf/627f988c-bfd3-7be4-212f-5a32a4b85ff2" target="_blank" rel="noopener noreferrer">https://www.icfes.gov.co/documents/20143/490699/Cuadernillo+de+preguntas+S
+          aber+11-+Sociales+y+ciudadanas.pdf/627f988c-bfd3-7be4-212f-5a32a4b85ff2</a>
+
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Instituto Distrital de la participación y acción comunal. Alcaldía Mayor de
+          Bogtá (marzo 21 de 2017). Mecanismos de participación ciudadana.
+          <a href="https://www.participacionbogota.gov.co/mecanismos-participacion-
+          ciudadana">https://www.participacionbogota.gov.co/mecanismos-participacion-
+          ciudadana</a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Kelsen, Helsen. (1920). Esencia y valor de la democracia. Barcelona: Labor
+          La República (5 de febrero de 2021). Latinoamérica solo tiene tres países
+          en democracia total según índice de The Economist.
+          https://www.larepublica.co/globoeconomia/latinoamerica-solo-tiene-tres-paises-en-democracia-total-segun-indice-de-the-economist-3120827
+          <a href="http://" target="_blank" rel="noopener noreferrer"></a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Lissardy, G. (2021). BBC News Mundo (3 febrero). Por qué solo hay 3
+          "democracias plenas" en América Latina, según The Economist (y
+          por qué empeoró la situación en 2020).
+          <a href="https://www.bbc.com/mundo/noticias-internacional-55913877Macpherson" target="_blank" rel="noopener noreferrer">https://www.bbc.com/mundo/noticias-internacional-55913877Macpherson</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • C.B. (1981). La democracia liberal y su época: Madrid: Alianza.
+          MEN (2013). Ley 1620 de 2013. Por medio del cual se que crea el Sistema
+          Nacional de Convivencia Escolar y formación para el ejercicio de los
+          Derechos Humanos, la Educación para la Sexualidad y la Prevención
+          y Mitigación de la Violencia Escolar.
+          MEN (s.f.). Guía 29. Guías pedagógicas para la convivencia escolar. Ley
+          1620 de 2013 - Decreto 1965 de 2013.Sitema Nacional de convivencia
+          escolar. Bogotá: Ministerio de Educación Nacional.
+          <a href="http://redes.colombiaaprende.edu.co/ntg/men/pdf/Guia%20No.%2049.pdf">http://redes.colombiaaprende.edu.co/ntg/men/pdf/Guia%20No.%2049.pdf</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Registraduría Nacional del Estado Civil. (s. f. a). Cabildo abierto.
+          Mecanismo de participación.
+
+          <a href="https://www.registraduria.gov.co/-Cabildo-Abierto,3756-.html" target="_blank" rel="noopener noreferrer">https://www.registraduria.gov.co/-Cabildo-Abierto,3756-.html</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Registraduría Nacional del Estado Civil. (s. f. a). Histórico iniciativas
+          populares legislativas y normativas. Recuperado de
+
+          <a href="https://www.registraduria.gov.co/-Historicoiniciativas-populares-.html">https://www.registraduria.gov.co/-Historicoiniciativas-populares-.html</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Semana (5- septiembre - 2017). El caso de discriminación a un niño con
+          Asperger que conmociona a la Argentina.
+          <a href="https://www.semana.com/vida-moderna/articulo/discriminacion-a-un-nino-con-asperger/538913/">https://www.semana.com/vida-moderna/articulo/discriminacion-a-un-nino-con-asperger/538913/</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Stone, M. (2003) La enseñanza para la comprensión. Vinculación entre la
+          investigación y la práctica. Barcelona: Paidós.
+          Suárez Antón, Orestes y Welp, Yanina. (2019). ¿Papel mojado? Análisis de
+          la Iniciativa Legislativa Popular en Colombia. Estudios Políticos (Universidad de Antioquia), 54, pp. 106-126.
+          <a href="http://doi.org/10.17533/udea.espo.n54a06">http://doi.org/10.17533/udea.espo.n54a06</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • The Economist. Intelligence Unit (2021). Democracy Index 2020 In sickness
+          and in health? A report by The Economist Intelligence Unit.
+
+          <a href="https://www.eiu.com/n/campaigns/democracy-index-2020/#mktoForm_anchor">https://www.eiu.com/n/campaigns/democracy-index-2020/#mktoForm_anchor</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Valencia Hernández, J. G. (2007). Los principios y valores del estado social
+          de derecho como marco jurídico político para la resolución de los
+          conflictos. Gestión y Ambiente, 10(1), 105-112.
+
+          <a href="https://revistas.unal.edu.co/index.php/gestion/article/view/1382">https://revistas.unal.edu.co/index.php/gestion/article/view/1382</a>
+
+          <p>Villar Borda, L. derechos humanos: responsabilidad y multiculturalismo,
+            Bogotá, Universidad Externado de Colombia, 2005.</p>
+
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #bibliografiaModalSocioemocionales11 let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">BIBLIOGRAFÍA</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text" style="overflow-x: hidden">
+      <p>
+        • Canal 13. (20 de 05 de 2019). Canal 13. Recuperado el 2019, de
+        <a href="https://canaltrece.com.co/noticias/comproagro-aplicacion-agricultores-
+        campesinos-colombia-appsco/" target="_blank" rel="noopener noreferrer">https://canaltrece.com.co/noticias/comproagro-aplicacion-agricultores-
+        campesinos-colombia-appsco/</a>
+      </p>
+      <div class="exp-container">
+        <p>
+          • DVK Salud. La rueda de las emociones de Robert Plutchik: ¿cómo
+          autoevaluarse con esta metodología? Recuperado el 21 enero 2021.
+          <a href="https://quierocuidarme.dkvsalud.es/ocio-y-bienestar/la-rueda-de-las-emociones" target="_blank" rel="noopener noreferrer">https://quierocuidarme.dkvsalud.es/ocio-y-bienestar/la-rueda-de-las-emociones</a>
+
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Flores, D. (06 de 01 de 2013). Instituto Internacional de Investigación para
+
+          el Desarrollo. Recuperado en 2019, de
+          <a href="http://iiid-la.org/uploads/3/0/5/0/3050904/laresiliencia_mejor_ambiente_educativo.pdf" target="_blank" rel="noopener noreferrer">http://iiid-la.org/uploads/3/0/5/0/3050904/laresiliencia_mejor_ambiente_educativo.pdf</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Paul, R y Elder L. (2003) L. Una mini-guía para el pensamiento crítico,
+          conceptos y herramientas. Fundación para el Pensamiento Crítico.
+          Recuperado febrero de 2020 de
+          <a href="https://www.criticalthinking.org/resources/PDF/SP-ConceptsandTools.pdf" target="_blank" rel="noopener noreferrer">https://www.criticalthinking.org/resources/PDF/SP-ConceptsandTools.pdf</a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Gelatt. (1996). Toma Creativa de Decisiones. En Gelatt, Toma Creativa de
+          Decisiones. California: Grupo Editorial Iberoamérica.
+          Howard, G. (1995). Inteligencias múltiples. Barcelona: Editorial Paidós.
+          Ministerio de Educación. (2019). Estrategia de Orientación Socio
+          Ocupacional. Taller de Estudiantes.
+          Ministerio de Educación Nacional. (2012). Ministerio de Educación
+
+          Nacional. Obtenido de
+          <a href="https://www.mineducacion.gov.co/1759/articles-287822_archivo_pdf.pdf" target="_blank" rel="noopener noreferrer">https://www.mineducacion.gov.co/1759/articles-287822_archivo_pdf.pdf</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Ministerio de Educación Nacional y Banco Mundial. (2017). Ministerio de
+          Educación. Recuperado el 2019, de Banco Mundial:
+
+          <a href="https://www.mineducacion.gov.co/1759/articles-385321_recurso_1.pdf" target="_blank" rel="noopener noreferrer">https://www.mineducacion.gov.co/1759/articles-385321_recurso_1.pdf</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • URevista Dinero. (2019). Revista Dinero. Recuperado el 2019, de
+          <a href="https://www.dinero.com/empresas/confidencias-on-line/articulo/bazart-la-feria-donde-el-emprendedor--colombiano-es-protagonista/276798" target="_blank" rel="noopener noreferrer">https://www.dinero.com/empresas/confidencias-on-line/articulo/bazart-la-feria-donde-el-emprendedor--colombiano-es-protagonista/276798</a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Universidad de la Salle. (27 de 02 de 2018). Universidad de la Salle.
+
+          Recuperado el 2019, de <a href="https://www.lasalle.edu.co/Galeriadenoticias/lo-hacemos-en-la-salle/un-proyecto-productivo-mas-alla-del-deber" target="_blank" rel="noopener noreferrer">https://www.lasalle.edu.co/Galeriadenoticias/lo-hacemos-en-la-salle/un-proyecto-productivo-mas-alla-del-deber</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Stone, M. (2003) La enseñanza para la comprensión. Vinculación entre la
+          investigación y la práctica. Barcelona: Paidos.
+          Van Manen, M. (2010) El tacto en la enseñanza. El significado de la
+          sensibilidad pedagógica. Barcelona: Paidos.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #bibliografiaModalSocioemocionales10 let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">BIBLIOGRAFÍA</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text" style="overflow-x: hidden">
+      <p>
+        • Flores, D. (06 de 01 de 2013). Instituto Internacional de Investigación para
+
+        el Desarrollo. Recuperado el 2019, de <a href="http://iiid-la.org/uploads/3/0/5/0/3050904/laresiliencia_mejor_ambiente_educativo.pdf" target="_blank" rel="noopener noreferrer">http://iiid-la.org/uploads/3/0/5/0/3050904/laresiliencia_mejor_ambiente_educativo.pdf</a>
+      </p>
+      <div class="exp-container">
+        <p>
+          • Gelatt. (1996). Toma Creativa de Decisiones. En Gelatt, Toma Creativa de
+          Decisiones. California: Grupo Editorial Iberoamérica.
+          Howard, G. (1995). Inteligencias múltiples. Barcelona: Editorial Paidós.
+          Ministerio de Educación. (2019). Estrategia de Orientación Socio
+          Ocupacional. Taller de Estudiantes.
+          Ministerio de Educación Nacional. (2012). Ministerio de Educación
+
+          Nacional. Obtenido de <a href="https://www.mineducacion.gov.co/1759/articles-287822_archivo_pdf.pdf" target="_blank" rel="noopener noreferrer">https://www.mineducacion.gov.co/1759/articles-287822_archivo_pdf.pdf</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Ministerio de Educación Nacional y Banco Mundial. (2017). Ministerio de
+          Educación. Recuperado el 2019, de Banco Mundial:
+          <a href="https://www.mineducacion.gov.co/1759/articles-385321_recurso_1.pdf" target="_blank" rel="noopener noreferrer">https://www.mineducacion.gov.co/1759/articles-385321_recurso_1.pdf</a>
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Stone, M. (2003) La enseñanza para la comprensión. Vinculación entre la
+          investigación y la práctica. Barcelona: Paidos.
+          Van Manen, M. (2010) El tacto en la enseñanza. El significado de la
+          sensibilidad pedagógica. Barcelona: Paidos.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #bibliografiaModalCiencias11 let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">BIBLIOGRAFÍA</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text" style="overflow-x: hidden">
+      <p>
+        • Carrizosa, J. (2014). Colombia Compleja. Instituto de Investigación de
+        Recursos Biológicos Alexander von Humboldt.
+      </p>
+
+      <p>
+        • Estévez, P. (2020). La sustentabilidad estética: inferencias para la
+        educación contemporánea. Revista de investigación y pedagogía del
+        arte. 1-11.
+      </p>
+      <p>
+        Figueroa y Díaz (2006). Recetario Vegetariano para Nutrir Bien a Niños
+        Melindrosos. México: Editorial PAX
+      </p>
+      <p>
+        Kather, K. (2006). Las personas de verdad son de todas las tallas. Bogotá:
+        Grupo Editorial Norma.
+      </p>
+      <p>
+        Leff, E. (2009). Complexidade, Racionalidade Ambiental e Diálogo de
+        Saberes. Educação & Realidade, 34(3), 17-24.
+      </p>
+      <p>
+        Leff, E. & Elizalde, A. (2009). Sujeto, subjetividad, identidad y
+        sustentabilidad. Polis, Revista Latinoamericana. 27, 1-5.
+      </p>
+      <p>
+        Martínez, L. F. & Parga, D. L. (2013b). La emergencia de las cuestiones
+        sociocientíficas en el enfoque CTSA. Góndola, 8 (1), 23-35.
+      </p>
+
+      <p>
+        Méndez, J. (2020). Cambios en la alimentación durante la cuarentena y
+        sus efectos en el bienestar físico de las personas. Colombia:
+        Universidad EAN.
+      </p>
+
+      <p>
+        Moreno, F. & Caro J. (2018). Guía de Aprendizaje Basado en un Proyecto
+        Ciudadano para Educación Media. Ministerio de Educación Nacional.
+      </p>
+
+      <p>
+        Orjuela, R. (2017). ¿Qué es la comida chatarra? Bogota: Educar
+        Consumidores.
+      </p>
+
+      <p>
+        Olmos, E., González, M. & Contreras, M. (2013). Percepción de la población
+        frente al Cambio Climático en áreas naturales protegidas de Baja
+        California Sur, México. Open Edition Journals, 35.
+      </p>
+
+      <p>
+        Piña, C. (2019). Cambio Climático, inseguridad alimentaria y obesidad
+        infantil. Revista Cubana de Salud Pública. 45, 3, 1-18.
+      </p>
+
+      <p>
+      Ratcliffe, M. & Grace, M. (2003). Science education for Citizen ship:
+      teaching socio-scientificissues. Maidenhead: Open University Press.
+    </p>
+
+    <p>
+      Rodríguez, L. (2015). Ciclo biológico de Galleria Mellonella Linnaeus
+      (Lepidoptera: pyralidae). Tesis.
+    </p>
+
+    <p>
+      Rozo, O. & Martínez, L. (2019). Configuración de un colectivo de profesores
+      investigadores desde la escuela. Desafíos para el abordaje de
+      cuestiones sociocientíficas. Indagatio Didactica, 11(2), 531-548.
+    </p>
+
+    <p>
+      Rozo, O. & Martínez, L. (2018). Formación del profesor como investigador
+      desde la escuela: fundamental acción sociopolítica y ambiental a
+      partir del abordaje del Cambio Climático. TED, número
+      extraordinario.
+    </p>
+
+    <p>
+      Rozo, O. (2020). Desarrollo de relaciones y habilidades formativas para la
+      investigación en el profesorado a partir del abordaje de cuestiones
+      sociocientíficas. Tesis Doctoral.
+    </p>
+
+    <p>
+      Santos, W. L. & Mortimer, E. F. (2009). Abordagem de aspectos
+      sociocientíficos em aulas de ciências possibilidades e limitações.
+      Investigações em Ensino de Ciências, 14(2), 191-218.
+    </p>
+
+    <p>
+      Wilches Chaux, G. (2017). El concepto-herramienta de la seguridad
+      territorial y la gestión de humedales. Biodiversidad en la práctica.
+      Documentos del trabajo del instituto Von Humbolt. 2(1), 87-121
+    </p>
+      <h3 class="modal__head__title">Webgrafía</h3>
+      <div class="exp-container">
+        <p>
+          • Aguay, D. (2013). Educación para una adecuada ingesta de alimentos que
+          favorezca el desarrollo cognitivo en estudiantes de bachillerato. En:
+
+          <a href="http://www.dspace.uce.edu.ec:8080/bitstream/25000/3428/1/T-UCE-0010-469.pdf" target="_blank" rel="noopener noreferrer">http://www.dspace.uce.edu.ec:8080/bitstream/25000/3428/1/T-UCE-0010-469.pdf</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • ElComercio.com. (2014). En:
+
+          <a href="https://www.elcomercio.com/tendencias/razones-consumo-comida-chatarra.html" target="_blank" rel="noopener noreferrer">https://www.elcomercio.com/tendencias/razones-consumo-comida-chatarra.html</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • El Diario. El periódico de Pereira. (2021). Publicidad de comida chatarra,
+          llena las pantallas de televisión. En:
+
+          <a href="https://www.eldiario.com.co/noticias/pereira/publicidad-de-comida-chatarra-llena-las-pantallas-de-television/" target="_blank" rel="noopener noreferrer">https://www.eldiario.com.co/noticias/pereira/publicidad-de-comida-chatarra-llena-las-pantallas-de-television/</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • El Universal. (2021). Niños en Colombia sobreexpuestos en TV a la comida
+          chatarra. En:
+
+          <a href="https://www.eluniversal.com.co/colombia/ninos-en-colombia-sobreexpuestos-en-tv-a-la-comida-chatarra-NX4066197" target="_blank" rel="noopener noreferrer">https://www.eluniversal.com.co/colombia/ninos-en-colombia-sobreexpuestos-en-tv-a-la-comida-chatarra-NX4066197</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Instituto Nacional de Salud (2019). INS revela qué tan bien o mal nutridos
+          están los colombianos. En:
+
+          <a href="https://www.ins.gov.co/Noticias/Paginas/INS-revela-qué-tan-bien-o-mal-nutridos-están-los-colombianos.aspx" target="_blank" rel="noopener noreferrer">https://www.ins.gov.co/Noticias/Paginas/INS-revela-qué-tan-bien-o-mal-nutridos-están-los-colombianos.aspx</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Ministerio de Salud. (2017). ABCE de la alimentación saludable. En:
+
+          <a href="https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VS/PP/SNA/abc-alimentacion-saludable.pdf
+          " target="_blank" rel="noopener noreferrer">https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VS/PP/SNA/abc-alimentacion-saludable.pdf
+        </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Ministerio de Salud. (2017). ABCE de la alimentación saludable. En:
+
+          <a href="https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VS/PP/SNA/abc-alimentacion-saludable.pdf
+          " target="_blank" rel="noopener noreferrer">https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VS/PP/SNA/abc-alimentacion-saludable.pdf
+        </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Ministerio de Educación Nacional. (2014).
+
+          <a href="https://www.mineducacion.gov.co/portal/men/Publicaciones/Guias/116042:Estandares-Basicos-de-Competencias-en-Lenguaje-Matematicas-Ciencias-y-Ciudadanas
+          " target="_blank" rel="noopener noreferrer">https://www.mineducacion.gov.co/portal/men/Publicaciones/Guias/116042:Estandares-Basicos-de-Competencias-en-Lenguaje-Matematicas-Ciencias-y-Ciudadanas
+        </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • ONU. (2021).
+
+          <a href="https://www.un.org/es/" target="_blank" rel="noopener noreferrer">https://www.un.org/es/
+        </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Organización Mundial de la Salud. (2015).
+
+          <a href="https://www.who.int/es" target="_blank" rel="noopener noreferrer">https://www.who.int/es
+        </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Organización Mundial de la Salud. (2020).
+
+          <a href="https://www.who.int/end-childhood-obesity/facts/es/" target="_blank" rel="noopener noreferrer">https://www.who.int/end-childhood-obesity/facts/es/
+        </a>
+        </p>
+      </div>
+
+
+      <div class="exp-container">
+        <p>
+          • Sinembargo.mx, periodismo digital con rigor. (2021). La comida chatarra
+          pasa factura a EU, España y México. Mueren los adultos, sí, pero
+          también menores. En:
+
+          <a href="https://www.sinembargo.mx/04-02-2021/3934102" target="_blank" rel="noopener noreferrer">https://www.sinembargo.mx/04-02-2021/3934102
+         </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Pérez, M. (2015). Lecciones Aprendidas de la Política Pública de Escuelas
+          Saludables en Norte de Santander a través de la estrategia
+          Territorios Libres de Comida Chatarra que permitan formular una
+          cátedra de aprendizaje autónomo en Salud Pública. En:
+
+          <a href="https://repository.unad.edu.co/bitstream/handle/10596/3744/27659840.pdf?sequence=1" target="_blank" rel="noopener noreferrer">https://repository.unad.edu.co/bitstream/handle/10596/3744/27659840.pdf?sequence=1
+        </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Portafolio. (2020). Las comidas más pedidas a domicilio durante el primer
+          semestre. Recuperado de:
+
+          <a href="https://www.eltiempo.com/economia/sectores/las-comidas-mas-pedidas-a-domicilio-durante-el-primer-semestre-por-la-pandemia-536396" target="_blank" rel="noopener noreferrer">https://www.eltiempo.com/economia/sectores/las-comidas-mas-pedidas-a-domicilio-durante-el-primer-semestre-por-la-pandemia-536396
+        </a>
+        </p>
+      </div>
+
+
+
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #bibliografiaModalCiencias10 let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">BIBLIOGRAFÍA</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text" style="overflow-x: hidden">
+      <p>
+        • Arias, D. (2009). Soberanía alimentaria y resistencia popular en Colombia.
+        Revista Semillas. (38/39), 33-39.
+      </p>
+
+      <p>
+        • Armas, C. & Jiménez, G. (2017). Relación entre el efecto invernadero y el
+        cambio climático desde la perspectiva del sector agrario. Revista de
+        la Facultad de Agronomía Medellín. 70 (2).
+      </p>
+      <p>
+        FBernstein, H. 2012. Dinámicas de clase y transformación agraria.
+        Zacatecas: Miguel Ángel Porrúa.
+      </p>
+      <p>
+        Carrizosa, J. (2014). Colombia Compleja. Instituto de Investigación de
+        Recursos Biológicos Alexander von Humboldt.
+      </p>
+      <p>
+        De Ambrosio, M. (2014). Todo lo que necesitas saber sobre el cambio
+        climático. Paidós. Buenos Aires.
+      </p>
+      <p>
+        Díaz, G. (2012). El Cambio Climático. Ciencia & Sociedad. 37 (2), 227-240.
+        Fernández, J. (2012). El Cambio Climático: sus causas y efectos
+        medioambientales. Anales de la Real Academia de Medicina y
+        Cirugía de Valladolid. 50, 71-98.
+      </p>
+      <p>
+        Figueroa, H. (2009). Curso preicfes 2009. Centro de investigaciones y
+        servicios educativos CINSE: Universidad de La Salle.
+      </p>
+
+      <p>
+        Leff, E., (2004). Racionalidad ambiental. La reapropiación social de la
+        naturaleza. México: Siglo XXI editores.
+      </p>
+
+      <p>
+        Leff, E. (2009). Complexidade, Racionalidad Ambiental e Diálogo de
+        Saberes. Educação & Realidade, 34(3), 17-24.
+      </p>
+
+      <p>
+        Meira, P., Arto, M., & Montero, P. (2009). La sociedad ante el cambio
+        climático: conocimientos, valoraciones y comportamientos en la
+        población española. España: Fundación Mapfre.
+      </p>
+
+      <p>
+        Moreno, F. & Caro J. (2018). Guía de Aprendizaje Basado en un Proyecto
+        Ciudadano para Educación Media. Ministerio de Educación Nacional.
+      </p>
+
+      <p>
+        Pérez, R. (2008). El lado oscuro de la ganadería. Revista Latinoamericana
+        de Economía. 39 (154), 218-227.
+      </p>
+
+      <p>
+        Rozo, O. & Martínez, L. (2019). Configuración de un colectivo de profesores
+        investigadores desde la escuela. Desafíos para el abordaje de
+        cuestiones sociocientíficas. Indagatio Didactica, 11(2), 531-548.
+    </p>
+
+    <p>
+      Rozo, O. (2020). Desarrollo de relaciones y habilidades formativas para la
+      investigación en el profesorado a partir del abordaje de cuestiones
+      sociocientíficas. Tesis Doctoral.
+    </p>
+
+    <p>
+      Sousa, B. (2010). Descolonizar el saber, reinventar el poder. Montevideo:
+      Trilce.
+    </p>
+
+    <p>
+      Stedile, J. & Martins, H. (2010). Soberanía alimentaria: una necesidad de
+      los pueblos. En: Brasil Sem Fome. Brasilia: Ministerio de
+      desenvolvimiento Social.
+    </p>
+
+    <p>
+      RStone, M. (2003). La enseñanza para la comprensión. Vinculación entre la
+      investigación y la práctica. Barcelona: Paidos.
+    </p>
+
+    <p>
+      Wilches-Chaux, G. (2017). El concepto-herramienta de la seguridad
+      territorial y la gestión de humedales. Biodiversidad en la práctica.
+      Documentos del trabajo del instituto Von Humbolt. 2(1), 87-121.
+    </p>
+
+      <h3 class="modal__head__title">Webgrafía</h3>
+      <div class="exp-container">
+        <p>
+          • Dulces y Conservas. En:
+
+          <a href="http://cajondeherramientas.com.ar/wp-content/uploads/2015/06/253970413-Cartilla-11-Dulces-y-Conservas.pdf"
+          target="_blank" rel="noopener noreferrer">http://cajondeherramientas.com.ar/wp-content/uploads/2015/06/253970413-Cartilla-11-Dulces-y-Conservas.pdf</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Elaboración de abono orgánico. En:
+          <a href="https://www.ica.gov.co/areas/agricola/servicios/agricultura-ecologica-1/documentos/cartilla-elaboracion-abono-organico-solido-28-11-2.aspx"
+          target="_blank" rel="noopener noreferrer">https://www.ica.gov.co/areas/agricola/servicios/agricultura-ecologica-1/documentos/cartilla-elaboracion-abono-organico-solido-28-11-2.aspx</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Huertas orgánicas. En:
+
+          <a href="https://www.eldiario.com.co/noticias/pereira/publicidad-de-comida-chatarra-llena-las-pantallas-de-television/" target="_blank" rel="noopener noreferrer">https://www.eldiario.com.co/noticias/pereira/publicidad-de-comida-chatarra-llena-las-pantallas-de-television/</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Huertas orgánicas. En:
+
+
+          <a href="https://twitter.com/fundebase/status/948359473978060800/photo/1"
+           target="_blank" rel="noopener noreferrer">https://twitter.com/fundebase/status/948359473978060800/photo/1</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Ministerio de Educación Nacional (MEN). (2006).
+
+          <a href="https://www.mineducacion.gov.co/portal/men/Publicaciones/Guias/116042:Estandares-Basicos-de-Competencias-en-Lenguaje-Matematicas-Ciencias-y-Ciudadanas"
+           target="_blank" rel="noopener noreferrer">https://www.mineducacion.gov.co/portal/men/Publicaciones/Guias/116042:Estandares-Basicos-de-Competencias-en-Lenguaje-Matematicas-Ciencias-y-Ciudadanas                 </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Ritchie, H. (2019). Qué países del mundo consumen más carne. En:
+
+          <a href="https://www.bbc.com/mundo/noticias-47119001"
+           target="_blank" rel="noopener noreferrer">https://www.bbc.com/mundo/noticias-47119001
+        </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Semana.com (2017). Los efectos visibles del Cambio Climático en
+
+          <a href="Colombia. En: https://www.semana.com/nacion/articulo/efectos-del-cambio-climatico-en-colombia/512637/
+          " target="_blank" rel="noopener noreferrer">Colombia. En: https://www.semana.com/nacion/articulo/efectos-del-cambio-climatico-en-colombia/512637/
+        </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Youtube.com. Alimentos soberanos para niños Latinoamericanos, el ají.
+          En:
+
+          <a href="https://youtu.be/yj6x8Yc_hOc
+          " target="_blank" rel="noopener noreferrer">https://youtu.be/yj6x8Yc_hOc
+        </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Youtube.com. Alimentos soberanos para niños Latinoamericanos, la papa.
+          En:
+
+          <a href="https://youtu.be/Ji77Z6FbtLQ" target="_blank" rel="noopener noreferrer">https://youtu.be/Ji77Z6FbtLQ
+        </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Youtube.com. Alimentos soberanos para niños Latinoamericanos, el maíz.
+          En:
+
+          <a href="https://youtu.be/pQNdvj2LaNs" target="_blank" rel="noopener noreferrer">https://youtu.be/pQNdvj2LaNs
+        </a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Youtube.com. ¿Qué agroecología necesitamos? En:
+
+          <a href="https://youtu.be/24IiC2r4nk0" target="_blank" rel="noopener noreferrer">https://youtu.be/24IiC2r4nk0
+        </a>
+        </p>
+      </div>
+
+
+      <div class="exp-container">
+        <p>
+          • Youtube.com. "La humanidad se extinguirá en 2030": del negacionismo al
+          alarmismo por el cambio climático. En:
+
+          <a href="https://www.youtube.com/watch?v=cgBvbB4krdE" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=cgBvbB4krdE
+         </a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #bibliografiaModalLenguaje11 let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">BIBLIOGRAFÍA</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text" style="overflow-x: hidden">
+      <p>
+        • Arango, H. (2021). Las sopas de las abuelas recobran protagonismo en
+        la cocina. Texto publicado en el diario El Colombiano el 8 de enero.
+        Recuperado de:
+        <a href="https://www.elcolombiano.com/cultura/las-sopas-de-las-abuelas-de-nuevo-en-las-mesas-AP14391809"
+         target="_blank" rel="noopener noreferrer">https://www.elcolombiano.com/cultura/las-sopas-de-las-abuelas-de-nuevo-en-las-mesas-AP14391809</a>
+
+      </p>
+      <div class="exp-container">
+        <p>
+          • El Tiempo. (2008). Televisión cultural no tiene por qué ser sinónimo
+          de aburrimiento. Seis nuevos programas de ‘Señal Colombia’ lo
+          demuestran. Artículo publicado el 10 de septiembre. Recuperado de:
+          <a href="https://www.eltiempo.com/archivo/documento/CMS-4522110"
+          target="_blank" rel="noopener noreferrer">https://www.eltiempo.com/archivo/documento/CMS-4522110</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Fonseca, A.J. y Quesada, E.G. (2014). Confi¬guración de la tradición
+          cultural campesina desde la educación popular. En: Espiral, Revista de
+          Docencia e Investigación, 4(1), 49 – 58. Recuperado de:
+
+          <a href="file:///C:/Users/gabor/Downloads/550-1081-1-PB.pdf"
+          target="_blank" rel="noopener noreferrer">file:///C:/Users/gabor/Downloads/550-1081-1-PB.pdf</a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Gates, T. (2015). Conferencia TED. Cómo resucitar un barrio con
+          imaginación, belleza y arte. Recuperada de:
+          https://www.ted.com/talks/theaster_gates_how_to_revive_a_neighborhood_with_imagination_beauty_and_art?utm_campaign=tedspread&utm_medium=referral&utm_source=tedcomshare
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Molano L., Olga Lucía. (2007). Identidad cultural un concepto que
+          evoluciona, Revista Opera, núm. 7, pp. 69-84. Recuperado de:
+
+          <a href="https://www.redalyc.org/pdf/675/67500705.pdf" target="_blank"
+          rel="noopener noreferrer">https://www.redalyc.org/pdf/675/67500705.pdf</a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Selasi, T. (2015). Conferencia TED. No preguntes de dónde soy,
+          pregunta dónde soy local. Recuperada de:
+
+          <a href="https://www.ted.com/talks/taiye_selasi_don_t_ask_where_i_m_from_ask_where_i_m_a_local?utm_campaign=tedspread&utm_medium=referral&utm_source=tedcomshare"
+          target="_blank" rel="noopener noreferrer">https://www.ted.com/talks/taiye_selasi_don_t_ask_where_i_m_from_ask_where_i_m_a_local?utm_campaign=tedspread&utm_medium=referral&utm_source=tedcomshare</a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • UNESCO, (2017). Educación para los Objetivos de Desarrollo
+          Sostenible. Objetivos de aprendizaje. Francia. Recuperado de:
+
+          <a href="https://unesdoc.unesco.org/ark:/48223/pf0000252423" target="_blank"
+          rel="noopener noreferrer">https://unesdoc.unesco.org/ark:/48223/pf0000252423</a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • UNESCO, (2016). Cultura y desarrollo. Agenda 2030. Plan de trabajo
+          regional de cultura para América Latina y el Caribe LAC UNESCO 2016 –
+          2021. Recuperado de:
+          <a href="https://cerlalc.org/wp-content/uploads/2019/10/19-Cultura-y-desarrollo-14-Agenda-2030_2016.pdf"
+           target="_blank" rel="noopener noreferrer">https://cerlalc.org/wp-content/uploads/2019/10/19-Cultura-y-desarrollo-14-Agenda-2030_2016.pdf</a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • UNESCO, (2014). Revista Cultura y Desarrollo. No. 14. Recuperada de:
+          <a href="http://www.lacult.unesco.org/docc/CyD_12_es.pdf" target="_blank"
+          rel="noopener noreferrer">http://www.lacult.unesco.org/docc/CyD_12_es.pdf</a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • UNESCO, (2005). Convención sobre la protección y promoción de la
+          diversidad de las expresiones culturales. París. Recuperado de:
+          <a href="https://unesdoc.unesco.org/ark:/48223/pf0000142919_spa" target="_blank"
+           rel="noopener noreferrer">https://unesdoc.unesco.org/ark:/48223/pf0000142919_spa</a>
+
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #bibliografiaModalLenguaje10 let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">BIBLIOGRAFÍA</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text" style="overflow-x: hidden">
+      <p>
+        • Falon, E.; Franco, C. (2016). Colombia es realismo mágico. Cultura y
+        tradiciones colombianas. Recuperado de:
+        <a href="https://youtu.be/3hHbALdB2_g"
+         target="_blank" rel="noopener noreferrer">https://youtu.be/3hHbALdB2_g</a>
+
+      </p>
+      <div class="exp-container">
+        <p>
+          • Fonseca, A.J. y Quesada, E.G. (2014). Configuración de la tradición cultural
+          campesina desde la educación popular. En: Espiral, Revista de Docencia e
+          Investigación, 4(1), 49 – 58. Recuperado de:
+
+          <a href="file:///C:/Users/gabor/Downloads/550-1081-1-PB.pdf"
+          target="_blank" rel="noopener noreferrer">file:///C:/Users/gabor/Downloads/550-1081-1-PB.pdf</a>
+        </p>
+      </div>
+
+      <div class="exp-container">
+        <p>
+          • Molano L., Olga Lucía. (2007). Identidad cultural un concepto que
+          evoluciona, Revista Opera, núm. 7, pp. 69-84. Recuperado de:
+
+
+          <a href="https://www.redalyc.org/pdf/675/67500705.pdf"
+          target="_blank" rel="noopener noreferrer">https://www.redalyc.org/pdf/675/67500705.pdf</a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • Stone, M. (2003) La enseñanza para la comprensión. Vinculación entre la
+          investigación y la práctica. Barcelona: Paidós.
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • UNESCO, (2016). Cultura y desarrollo. Agenda 2030. Plan de trabajo regional
+          de cultura para América Latina y el Caribe LAC UNESCO 2016 – 2021.
+          Recuperado de:
+
+          <a href="https://cerlalc.org/wp-content/uploads/2019/10/19-Cultura-y-desarrollo-14-Agenda-2030_2016.pdf" target="_blank"
+          rel="noopener noreferrer">https://cerlalc.org/wp-content/uploads/2019/10/19-Cultura-y-desarrollo-14-Agenda-2030_2016.pdf </a>
+
+        </p>
+      </div>
+      <div class="exp-container">
+        <p>
+          • UNESCO, (2014). Revista Cultura y Desarrollo. No. 14. Recuperada de:
+
+          <a href="http://www.lacult.unesco.org/docc/CyD_12_es.pdf "
+          target="_blank" rel="noopener noreferrer">http://www.lacult.unesco.org/docc/CyD_12_es.pdf
+        </a>
+
+        </p>
+      </div>
+
+    </div>
+  </div>
+</ng-template>

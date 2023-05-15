@@ -1,0 +1,205 @@
+<div class="texture_brgd">
+  <main class="conteedor_main_menu">
+    <div class="foro__header">
+      <div class="foro__header__text">
+        <h1
+          style="text-align: center; font-weight: normal; margin-bottom: 20px"
+        >
+          {{ foro.title[0].toUpperCase()+  foro.title.substring(1).toLowerCase()}}
+        </h1>
+        <i class="foro__header__text__span">
+          {{ foro.createdAt | date: "d/M/yy" }} - 10°</i
+        >
+      </div>
+    </div>
+    <div class="foro__text">
+      <p>
+        {{ foro.content }}
+      </p>
+      <app-button text="Responder" (click)="commenting = true"></app-button>
+      <form
+        [formGroup]="createCommentForm"
+        (submit)="createComment()"
+        *ngIf="commenting"
+      >
+        <textarea
+          class="modal-retroalimentacion__textarea"
+          formControlName="content"
+          cols="30"
+          rows="8"
+          placeholder="Escribe una respuest aquí"
+          style="
+            margin-top: 40px;
+            font-size: 16px;
+            width: 80%;
+            padding: 5px;
+            background-color: #fff8d8b3;
+            border: 10px solid;
+            border-color: #8e6040;
+            color: #8e6040;
+          "
+        >
+        </textarea>
+        <app-button text="Enviar respuesta" (click)="commenting = true"></app-button>
+      </form>
+    </div>
+    <div class="divisor">
+      <figure>
+        <img src="../../assets/images/fondos/Fondo_division.png" alt="" />
+      </figure>
+    </div>
+    <div class="foro__anwers">
+      <h1 style="margin-bottom: 20px">
+        {{
+          foro.comments[0]
+            ? "RESPUESTAS"
+            : "No hay comentarios aun, se el primero en comentar"
+        }}
+      </h1>
+      <article class="foro-answer" *ngFor="let comment of foro.comments">
+        <div class="foro-answer__head">
+          <figure class="foro-answer__head__img">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="19.61"
+              height="19.61"
+              viewBox="0 0 19.61 19.61"
+            >
+              <defs>
+                <style>
+                  .cls-1 {
+                    fill: #8c613b;
+                  }
+                </style>
+              </defs>
+              <path
+                id="Icon_awesome-user-alt"
+                data-name="Icon awesome-user-alt"
+                class="cls-1"
+                d="M9.8,11.03A5.515,5.515,0,1,0,4.29,5.515,5.517,5.517,0,0,0,9.8,11.03Zm4.9,1.226H12.6a6.667,6.667,0,0,1-5.584,0H4.9a4.9,4.9,0,0,0-4.9,4.9v.613A1.839,1.839,0,0,0,1.838,19.61H17.771a1.839,1.839,0,0,0,1.838-1.838v-.613A4.9,4.9,0,0,0,14.707,12.256Z"
+              ></path>
+            </svg>
+          </figure>
+          <div class="foro-answer__head__text">
+            <h3>{{ comment.author }}</h3>
+            <i>{{ comment.userType }}</i>
+          </div>
+        </div>
+        <div class="foro-answer__content">
+          <p>
+            {{ comment.content }}
+          </p>
+        </div>
+        <div class="foro-answer__footer">
+          <div class="star-score">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21.48"
+              height="20.476"
+              viewBox="0 0 21.48 20.476"
+            >
+              <defs></defs>
+              <path
+                id="Icon_feather-star"
+                data-name="Icon feather-star"
+                class="cls-1"
+                style="
+                  fill: #5f412c;
+                  stroke: #5f412c;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                "
+                d="M13.24,3,16.4,9.41l7.076,1.034-5.12,4.987,1.208,7.045L13.24,19.148,6.912,22.476,8.12,15.431,3,10.444,10.076,9.41Z"
+                transform="translate(-2.5 -2.5)"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21.48"
+              height="20.476"
+              viewBox="0 0 21.48 20.476"
+            >
+              <defs></defs>
+              <path
+                id="Icon_feather-star"
+                data-name="Icon feather-star"
+                class="cls-1"
+                style="
+                  fill: #5f412c;
+                  stroke: #5f412c;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                "
+                d="M13.24,3,16.4,9.41l7.076,1.034-5.12,4.987,1.208,7.045L13.24,19.148,6.912,22.476,8.12,15.431,3,10.444,10.076,9.41Z"
+                transform="translate(-2.5 -2.5)"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21.48"
+              height="20.476"
+              viewBox="0 0 21.48 20.476"
+            >
+              <defs></defs>
+              <path
+                id="Icon_feather-star"
+                data-name="Icon feather-star"
+                class="cls-1"
+                style="
+                  fill: none;
+                  stroke: #5f412c;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                "
+                d="M13.24,3,16.4,9.41l7.076,1.034-5.12,4.987,1.208,7.045L13.24,19.148,6.912,22.476,8.12,15.431,3,10.444,10.076,9.41Z"
+                transform="translate(-2.5 -2.5)"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21.48"
+              height="20.476"
+              viewBox="0 0 21.48 20.476"
+            >
+              <defs></defs>
+              <path
+                id="Icon_feather-star"
+                data-name="Icon feather-star"
+                class="cls-1"
+                style="
+                  fill: none;
+                  stroke: #5f412c;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                "
+                d="M13.24,3,16.4,9.41l7.076,1.034-5.12,4.987,1.208,7.045L13.24,19.148,6.912,22.476,8.12,15.431,3,10.444,10.076,9.41Z"
+                transform="translate(-2.5 -2.5)"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21.48"
+              height="20.476"
+              viewBox="0 0 21.48 20.476"
+            >
+              <defs></defs>
+              <path
+                id="Icon_feather-star"
+                data-name="Icon feather-star"
+                class="cls-1"
+                style="
+                  fill: none;
+                  stroke: #5f412c;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                "
+                d="M13.24,3,16.4,9.41l7.076,1.034-5.12,4.987,1.208,7.045L13.24,19.148,6.912,22.476,8.12,15.431,3,10.444,10.076,9.41Z"
+                transform="translate(-2.5 -2.5)"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+</div>

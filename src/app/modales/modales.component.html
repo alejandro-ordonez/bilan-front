@@ -1,0 +1,498 @@
+<div class="p-5 d-flex flex-wrap">
+  <button
+    class="btn btn-lg m-1 btn-outline-primary"
+    (click)="openModal(ciclosModal)"
+  >
+    ciclos
+  </button>
+  <button class="btn btn-lg m-1 btn-primary" (click)="openModal(modulosModal)">
+    modulos
+  </button>
+  <button
+    class="btn btn-lg m-1 btn-secondary"
+    (click)="openModal(poderesModal)"
+  >
+    poderes
+  </button>
+  <button
+    class="btn btn-lg m-1 btn-success"
+    (click)="openModal(retoDeLosespiritusModal)"
+  >
+    reto de los espiritus
+  </button>
+  <button
+    class="btn btn-lg m-1 btn-danger"
+    (click)="openModal(retoDeLaMagiaModal)"
+  >
+    reto de la magia
+  </button>
+  <button
+    class="btn btn-lg m-1 btn-warning"
+    (click)="openModal(retoDeDecubrimientoModal)"
+  >
+    reto de descubrimiento
+  </button>
+  <button
+    class="btn btn-lg m-1 btn-dark"
+    (click)="openModal(retoDePlaneacionModal)"
+  >
+    reto de planeacion
+  </button>
+  <button
+    class="btn btn-lg m-1 btn-outline-primary"
+    (click)="openModal(RetoDeValentiaModal)"
+  >
+    reto de valentia
+  </button>
+  <button
+    class="btn btn-lg m-1 btn-primary"
+    (click)="openModal(retoDeLaLabranzaModal)"
+  >
+    reto de la labranza
+  </button>
+  <button
+    class="btn btn-lg m-1 btn-success"
+    (click)="openModal(retoDeLasEstacionesModal)"
+  >
+    reto de las estaciones
+  </button>
+  <button
+    class="btn btn-lg m-1 btn-success"
+    (click)="openModal(retoDeLaTierraModal)"
+  >
+    reto de la tierra
+  </button>
+  <button class="btn btn-lg m-1 btn-success" (click)="openModal(accionesModal)">
+    acciones
+  </button>
+</div>
+
+<ng-template #ciclosModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>CICLOS</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Cada ciclo afecta a los 5 pueblos y genera efectos diferentes en cada
+        uno, ayudando a que se fortalezcan o haciendo que se debiliten.
+      </p>
+
+      <p>
+        En cada ciclo tendrás que apaciguar los 3 espíritus. Esto lo logras
+        cumpliendo los restos. Cada reto te ayudará a apagar 1 espíritu.
+      </p>
+
+      <p>
+        Cada uno de los pueblos tiene un pueblo adyacente denominado pueblo en
+        estado de creación, y un pueblo opuesto denominado en estado de
+        transformación.
+      </p>
+      <p>
+        Dentro del mundo de Bilan, encontrarás ciclos de
+        <strong> creación que permite </strong> que las comunidades y el
+        territorio crezcan. Esto se verá representado cada vez que ganes con un
+        pueblo, este le dará puntos a su pueblo adyacente.
+      </p>
+      <figure class="w-50 m-auto p-2">
+        <img
+          src="assets/images/imagenes de Explicacion/Adyacentes@2x.png"
+          alt=""
+        />
+      </figure>
+      <p>
+        Y por último existen los ciclos de transformación, que de igual forma,
+        cada pueblo transforma lo que otro produce, por lo que aprovecha su
+        elemento para permitir así que la vidas se sostenga. Esto hace que el
+        pueblo opuesto pierda puntos.
+      </p>
+      <figure class="w-50 m-auto p-2">
+        <img
+          src="assets/images/imagenes de Explicacion/Opuestos@2x.png"
+          alt=""
+        />
+      </figure>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #modulosModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>MÓDULOS</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        En cada módulo podrás encontrar información que te irá mostrando
+        progreso de cada uno. Con esto podrás ir decidiendo y formando tu propia
+        estrategia para mantener a Bilan en balance.
+      </p>
+
+      <p>
+        Podrás encontrar en cada módulo el color de fondo del elemento, nombre
+        de la competencia que se trabaja, el pueblo al que corresponde, su runa,
+        un personaje y sus puntos.
+      </p>
+
+      <p>
+        El personaje que aparece en cada módulo irá cambiando dependiendo con
+        qué tipo de categoría de reto has jugado más.
+      </p>
+      <p>
+        La runa crecerá dependiendo del porcentaje de los retos que has ganado.
+      </p>
+      <p>
+        Esta barra representa el balance del pueblo. Intenta siempre mantenerla
+        en equilibrio, o sea en los puntos del centro.
+      </p>
+      <p>
+        Este indicador te mostrará los puntos acumulados de los retos ganados en
+        cada módulo.
+      </p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #poderesModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>PODERES</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Los poderes del Chamán, Explorador y Aldeano te ayudarán en cada
+        pregunta que se te presente en el juego.
+      </p>
+
+      <p>
+        Cada poder tiene una probabilidad de activarse, si el poder corresponde
+        a la misma categoría de reto seleccionada previamente, la probabilidad
+        aumenta, de lo contrario es más baja.
+      </p>
+
+      <p>
+        Solo se podrá hacer uso de un poder por reto. Si el poder se activa
+        exitosamente, el personaje queda bloqueado por 24 horas, si no, se
+        bloquea solo durante la prueba.
+      </p>
+      <p>
+        Ejemplo: Si se usa el chamán en un reto espiritual tiene mayor
+        probabilidad de usar su poder que el Explorador y el Aldeano, ya que el
+        Chamán corresponde a la misma categoría de reto espiritual.
+      </p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #retoDeLosespiritusModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>RETO DE LOS ESPÍRITUS</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Los espíritus son juguetones y les gusta bromear con las respuestas. En
+        este tipo de reto tendrás que responder una cantidad de preguntas, pero
+        ten cuidado ya que los espíritus estarán jugando con las respuestas y
+        tendrás que responder lo más rápido posible para obtener la mejor
+        puntuación. Los tipos de bromas que los espíritus hacen son:
+      </p>
+
+      <p>
+        Espíritu del aire: las respuestas se desordenan con el viento. Cada 3
+        segundos, las respuestas cambian de orden en la interfaz, desordenándose
+        de nuevo. Ganarás 5 puntos por respuesta correcta, pero por cada vez que
+        cambian de posición, ganas 1 punto menos.
+      </p>
+
+      <p>
+        Espíritu del fuego: Cada 4 segundos, una respuesta incorrecta se
+        destruye, creando una penalización de -1 punto a la respuesta final. Si
+        se destruye la última respuesta incorrecta no ganarás puntos.
+      </p>
+      <p>
+        Espíritu del agua: Las respuestas irán apareciendo, en la medida que
+        vayan pasando tendrás que estar pendiente de la correcta, pues si se
+        pasa perderás 2 pts menos.
+      </p>
+      <p>
+        Espíritu de tierra: Con cada segundo que pasa, la respuesta te dará 1
+        punto más hasta llegar a 6 puntos, pero después de eso empieza a
+        marchitarse, perdiendo 1 punto con cada segundo adicional hasta llegar a
+        0. Cuando llega a cero vuelve y comienza el ciclo, pero solo hasta 5 y
+        así progresivamente.
+      </p>
+      <div class="d-flex justify-content-center">
+        <a routerLink="/jugar" class="btn_intro">Jugar</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #retoDeLaMagiaModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>RETO DE LA MAGIA</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        En este tipo de prueba deberás responder 3 preguntas. Todas las
+        respuestas estarán “tapadas” por lo que deberás ir girando una por una
+        para ir revelando la respuesta. Cada vez que reveles una carta deberás
+        decidir inmediatamente si es o no la correcta. Sí aciertas al decir que
+        NO es la correcta, ganaras 2 puntos (temporales) y podrás continuar
+        viendo el resto de cartas.
+      </p>
+
+      <p>
+        Si al revelar una de las cartas decides que SÍ es la correcta, y
+        aciertas, ganarás 2 puntos adicionales, pero sí es incorrecta perderás
+        lo que llevas acumulado.
+      </p>
+
+      <div class="d-flex justify-content-center">
+        <a routerLink="/jugar" class="btn_intro">Jugar</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #retoDeDecubrimientoModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>RETO DE DESCUBRIMIENTO</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Aquí vas a descubrir hasta dónde puedes llegar. En este tipo de reto
+        tendrás que responder varias preguntas, podrás parar cuando quieras,
+        pero para ganar el punto de exploración tendrás que haber contestado un
+        mínimo de 3 preguntas correctas. Pero ten cuidado, si te equivocas en
+        alguna perderás la cantidad de preguntas correctas que llevas.
+      </p>
+
+      <div class="d-flex justify-content-center">
+        <a routerLink="/jugar" class="btn_intro">Jugar</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #retoDePlaneacionModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>RETO DE PLANEACIÓN</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        En este tipo de reto tendrás que escoger la cantidad de preguntas a las
+        que te vas a enfrentar, deber ser muy estratégico con tu elección, pues
+        cada pregunta correcta te dará puntos positivos, pero cada incorrecta te
+        restará. Para ganar el punto de exploración, al finalizar las preguntas,
+        tendrás que acabar con puntos positivos.
+      </p>
+      <div class="d-flex justify-content-center">
+        <a routerLink="/jugar" class="btn_intro">Jugar</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #RetoDeValentiaModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>RETO DE LA VALENTÍA</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        En este tipo de reto te enfrentarás entre 2 a 4 preguntas, y en cada una
+        tendrás que seleccionar tu nivel de confianza con la que estás
+        contestando. Pero ojo, la cantidad apostada serán los puntos que podrás
+        ganar o perder en cada pregunta. Al finalizar deberás tener un mínimo de
+        5 puntos para ganar el punto de exploración.
+      </p>
+
+      <div class="d-flex justify-content-center">
+        <a routerLink="/jugar" class="btn_intro">Jugar</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #retoDeLaLabranzaModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>RETO DE LA LABRANZA</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        En este tipo de reto tendrás que responder 4 preguntas, uno por cada
+        solsticio y una por cada equinoccio. Serán 4 fases de juego así:
+      </p>
+      <p>
+        Fase 1: Solsticio de invierno- labranza <br />
+        Fase 2: Equinoccio de primavera – recolección <br />
+        Fase 3: Solsticio de verano – labranza <br />
+        Fase 4: Equinoccio de otoño – recolección.
+      </p>
+      <p>
+        Ten en cuenta que en la fase de solsticio el tiempo irá mas lento, pero
+        en fase equinoccio el tiempo avanzará más rápido. Si el tiempo acaba y
+        no has contestado pasará a la siguiente pregunta.
+      </p>
+
+      <div class="d-flex justify-content-center">
+        <a routerLink="/jugar" class="btn_intro">Jugar</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #retoDeLasEstacionesModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>RETO DE LAS ESTACIONES</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        En este tipo de reto deberás contestar 4 preguntas, una por cada
+        temporada:
+      </p>
+      <p>
+        - Fuego: Temporada de sequía <br />
+        - Aire: Temporada de vientos <br />
+        - Agua: Temporada de lluvias <br />
+        - Tierra: Temporada de cosecha
+      </p>
+      <p>
+        Si la pregunta está asociada a la temporada del elemento del pueblo que
+        está en juego, da 8 puntos; si está asociada a un elemento adyacente, da
+        7 puntos; si está asociada al elemento sin adyacencia ni oposición, da 5
+        puntos; si es del elemento opuesto, da 3 puntos.<br />
+        Para obtener el punto civil deberás terminar con al menos 4 puntos.
+      </p>
+      <div class="d-flex justify-content-center">
+        <a routerLink="/jugar" class="btn_intro">Jugar</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #retoDeLaTierraModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>RETO DE LA TIERRA</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        En este tipo de reto tendrás que responder 3 preguntas, una por cada
+        elemento. Tendrás 2 marcadores, uno del elemento y otro aleatorio, los
+        cuales tendrás que poner encima de la(s) respuesta(s) que tu creas
+        correcta(s). Una vez respondas la pregunta, los puntos se darán de la
+        siguiente manera:
+      </p>
+      <p>
+        - Sí el marcador es del elemento del pueblo en juego: por estar en la
+        respuesta correcta ganarás 3 puntos, por estar en la incorrecta perderás
+        entre (1 y 0+1 por dificultad) puntos.
+      </p>
+      <p>
+        - Si es de otro elemento: sí es correcta gana 1 punto, si es incorrecta
+        no pierde puntos.
+      </p>
+      <p>
+        Al finalizar deberás tener al menos 5 puntos acumulados para obtener un
+        punto espiritual.
+      </p>
+      <div class="d-flex justify-content-center">
+        <a routerLink="/jugar" class="btn_intro">Jugar</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #accionesModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>ACCIONES</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        ¡Te estábamos esperando! Aquí encontrarás las acciones que te permitirán
+        lograr el balance que Bilan necesita tanto. Encontrarás que existen 3
+        tipos de acciones: espiritual, exploración y civil.
+      </p>
+      <figure class="w-50 m-auto p-2">
+        <img
+          src="assets/images/iconos/Chaman(Iconos,Retos)/IF_chaman_T@2x.png"
+          alt=""
+        />
+      </figure>
+      <p>
+        Acciones espirituales: te enfrentarás a los espíritus, los elementos y a
+        la magia, las respuestas se comportan de manera “extraña. Son
+        representados por los chamanes.
+      </p>
+      <figure class="w-50 m-auto p-2">
+        <img
+          src="assets/images/iconos/Explorador(Iconos,Retos)/IF_Explora_T@2x.png"
+          alt=""
+        />
+      </figure>
+      <p>
+        Acciones de exploración: deberás ser valiente y arriesgar más. Los
+        errores quitan más puntos, pero son muy divertidos. Son representados
+        por los exploradores.
+      </p>
+      <figure class="w-50 m-auto p-2">
+        <img
+          src="assets/images/iconos/Aldeano(Iconos,Retos)/civil_1Tierra.png"
+          alt=""
+        />
+      </figure>
+      <p>
+        Acciones civiles: no castigan los errores, pero premian el esfuerzo y el
+        trabajo. Son representados por los aldeanos.
+      </p>
+      <div class="d-flex justify-content-center">
+        <a routerLink="/jugar" class="btn_intro">Jugar</a>
+      </div>
+    </div>
+  </div>
+</ng-template>

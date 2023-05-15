@@ -1,0 +1,227 @@
+.p-800-p {
+  margin: 0 auto;
+  width: 800px;
+}
+.dom-tricks-retos-se {
+  display: inline-block;
+  vertical-align: middle;
+  width: 195px;
+  height: 195px;
+  background: #e0ada5;
+  padding: 10px;
+  margin: 20px 70px;
+  transform: scale(0.85);
+  cursor: pointer;
+  &.disabled {
+    cursor: no-drop;
+  }
+}
+
+.el-domt {
+  height: 185px;
+  width: 185px;
+  background: #a03b2d;
+  transform: rotate(45deg);
+}
+.dom-t img {
+  width: 110px;
+  transform: rotate(-45deg);
+  margin-left: 5%;
+  margin-top: 32%;
+  height: 80px;
+}
+.i-dom {
+  display: block;
+  padding: 6px 16px;
+  background: #893d2e;
+  position: absolute;
+  margin-left: 54px;
+  padding-top: 10px;
+  margin-top: 26px;
+}
+.i-dom img {
+  width: 27px;
+  vertical-align: middle;
+}
+.i-dom b {
+  color: #fff;
+  font-size: 19px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn_intro_actyretos {
+  text-align: center;
+}
+.act_mod-retos {
+  background: #60120e;
+  height: 140px;
+  width: 100%;
+  text-align: center !important;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+.p-800-p {
+  margin: 0 auto;
+  width: 1040px;
+}
+.puntaje_mod-act {
+  width: 110px;
+  float: unset;
+  margin-left: 0px;
+  margin-top: 0px;
+  font-size: 30px;
+  font-weight: 700;
+  padding-top: 4px;
+  padding-left: 24px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  background: url(https://www.bilan.pi-interactiva.com/fotos/var/albums/Botones-menu/bg_puntos_mod.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 100%;
+  height: 43px;
+  width: 90px;
+  border-radius: 4px;
+  color: #606060;
+  background-color: red;
+  margin: 0 auto;
+}
+.title_mod-retos {
+  max-width: 200px;
+  font-size: 28px;
+  text-align: center;
+  float: unset;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  display: inline-block;
+  padding-left: 18px;
+  vertical-align: middle;
+}
+.icono_prin_modulo-act {
+  float: unset;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin: 0 auto;
+  width: 100px;
+  padding-top: 70px;
+  padding-bottom: 8px;
+}
+.modulo {
+  margin: auto;
+  width: 100%;
+  height: 420px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.modulo_dos-act {
+  background-image: url(https://www.bilan.pi-interactiva.com/fotos/var/albums/retos/fondo-presentacion%20personajes-09.jpg?m=1623357984);
+}
+.modulo_tres-act {
+  background-image: url(https://www.bilan.pi-interactiva.com/fotos/var/albums/retos/fondo-presentacion%20personajes-29.jpg?m=1623357986);
+}
+.sir-acts {
+  width: 255px;
+  float: unset;
+  height: 100%;
+  right: none;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+.sir-acts img {
+  width: auto;
+  height: 99%;
+  float: unset;
+  padding: 20px;
+  /* right: 100px; */
+}
+
+.icono_prin_modulo-retos {
+  float: unset;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin: 0 auto;
+  width: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.tiles {
+  color: #5e4228;
+  font-family: "Fredoka One", cursive;
+  text-align: center;
+  font-size: x-large;
+  padding-top: 80px;
+  padding-bottom: 90px;
+}
+
+.modulo_uno-act {
+  margin-bottom: 72px;
+}
+.modulo_uno-act#matematicas {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-11.jpg");
+}
+.modulo_uno-act#competencias-ciudadanas {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/Presentacion%20personaje-15.jpg");
+}
+.modulo_uno-act#competencias-socioemocionales {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-19.jpg");
+}
+.modulo_uno-act#ciencias-naturales {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/fondo-presentacion%20personajes-13.jpg");
+}
+.modulo_uno-act#lenguaje {
+  background-image: url("../../assets/images/fondos/Fondo\ Presentacion\ personajes\ para\ web/Presentacion%20personaje-17.jpg");
+}
+
+.act_mod-retos#matematicas,
+.el-domt#matematicas,
+.i-dom#matematicas {
+  background: #60120e;
+}
+.act_mod-retos#competencias-ciudadanas,
+.el-domt#competencias-ciudadanas,
+.i-dom#competencias-ciudadanas {
+  background: #283d40;
+}
+.act_mod-retos#competencias-socioemocionales,
+.el-domt#competencias-socioemocionales,
+.i-dom#competencias-socioemocionales {
+  background: #302414;
+}
+.act_mod-retos#ciencias-naturales,
+.el-domt#ciencias-naturales,
+.i-dom#ciencias-naturales {
+  background: #0e2334;
+}
+.act_mod-retos#lenguaje,
+.el-domt#lenguaje,
+.i-dom#lenguaje {
+  background: #052808;
+}
+
+.dom-tricks-retos-se#matematicas {
+  background: #e0ada5;
+}
+.dom-tricks-retos-se#competencias-ciudadanas {
+  background: #afd4da;
+}
+.dom-tricks-retos-se#competencias-socioemocionales {
+  background: #ecc98f;
+}
+.dom-tricks-retos-se#ciencias-naturales {
+  background: #9ab4ca;
+}
+.dom-tricks-retos-se#lenguaje {
+  background: #90b99b;
+}

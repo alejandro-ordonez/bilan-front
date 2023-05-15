@@ -1,0 +1,466 @@
+<div class="modal-background" *ngIf="modal">
+  <div
+    role="document"
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+  >
+    <div class="modal-content">
+      <form
+        [formGroup]="evaluateForm"
+        (submit)="sendEvaluate()"
+        class="modal-container"
+      >
+        <div class="modal__head">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+            "
+          >
+            <h2 style="width: unset">EVALUACIÓN</h2>
+            <a
+              href="../../assets/download/Rubrica-competencias-10.pdf"
+              target="_blank"
+              style="width: 50px"
+            >
+              <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+            </a>
+          </div>
+          <button class="close" (click)="openModal()">
+            <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+          </button>
+        </div>
+        <div
+          class="modal__text"
+          style="display: flex; align-items: center; height: 62%"
+        >
+          <div
+            class="modal-form-evaluation"
+            style="
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              align-items: flex-end;
+            "
+          >
+            <label class="modal-form-evaluation__text" for="">
+              Competencias de pensamiento
+              <select
+                style="
+                  border-radius: 5px;
+                  width: fit-content;
+                  max-width: 150px;
+                  max-width: 150px;
+                  height: 30px;
+                  border: 2px solid;
+                  color: #8e6040;
+                  margin-left: 20px;
+                  margin-bottom: 0;
+                  background: white;
+                "
+                formControlName="cbScore"
+                (change)="selectChange()"
+              >
+                <option value="" disabled selected>Nivel</option>
+
+                <option
+                  *ngFor="let option of evaluateOptions"
+                  value="{{ option.key }}"
+                >
+                  {{ option.value }}
+                </option>
+              </select>
+            </label>
+            <label class="modal-form-evaluation__text" for="">
+              Competencias ciudadanas
+              <select
+                style="
+                  border-radius: 5px;
+                  margin-bottom: 0;
+                  width: fit-content;
+                  max-width: 150px;
+                  height: 30px;
+                  border: 2px solid;
+                  color: #8e6040;
+                  margin-left: 20px;
+                  background: white;
+                "
+                formControlName="ccScore"
+                (change)="selectChange()"
+              >
+                <option value="" disabled selected>Nivel</option>
+
+                <option
+                  *ngFor="let option of evaluateOptions"
+                  value="{{ option.key }}"
+                >
+                  {{ option.value }}
+                </option>
+              </select>
+            </label>
+            <label class="modal-form-evaluation__text" for="">
+              Competencias socioemocionales
+              <select
+                style="
+                  border-radius: 5px;
+                  width: fit-content;
+                  max-width: 150px;
+                  height: 30px;
+                  border: 2px solid;
+                  color: #8e6040;
+                  margin-left: 20px;
+                  margin-bottom: 0;
+                  background: white;
+                "
+                formControlName="csScore"
+                (change)="selectChange()"
+              >
+                <option value="" disabled selected>Nivel</option>
+                <option
+                  *ngFor="let option of evaluateOptions"
+                  value="{{ option.key }}"
+                >
+                  {{ option.value }}
+                </option>
+              </select>
+            </label>
+            <label class="modal-form-evaluation__text" for="">
+              Específicas del área
+              <select
+                style="
+                  border-radius: 5px;
+                  width: fit-content;
+                  max-width: 150px;
+                  height: 30px;
+                  border: 2px solid;
+                  color: #8e6040;
+                  margin-left: 20px;
+                  margin-bottom: 0;
+                  background: white;
+                "
+                formControlName="tribeScore"
+                (change)="selectChange()"
+              >
+                <option value="" disabled selected>Nivel</option>
+                <option
+                  *ngFor="let option of evaluateOptions"
+                  value="{{ option.key }}"
+                >
+                  {{ option.value }}
+                </option>
+              </select>
+            </label>
+            <h3 *ngIf="evaluateForm.valid">
+              EVALUACIÓN TOTAL:
+              {{ evaluateOptions[evaluateTotal].value | uppercase }}
+            </h3>
+          </div>
+        </div>
+        <div class="modal__footer">
+          <app-button
+            type="submit"
+            [isDisabled]="evaluateForm.invalid"
+            text="Guardar"
+          ></app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<app-module-bar></app-module-bar>
+
+<div class="texture_brgd">
+  <main class="conteedor_main_menu panel-control">
+    <aside>
+      <div class="fases">
+        <button
+          class="btn_intro"
+          *ngFor="let singlePhases of phases"
+          [routerLink]="
+            '../../../../../' +
+            materia +
+            '/' +
+            grade +
+            '/' +
+            course +
+            '/' +
+            singlePhases.value +
+            '/' +
+            'panel-evaluacion'
+          "
+          routerLinkActive="active"
+          (click)="getData()"
+        >
+          {{ singlePhases.name }}
+        </button>
+      </div>
+      <div class="divisor">
+        <figure>
+          <img src="assets/images/Fondos/Fondo_division.png" alt="" />
+        </figure>
+      </div>
+      <div class="grados">
+        <button
+          class="btn-square btn-square--background"
+          *ngFor="let singleClassroom of classrooms"
+          [routerLink]="
+            '../../../../../' +
+            materia +
+            '/' +
+            singleClassroom.grade +
+            '/' +
+            courseIdIndex[singleClassroom.courseId] +
+            '/' +
+            phase +
+            '/' +
+            'panel-evaluacion'
+          "
+          routerLinkActive="active"
+          (click)="getData()"
+        >
+          {{ singleClassroom.grade }}
+          {{ courseIdIndex[singleClassroom.courseId] }}
+        </button>
+      </div>
+      <div class="divisor">
+        <figure>
+          <img src="../../assets/images/Fondos/Fondo_division.png" alt="" />
+        </figure>
+      </div>
+      <div class="acti-eva">
+        <button class="btn_intro">
+          <a
+            href="/modulos/{{courseData}}"
+            target="_blank"
+            style="color: inherit"
+          >
+            Actividades
+          </a>
+        </button>
+      </div>
+    </aside>
+    <div class="student-table">
+      <h2 class="student-table__title">Estudiante</h2>
+      <h2 class="student-table__title">Fecha subida de actividad</h2>
+      <h2 class="student-table__title">Documento/s</h2>
+      <h2 class="student-table__title">Evaluación</h2>
+      <div class="student-table__data" *ngFor="let singleEvidence of evidences">
+        <div class="student-table__data__student">
+          <figure class="student-table__data__student__img">
+            <img src="assets/images/avatars/A__2Aire.jpg" alt="" />
+          </figure>
+          <p class="student-table__data__student__name">
+            {{ singleEvidence.name }}
+            {{ singleEvidence.lastName }}
+          </p>
+        </div>
+        <div class="student-table__data__date">
+          <p class="student-table__data__student__name">
+            {{ singleEvidence.uploadedDate | date: "d/M/yy, h:mm a" }}
+          </p>
+        </div>
+        <div class="student-table__data__document">
+          <a
+            (click)="getDownload(singleEvidence)"
+            class="student-table__data__document__btn-square"
+          >
+            <img src="assets/images/Botones_menu/icon-descarga.png" />
+          </a>
+        </div>
+        <div
+          class="student-table__data__evaluation"
+          *ngIf="!singleEvidence.hasEvaluation"
+        >
+          <app-button
+            type="submit"
+            (click)="
+              selectEvidence(
+                singleEvidence.evidenceId,
+                singleEvidence.document
+              );
+              openModal()
+            "
+            [isDisabled]="buttonIsDisabled"
+            text="Evaluar"
+          ></app-button>
+        </div>
+        <div
+          class="student-table__data__evaluation"
+          *ngIf="singleEvidence.hasEvaluation"
+        >
+          <app-button
+            type="submit"
+            [isDisabled]="true"
+            text="Evaluado"
+          ></app-button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<ng-template #evaluarModal let-modal>
+  <form
+    [formGroup]="evaluateForm"
+    (submit)="sendEvaluate()"
+    class="modal-container"
+  >
+    <div class="modal__head">
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+        "
+      >
+        <h2 style="width: unset">EVALUACIÓN</h2>
+        <a
+          href="../../assets/download/Rubrica-competencias-10.pdf"
+          target="_blank"
+          style="width: 50px"
+        >
+          <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+        </a>
+      </div>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div
+      class="modal__text"
+      style="display: flex; align-items: center; height: 62%"
+    >
+      <div
+        class="modal-form-evaluation"
+        style="
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: flex-end;
+        "
+      >
+        <label class="modal-form-evaluation__text" for="">
+          Competencias de pensamiento
+          <select
+            style="
+              border-radius: 5px;
+              width: fit-content;
+              max-width: 150px;
+              max-width: 150px;
+              height: 30px;
+              border: 2px solid;
+              color: #8e6040;
+              margin-left: 20px;
+              margin-bottom: 0;
+              background: white;
+            "
+            formControlName="cbScore"
+            (change)="selectChange()"
+          >
+            <option disabled selected>Nivel</option>
+
+
+            <option value="{{ 0 }}">Bajo</option>
+            <option value="{{ 1 }}">Mínimo</option>
+            <option value="{{ 2 }}">Satisfactorio</option>
+            <option value="{{ 3 }}">Alto</option>
+          </select>
+        </label>
+        <label class="modal-form-evaluation__text" for="">
+          Competencias ciudadanas
+          <select
+            style="
+              border-radius: 5px;
+              margin-bottom: 0;
+              width: fit-content;
+              max-width: 150px;
+              height: 30px;
+              border: 2px solid;
+              color: #8e6040;
+              margin-left: 20px;
+              background: white;
+            "
+            formControlName="ccScore"
+            (change)="selectChange()"
+          >
+            <option disabled selected>Nivel</option>
+
+
+            <option value="{{ 0 }}">Bajo</option>
+            <option value="{{ 1 }}">Mínimo</option>
+            <option value="{{ 2 }}">Satisfactorio</option>
+            <option value="{{ 3 }}">Alto</option>
+          </select>
+        </label>
+        <label class="modal-form-evaluation__text" for="">
+          Competencias socioemocionales
+          <select
+            style="
+              border-radius: 5px;
+              width: fit-content;
+              max-width: 150px;
+              height: 30px;
+              border: 2px solid;
+              color: #8e6040;
+              margin-left: 20px;
+              margin-bottom: 0;
+              background: white;
+            "
+            formControlName="csScore"
+            (change)="selectChange()"
+          >
+            <option disabled selected>Nivel</option>
+
+            <option value="{{ 0 }}">Bajo</option>
+            <option value="{{ 1 }}">Mínimo</option>
+            <option value="{{ 2 }}">Satisfactorio</option>
+            <option value="{{ 3 }}">Alto</option>
+          </select>
+        </label>
+        <label class="modal-form-evaluation__text" for="">
+          Específicas del área
+          <select
+            style="
+              border-radius: 5px;
+              width: fit-content;
+              max-width: 150px;
+              height: 30px;
+              border: 2px solid;
+              color: #8e6040;
+              margin-left: 20px;
+              margin-bottom: 0;
+              background: white;
+            "
+            formControlName="tribeScore"
+            (change)="selectChange()"
+          >
+            <option disabled selected>Nivel</option>
+          
+            <option value="{{ 0 }}">Bajo</option>
+            <option value="{{ 1 }}">Mínimo</option>
+            <option value="{{ 2 }}">Satisfactorio</option>
+            <option value="{{ 3 }}">Alto</option>
+          </select>
+        </label>
+        <h3>
+          EVALUACIÓN TOTAL:
+          {{ evaluateOptions[evaluateTotal].value | uppercase }}
+        </h3>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <app-button
+        type="submit"
+        [isDisabled]="evaluateForm.invalid"
+        text="Guardar"
+      ></app-button>
+    </div>
+  </form>
+</ng-template>

@@ -1,0 +1,41 @@
+.expandible__button {
+  margin-left: -15px;
+  margin-bottom: 0;
+}
+
+.lateral_nav {
+  overflow-y: unset;
+  margin-top: 0 !important;
+  height: fit-content;
+
+  .separador3 {
+    height: 80%;
+  }
+}
+
+h3 {
+  font-family: "Fredoka One", cursive;
+}
+.pueblo-head h4 {
+  color: #463220;
+  text-align: center;
+  font-weight: bold;
+}
+
+.pueblo-head .pueblo-logo {
+  max-width: 70px;
+  margin: 10px auto;
+}
+
+.about-head {
+  &__image {
+    min-height: unset;
+    float: unset;
+  }
+  &__title {
+    background-color: #232534;
+    h3 {
+      text-align: left;
+    }
+  }
+}

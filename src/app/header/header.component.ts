@@ -1,0 +1,112 @@
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Stat } from '@domain/models/stat.model';
+import { User } from '@domain/models/user.model';
+import { CourseToEnroll } from '@domain/models/dashboard.model';
+import { UserDataUseCase } from '@domain/usecases/user-data.usecase';
+import { DashboardUseCase } from '@domain/usecases/dashboard.usecase';
+import { StatsService } from '../services/stats-service';
+import { Observable, Subject, Subscription } from 'rxjs';
+
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
+})
+export class HeaderComponent implements OnInit {
+  user: User;
+  stats: Stat;
+  isTeacher: boolean;
+
+  homeLink: string = '/home';
+
+  menu: boolean = false;
+  mobile: boolean = false;
+  switchToUpdate: boolean;
+  college: CourseToEnroll;
+  tableroLink: string = '/admin/panel-control/grado/';
+
+  constructor(
+    private router: Router,
+    private modal: NgbModal,
+    private statsService: StatsService,
+    private userData: UserDataUseCase,
+    private cd: ChangeDetectorRef,
+    private dashboard: DashboardUseCase
+  ) { }
+
+  ngOnInit(): void {
+    if (window.innerWidth <= 1100) {
+      this.mobile = true;
+    }
+
+    this.getUserData();
+  }
+
+  openModal(contenido: any) {
+    this.modal.open(contenido, {
+      size: 'lg',
+      centered: true,
+      scrollable: true,
+    });
+  }
+
+  menuClick() {
+    this.menu = !this.menu;
+  }
+
+  private async getUserData() {
+    try {
+      this.user = await this.userData.info();
+      this.isTeacher = this.user.userType === 'Teacher'
+
+      if (this.isTeacher) {
+        this.homeLink = '/teacher';
+        this.getClassrooms();
+      }
+      if (!this.isTeacher) {
+        this.statsService.syncStats().subscribe((stat) => {
+          this.stats = stat;
+          this.cd.detectChanges();
+        });
+      }
+    } catch (error) {
+    }
+  }
+
+  updateUserStats() {
+    this.stats.generalTotems++;
+    this.statsService.updateStats(this.stats);
+    this.switchToUpdate = !this.switchToUpdate;
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl('/inicio');
+  }
+
+  async getClassrooms() {
+    const classRooms = await this.dashboard.getClassrooms();
+
+    const obColleges: any = new Object();
+    classRooms.forEach((cls: CourseToEnroll) => {
+      obColleges[cls.collegeId.toString()] = cls;
+    });
+    const obCollege: any[] = Object.values(obColleges);
+
+    this.college = obCollege[0];
+    this.tableroLink = `${this.tableroLink}${this.college.collegeId}/${this.college.grade}/${this.college.courseId}`;
+  }
+
+  onClick() {
+    if (this.user.userType === "DirectiveTeacher") {
+      this.router.navigateByUrl("/admin/tablero-directivo");
+
+    } else {
+      this.router.navigateByUrl(this.tableroLink);
+
+    }
+  }
+}

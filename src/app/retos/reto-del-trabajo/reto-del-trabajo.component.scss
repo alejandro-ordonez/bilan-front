@@ -1,0 +1,364 @@
+h3 {
+  color: #5e4228;
+}
+
+.answers {
+  padding: 20px;
+  width: 800px;
+  margin: 0 auto;
+}
+.answers li {
+  display: block;
+  position: relative;
+}
+.answers .btn {
+  display: block;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  border: 3px solid #5e4228;
+  border-radius: 10px;
+  color: #5e4228;
+  margin: 20px 0px;
+  box-shadow: 3px 3px 6px #341c0058;
+  background: #fff3e8;
+}
+.answers .btn:hover,
+.answers .btn:disabled {
+  transform: scale(1.05);
+}
+
+.answers .btn:disabled {
+  cursor: default;
+}
+.answers .btn.selected {
+  border: 3px solid #69aaa1;
+}
+.op-s-retos a {
+  margin: 10px;
+  display: inline-block;
+  width: 300px;
+  background: #e1ccbb;
+  border: 4px solid #8e6040;
+  padding: 20px;
+  font-size: 26px;
+  font-family: "Fredoka One", cursive;
+  color: #8e6040;
+  box-shadow: 3px 3px 6px #341c0058;
+}
+.op-s-retos li {
+  display: inline-block;
+  vertical-align: top;
+}
+.tx-t {
+  font-size: 18px;
+  text-align: left;
+  width: 800px;
+  margin: 0 auto;
+}
+.ret-tx {
+  margin-top: 0px;
+  font-style: italic;
+  font-size: 18px;
+  color: #404040;
+}
+.marg-h1 {
+  margin-top: -20px;
+}
+.dom-tricks-retos-se {
+  display: inline-block;
+  vertical-align: middle;
+  width: 195px;
+  height: 195px;
+  background: #6da88e8a;
+  padding: 10px;
+  margin: 20px 70px;
+  transform: scale(0.65);
+}
+.el-domt {
+  height: 185px;
+  width: 185px;
+  background: #6da88e;
+  transform: rotate(45deg);
+}
+.eldom {
+}
+.domt-t {
+}
+.dom-t img {
+  width: 90%;
+  height: 90%;
+  transform: rotate(-55deg);
+  margin-left: -9px;
+  margin-top: 20px;
+}
+#i-dom {
+  display: block;
+  padding: 6px 16px;
+  background: sienna;
+  position: absolute;
+  margin-left: 54px;
+  padding-top: 10px;
+  margin-top: 26px;
+}
+#i-dom img {
+  width: 27px;
+  vertical-align: middle;
+}
+#i-dom b {
+  color: #fff;
+  font-size: 19px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.p-800-p {
+  margin: 0 auto;
+  width: 800px;
+}
+.power-card {
+  width: 50px;
+  margin: 10px;
+}
+.power-quest {
+  display: inline-block;
+  background: #fff3e8;
+  padding: 7px 30px;
+  border-radius: 5px;
+  border: 3px solid #8e6040;
+  color: #8e6040;
+  font-weight: 300;
+  font-size: 18px;
+  margin-top: 10px;
+  font-family: "Fredoka One", cursive;
+}
+.power-top {
+  width: 100%;
+  height: 90px;
+  background: #efd9c5;
+  position: relative;
+  display: block;
+}
+.power-title {
+  color: #5e4228;
+  font-family: "Fredoka One", cursive;
+  text-align: center;
+  font-size: 20px;
+  width: 100px;
+  text-align: left;
+  margin-top: 5px;
+}
+.power-card-title {
+  margin-top: 0px !important;
+  font-size: 11px;
+}
+.power-boxes {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+.power-left {
+  width: 49%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+}
+.power-right {
+  width: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: right;
+}
+.act_mod-act {
+  background: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 273px;
+  text-align: center !important;
+}
+.power-tooltip {
+  padding: 10px;
+  margin-top: 7px;
+}
+.p-800-p {
+  margin: 0 auto;
+  width: 1040px;
+}
+.puntaje_mod-act {
+  width: 110px;
+  float: unset;
+  margin-left: 0px;
+  margin-top: 0px;
+  font-size: 30px;
+  font-weight: 700;
+  padding-top: 4px;
+  padding-left: 24px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  background: url(https://www.bilan.pi-interactiva.com/fotos/var/albums/Botones-menu/bg_puntos_mod.png),
+    url(https://bilan.pi-interactiva.com/fotos/var/thumbs/retos/estrella%402x.png?m=1623435863);
+  background-repeat: no-repeat;
+  background-position: top left, top 8px left 6px;
+  background-size: 100%, 28px;
+  height: 43px;
+  width: 90px;
+  border-radius: 4px;
+  color: #606060;
+  margin: 0 auto;
+}
+.title_mod-act {
+  max-width: 200px;
+  text-align: center;
+  float: unset;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin: 0 auto;
+  padding-bottom: 18px;
+  letter-spacing: 1.7px;
+}
+.icono_prin_modulo-act {
+  float: unset;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin: 0 auto;
+  width: 100px;
+  padding-top: 70px;
+  padding-bottom: 8px;
+}
+.modulo {
+  margin: auto;
+  width: 100%;
+  height: 362px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+.modulo_uno-act {
+  background-image: url(https://bilan.pi-interactiva.com/fotos/var/albums/retos/Presentacion%20personaje-17-01.jpg?m=1623357981);
+}
+.modulo_dos-act {
+  background-image: url(https://bilan.pi-interactiva.com/fotos/var/albums/retos/fondo-presentacion%20personajes-07.jpg?m=1623357982);
+}
+.modulo_tres-act {
+  background-image: url(https://bilan.pi-interactiva.com/fotos/var/albums/retos/fondo-presentacion%20personajes-27.jpg?m=1623357989);
+}
+.sir-acts {
+  width: 200px;
+  float: right;
+  height: 100%;
+  right: 20%;
+  position: relative;
+}
+.sir-acts img {
+  width: 100%;
+  height: 99%;
+  float: right;
+  padding: 20px;
+  /* right: 100px; */
+}
+.t-f {
+  float: left;
+}
+.t-s {
+  margin-left: 5px;
+  margin-top: 10px;
+}
+.icon_back {
+  display: inline-block;
+  vertical-align: middle;
+  width: 45px;
+  height: 45px;
+  background: url(https://bilan.pi-interactiva.com/fotos/var/albums/retos/arrow-back-white%402x.png)
+    no-repeat center center;
+  background-size: 50p;
+  margin: 10px;
+  position: absolute;
+  left: 30px;
+}
+
+.main_modulo {
+  padding: 0;
+  max-width: unset;
+  margin: 0;
+}
+
+.act_mod-retos#matematicas,
+.el-domt#matematicas,
+.i-dom#matematicas {
+  background: #60120e;
+}
+.act_mod-retos#competenciasCiudadanas,
+.el-domt#competenciasCiudadanas,
+.i-dom#competenciasCiudadanas {
+  background: #283d40;
+}
+.act_mod-retos#competenciasSocioemocionales,
+.el-domt#competenciasSocioemocionales,
+.i-dom#competenciasSocioemocionales {
+  background: #302414;
+}
+.act_mod-retos#cienciasNaturales,
+.el-domt#cienciasNaturales,
+.i-dom#cienciasNaturales {
+  background: #0e2334;
+}
+.act_mod-retos#lenguaje,
+.el-domt#lenguaje,
+.i-dom#lenguaje {
+  background: #052808;
+}
+
+.dom-tricks-retos-se#matematicas {
+  background: #e0ada5;
+}
+.dom-tricks-retos-se#competenciasCiudadanas {
+  background: #afd4da;
+}
+.dom-tricks-retos-se#competenciasSocioemocionales {
+  background: #ecc98f;
+}
+.dom-tricks-retos-se#cienciasNaturales {
+  background: #9ab4ca;
+}
+.dom-tricks-retos-se#lenguaje {
+  background: #90b99b;
+}
+
+.flow-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*MODAL CAFE*/
+.power-modal-character {
+  background-color: #684120;
+}
+.content-cofe-modal {
+  border: 3px solid #fefefe;
+  padding: 5px;
+  height: 100%;
+}
+
+.puntaje_mod-act {
+  width: 110px;
+  float: unset;
+  margin-left: 0px;
+  margin-top: 0px;
+  font-size: 30px;
+  font-weight: 700;
+  padding-left: 24px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  background: url("../../../assets/images/Imagenes\ modulos/bg_puntos_mod.png");
+  background-repeat: no-repeat;
+  background-position: top left, top 8px left 6px;
+  background-size: 100%, 28px;
+  height: 43px;
+  width: 90px;
+  border-radius: 4px;
+  color: #606060;
+  margin: 0 auto;
+  font-family: "Fredoka One", cursive;
+  font-weight: 500;
+}

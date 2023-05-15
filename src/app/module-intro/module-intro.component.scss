@@ -1,0 +1,84 @@
+.nav_intro_actividades_retos {
+  display: flex;
+  justify-content: center;
+  width: 960px;
+  margin: auto;
+}
+.nav_intro_actividades_retos li {
+  width: 470px;
+  margin-bottom: 50px;
+}
+
+.submenu_retosyactividades {
+  margin: auto;
+  margin-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submenu_retosyactividades li {
+  width: 310px;
+  height: 16px;
+  float: left;
+  padding-top: 90px;
+  margin-bottom: 50px;
+  background-position: center;
+  cursor: pointer;
+}
+.submenu_retosyactividades li span a {
+  font-family: "Fredoka One", cursive;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #5e4228;
+}
+
+.submenu_retosyactividades {
+  margin: auto;
+  margin-left: 15px;
+}
+.submenu_retosyactividades li {
+  width: 310px;
+  height: 16px;
+  float: left;
+  padding-top: 90px;
+  margin-bottom: 50px;
+  background-position: center;
+}
+.submenu_retosyactividades li span a {
+  font-family: "Fredoka One", cursive;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #5e4228;
+}
+
+.submenu_retosyactividades li {
+  width: 250px;
+  height: 16px;
+  float: left;
+  padding-top: 90px;
+  margin-bottom: 50px;
+  background-position: center;
+}
+
+.btn_foro {
+  background-image: url("../../assets/images/Botones_menu/boton_foro@2x_opt.png");
+  background-repeat: no-repeat;
+}
+.btn_control {
+  background-image: url("../../assets/images/Botones_menu/boton_foro@2x_opt.png");
+  background-repeat: no-repeat;
+}
+.btn_maloka {
+  background-image: url("../../assets/images/Botones_menu/boton_maloka2@2x_opt.png");
+  background-repeat: no-repeat;
+}
+.btn_perfil {
+  background-image: url("../../assets/images/Botones_menu/boton_perfil@2x_opt.png");
+  background-repeat: no-repeat;
+}
+.btn_modulos {
+  background-image: url("../../assets/images/Botones_menu/boton_modulos@2x_opt.png");
+  background-repeat: no-repeat;
+}

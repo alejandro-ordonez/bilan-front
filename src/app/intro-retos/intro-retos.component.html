@@ -1,0 +1,467 @@
+<div class="texture_brgd" *ngIf="isValidModule">
+  <app-module-bar></app-module-bar>
+  <section class="p-800-p">
+    <style type="text/css"></style>
+    <br />
+    <br />
+    <h1>
+      <span class="t-f">
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="13.503"
+            height="23.619"
+            viewBox="0 0 13.503 23.619"
+          >
+            <defs>
+              <style>
+                .arrow {
+                  fill: #ffffff;
+                }
+              </style>
+            </defs>
+            <path
+              id="Icon_ionic-ios-arrow-back"
+              data-name="Icon ionic-ios-arrow-back"
+              class="arrow"
+              d="M15.321,18l8.937-8.93a1.688,1.688,0,0,0-2.391-2.384L11.742,16.8a1.685,1.685,0,0,0-.049,2.327L21.86,29.32a1.688,1.688,0,0,0,2.391-2.384Z"
+              transform="translate(-11.251 -6.194)"
+            ></path>
+          </svg>
+        </a>
+      </span>
+      ELIGE UNA ACCIÓN
+      <span class="t-s" [ngSwitch]="currentTribe.id">
+        <button
+          class="btn-modal"
+          id="myModal"
+          *ngSwitchCase="5"
+          (click)="openModal(infoModalMatematicas)"
+        >
+          <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+        </button>
+        <button
+          class="btn-modal"
+          id="myModal"
+          *ngSwitchCase="4"
+          (click)="openModal(infoModalCiudadanas)"
+        >
+          <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+        </button>
+        <button
+          class="btn-modal"
+          id="myModal"
+          *ngSwitchCase="1"
+          (click)="openModal(infoModalSocioemocionales)"
+        >
+          <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+        </button>
+        <button
+          class="btn-modal"
+          id="myModal"
+          *ngSwitchCase="3"
+          (click)="openModal(infoModalCiencias)"
+        >
+          <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+        </button>
+        <button
+          class="btn-modal"
+          id="myModal"
+          *ngSwitchCase="2"
+          (click)="openModal(infoModalLenguaje)"
+        >
+          <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+        </button>
+      </span>
+    </h1>
+    <br />
+    <ul class="bloque_modulos">
+      <a routerLink="./espiritual">
+        <li class='modulo modulo_uno-act {{currentTribeName}}'>
+          <div class="iz_mod act_mod-act">
+            <img
+              class="icono_prin_modulo-act"
+              src='../../assets/images/iconos/Chaman(Iconos,Retos)/{{ currentTribeName }}.png'
+            />
+            <h3 class="title_mod-act">ESPIRITUAL</h3>
+            <p class="puntaje_mod-act">
+              {{ getActionScore(1)}}
+            </p>
+          </div>
+          <div class="sir-acts">
+            <img
+              class="sir-acts-alcher"
+              src='../../assets/images/Personajes/{{currentTribe.element}}/espiritual.png'
+            />
+          </div>
+        </li>
+      </a>
+
+      <a routerLink="./exploracion">
+        <li class='modulo modulo_dos-act {{currentTribeName}}'>
+          <div class="iz_mod act_mod-act">
+            <img
+              class="icono_prin_modulo-act"
+              src='../../assets/images/iconos/Explorador(Iconos,Retos)/{{currentTribeName}}.png'
+            />
+            <h3 class="title_mod-act">EXPLORACIÓN</h3>
+            <p class="puntaje_mod-act">
+              {{  getActionScore(2)}}
+            </p>
+          </div>
+          <div class="sir-acts">
+            <img
+              class="sir-acts-alcher"
+              src="../../assets/images/Personajes/{{currentTribe.element}}/exploracion.png"
+            />
+          </div>
+        </li>
+      </a>
+      <a routerLink="./civil">
+        <li class='modulo modulo_tres-act {{currentTribeName}}'>
+          <div class="iz_mod act_mod-act">
+            <img
+              class="icono_prin_modulo-act"
+              src='../../assets/images/iconos/Explorador(Iconos,Retos)/{{ currentTribeName }}.png'
+            />
+            <h3 class="title_mod-act">CIVIL</h3>
+            <p class="puntaje_mod-act">{{  getActionScore(3)}}</p>
+          </div>
+          <div class="sir-acts">
+            <img
+              class="sir-acts-alcher"
+              src="../../assets/images/Personajes/{{currentTribe.element}}/civil.png"
+            />
+          </div>
+        </li>
+      </a>
+    </ul>
+  </section>
+</div>
+
+<app-page-not-found *ngIf="!isValidModule"></app-page-not-found>
+
+<ng-template #infoModalMatematicas let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>ACCIONES</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        ¡Te estábamos esperando! Aquí encontrarás las acciones que te permitirán
+        lograr el balance que Bilan necesita tanto. Encontrarás que existen 3
+        tipos de acciones: espiritual, exploración y civil.
+      </p>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            class="sir-acts-alcher"
+            src="assets/images/iconos/Chaman(Iconos,Retos)/matematicas.png"
+          />
+        </figure>
+        <p>
+          <strong> Acciones espirituales: </strong>
+          te enfrentarás a los espíritus, los elementos y a la magia, las
+          respuestas se comportan de manera “extraña. Son representados por los
+          chamanes.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="
+              assets/images/iconos/Explorador(Iconos,Retos)/matematicas.png
+            "
+            alt=""
+          />
+        </figure>
+        <p>
+          <strong> Acciones de exploración: </strong>
+          deberás ser valiente y arriesgar más. Los errores quitan más puntos,
+          pero son muy divertidos. Son representados por los exploradores.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="assets/images/iconos/Aldeano(Iconos,Retos)/matematicas.png"
+            alt=""
+          />
+        </figure>
+        <p>
+          <strong> Acciones civiles: </strong>
+          no castigan los errores, pero premian el esfuerzo y el trabajo. Son
+          representados por los aldeanos.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #infoModalCiudadanas let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>ACCIONES</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        ¡Te estábamos esperando! Aquí encontrarás las acciones que te permitirán
+        lograr el balance que Bilan necesita tanto. Encontrarás que existen 3
+        tipos de acciones: espiritual, exploración y civil.
+      </p>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            class="sir-acts-alcher"
+            src="assets/images/iconos/Chaman(Iconos,Retos)/competencias-ciudadanas.png"
+          />
+        </figure>
+        <p>
+          <strong> Acciones espirituales: </strong>
+          te enfrentarás a los espíritus, los elementos y a la magia, las
+          respuestas se comportan de manera “extraña. Son representados por los
+          chamanes.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="
+              assets/images/iconos/Explorador(Iconos,Retos)/competencias-ciudadanas.png
+            "
+            alt=""
+          />
+        </figure>
+        <p>
+          <strong> Acciones de exploración: </strong>
+          deberás ser valiente y arriesgar más. Los errores quitan más puntos,
+          pero son muy divertidos. Son representados por los exploradores.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="assets/images/iconos/Aldeano(Iconos,Retos)/competencias-ciudadanas.png"
+            alt=""
+          />
+        </figure>
+        <p>
+          <strong> Acciones civiles: </strong>
+          no castigan los errores, pero premian el esfuerzo y el trabajo. Son
+          representados por los aldeanos.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #infoModalSocioemocionales let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>ACCIONES</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        ¡Te estábamos esperando! Aquí encontrarás las acciones que te permitirán
+        lograr el balance que Bilan necesita tanto. Encontrarás que existen 3
+        tipos de acciones: espiritual, exploración y civil.
+      </p>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            class="sir-acts-alcher"
+            src="assets/images/iconos/Chaman(Iconos,Retos)/competencias-socioemocionales.png"
+          />
+        </figure>
+        <p>
+          <strong> Acciones espirituales: </strong>
+          te enfrentarás a los espíritus, los elementos y a la magia, las
+          respuestas se comportan de manera “extraña. Son representados por los
+          chamanes.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="
+              assets/images/iconos/Explorador(Iconos,Retos)/competencias-socioemocionales.png
+            "
+            alt=""
+          />
+        </figure>
+        <p>
+          <strong> Acciones de exploración: </strong>
+          deberás ser valiente y arriesgar más. Los errores quitan más puntos,
+          pero son muy divertidos. Son representados por los exploradores.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="assets/images/iconos/Aldeano(Iconos,Retos)/competencias-socioemocionales.png"
+            alt=""
+          />
+        </figure>
+        <p>
+          <strong> Acciones civiles: </strong>
+          no castigan los errores, pero premian el esfuerzo y el trabajo. Son
+          representados por los aldeanos.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #infoModalCiencias let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>ACCIONES</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        ¡Te estábamos esperando! Aquí encontrarás las acciones que te permitirán
+        lograr el balance que Bilan necesita tanto. Encontrarás que existen 3
+        tipos de acciones: espiritual, exploración y civil.
+      </p>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            class="sir-acts-alcher"
+            src="assets/images/iconos/Chaman(Iconos,Retos)/ciencias-naturales.png"
+          />
+        </figure>
+        <p>
+          <strong> Acciones espirituales: </strong>
+          te enfrentarás a los espíritus, los elementos y a la magia, las
+          respuestas se comportan de manera “extraña. Son representados por los
+          chamanes.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="
+              assets/images/iconos/Explorador(Iconos,Retos)/ciencias-naturales.png
+            "
+            alt=""
+          />
+        </figure>
+        <p>
+          <strong> Acciones de exploración: </strong>
+          deberás ser valiente y arriesgar más. Los errores quitan más puntos,
+          pero son muy divertidos. Son representados por los exploradores.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="assets/images/iconos/Aldeano(Iconos,Retos)/ciencias-naturales.png"
+            alt=""
+          />
+        </figure>
+        <p>
+          <strong> Acciones civiles: </strong>
+          no castigan los errores, pero premian el esfuerzo y el trabajo. Son
+          representados por los aldeanos.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #infoModalLenguaje let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>ACCIONES</h2>
+      <button
+        class="close"
+        type="button"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        ¡Te estábamos esperando! Aquí encontrarás las acciones que te permitirán
+        lograr el balance que Bilan necesita tanto. Encontrarás que existen 3
+        tipos de acciones: espiritual, exploración y civil.
+      </p>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            class="sir-acts-alcher"
+            src="assets/images/iconos/Aldeano(Iconos,Retos)/lenguaje.png"
+          />
+        </figure>
+        <p>
+          <strong> Acciones espirituales: </strong>
+          te enfrentarás a los espíritus, los elementos y a la magia, las
+          respuestas se comportan de manera “extraña. Son representados por los
+          chamanes.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="
+              assets/images/iconos/Explorador(Iconos,Retos)/lenguaje.png
+            "
+            alt=""
+          />
+        </figure>
+        <p>
+          <strong> Acciones de exploración: </strong>
+          deberás ser valiente y arriesgar más. Los errores quitan más puntos,
+          pero son muy divertidos. Son representados por los exploradores.
+        </p>
+      </div>
+      <div class="exp-container">
+        <figure class="img-container">
+          <img
+            src="assets/images/iconos/Aldeano(Iconos,Retos)/lenguaje.png"
+            alt=""
+          />
+        </figure>
+        <p>
+          <strong> Acciones civiles: </strong>
+          no castigan los errores, pero premian el esfuerzo y el trabajo. Son
+          representados por los aldeanos.
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>

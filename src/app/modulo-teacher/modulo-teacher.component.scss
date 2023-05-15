@@ -1,0 +1,22 @@
+.modulo-teacher {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: calc(100vh - 96px - 57px);
+  justify-items: center;
+  align-items: center;
+  max-height: 550px;
+}
+
+.modulo-teacher .actividades {
+  grid-row: 1 / span 2;
+}
+
+.btn-square__text {
+  color: #5e4228;
+  max-width: 275px;
+}
+.btn-square__img {
+  width: 130px;
+  margin: auto;
+}

@@ -1,0 +1,295 @@
+<div class="texture_brgd" ng *ngIf="isValidAbout">
+  <div class="about-head">
+    <div class="about-head__image p-5 fire_brgd"></div>
+    <div class="about-head__title p-2">
+      <div class="padding_1280pxx">
+        <h3>ACERCA DE BILAN</h3>
+      </div>
+    </div>
+  </div>
+  <div class="padding_1280pxx">
+    <nav
+      id="lateral_nav"
+      tabindex="1"
+      class="lateral_nav matematicas"
+      style="position: fixed; left: 105px; outline: none"
+    >
+      <div class="separador3"></div>
+      <a
+        class="btn_fases"
+        routerLink="../aprendizaje"
+        routerLinkActive="active"
+      >
+        <summary class="expandible__button">Aprendizaje</summary>
+      </a>
+      <a
+        class="btn_fases"
+        routerLink="../objetivo-del-juego"
+        routerLinkActive="active"
+      >
+        <summary class="expandible__button">Objetivo del juego</summary>
+      </a>
+      <a
+        class="btn_fases"
+        routerLink="../el-libro-de-bilan"
+        routerLinkActive="active"
+      >
+        <summary class="expandible__button">El libro de Bilan</summary>
+      </a>
+      <a
+        class="btn_fases"
+        routerLink="../pueblos-de-bilan"
+        routerLinkActive="active"
+      >
+        <summary class="expandible__button">Pueblos de Bilan</summary>
+      </a>
+      <a class="btn_fases" routerLink="../faq" routerLinkActive="active">
+        <summary class="expandible__button">FAQ</summary>
+      </a>
+    </nav>
+    <section
+      id="contenct_modulo"
+      class="contenct_modulo"
+      style="max-width: unset"
+      [ngSwitch]="about"
+    >
+      <div *ngSwitchCase="'aprendizaje'">
+        <h3>APRENDIZAJE</h3>
+
+        <p>
+          Apreciada (o) joven, encontrarás en esta gamificación, es decir en
+          esta estructura de retos de aprendizaje y habilidad una serie desafíos
+          que nos propone un mundo imaginario muy parecido al nuestro que solo
+          podrán ser superados si, y solamente si, cumples con la mecánica y las
+          reglas que hay entre esta App y la Plataforma Virtual (PV) a la que
+          debes subir unos productos específicos y así poder avanzar con los
+          diferentes personajes y niveles, para la conquista y el descubrimiento
+          de la manera como se logra el equilibrio que necesita Bilán y en
+          consecuencia el que necesita el mundo que habitamos. Sabemos que a
+          través de esta App y la PV podrás demostrarles a los creadores del
+          mundo y a los profesores que te acompañan de lo que eres capaz, de lo
+          que sabes y puedes, de tu competitividad para aprender y de todas tus
+          habilidades para ubicar la mejor estrategia. Superar el reto requiere
+          de concentración y atención a todos los detalles y resulta interesante
+          y ameno como experiencia práctica para formarse.
+        </p>
+      </div>
+      <div *ngSwitchCase="'objetivo-del-juego'">
+        <h3>OBJETIVO DEL JUEGO</h3>
+
+        <p>
+          Recuperar el balance de “Bilan”, un mundo que está pasando por un
+          período crítico y depende del equilibrio de los pueblos guardianes de
+          los elementos aire, fuego, tierra y agua, para que no desaparezca.
+          Para ello, se requiere que el jugador complete las actividades
+          propuestas en la plataforma, que le ayudarán a fortalecer las
+          competencias para superar los retos que propone este mundo y así
+          lograr que tenga una segunda oportunidad
+        </p>
+      </div>
+      <div *ngSwitchCase="'el-libro-de-bilan'">
+        <h3>EL LIBRO DE BILAN</h3>
+
+        <p>
+          Por siglos, Bilan fue un mundo que funcionó en un balance natural
+          entre los elementos y los humanos. Ese balance fue protegido por
+          pueblos nativos guardianes de cada elemento, pero hace algunos años,
+          los habitantes comenzaron a alterar el balance del mundo: el consumo
+          de los recursos naturales se ha desbocado sin mesura, la flora y la
+          fauna se han ido contaminando, acabando con especies y zonas, los
+          pueblos han tenido guerras entre ellos, llevando incluso a la
+          extinción de algunas culturas.
+        </p>
+
+        <figure class="w-25 m-auto p-3">
+          <img
+            src="../../assets/images/imagenes de Explicacion/icon_light@2x.png"
+            alt=""
+          />
+        </figure>
+        <p>
+          Todo esto, ha despertado la intranquilidad de los espíritus de los
+          elementos de la naturaleza. Como resultado, sus poderes han comenzado
+          a salirse de control causando desastres naturales que amenazan la vida
+          en Bilan. Ahora, el mundo se encuentra en desbalance y sólo el
+          estudiante podrá mantenerlo en equilibrio. Para ello, deberá ayudar a
+          estas tribus a recuperar su esplendor, pero siempre en balance.
+        </p>
+        <p>
+          Para esto debe asegurar que los pueblos controlen su poder por medio
+          de los ciclos de vida y transformación. Si lo consigue podrá controlar
+          los eventos catastróficos y hará que Bilan recupere su equilibrio y
+          que los espíritus vuelvan a tener confianza en los humanos.
+        </p>
+      </div>
+      <div *ngSwitchCase="'pueblos-de-bilan'">
+        <h3>PUEBLOS DE BILAN</h3>
+
+        <div class="pueblo-head">
+          <figure class="pueblo-logo">
+            <img
+              src="assets/images/iconos/Elementos/modules/competencias-socioemocionales.png"
+              alt=""
+            />
+          </figure>
+          <h4>Talio</h4>
+          <h5>Competencias socioemocionales</h5>
+        </div>
+        <p>
+          <strong> Elemento adyacente: </strong> Tierra <br />
+          <strong> Elemento opuesto: </strong> Agua <br />
+          <strong> Competencias: </strong>
+          Toma responsable de decisiones, autoconciencia, autoregulación <br />
+          <strong> Características principales: </strong> <br />
+          Están en un permanente aprendizaje sobre sí mismos y los demás en
+          conexión con el universo. La empatía es primordial en su desarrollo
+          como cultura y es su principal habilidad. A veces, su exceso de
+          empatía hace que les cueste defender su opinión frente a los demás. A
+          pesar de saber cómo manejar el conflicto, tratan de evitarlo.
+        </p>
+        <img
+          class="divicion_image"
+          style="margin-top: 20px; width: 100%"
+          src="assets/images/fondos/linea@2x.png"
+        />
+        <br />
+        <div class="pueblo-head">
+          <figure class="pueblo-logo">
+            <img
+              src="assets/images/iconos/Elementos/modules/lenguaje.png"
+              alt=""
+            />
+          </figure>
+          <h4>Geodin</h4>
+          <h5>Lenguaje</h5>
+        </div>
+        <p>
+          <strong> Elemento adyacente: </strong> Agua <br />
+          <strong> Elemento opuesto: </strong> Aire <br />
+          <strong> Competencias: </strong>
+          Toma responsable de decisiones, autoconciencia, autoregulación <br />
+          <strong> Características principales: </strong> <br />
+          Producción textual, Comprensión e
+          interpretación textual, Literatura, medios de
+          comunicación y otros sistemas de símbolos, ética
+          de la comunicación
+        </p>
+        <img
+          class="divicion_image"
+          style="margin-top: 20px; width: 100%"
+          src="assets/images/fondos/linea@2x.png"
+        />
+        <br />
+        <div class="pueblo-head">
+          <figure class="pueblo-logo">
+            <img
+              src="assets/images/iconos/Elementos/modules/ciencias-naturales.png"
+              alt=""
+            />
+          </figure>
+          <h4>Warten</h4>
+          <h5>Ciencias naturales</h5>
+        </div>
+        <p>
+          <strong> Elemento adyacente: </strong> Aire <br />
+          <strong> Elemento opuesto: </strong> Fuego <br />
+          <strong> Competencias: </strong>
+          entorno vivo, entorno natural, ciencia, tecnología y sociedad. <br />
+          <strong> Características principales: </strong> <br />
+          Entienden el lenguaje del universo mejor que nadie, son capaces de ver
+          las diferentes capas de la vida que los rodea y pueden reconocen los
+          pequeños mundos que caben en una gota de agua. Sin embargo, a veces
+          olvidan el lenguaje humano y les cuesta darse a entender.
+        </p>
+        <img
+          class="divicion_image"
+          style="margin-top: 20px; width: 100%"
+          src="assets/images/fondos/linea@2x.png"
+        />
+        <br />
+        <div class="pueblo-head">
+          <figure class="pueblo-logo">
+            <img
+              src="assets/images/iconos/Elementos/modules/competencias-ciudadanas.png"
+              alt=""
+            />
+          </figure>
+          <h4>Nebulan</h4>
+          <h5>Competencias ciudadanas</h5>
+        </div>
+        <p>
+          <strong> Elemento adyacente: </strong> Fuego <br />
+          <strong> Elemento opuesto: </strong> Luz <br />
+          <strong> Competencias: </strong>
+          Convivencia y paz, Participación y responsabilidad democrática,
+          Pluralidad, identidad y valoración de las diferencias <br />
+          <strong> Características principales: </strong> <br />
+          Su mayor preocupación es aprender a mantener a Bilan en paz y por eso
+          trabajan desde entender la naturaleza de los pueblos y sus lógicas
+          para crear la mejor convivencia posible. Sin embargo, a veces temen
+          ofender a los demás y eso los angustia mucho. Pueden tomarse mucho
+          tiempo para hacer hacer algo porque quieren estar seguros de estar
+          haciendo lo correcto.
+        </p>
+        <img
+          class="divicion_image"
+          style="margin-top: 20px; width: 100%"
+          src="assets/images/fondos/linea@2x.png"
+        />
+        <br />
+        <div class="pueblo-head">
+          <figure class="pueblo-logo">
+            <img
+              src="assets/images/iconos/Elementos/modules/matematicas.png"
+              alt=""
+            />
+          </figure>
+          <h4>Yarkin</h4>
+          <h5>Matemáticas</h5>
+        </div>
+        <p>
+          <strong> Elemento adyacente: </strong> Luz <br />
+          <strong> Elemento opuesto: </strong> Tierra <br />
+          <strong> Competencias: </strong>
+          Pensamiento y sist. numérico, pensamiento espacial y sistema
+          geométrico, pensamiento aleatorio y sistema de datos, pensamiento
+          variacional y sistema algebráico y analítico. <br />
+          <strong> Características principales: </strong> <br />
+          Apasionados por la lógica y la razón. Ven en la naturaleza patrones y
+          secuencias qué definen y explican el universo. A veces pueden parecer
+          secos y ajenos porque solo usan conceptos que ellos creen necesarios,
+          entienden más de emociones de lo que parece, a pesar de que no lo
+          expresan. Solo invierten su tiempo en hablar de lo estrictamente
+          necesario, lo que puede hacer que se pierdan de cosas extrañas,
+          cotidianas o sencillas que enriquecen la visión del mundo.
+        </p>
+        <br />
+        <br />
+      </div>
+      <div *ngSwitchCase="'faq'">
+        <h3>PREGUNTAS FRECUENTES</h3>
+        <p>
+          Aquí encontrarás las indicaciones generales del juego y las respuestas
+          a algunas de las preguntas más frecuentes.
+        </p>
+
+        <p>
+          <strong> ¿Qué es Bilan? </strong>
+          Bilan es una aplicación orientada al fortalecimiento de competencias
+          básicas, ciudadanas y socioemocionales que se enmarca en una narrativa
+          ficcional y está orientada a jóvenes, adolescentes y profesores de
+          educación media.
+        </p>
+
+        <p>
+          <strong> ¿Se puede reiniciar el juego? </strong>
+          No. Una vez inicies el juego no se puede reiniciar por eso debes
+          prestar mucha atención a la información que recibas y leer con
+          cuidado.
+        </p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<app-page-not-found *ngIf="!isValidAbout"></app-page-not-found>

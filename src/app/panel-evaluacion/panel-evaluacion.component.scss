@@ -1,0 +1,109 @@
+.btn-square--background {
+  font-weight: 500;
+  font-family: "Fredoka One", cursive;
+  width: 80px;
+  height: 80px;
+  background-image: url("../../assets/images/Botones_menu/contenedor@2x.png");
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-size: 1.17em;
+  color: #efd9c5;
+  cursor: pointer;
+}
+.btn-square--background.active {
+  background-image: url("../../assets/images/Botones_menu/Contenedor_B@2x.png");
+  color: #5e4228;
+}
+.grados {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  align-items: center;
+  justify-items: center;
+  padding: 0 70px;
+  grid-gap: 10px;
+}
+aside .btn_intro {
+  color: #efd9c5;
+  font-family: "Fredoka One", cursive;
+  margin-bottom: 15px;
+}
+aside .btn_intro .active {
+  color: #efd9c5;
+}
+.modal__text {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+}
+.modal__text .modal-retroalimentacion {
+  width: 50%;
+}
+.modal__text .modal-retroalimentacion h3 {
+  margin-bottom: 10px;
+  text-align: start;
+}
+.modal__text .modal-retroalimentacion textarea {
+  width: 100%;
+  padding: 20px;
+  background-color: #fff8d8b3;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #8e6040;
+  color: #8e6040;
+}
+.modal__text .modal-form-evaluation {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+.modal__text .modal-form-evaluation .modal-form-evaluation__text select {
+  border-radius: 5px;
+  margin-bottom: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 130px;
+  height: 30px;
+  border: 2px solid;
+  color: #8e6040;
+  margin-left: 20px;
+  background: white;
+}
+
+.modal-form-evaluation {
+  .modal-form-evaluation__text {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.modal-container {
+  padding: 30px 12px;
+
+  .modal__footer {
+    margin-top: -20px;
+  }
+}
+
+.student-table__data {
+  height: unset;
+
+  &__document {
+    a {
+      cursor: pointer;
+    }
+  }
+}
+
+.modal-background {
+  background: #13162469;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  height: 100%;
+  top: 0;
+}

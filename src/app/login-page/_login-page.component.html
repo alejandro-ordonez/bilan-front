@@ -1,0 +1,480 @@
+<div class="login-page" *ngIf="href == '/login'">
+  <img class="logo" src="assets/images/logos/Billan_cabezote@2x.png" />
+  <h1 class="title">INGRESAR</h1>
+  <form
+    *ngIf="!newUserFormIsActive && !newTeacherFormIsActive"
+    class="login-form"
+    [formGroup]="loginForm"
+    (submit)="onSubmit($event)"
+    novalidate
+  >
+    <app-select
+      label="Tipo de documento"
+      class="input"
+      formControlName="documentType"
+      [options]="options"
+      placeholder="Tipo de documento"
+    ></app-select>
+
+    <app-textfield
+      label="Documento"
+      class="input"
+      formControlName="document"
+      type="text"
+      placeholder="Número de documento"
+    ></app-textfield>
+
+    <app-textfield
+      label="Contraseña"
+      class="input"
+      formControlName="password"
+      type="password"
+      placeholder="Contraseña"
+    ></app-textfield>
+
+    <app-radio-select
+      label="Tipo de perfil"
+      class="input"
+      formControlName="userType"
+      [options]="radioOptions"
+    ></app-radio-select>
+
+    <p *ngIf="loginForm.invalid && loginButtonClicked">
+      <ngb-alert type="danger" [dismissible]="false">
+        Completa <strong>todos</strong> los <strong>campos</strong>
+      </ngb-alert>
+    </p>
+
+    <app-button
+      type="submit"
+      [isDisabled]="loginForm.invalid"
+      (click)="loginButtonClicked = true"
+      text="Iniciar sesión"
+    ></app-button>
+  </form>
+
+
+    <div class="login-form">
+      <app-select
+        label="Colegio"
+        class="input"
+        formControlName="school"
+        [options]="schoolOptions"
+        placeholder="Colegio"
+      ></app-select>
+
+      <app-select
+        label="Denominación de Curso"
+        class="input"
+        formControlName="courseType"
+        [options]="selectCourseOptions"
+        placeholder="Tipo de curso"
+      ></app-select>
+
+      <div class="check-container">
+        <div class="form-check">
+          <input
+            formControlName="décimo"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="checkDecimo"
+          />
+          <label class="form-check-label" for="checkDecimo"> Décimo </label>
+        </div>
+        <div class="form-check">
+          <input
+            formControlName="once"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="checkOnce"
+          />
+          <label class="form-check-label" for="checkOnce"> Once </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-form">
+      <div *ngFor="let grade of gradeInputs">
+        <div *ngIf="newTeacherForm.value[grade]">
+          <h3 *ngIf="newTeacherForm.value.courseType">Cursos de {{ grade }}</h3>
+          <div
+            [ngSwitch]="newTeacherForm.value.courseType"
+            class="check-container"
+          >
+            <div class="check-container" *ngSwitchCase="'A'">
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'A'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkA' + grade"
+                />
+                <label class="form-check-label" for="checkADecimo"> A </label>
+              </div>
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'B'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkB' + grade"
+                />
+                <label class="form-check-label" [for]="'checkB' + grade">
+                  B
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'C'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkC' + grade"
+                />
+                <label class="form-check-label" [for]="'checkC' + grade">
+                  C
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'D'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkD' + grade"
+                />
+                <label class="form-check-label" [for]="'checkD' + grade">
+                  D
+                </label>
+              </div>
+            </div>
+
+            <div class="check-container" *ngSwitchCase="'1'">
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'A'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkA' + grade"
+                />
+                <label class="form-check-label" for="checkADecimo"> 1 </label>
+              </div>
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'B'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkB' + grade"
+                />
+                <label class="form-check-label" [for]="'checkB' + grade">
+                  2
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'C'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkC' + grade"
+                />
+                <label class="form-check-label" [for]="'checkC' + grade">
+                  3
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'D'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkD' + grade"
+                />
+                <label class="form-check-label" [for]="'checkD' + grade">
+                  4
+                </label>
+              </div>
+            </div>
+
+            <div class="check-container" *ngSwitchCase="'01'">
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'A'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkA' + grade"
+                />
+                <label class="form-check-label" [for]="'checkA' + grade">
+                  01
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'B'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkB' + grade"
+                />
+                <label class="form-check-label" [for]="'checkB' + grade">
+                  02
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'C'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkC' + grade"
+                />
+                <label class="form-check-label" [for]="'checkC' + grade">
+                  03
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  [formControlName]="grade + 'D'"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'checkD' + grade"
+                />
+                <label class="form-check-label" [for]="'checkD' + grade">
+                  04
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="materia-container" *ngFor="let grade of gradeInputs">
+        <h2
+          *ngIf="newTeacherForm.value[grade] && newTeacherForm.value.courseType"
+        >
+          {{ grade | titlecase }}
+        </h2>
+        <div *ngFor="let course of courseInputs">
+          <div *ngIf="newTeacherForm.value[grade + course]">
+            <h3>Que materias dicta en {{ grade }} {{ course }}</h3>
+            <div class="check-container">
+              <div class="form-check" *ngFor="let materia of materiainputs">
+                <input
+                  [formControlName]="grade + course + materia"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  [id]="'check' + grade + course + materia"
+                />
+                <label
+                  class="form-check-label"
+                  [for]="'check' + grade + course + materia"
+                >
+                  {{ materia }}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr
+          *ngIf="newTeacherForm.value[grade] && newTeacherForm.value.courseType"
+        />
+      </div>
+    </div>
+
+    <app-button
+      type="submit"
+      [isDisabled]="
+        newTeacherForm.invalid ||
+        newUserForm.invalid ||
+        newUserForm.controls.passwordRepeat.value !=
+          newUserForm.controls.password.value
+      "
+      text="Guardar Datos"
+    ></app-button>
+  </form>
+  <form
+    *ngIf="newUserFormIsActive"
+    class="login-form"
+    [formGroup]="newUserForm"
+    (submit)="updatePassword()"
+    novalidate
+  >
+    <app-textfield
+      label="Contraseña"
+      class="input"
+      formControlName="password"
+      type="password"
+      placeholder="Contraseña"
+    ></app-textfield>
+
+    <app-textfield
+      label="Confirmar Contraseña"
+      class="input"
+      formControlName="passwordRepeat"
+      type="password"
+      placeholder="Contraseña"
+    ></app-textfield>
+    <p
+      *ngIf="
+        newUserForm.controls.passwordRepeat.valid &&
+        newUserForm.controls.passwordRepeat.value !=
+          newUserForm.controls.password.value
+      "
+    >
+      <ngb-alert type="danger" [dismissible]="false">
+        Las contraseñas <strong>no coinciden</strong>
+      </ngb-alert>
+    </p>
+
+    <app-button
+      type="submit"
+      [isDisabled]="
+        newUserForm.invalid ||
+        newUserForm.controls.passwordRepeat.value !=
+          newUserForm.controls.password.value
+      "
+      text="Guardar Contraseña"
+    ></app-button>
+  </form>
+</div>
+
+<div class="register-page" *ngIf="href == '/register'">
+  <div class="bilan_presentation blue_brgd">
+    <img class="logo_intro" src="assets/images/logos/Billan_cabezote@2x.png" />
+    <h1 class="title">REGISTRARSE</h1>
+    <form class="form_login_register">
+      <form
+        class="login-form form"
+        [formGroup]="registerForm"
+        (submit)="register()"
+        novalidate
+      >
+        <app-textfield
+          label="Nombre"
+          class="input"
+          formControlName="name"
+          type="name"
+          placeholder="Nombre"
+        ></app-textfield>
+
+        <app-textfield
+          label="Apellido"
+          class="input"
+          formControlName="lastName"
+          type="name"
+          placeholder="Apellido"
+        ></app-textfield>
+
+        <app-select
+          label="Tipo de documento"
+          class="input"
+          formControlName="documentType"
+          [options]="options"
+          placeholder="Tipo de documento"
+        ></app-select>
+
+        <app-textfield
+          label="Documento"
+          class="input"
+          formControlName="document"
+          type="text"
+          placeholder="Número de documento"
+        ></app-textfield>
+
+        <app-textfield
+          label="Contraseña"
+          class="input"
+          formControlName="password"
+          type="password"
+          placeholder="Contraseña"
+        ></app-textfield>
+
+        <app-textfield
+          label="Confirmar Contraseña"
+          class="input"
+          formControlName="passwordRepeat"
+          type="password"
+          placeholder="Contraseña"
+        ></app-textfield>
+        <p
+          *ngIf="
+            registerForm.controls.passwordRepeat.valid &&
+            registerForm.controls.passwordRepeat.value !=
+              registerForm.controls.password.value
+          "
+        >
+          <ngb-alert type="danger" [dismissible]="false">
+            Las contraseñas <strong>no coinciden</strong>
+          </ngb-alert>
+        </p>
+
+        <app-textfield
+          label="Correo electronico"
+          class="input"
+          formControlName="email"
+          type="email"
+          placeholder="ejemplo@bilan.com"
+        ></app-textfield>
+        <p
+          *ngIf="
+            registerForm.controls.email.dirty &&
+            registerForm.controls.email.invalid
+          "
+        >
+          <ngb-alert type="danger" [dismissible]="false">
+            Ingresa un correo valido
+          </ngb-alert>
+        </p>
+
+        <app-select
+          label="Grado"
+          class="input"
+          formControlName="grade"
+          [options]="gradeOptions"
+          placeholder="Grado"
+        ></app-select>
+
+        <app-select
+          label="Curso"
+          class="input"
+          formControlName="course"
+          [options]="courseOptions"
+          placeholder="Curso"
+        ></app-select>
+
+        <app-select
+          label="Nombre institución"
+          class="input"
+          formControlName="schoolName"
+          [options]="schoolOptions"
+          placeholder="Nombre institución"
+        ></app-select>
+
+        <app-radio-select
+          label="Tipo de perfil"
+          class="input"
+          formControlName="userType"
+          [options]="radioOptions"
+        ></app-radio-select>
+
+        <app-button
+          type="submit"
+          [isDisabled]="
+            registerForm.invalid ||
+            registerForm.controls.passwordRepeat.value !=
+              registerForm.controls.password.value
+          "
+          text="Registrarse"
+        ></app-button>
+      </form>
+    </form>
+  </div>
+</div>

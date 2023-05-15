@@ -1,0 +1,18 @@
+<div class="app-select">
+  <label class="label" ngif="label !== ''" [for]="id">{{ label }}</label>
+  <select
+    #input
+    (change)="onChange(input.value)"
+    class="app-select-input"
+    [id]="id"
+    [(ngModel)]="value"
+  >
+    <option value="" disabled selected>{{ label }}</option>
+    <option
+      *ngFor="let option of options; let idx = index"
+      [ngValue]="option.key"
+    >
+      {{ option.value }}
+    </option>
+  </select>
+</div>

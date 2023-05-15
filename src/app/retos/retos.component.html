@@ -1,0 +1,72 @@
+<div class="texture_brgd" *ngIf="isValidModule">
+  <app-module-bar></app-module-bar>
+  <div class="texture_brgd">
+    <div class="padding_1280pxx">
+      <section class="p-800-p">
+        <br />
+        <br />
+        <h1>ELIGE UN RETO</h1>
+        <br />
+        <ul class="bloque_modulos">
+          <li class="modulo modulo_uno-act" [id]="currentTribeName">
+            <div class="iz_mod act_mod-retos" [id]="currentTribeName">
+              <img
+                class="icono_prin_modulo-retos"
+                src="../../assets/images/iconos/Chaman(Iconos,Retos)/{{
+                  currentTribeName
+                }}.png"
+              />
+              <h3 class="title_mod-retos">
+                {{ currentAction.name | uppercase }}
+              </h3>
+            </div>
+            <div class="sir-acts">
+              <img
+                class="sir-acts-alcher"
+                src="../../assets/images/Personajes/{{
+                  currentTribe.element
+                }}/{{ currentAction.name?.replace('ó', 'o') | lowercase }}.png"
+              />
+            </div>
+          </li>
+          <li
+            *ngFor="let challenge of challenges"
+            [class.disabled]="challenge.cost > totalTotems"
+            class="dom-tricks-retos-se btn-modal"
+            id="subirArchivoModal3"
+            (click)="goToReto(challenge)"
+            [id]="currentTribeName"
+          >
+            <div class="el-domt" [id]="currentTribeName">
+              <div class="eldom">
+                <div class="dom-t">
+                  <img
+                    src="../../assets/images/iconos/retos/{{
+                    getChallengeName(challenge)
+                    }}.png"
+                  />
+                </div>
+              </div>
+            </div>
+            <span class="i-dom" [id]="currentTribeName">
+              <b>{{ challenge.cost }}</b>
+              <img
+                src="../../assets/images/Botones_menu/totem_basico@2x_opt.png"
+              />
+            </span>
+            <p class="tiles">{{ challenge.name  }}</p>
+          </li>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+
+<app-page-not-found *ngIf="!isValidModule"></app-page-not-found>

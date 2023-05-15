@@ -1,0 +1,64 @@
+<div class="texture_brgd">
+  <main class="maloka">
+    <h1 class="maloka__title">
+      MALOKA
+      <button
+        class="btn-modal"
+        id="modal-maloka"
+        (click)="openModal(malokaModal)"
+      >
+        <img src="assets/images/Botones_menu/boton_info@2x_opt.png" />
+      </button>
+    </h1>
+    <ul class="bloque_modulos">
+      <a routerLink="/maloka/civil">
+        <li class="modulo modulo_civil">
+          <div class="iz_mod">
+            <h3 class="title_mod">CIVIL</h3>
+          </div>
+        </li>
+      </a>
+      <a routerLink="/maloka/espiritual">
+        <li class="modulo modulo_espiritual">
+          <div class="iz_mod">
+            <h3 class="title_mod">ESPIRITUAL</h3>
+          </div>
+        </li>
+      </a>
+      <a routerLink="/maloka/exploracion">
+        <li class="modulo modulo_exploracion">
+          <div class="iz_mod">
+            <h3 class="title_mod">EXPLORACIÓN</h3>
+          </div>
+        </li>
+      </a>
+    </ul>
+  </main>
+</div>
+
+<ng-template #malokaModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>MALOKA</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        La maloka es el lugar en donde podrás ver si eres mas explorador,
+        espiritual o civil.
+      </p>
+
+      <p>
+        Aparecerás en la Maloka de la categoría en la que tengas mayor cantidad
+        de puntos.
+      </p>
+
+      <p>
+        También podrás ver en dónde están tus compañeros y que tantos puntos
+        tienen de cada uno de los pueblos por categoría.
+      </p>
+    </div>
+  </div>
+</ng-template>

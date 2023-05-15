@@ -1,0 +1,285 @@
+<div class="if-container" *ngIf="modules[grade][page - 1].content">
+  <div [class]="'module-bar module-bar--lenguaje'">
+    <div class="conteedor_main_menu">
+      <div class="arrow-back">
+        <button (click)="back()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="13.503"
+            height="23.619"
+            viewBox="0 0 13.503 23.619"
+          >
+            <defs>
+              <style>
+                .arrow {
+                  fill: #ffffff;
+                }
+              </style>
+            </defs>
+            <path
+              id="Icon_ionic-ios-arrow-back"
+              data-name="Icon ionic-ios-arrow-back"
+              class="arrow"
+              d="M15.321,18l8.937-8.93a1.688,1.688,0,0,0-2.391-2.384L11.742,16.8a1.685,1.685,0,0,0-.049,2.327L21.86,29.32a1.688,1.688,0,0,0,2.391-2.384Z"
+              transform="translate(-11.251 -6.194)"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class="module-card__header">
+        <figure class="module-card__header__img" style="width: 70px">
+          <img
+            [src]="'assets/images/iconos/Elementos/modules/lenguaje.png'"
+            alt=""
+          />
+        </figure>
+        <div class="module-card__header__text">
+          <h3 class="module-card__header__text__title">
+            {{ "lenguaje" | materiaPipe }}
+          </h3>
+          <i class="module-card__header__text__span">Geodin</i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="texture_brgd">
+    <div class="padding_1280pxx">
+      <nav
+        class="lateral_nav lenguaje"
+        id="lateral_nav"
+        tabindex="1"
+        style="position: fixed; left: 105px; overflow-x: hidden; outline: none"
+        *ngIf="grade == '10'"
+      >
+        <div class="separador3"></div>
+        <details class="btn_fases">
+          <summary class="expandible__button">Fase Preactiva</summary>
+          <a routerLink="../1"><span></span>Actividad 1</a>
+        </details>
+        <br />
+        <details class="btn_fases">
+          <summary class="expandible__button">Fase Interactiva</summary>
+          <a routerLink="../5"><span></span>Actividad 2</a>
+        </details>
+        <br />
+        <details class="btn_fases">
+          <summary class="expandible__button">Fase Postactiva</summary>
+          <a routerLink="../13"><span></span>Actividad 3</a>
+        </details>
+        <ul class="btn_fases">
+          <ul class="span_">
+            <span class="icon_alerta"></span>
+            <p class="p_parrafo">
+              Al final de cada fase debes cargar el archivo con los ejercicios
+              desarrollados en las actividades. Recopila todos los ejercicios en
+              un (1) sólo documento o imagen.
+            </p>
+          </ul>
+          <ul class="span_">
+            <span
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Competencias Básicas"
+              class="icon_comp1"
+            ></span
+            ><span
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Competencias Socioemocionales"
+              class="icon_comp2"
+            ></span
+            ><span
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Competencias Ciudadanas"
+              class="icon_comp3"
+            ></span>
+            <p class="p_parrafo">
+              <span class="span_competencias">COMPETENCIAS</span>En cada
+              actividad se fortalecen algunas de las siguientes competencias,
+              sus iconos indicarán cuál de ellas.
+            </p>
+            <br /><br />
+          </ul>
+        </ul>
+        <div class="lateral_nav-separador"></div>
+      </nav>
+      <nav
+        class="lateral_nav lenguaje"
+        id="lateral_nav"
+        tabindex="1"
+        style="position: fixed; left: 105px; overflow-x: hidden; outline: none"
+        *ngIf="grade == '11'"
+      >
+        <div class="separador3"></div>
+        <details class="btn_fases">
+          <summary class="expandible__button">Fase Preactiva</summary>
+          <a routerLink="../1" href="/modulos/lenguaje/actividades/11/1"
+            ><span></span>Actividad 1</a
+          ><a routerLink="../2" href="/modulos/lenguaje/actividades/11/2"
+            ><span></span>Actividad 2</a
+          ><a routerLink="../3" href="/modulos/lenguaje/actividades/11/3"
+            ><span></span>Actividad 3</a
+          ><a routerLink="../4" href="/modulos/lenguaje/actividades/11/4"
+            ><span></span>Actividad 4</a
+          >
+        </details>
+        <br />
+        <details class="btn_fases">
+          <summary class="expandible__button">Fase Interactiva</summary>
+          <a routerLink="../5" href="/modulos/lenguaje/actividades/11/5"
+            ><span></span>Actividad 5</a
+          ><a routerLink="../6" href="/modulos/lenguaje/actividades/11/6"
+            ><span></span>Actividad 6</a
+          >
+        </details>
+        <br />
+        <details class="btn_fases">
+          <summary class="expandible__button">Fase Postactiva</summary>
+          <a routerLink="../10" href="/modulos/lenguaje/actividades/11/10"
+            ><span></span>Actividad 7</a
+          >
+        </details>
+        <ul class="btn_fases">
+          <ul class="span_">
+            <span class="icon_alerta"></span>
+            <p class="p_parrafo">
+              Al final de cada fase debes cargar el archivo con los ejercicios
+              desarrollados en las actividades. Recopila todos los ejercicios en
+              un (1) sólo documento o imagen.
+            </p>
+          </ul>
+          <ul class="span_">
+            <span
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Competencias Básicas"
+              class="icon_comp1"
+            ></span
+            ><span
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Competencias Socioemocionales"
+              class="icon_comp2"
+            ></span
+            ><span
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Competencias Ciudadanas"
+              class="icon_comp3"
+            ></span>
+            <p class="p_parrafo">
+              <span class="span_competencias">COMPETENCIAS</span>En cada
+              actividad se fortalecen algunas de las siguientes competencias,
+              sus iconos indicarán cuál de ellas.
+            </p>
+            <br /><br />
+          </ul>
+        </ul>
+        <div class="lateral_nav-separador"></div>
+      </nav>
+
+      <section
+        class="contenct_modulo"
+        id="contenct_modulo"
+        style="max-width: unset"
+        [innerHTML]="modules[grade][page - 1].content"
+      ></section>
+      <div
+        class="if-container"
+        class="contenct_modulo"
+        style="max-width: unset"
+        *ngIf="modules[grade][page - 1].upload"
+      >
+        <div class="mod_tar">
+          <div class="mod_tar_iz">
+            <p
+              class="btn_form btn_intro"
+              (click)="openModal(subirArchvioModal)"
+            >
+              Subir Archivo
+            </p>
+          </div>
+          <div class="mod_tar_der disabled">
+            <p class="btn_form btn_intro">
+              <small> Ver calificación </small>
+            </p>
+          </div>
+        </div>
+      </div>
+      <section class="contenct_modulo" style="max-width: unset">
+        <ul class="next-prev">
+          <a *ngIf="!firstPage" [routerLink]="'../' + (page - 1)">
+            <li class="atra_btn_mod italic_">
+              <span class="icon_anterior"></span>Atrás
+            </li>
+          </a>
+          <a>
+            <li class="numbers_np">{{ indexPage }}</li>
+          </a>
+          <a *ngIf="!lastPage" [routerLink]="'../' + (page + 1)">
+            <li class="adelante_btn_mod italic_">
+              Continuar<span class="icon_proximo"></span>
+            </li>
+          </a>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+
+<ng-template #subirArchvioModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>CARGA TU ARCHIVO</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Puedes subir un archivo un documento o imagen con las actividades
+        desarrolladas en este módulo.
+      </p>
+      <div class="exp-container"></div>
+      <form [formGroup]="uploadForm" (submit)="uploadEvidence()">
+        <div
+          class="files__button"
+          style="display: flex; justify-content: space-around; margin-top: 80px"
+        >
+          <label class="btn_intro">
+            Subir archivo
+            <input
+              (change)="onFileSelect($event)"
+              formControlName="file"
+              type="file"
+              name="uploadfile"
+              style="display: none"
+              accept="application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword,image/*"
+            />
+          </label>
+        
+        </div>
+
+        <p *ngIf="this.uploadForm.value.file.name">
+          Archivo a subir:
+          {{ this.uploadForm.value.file.name }}
+        </p>
+        <div
+          class="files__button"
+          style="display: flex; justify-content: space-around"
+        >
+          <app-button
+            type="submit"
+            [isDisabled]="!isValidFile"
+            text="Enviar evidencia"
+          ></app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<app-page-not-found
+  *ngIf="!modules[grade][page - 1].content"
+></app-page-not-found>

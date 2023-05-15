@@ -1,0 +1,110 @@
+.section-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #5e4228;
+}
+
+.information-title {
+  display: flex;
+  align-items: center;
+}
+.information-title h2 {
+  margin: 24px;
+  color: #5e4228;
+}
+
+.artefact__slider .splide__arrow,
+.profile__statics .splide__arrow {
+  right: -3%;
+  background: none;
+  width: 50px;
+  height: 50px;
+}
+.artefact__slider .splide__arrow svg,
+.profile__statics .splide__arrow svg {
+  width: 100%;
+  height: 100%;
+}
+.artefact__slider .splide__arrow--prev {
+  left: -3%;
+}
+.artefact__slider__counter {
+  padding: 5px;
+  border: 1px solid;
+  color: #311407;
+  width: fit-content;
+  border-radius: 5px;
+  background-color: #5b3e2a1a;
+  margin: 20px auto;
+}
+
+li.artefact__card {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 25px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.artefact__card.is-active {
+  transform: scale(1.1);
+}
+
+.artefact__card--block {
+  background: url("https://i.postimg.cc/gj2JSkgj/tarjetab-Bloq2x.png");
+}
+.artefact__card--agua {
+  background: url("./../../assets/images/Tarjetas-artefactos/T-A_Fondo_Agua@2x.png");
+}
+.artefact__card--aire {
+  background: url("./../../assets/images/Tarjetas-artefactos/T-A_Fondo_Aire@2x.png");
+}
+.artefact__card--fuego {
+  background: url("./../../assets/images/Tarjetas-artefactos/T-A_Fondo_Fuego@2x.png");
+}
+.artefact__card--luz {
+  background: url("./../../assets/images/Tarjetas-artefactos/T-A_Fondo_Luz@2x.png");
+}
+.artefact__card--tierra {
+  background: url("./../../assets/images/Tarjetas-artefactos/T-A_Fondo_Tierra@2x.png");
+}
+
+.artefact__card__logo {
+  width: 51%;
+}
+
+.artefact__card__text {
+  text-align: start;
+  color: white;
+  font-size: 12px;
+  margin-top: 0;
+  line-height: 1.25;
+}
+
+.splide__list {
+  padding: 20px 0px !important;
+  transition: transform 400ms cubic-bezier(0.42, 0.65, 0.27, 0.99) 0s;
+}
+
+main {
+  overflow: hidden !important;
+}
+
+.texture_brgd {
+  min-height: unset;
+}
+
+.btn-info {
+  background: unset;
+  border: none;
+}
+
+li.artefact__card {
+  margin: 0 20px;
+  width: 200px;
+  height: 356px;
+}

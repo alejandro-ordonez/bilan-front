@@ -1,0 +1,186 @@
+.info_seccion {
+  width: 100%;
+  height: 70px;
+  margin: auto;
+  border-top-style: solid;
+  border-top-width: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.mod_cinco {
+  background-color: #70b6be;
+  border-top-color: #a8d3d7;
+}
+//colores de tierra
+.mod_2 {
+  background-color: #50806b;
+  border-top-color: #94b1a4;
+}
+//colores de fuego
+.mod_5 {
+  background-color: #b85545;
+  border-top-color: #d4978d;
+}
+//colores de luz
+.mod_1 {
+  background-color: #9a6c31;
+  border-top-color: #c1a581;
+}
+//colores de aire
+.mod_4 {
+  background-color: #537e82;
+  border-top-color: #96b0b3;
+}
+//colores de agua
+.mod_3 {
+  background-color: #42678b;
+  border-top-color: #8ba2b8;
+}
+
+.img_mod_info_section {
+  max-width: 70px;
+  float: left;
+  margin-left: 8%;
+  letter-spacing: 2px;
+}
+
+.title_mod_info_section {
+  max-width: 200px;
+  text-align: left;
+  float: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 45px;
+}
+.info_seccion div {
+  width: 300px;
+  float: right;
+  margin-right: 8%;
+  text-align: left;
+  background-color: #55949b;
+  margin-left: 8%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 25px;
+  padding-left: 20px;
+  border-radius: 25px;
+  box-shadow: 1px 1px 1px #40757b inset;
+}
+.info_seccion div p {
+  float: left;
+  color: #fff;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.info_seccion div ul {
+  float: right;
+  /*background-color: #518E95;*/
+  color: #fff;
+  font-weight: 500;
+  padding-right: 20px;
+  margin-left: 20px;
+}
+.espiritus_basic {
+  float: right;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.info_secciondivul:last-child {
+  border-radius: 0px;
+  padding-left: 50px;
+}
+.info_secciondivul:firt-child {
+  border-radius: 25px;
+}
+
+.info_seccion {
+  height: 120px !important;
+  padding-top: 20px !important;
+}
+
+.info_seccion div ul {
+  margin-bottom: 3px;
+}
+
+.info_seccion div p {
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.puntaje_mod {
+  padding-top: 9px;
+  padding-left: 40px;
+  padding-right: 3px;
+  padding-bottom: 11px;
+}
+
+.title_mod {
+  font-size: 1.17em;
+}
+
+.der_mod {
+  float: right;
+  width: 35%;
+}
+
+.tiem_in_game {
+  float: right;
+  width: 258px;
+  height: 34px;
+  background: transparent
+    linear-gradient(180deg, var(--unnamed-color-8c613b) 0%, #402e1e 100%) 0% 0%
+    no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #8c613b 0%, #402e1e 100%) 0%
+    0% no-repeat padding-box;
+  opacity: 1;
+  padding-top: 4px;
+  padding-left: 4px;
+}
+.tiem_in_game li {
+  float: left;
+}
+.tiem_in_game li img {
+  float: left;
+  width: 26px;
+  margin-right: 2px;
+}
+
+.img_prim_modulo {
+  float: right;
+  height: 227px;
+}
+
+.tribu_mod {
+  float: left;
+  font-family: "Work Sans", sans-serif;
+  margin-top: 5px;
+}
+
+.name_ciclo_info_header {
+  width: 220px;
+  font-size: 24px;
+  float: left;
+  margin-left: 8%;
+  margin-top: 15px;
+  letter-spacing: 2px;
+}
+
+.info_seccion {
+  width: 100%;
+  height: 120px;
+  margin: auto;
+  border-top-style: solid;
+  border-top-width: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.info_seccion {
+  height: 100px !important;
+  padding-top: 10px !important;
+  display: block !important;
+  position: relative;
+  top: unset;
+  z-index: 90;
+}

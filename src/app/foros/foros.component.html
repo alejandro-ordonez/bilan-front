@@ -1,0 +1,189 @@
+<div class="texture_brgd">
+  <main class="conteedor_main_menu">
+    <h1 style="text-align: center; font-weight: normal">FOROS</h1>
+
+    <div *ngIf="!isStudent">
+      <button
+        class="btn_intro btn-modal"
+        id="nuevoForo"
+        style="margin-left: 76%; font-weight: 600"
+        (click)="openModal(newForoModal)"
+      >
+        Nuevo Foro
+      </button>
+    </div>
+
+    <div *ngIf="!sizeForum">
+      <h1> No hay foros abiertos en este momento</h1>
+    </div>
+    <h1 *ngIf="!forums">cargando...</h1>
+    <div class="foro" *ngFor="let forum of forums.data">
+      <article class="foro__content">
+        <a
+          [routerLink]="'/foro/' + page + '/' + forum.id"
+          style="color: inherit"
+        >
+          <div class="foro__content__head">
+            <div class="foro__content__info">
+              <h3 class="foro__content__info__title">{{ forum.title.toLowerCase() }}</h3>
+              <i class="foro__content__info__span"
+                >{{ forum.createdAt | date: "d/M/yy" }} - 10°</i
+              >
+            </div>
+            <div class="comments">
+              <figure class="comments__icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="27.625"
+                  viewBox="0 0 30 27.625"
+                >
+                  <defs>
+                    <style>
+                      .cls-1 {
+                        fill: #724011;
+                      }
+
+                      .cls-2 {
+                        fill: #9f632a;
+                      }
+
+                      .cls-3 {
+                        fill: #fff3e8;
+                      }
+
+                      .cls-4 {
+                        fill: #e5bc95;
+                      }
+                    </style>
+                  </defs>
+                  <g
+                    id="Grupo_1735"
+                    data-name="Grupo 1735"
+                    transform="translate(-657.011 -964.452)"
+                  >
+                    <path
+                      id="Trazado_1949"
+                      data-name="Trazado 1949"
+                      class="cls-1"
+                      d="M683.495,964.452H660.528a3.517,3.517,0,0,0-3.517,3.517v13.892a3.517,3.517,0,0,0,3.517,3.516h16.455l4.764,6.7,3.979-7.5a3.506,3.506,0,0,0,1.285-2.717V967.969A3.517,3.517,0,0,0,683.495,964.452Z"
+                    ></path>
+                    <path
+                      id="Trazado_1950"
+                      data-name="Trazado 1950"
+                      class="cls-2"
+                      d="M683.495,964.452H672.011v20.925h4.972l4.764,6.7,3.979-7.5a3.506,3.506,0,0,0,1.285-2.717V967.969A3.517,3.517,0,0,0,683.495,964.452Z"
+                    ></path>
+                    <circle
+                      id="Elipse_84"
+                      data-name="Elipse 84"
+                      class="cls-3"
+                      cx="2.735"
+                      cy="2.735"
+                      r="2.735"
+                      transform="translate(661.446 972.31)"
+                    ></circle>
+                    <circle
+                      id="Elipse_85"
+                      data-name="Elipse 85"
+                      class="cls-3"
+                      cx="2.735"
+                      cy="2.735"
+                      r="2.735"
+                      transform="translate(669.464 972.31)"
+                    ></circle>
+                    <circle
+                      id="Elipse_86"
+                      data-name="Elipse 86"
+                      class="cls-4"
+                      cx="2.735"
+                      cy="2.735"
+                      r="2.735"
+                      transform="translate(677.482 972.31)"
+                    ></circle>
+                  </g>
+                </svg>
+              </figure>
+              <h2 class="comments__number">2</h2>
+            </div>
+          </div>
+          <div class="foro__content__resume">
+            <p>
+              {{ forum.content }}
+            </p>
+          </div>
+        </a>
+      </article>
+    
+    </div>
+    <ul class="next-prev">
+      <a [routerLink]="'../' + (index - 1)" *ngIf="index > 1">
+        <li class="atra_btn_mod italic_">
+          <span class="icon_anterior"></span>Atrás
+        </li>
+      </a>
+      <a>
+        <li class="numbers_np">{{ page }}/{{ forums.npages }}</li>
+      </a>
+      <a [routerLink]="'../' + (index + 1)" *ngIf="index < forums.npages">
+        <li class="adelante_btn_mod italic_">
+          Continuar<span class="icon_proximo"></span>
+        </li>
+      </a>
+    </ul>
+  </main>
+</div>
+
+<ng-template #newForoModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">NUEVO FORO</h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text" style="overflow-x: hidden">
+      <form
+        class="login-form"
+        [formGroup]="createForumForm"
+        (submit)="createForum()"
+        novalidate
+      >
+        <app-textfield
+          label="Título"
+          class="input"
+          formControlName="title"
+          type="text"
+          placeholder="Título del foro"
+        ></app-textfield>
+
+        <label style="display: unset; font-size: 16pt">
+          Contenido del foro
+          <textarea
+            class="modal-retroalimentacion__textarea"
+            formControlName="content"
+            cols="30"
+            rows="10"
+            placeholder="Contenido del foro"
+            style="
+              font-size: 16px;
+              width: 100%;
+              padding: 20px;
+              background-color: #fff8d8b3;
+              border-radius: 5px;
+              border: 2px solid;
+              border-color: #8e6040;
+              color: #8e6040;
+            "
+          ></textarea>
+        </label>
+
+        <app-button
+          type="submit"
+          [isDisabled]="createForumForm.invalid"
+          text="Crear foro"
+        ></app-button>
+      </form>
+    </div>
+  </div>
+</ng-template>

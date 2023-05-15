@@ -1,0 +1,66 @@
+<div class="welcome" style="height: calc(100vh - 96px)">
+  <main>
+    <h1>BIENVENIDO</h1>
+    <p class="italic_">
+      “La destrucción parece inminente pero la esperanza persiste. Si logras
+      encontrar el balance de los saberes las puertas del futuro seguirán
+      abiertas”
+    </p>
+    <p class="bold_ italic_">-El Libro de Bilan-</p>
+    <p>
+      <span class="bold_">¡Te estábamos esperando!</span> este mundo está
+      pasando por uno de sus períodos más críticos. Un profundo desbalance entre
+      sus pueblos lo tiene al borde la extinción y solo tú podrás ayudar a
+      recuperar al equilibro. Completa las actividades y juega los retos para
+      así lograr que los elementos y los espíritus se reconcilien con los
+      humanos y Bilan tenga una segunda oportunidad.
+    </p>
+  </main>
+  <div class="welcome conteedor_main_menu">
+    <div class="module-container">
+      <p *ngIf="this.classrooms.length == 0">
+        No hemos encontrado clases en las que estés registrado, por favor
+        contacta a un directivo docente en tu institución y valida que ya haya
+        hecho tu registro para el año escolar
+      </p>
+
+      <a
+        #elseBlock
+        class="module-card"
+        [routerLink]="
+          './' +
+          materiaIdIndex[singleClassRoom.tribeId] +
+          '/' +
+          singleClassRoom.grade +
+          '/' +
+          courseIdIndex[singleClassRoom.courseId] +
+          '/INTERACTIVE' +
+          '/modulo/'
+        "
+        *ngFor="let singleClassRoom of classrooms"
+        [class]="materiaIdIndex[singleClassRoom.tribeId]"
+      >
+        <div class="module-card__header">
+          <figure class="module-card__header__img">
+            <img
+              [src]="
+                'assets/images/iconos/Elementos/modules/' +
+                materiaIdIndex[singleClassRoom.tribeId] +
+                '.png'
+              "
+              alt=""
+            />
+          </figure>
+          <div class="module-card__header__text">
+            <h3 class="module-card__header__text__title">
+              {{ materiaIdIndex[singleClassRoom.tribeId] | materiaPipe }}
+            </h3>
+          </div>
+        </div>
+        <div class="module-card__grade">
+          <h3></h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

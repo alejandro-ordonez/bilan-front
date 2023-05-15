@@ -1,0 +1,16 @@
+<div class="app-radio-select" [class]="styleVariant">
+  <label class="label" [for]="id">{{ label }}</label>
+  <mat-radio-group
+    class="input"
+    [value]="value"
+    [id]="id"
+    (change)="onChange($event)"
+  >
+    <mat-radio-button
+      class="option"
+      *ngFor="let option of options; let idx = index"
+      value="{{ option.key }}"
+      >{{ option.value }}</mat-radio-button
+    >
+  </mat-radio-group>
+</div>

@@ -1,0 +1,52 @@
+<div class="login-page">
+  <img class="logo" src="assets/images/logos/Billan_cabezote@2x.png" />
+  <h1 class="title">Iniciar sesión</h1>
+  <form
+    class="login-form"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit($event)"
+  >
+    <app-textfield
+      label="Documento"
+      class="input"
+      formControlName="document"
+      type="text"
+      placeholder="documento"
+      pattern="^[a-zA-Z0-9_.-]*$"
+    ></app-textfield>
+
+    <p *ngIf="loginForm.controls.document.errors?.['pattern']">
+      <ngb-alert type="danger" [dismissible]="false">
+        Digitos no permitidos
+      </ngb-alert>
+    </p>
+    <p *ngIf="loginForm.controls.document.errors?.['maxlength']">
+      <ngb-alert type="danger" [dismissible]="false">
+        verifica la información ingresada. Excede el número de dígitos
+        permitidos
+      </ngb-alert>
+    </p>
+
+    <app-textfield
+      label="Contraseña"
+      class="input"
+      formControlName="password"
+      type="password"
+      placeholder="Contraseña"
+    ></app-textfield>
+
+    <app-radio-select
+      label="Tipo de perfil"
+      class="input"
+      formControlName="userType"
+      [options]="radioOptions"
+    ></app-radio-select>
+
+    <app-button
+      [isDisabled]="loginForm.invalid"
+      type="submit"
+      text="Iniciar sesión"
+    ></app-button>
+  </form>
+
+</div>
