@@ -166,7 +166,7 @@
 
     <ul
       class="totems"
-      *ngIf="user.userType !== 'Teacher' && user.userType !== 'Student'"
+      *ngIf="user?.userType !== 'Teacher' && user?.userType !== 'Student'"
     >
       <button (click)="onClick()" class="link-button">
         Tablero de control
