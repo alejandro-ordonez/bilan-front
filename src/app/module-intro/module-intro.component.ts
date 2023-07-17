@@ -9,13 +9,18 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModuleIntroComponent implements OnInit {
   materia: any;
-
+  info: any | null;
   isValidMateria: any;
 
   constructor(private route: ActivatedRoute, private modal: NgbModal) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
+      
+      const storedInfo = localStorage.getItem("info");
+      if (storedInfo) {
+        this.info = JSON.parse(storedInfo);
+      }
       this.materia = params.materia;
       this.isValidMateria =
         this.materia === 'matematicas' ||

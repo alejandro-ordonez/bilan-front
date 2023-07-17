@@ -4,6 +4,7 @@ export class User extends Auth {
   name?: string;
   lastName?: string;
   email?: string;
+  metadata?: any;
   grade?: string;
   course?: string;
   courseId?: string;

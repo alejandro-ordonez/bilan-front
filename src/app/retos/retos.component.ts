@@ -131,7 +131,7 @@ export class RetosComponent implements OnInit {
     this.router.navigateByUrl(
       `modulos/${this.currentTribeName}/retos/${this.currentActionName}/${
         challenge.id
-      }/${this.user.grade || 10}/${challenge.name}`
+      }/${this.user.metadata.grade || 10}/${challenge.name}`
     );
   }
 
