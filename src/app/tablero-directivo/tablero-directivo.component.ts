@@ -33,7 +33,8 @@ export class TableroDirectivoComponent implements OnInit {
     this.dashboardData = await this.dashboard.getCollegeDaneStatistics(
       this.userInfoData.codDaneSede
     );
-
+      console.table(this.dashboardData.data[0].modules);
+      
     console.log(response, this.userInfoData, this.dashboardData);
   }
 }

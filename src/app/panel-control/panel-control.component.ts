@@ -125,7 +125,7 @@ PanelControlComponent implements OnInit {
 
       this.stateId = params.param1;
       this.munId = params.param2;
-      this.collegeId = params.param1;
+      this.collegeId = '218150000578';
       this.collegeString = params.param3;
       this.gradeString = params.param2;
       this.courseString = params.param1;
@@ -174,7 +174,7 @@ PanelControlComponent implements OnInit {
 
     this.municipalities =
       depmun
-        .find((dep) => dep.state === this.selectedState)
+        .find((dep) => dep.state === this.selectedState.slice(3))
         ?.municipalities.map((mun) => {
           return {
             value: mun.name,
@@ -190,7 +190,7 @@ PanelControlComponent implements OnInit {
     this.grades = [];
     this.courses = [];
     const response = await this.dashboard.getColleges(
-      this.selectedMunicipality
+      this.selectedMunicipality.slice(3)
     );
     this.colleges = response.map((col) => {
       return {
@@ -204,7 +204,7 @@ PanelControlComponent implements OnInit {
     this.selectedGrade = '';
     this.selectedCourse = '';
     this.courses = [];
-    const response = await this.dashboard.getGradeCourses(this.selectedCollege);
+    const response = await this.dashboard.getGradeCourses(this.selectedCollege.slice(3));
     this.gradeCourses = response;
     this.grades = this.gradeCourses.map((gc) => {
       return {
@@ -217,7 +217,7 @@ PanelControlComponent implements OnInit {
   setCourses(option?: any) {
     this.selectedCourse = '';
     const grade = this.gradeCourses.find(
-      (gd) => gd.grade === this.selectedGrade
+      (gd) => gd.grade === this.selectedGrade.slice(3)
     );
     this.courses = !grade
       ? []
@@ -254,6 +254,7 @@ PanelControlComponent implements OnInit {
 
   async getCollege() {
     this.college = await this.dashboard.getCollegeStatistics(this.collegeId);
+    
   }
 
   async getStudent() {
@@ -262,11 +263,10 @@ PanelControlComponent implements OnInit {
 
   async getGrade() {
     this.grade = await this.dashboard.getCourseStatistics(
-      this.gradeString,
-      this.collegeString,
-      this.courseString
+      this.gradeString.slice(3),
+      this.collegeString.slice(3),
+      this.gradeString.slice(3)
     );
-
   }
 
   async getAllStates() {

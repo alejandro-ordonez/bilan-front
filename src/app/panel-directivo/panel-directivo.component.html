@@ -270,6 +270,7 @@
           *ngIf="showStudents"
           class="login-form create-user-form"
           [formGroup]="editStudentForm"
+          (submit)="onSubmitUpdate()"
           novalidate
         >
           <app-select
@@ -278,8 +279,38 @@
             formControlName="documentType"
             [options]="documentTypeOptions"
             placeholder="Tipo de documento"
-            [value]="userSelected.documentType"
+            [(ngModel)]="userSelected.documentType"
           ></app-select>
+
+          <app-textfield
+            label="Documento"
+            class="input"
+            formControlName="document"
+            type="text"
+            pattern="^[a-zA-Z0-9_.-]*$"
+            placeholder="Número de documento"
+            [(ngModel)]=userSelected.document
+          ></app-textfield>
+
+          <app-textfield
+            label="Correo electrónico"
+            class="input"
+            formControlName="email"
+            type="email"
+            email="true"
+            [(ngModel)]=userSelected.email
+            placeholder="ejemplo@bilan.com"
+          ></app-textfield>
+          <p
+            *ngIf="
+              editStudentForm.controls.email.dirty &&
+              editStudentForm.controls.email.invalid
+            "
+          >
+            <ngb-alert type="danger" [dismissible]="false">
+              Ingresa un correo valido
+            </ngb-alert>
+          </p>
 
           <app-textfield
             label="Nombre"
@@ -287,7 +318,7 @@
             formControlName="name"
             type="text"
             placeholder="Nombre"
-            [value]="userSelected.name || ''"
+            [(ngModel)]=userSelected.name
           >
           </app-textfield>
 
@@ -297,7 +328,7 @@
             formControlName="lastName"
             type="text"
             placeholder="Apellido"
-            [value]="userSelected.lastName || ''"
+            [(ngModel)]=userSelected.lastName
           >
           </app-textfield>
 
@@ -307,7 +338,7 @@
             formControlName="grade"
             type="text"
             placeholder="Grado"
-            [value]="userSelected.grade || ''"
+            [(ngModel)]=userSelected.grade
           >
           </app-textfield>
 
@@ -317,7 +348,7 @@
             formControlName="course"
             type="text"
             placeholder="Curso"
-            [value]="userSelected.course || ''"
+            [(ngModel)]=userSelected.course
           >
           </app-textfield>
           <p *ngIf="editStudentForm.invalid">
@@ -345,6 +376,17 @@
             [options]="documentTypeOptions"
             placeholder="Tipo de documento"
           ></app-select>
+
+          <!-- <app-textfield
+            label="Documento"
+            class="input"
+            formControlName="document"
+            type="text"
+            pattern="^[a-zA-Z0-9_.-]*$"
+            placeholder="Número de documento"
+            [(ngModel)]="userSelected.document"
+            [value]="userSelected.document || ''"
+          ></app-textfield> -->
 
           <app-textfield
             label="Nombre"

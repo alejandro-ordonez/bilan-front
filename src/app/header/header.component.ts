@@ -9,7 +9,6 @@ import { StatsService } from '../services/stats-service';
 import { Observable, Subject, Subscription } from 'rxjs';
 
 import { Router } from '@angular/router';
-import { UserType } from '@domain/enums/user-type.enum';
 
 @Component({
   selector: 'app-header',
@@ -62,22 +61,19 @@ export class HeaderComponent implements OnInit {
     try {
       this.user = await this.userData.info();
       this.isTeacher = this.user.userType === 'Teacher'
+console.log(this.user);
 
-      switch(this.user.userType){
-        case UserType.Teacher:
-          this.homeLink = '/teacher';
-          this.getClassrooms();
-          break;
-
-        case UserType.Student:
-          this.statsService.syncStats().subscribe((stat) => {
-            this.stats = stat;
-            this.cd.detectChanges();
-          });
-          break;
+      if (this.isTeacher) {
+        this.homeLink = '/teacher';
+        this.getClassrooms();
+      }
+      if (!this.isTeacher) {
+        this.statsService.syncStats().subscribe((stat) => {
+          this.stats = stat;
+          this.cd.detectChanges();
+        });
       }
     } catch (error) {
-      console.error('There was an error retreiving user data');
     }
   }
 

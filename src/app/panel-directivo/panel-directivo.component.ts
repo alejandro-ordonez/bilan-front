@@ -82,14 +82,38 @@ export class PanelDirectivoComponent implements OnInit {
     this.uploadForm = this.fb.group({
       file: ['', Validators.required],
     });
-
+    //Update users
     this.editStudentForm = this.fb.group({
       documentType: ['', Validators.required],
-      document: ['', Validators.required],
+      document: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(7),
+          Validators.maxLength(15),
+        ],
+      ],
+      email: ['', Validators.required],
+      name: ['', Validators.required],
+      lastName: ['', Validators.required],
+      grade: ['', Validators.required],
+      course: ['', Validators.required],
+    });
+    this.editTeacherForm = this.fb.group({
+      documentType: ['', Validators.required],
+      document: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(7),
+          Validators.maxLength(15),
+        ],
+      ],
       email: ['', Validators.required],
       name: ['', Validators.required],
       lastName: ['', Validators.required],
     });
+    
   }
 
   ngOnInit(): void {
@@ -111,8 +135,6 @@ export class PanelDirectivoComponent implements OnInit {
 
   async getUserInfo() {
     const response = await this.userData.info();
-    console.log(response);
-
     this.userInfo = response;
     this.userInfoData = await this.userData.searchTeacher(
       this.userInfo.document as string
@@ -186,13 +208,21 @@ export class PanelDirectivoComponent implements OnInit {
     this.searchUsers();
   }
 
+  async onSubmitUpdate() {
+    try {
+      await this.update();
+    } catch (error) {
+      alert(error);
+    }
+  }
+
   updateTeacherForm() {
     this.editTeacherForm = this.fb.group({
       documentType: [this.userSelected.documentType, Validators.required],
       email: [this.userSelected.email, Validators.required],
       name: [this.userSelected.name, Validators.required],
       lastName: [this.userSelected.lastName, Validators.required],
-      classRooms: this.fb.array([], Validators.required),
+      classRooms: this.fb.array([]),
     });
   }
 
@@ -271,11 +301,36 @@ export class PanelDirectivoComponent implements OnInit {
 
   async update() {
     try {
+      if(this.editStudentForm.value.document == ''){
+        delete this.editStudentForm.value.document
+      }
+      if(this.editStudentForm.value.documentType == ''){
+        delete this.editStudentForm.value.documentType
+      }
+      if(this.editStudentForm.value.password == ''){
+        delete this.editStudentForm.value.password
+      }
+      if(this.editStudentForm.value.name == ''){
+        delete this.editStudentForm.value.name
+      }
+      if(this.editStudentForm.value.lastName == ''){
+        delete this.editStudentForm.value.lastName
+      }
+      if(this.editStudentForm.value.email == ''){
+        delete this.editStudentForm.value.email
+      }
+      if(this.editStudentForm.value.grade == ''){
+        delete this.editStudentForm.value.grade
+      }
+      if(this.editStudentForm.value.courses == ''){
+        delete this.editStudentForm.value.courses
+      }
+
       if (this.showStudents) {
+        const FormatDocument = this.editStudentForm.value.documentType.slice(3,5) || this.editStudentForm.value.documentType
         await this.userService.updateStudent({
-          document:
-            this.editStudentForm.value.document || this.userSelected.document,
-          documentType: this.editStudentForm.value.documentType,
+          document: this.editStudentForm.value.document || this.userSelected.document,
+          documentType: FormatDocument,
           name: this.editStudentForm.value.name,
           lastName: this.editStudentForm.value.lastName,
           email: this.editStudentForm.value.email,
@@ -284,10 +339,11 @@ export class PanelDirectivoComponent implements OnInit {
         });
       } else {
         const teacher = this.userSelected as TeacherDto;
+        console.log(teacher, "TEACHER");
+        const FormatDocument = this.editTeacherForm.value.documentType.slice(3,5) || this.editTeacherForm.value.documentType
         await this.userService.updateTeacher({
-          document:
-            this.editTeacherForm.value.document || this.userSelected.document,
-          documentType: this.editTeacherForm.value.documentType,
+          document: this.userSelected.document,
+          documentType: FormatDocument,
           name: this.editTeacherForm.value.name,
           lastName: this.editTeacherForm.value.lastName,
           email: this.editTeacherForm.value.email,
@@ -300,7 +356,7 @@ export class PanelDirectivoComponent implements OnInit {
         });
       }
 
-      alert('Usuario creado con exito');
+      alert('Usuario actualizado con exito');
     } catch (error) {
       alert('Lo sentimos hubo un error');
     }

@@ -293,7 +293,7 @@ export class PanelEditUsersComponent implements OnInit {
         case UserType.Directive:
           await this.authUser.create({
             document: this.createUserDirectiveForm.value.document,
-            documentType: this.createUserDirectiveForm.value.documentType,
+            documentType: this.createUserDirectiveForm.value.documentType.slice(3,5),
             userType: this.selectedUserType,
             password: this.createUserDirectiveForm.value.password,
             email: this.createUserDirectiveForm.value.email,
@@ -309,7 +309,7 @@ export class PanelEditUsersComponent implements OnInit {
         case UserType.SecEdu:
           await this.authUser.create({
             document: this.createUserSecEduForm.value.document,
-            documentType: this.createUserSecEduForm.value.documentType,
+            documentType: this.createUserSecEduForm.value.documentType.slice(3,5),
             userType: this.selectedUserType,
             password: this.createUserSecEduForm.value.password,
             email: this.createUserSecEduForm.value.email,
@@ -322,7 +322,7 @@ export class PanelEditUsersComponent implements OnInit {
         case UserType.Min:
           await this.authUser.create({
             document: this.createUserMinForm.value.document,
-            documentType: this.createUserMinForm.value.documentType,
+            documentType: this.createUserMinForm.value.documentType.slice(3,5),
             userType: this.selectedUserType,
             password: this.createUserMinForm.value.password,
             email: this.createUserMinForm.value.email,
@@ -334,13 +334,13 @@ export class PanelEditUsersComponent implements OnInit {
         default:
           await this.authUser.create({
             document: this.createUserForm.value.document,
-            documentType: this.createUserForm.value.documentType,
+            documentType: this.createUserForm.value.documentType.slice(3,5),
             userType: this.selectedUserType,
             password: this.createUserForm.value.password,
             email: this.createUserForm.value.email,
-            grade: this.createUserForm.value.selectedGrade,
-            courseId: this.createUserForm.value.selectedCourse,
-            collegeId: this.createUserForm.value.selectedCollege,
+            grade: this.createUserForm.value.selectedGrade.slice(3),
+            courseId: this.createUserForm.value.selectedCourse.slice(3),
+            collegeId: this.createUserForm.value.selectedCollege.slice(3),
             name: this.createUserForm.value.name,
             lastName: this.createUserForm.value.lastName,
             codDane: this.createUserForm.value.codDane,
@@ -427,7 +427,7 @@ export class PanelEditUsersComponent implements OnInit {
           break;
       }
 
-      alert('Usuario creado con exito');
+      alert('Usuario actualizado con exito');
     } catch (error) {
       alert('Lo sentimos hubo un error');
     }
@@ -503,7 +503,7 @@ export class PanelEditUsersComponent implements OnInit {
 
     this.municipalities =
       depmun
-        .find((dep) => dep.state === form.value.selectedState)
+        .find((dep) => dep.state === form.value.selectedState.slice(3))
         ?.municipalities.map((mun) => {
           return {
             value: mun.name,
@@ -518,7 +518,7 @@ export class PanelEditUsersComponent implements OnInit {
     this.grades = [];
     this.courses = [];
     const response = await this.dashboard.getColleges(
-      form.value.selectedMunicipality
+      form.value.selectedMunicipality.slice(3)
     );
     this.colleges = response.map((col) => {
       return {
@@ -533,7 +533,7 @@ export class PanelEditUsersComponent implements OnInit {
     form.value.selectedCourse = '';
     this.courses = [];
     const response = await this.dashboard.getGradeCourses(
-      form.value.selectedCollege
+      form.value.selectedCollege.slice(3)
     );
     this.gradeCourses = response;
     this.grades = this.gradeCourses.map((gc) => {
@@ -560,6 +560,7 @@ export class PanelEditUsersComponent implements OnInit {
   }
   resetForm(): void {
     this.createUserMinForm.reset();
+    this.createUserForm.reset()
     this.createUserDirectiveForm.reset();
     this.createUserSecEduForm.reset();
     this.createUserMinForm.reset();
