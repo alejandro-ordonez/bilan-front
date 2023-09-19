@@ -1,0 +1,1 @@
+export * from '@domain/gateways/general-info.gateway';

@@ -93,7 +93,7 @@
       <img class="avatar" src="assets/images/avatars/A__2Aire.jpg" />
       <p class="name_profile">{{ user.name }}</p>
     </section>
-    <ul class="main_menu" *ngIf="user.userType === 'Student' || isTeacher">
+    <ul class="main_menu" *ngIf="user?.userType === 'Student' || isTeacher">
       <a  routerLink="/foros/1" routerLinkActive="active">
         <li class="btn_foro">
           <span>
@@ -101,14 +101,14 @@
           </span>
         </li>
       </a>
-      <a routerLink="/perfil" routerLinkActive="active" *ngIf="user.userType === 'Student'">
+      <a routerLink="/perfil" routerLinkActive="active" *ngIf="user?.userType === 'Student'">
         <li class="btn_perfil">
           <span>
             <a routerLink="/perfil" routerLinkActive="active">Perfil</a>
           </span>
         </li>
       </a>
-      <a routerLink="/modulos" routerLinkActive="active" *ngIf="user.userType === 'Student'">
+      <a routerLink="/modulos" routerLinkActive="active" *ngIf="user?.userType === 'Student'">
         <li class="btn_modulos">
           <span>
             <a routerLink="/modulos" routerLinkActive="active"
@@ -166,7 +166,7 @@
 
     <ul
       class="totems"
-      *ngIf="user.userType !== 'Teacher' && user.userType !== 'Student' && user.userType !== 'Admin'"
+      *ngIf="user?.userType !== 'Teacher' && user?.userType !== 'Student' && user?.userType !== 'Admin'"
     >
       <button (click)="onClick()" class="link-button">
         Tablero de control

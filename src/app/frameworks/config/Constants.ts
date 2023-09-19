@@ -32,6 +32,14 @@ const API = {
     gameInfo: '/game-info',
     allActivities: '/activities/all',
   },
+
+  generalInfo:{
+    allStates: '/general/states',
+    cities: '/general/city?state={{state}}',
+    colleges: '/college?stateMunId={{locationId}}',
+    courses: '/general/courses'
+  },
+
   forum: {
     get: '/forums/post?postId={{postId}}&page={{page}}',
     post: '/forums/post',
@@ -54,7 +62,7 @@ const API = {
     stateStatistics: '/dashboard/statistics/state?state={{state}}',
     munStatistics: '/dashboard/statistics/municipality?munId={{munId}}&page=0',
     courseStatistics:
-      '/dashboard/statistics/grade?grade={{grade}}&collegeId={{collegeId}}&courseId={{courseId}}',
+      '/dashboard/statistics/grade?collegeId={{collegeId}}&grade={{grade}}&courseId={{courseId}}',
   },
   evidence: {
     getAll:

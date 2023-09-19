@@ -3,3 +3,9 @@ export interface Response {
   result?: any;
   code: number;
 }
+
+export interface ResponseDto<T>{
+  description: string;
+  result?: T;
+  code: number;
+}

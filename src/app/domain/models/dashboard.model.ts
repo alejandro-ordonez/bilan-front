@@ -4,6 +4,7 @@ export class College {
   id: number;
   name: string;
   campus: string;
+  campusCode: string;
 }
 
 export class Course {
@@ -51,21 +52,24 @@ export class Classroom {
 export class GameModule {
   id: number;
   name: string;
+  logins: string;
   performanceActivityScore: number;
   points?: number;
   performanceGameScore: number;
 }
 
-export class Statistic {
-  students: number;
-  totalForumAnswers: number;
-  timeInApp: number;
+
+export class RowSummary{
+  id: string;
+  name: string;
+  logins: string;
   modules: GameModule[];
-  data: GameModule[];
 }
 
-export class StatisticGovernment {
+export class Statistics {
   students: number;
+  percentage?: number;
   timeInApp: number;
-  data: GameModule[];
+  data: RowSummary[];
+  totalForumAnswers?: number;
 }

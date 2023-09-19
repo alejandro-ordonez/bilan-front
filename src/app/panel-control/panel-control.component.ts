@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Option } from '@ui/components/select/select.component';
 import { DashboardUseCase } from '@domain/usecases/dashboard.usecase';
 import { UserType } from '@domain/enums/user-type.enum';
@@ -12,11 +12,22 @@ import {
   Classroom,
   CourseToEnroll,
   GradeCourseResponse,
-  Statistic,
-  StatisticGovernment,
+  Statistics,
 } from '@domain/models/dashboard.model';
 
 import depmun from '../login-page/dep-mun.json';
+import { GeneralInfoUseCase } from '@domain/usecases/general-info.usecase';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
+
+export enum DashboardToDisplay{
+  GovermentStatistics = 0,
+  StateStatistics = 8,
+  CityStatistics = 12,
+  CollegeStatistics = 14,
+  CourseStatistics = 15
+}
+
 
 @Component({
   selector: 'app-panel-control',
@@ -25,23 +36,32 @@ import depmun from '../login-page/dep-mun.json';
 })
 export class 
 PanelControlComponent implements OnInit {
+
+  //TODO: Add a NoneSelected option to all the options
+
+
+  // Options to filter
   states: Option[];
   municipalities: Option[];
   colleges: Option[];
-  gradeCourses: GradeCourseResponse[];
   grades: Option[];
   courses: Option[];
 
+  // DashboardLoaded
+  dashboardSelected: DashboardToDisplay = DashboardToDisplay.GovermentStatistics;
+  dashboardCases: typeof DashboardToDisplay = DashboardToDisplay;
+  
+  // Statistics
+  statistics: Statistics;
+
+  gradeCourses: GradeCourseResponse[];
   isDirectiveTeacher: boolean;
 
   selectedState: any = '';
   selectedMunicipality: any = '';
   selectedCollege: any = '';
   selectedGrade: any = '';
-  selectedCourse: any = '';
-
-  governmentStatistics: StatisticGovernment;
-  statistics: Statistic;
+  selectedCourse: any = '';  
 
   userType: UserType;
   classRooms: CourseToEnroll[];
@@ -52,6 +72,8 @@ PanelControlComponent implements OnInit {
   type: string;
 
   diesA: number = 53;
+
+  filterForm: FormGroup;
 
   switchObject: any = {
     colegio: () => {
@@ -94,16 +116,28 @@ PanelControlComponent implements OnInit {
   student: any;
   allStates: any;
   state: any;
+  cities: Option[];
   mun: any;
 
   constructor(
     private modal: NgbModal,
     private route: ActivatedRoute,
+    private router: Router,
     private dashboard: DashboardUseCase,
-    private userData: UserDataUseCase
-  ) {}
+    private userData: UserDataUseCase,
+    private generalInfo: GeneralInfoUseCase,
+    private fb: FormBuilder
+  ) {
 
-  ngOnInit(): void {
+    this.filterForm = this.fb.group({
+      state: ['', Validators.required],
+      city: [''],
+      college: [''],
+      course: ['']
+    });
+  }
+
+  async ngOnInit(): Promise<void> {
     this.userType = getItem(STORAGE.userInfo).userType;
 
     this.states = depmun.map<Option>((dep) => {
@@ -139,6 +173,54 @@ PanelControlComponent implements OnInit {
     }
 
     this.typeIsDirective();
+
+
+    this.getStateControl()?.valueChanges.subscribe(async(option: Option) => {
+      this.cities = await this.getCitiesOption(option.value);
+    });
+
+    this.getCityControl()?.valueChanges.subscribe(async(option: Option) => {
+      this.colleges = await this.getCollegesOption(option.key as number);
+    });
+
+    this.courses = await this.getCoursesOption();
+  }
+
+
+  isStateSet(): boolean{
+    const value = this.getStateControl()?.value;
+    return value && value !== null && value != '';
+  }
+
+  isCitySet(): boolean{
+    const value = this.getCityControl()?.value;
+    return value && value !== null && value != '';
+  }
+
+  isCollegeSet(): boolean{
+    const value = this.getCollegeControl()?.value;
+    return value && value !=null && value != '';
+  }
+
+  isCourseSet(): boolean{
+    const value = this.getCourseControl()?.value;
+    return value && value !=null && value != '';
+  }
+
+  getStateControl(): AbstractControl | null{
+    return this.filterForm.get('state');
+  }
+
+  getCityControl(): AbstractControl | null{
+    return this.filterForm.get('city');
+  }
+
+  getCollegeControl(): AbstractControl | null{
+    return this.filterForm.get('college');
+  }
+
+  getCourseControl(): AbstractControl | null{
+    return this.filterForm.get('course');
   }
 
   async typeIsDirective() {
@@ -163,7 +245,7 @@ PanelControlComponent implements OnInit {
     });
   }
 
-  setDepartmentMunicipality(option?: any) {
+  async setDepartmentMunicipality(option?: Option) {
     this.selectedMunicipality = '';
     this.selectedCollege = '';
     this.selectedGrade = '';
@@ -171,16 +253,9 @@ PanelControlComponent implements OnInit {
     this.colleges = [];
     this.grades = [];
     this.courses = [];
+    this.selectedState = option?.value;
 
-    this.municipalities =
-      depmun
-        .find((dep) => dep.state === this.selectedState.slice(3))
-        ?.municipalities.map((mun) => {
-          return {
-            value: mun.name,
-            key: mun.id,
-          };
-        }) || [];
+    this.cities = await this.getCitiesOption(this.selectedState);
 
   }
   async setColleges(option?: any) {
@@ -212,6 +287,8 @@ PanelControlComponent implements OnInit {
         value: gc.grade,
       };
     });
+    
+    this.grades.unshift({key: '0', value: 'Seleccion'})
   }
 
   setCourses(option?: any) {
@@ -227,21 +304,6 @@ PanelControlComponent implements OnInit {
             value: c.name,
           };
         }) || [];
-  }
-
-  async getStatistics(type: string) {
-    if (type === 'government') {
-      const response = await this.dashboard.getGovernmentStatistics();
-      this.governmentStatistics = response;
-      return;
-    }
-    if (type === 'state') {
-      const response = await this.dashboard.getStateStatistics(
-        this.selectedState
-      );
-      this.governmentStatistics = response;
-      return;
-    }
   }
 
   openModal(contenido: any) {
@@ -270,7 +332,7 @@ PanelControlComponent implements OnInit {
   }
 
   async getAllStates() {
-    this.allStates = await this.dashboard.getGovernmentStatistics();
+    this.allStates = await this.generalInfo.getStates();
   }
 
   async getState() {
@@ -278,7 +340,149 @@ PanelControlComponent implements OnInit {
   }
 
   async getMun() {
-    this.mun = await this.dashboard.getMunStatistics(this.munId);
+    //this.mun = await this.dashboard.getMunStatistics(this.munId as number);
+  }
+
+  async getCitiesOption(state: string) {
+    return (await this.generalInfo.getCities(state)).map(
+      city => {
+        const option: Option = {
+          value: city.name,
+          key: city.cityId
+        }
+        return option;
+      }
+    );
+  }
+
+  async getCollegesOption(city: number){
+    return (await this.generalInfo.getColleges(city)).map(
+      college => {
+        const option: Option = {
+          value: `${college.campus}  (${college.campusCode})`,
+          key: college.campusCode
+        }
+        return option;
+      }
+    );
+  }
+
+  async getCoursesOption(){
+    return (await this.generalInfo.getCourses()).map(
+      course => {
+        const value = `${course.grade} - ${course.course}`
+        const option: Option = {
+          value: value,
+          key: value
+        }
+        return option;
+      }
+    );
+  }
+
+  async onSubmitFilter(){
+    const states = [+this.isStateSet(), +this.isCitySet(), +this.isCollegeSet(), +this.isCourseSet()];
+    const dashboardCode = states.reduce((res, x) =>  res << 1 | x )
+
+    switch (dashboardCode) {
+      case DashboardToDisplay.StateStatistics:
+        await this.displayStateStatistics();
+        break;
+    
+      case DashboardToDisplay.CityStatistics:
+        await this.displayCityStatistics();
+        break;
+
+      case DashboardToDisplay.CollegeStatistics:
+        await this.displayCollegeStatistics();
+        break;
+
+      case DashboardToDisplay.CourseStatistics:
+        await this.displayCourseStatistics();
+        break;
+
+      case DashboardToDisplay.GovermentStatistics:
+      default:
+        await this.displayGovermentStatistics();
+        break;
+    }
+  }
+
+
+  async displayStateStatistics(){
+    this.dashboardSelected = DashboardToDisplay.StateStatistics;
+
+    await this.displayStatistics(
+      this.getStateControl(), 
+      async(option) => this.dashboard.getStateStatistics(option.key as string));
+  }
+
+  async displayCityStatistics(){
+    this.dashboardSelected = DashboardToDisplay.StateStatistics;
+    
+    await this.displayStatistics(
+      this.getCityControl(), 
+      async(option) => this.dashboard.getMunStatistics(option.key as number));
+  }
+
+  async displayCollegeStatistics(){
+    this.dashboardSelected = DashboardToDisplay.CollegeStatistics;
+    
+    await this.displayStatistics(
+      this.getCollegeControl(), 
+      async(option) => this.dashboard.getCollegeDaneStatistics(option.key as string));
+  }
+
+  async displayCourseStatistics(){
+    this.dashboardSelected = DashboardToDisplay.CourseStatistics;
+
+    await this.displayStatistics(
+      this.getCourseControl(), 
+      async(option) => {
+        const [grade, course] = (option.key as string)
+          .split('-');
+        const college = this.getCollegeControl()?.value;
+        const statistics = await this.dashboard.getCourseStatistics(college.key, grade.trim(), course.trim());
+        return statistics;
+      });
+  }
+
+  async displayGovermentStatistics(){
+    this.dashboardSelected = DashboardToDisplay.GovermentStatistics;
+
+    await this.displayStatistics(
+      null, 
+      (option) => this.dashboard.getGovernmentStatistics());
+  }
+
+  async displayStatistics(control: AbstractControl | null, getStatistics: (option: Option) => Promise<Statistics>){
+    let option: Option = {} as Option;
+    
+    if(control != null){
+      option = control?.value;
+      const params = this.buildParams(option);
+      this.setParams(params);
+    }
+    
+    this.statistics = await getStatistics(option);
+  }
+
+  buildParams(option: Option): Params {
+    return {
+      type: DashboardToDisplay[this.dashboardSelected],
+      city: option.value
+    }
+  }
+
+  setParams(params: Params){
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.route,
+        queryParams: params,
+        queryParamsHandling: 'merge'
+      }
+    )
   }
 
   burgerButtonIsActive: boolean = false;

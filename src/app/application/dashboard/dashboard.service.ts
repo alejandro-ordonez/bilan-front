@@ -9,8 +9,7 @@ import {
   College,
   CourseToEnroll,
   GradeCourseResponse,
-  Statistic,
-  StatisticGovernment,
+  Statistics,
   StudentScore,
   Teacher,
 } from '@domain/models/dashboard.model';
@@ -202,10 +201,10 @@ export class DashboardService extends DashboardGateway {
     });
   }
 
-  collegeStatistics(collegeId: string): Promise<Statistic> {
+  collegeStatistics(collegeId: string): Promise<Statistics> {
     const config = this.buildConfig();
 
-    return new Promise<Statistic>((resolve, reject) => {
+    return new Promise<Statistics>((resolve, reject) => {
       this.http
         .get<Response>(
           API.baseUrl +
@@ -223,10 +222,10 @@ export class DashboardService extends DashboardGateway {
     });
   }
 
-  collegeDaneStatistics(codDane: string): Promise<Statistic> {
+  collegeDaneStatistics(codDane: string): Promise<Statistics> {
     const config = this.buildConfig();
 
-    return new Promise<Statistic>((resolve, reject) => {
+    return new Promise<Statistics>((resolve, reject) => {
       this.http
         .get<Response>(
           API.baseUrl +
@@ -244,10 +243,10 @@ export class DashboardService extends DashboardGateway {
     });
   }
 
-  governmentStatistics(): Promise<StatisticGovernment> {
+  governmentStatistics(): Promise<Statistics> {
     const config = this.buildConfig();
 
-    return new Promise<StatisticGovernment>((resolve, reject) => {
+    return new Promise<Statistics>((resolve, reject) => {
       this.http
         .get<Response>(API.baseUrl + API.dashboard.governmentStatistics, config)
         .subscribe(
@@ -261,10 +260,10 @@ export class DashboardService extends DashboardGateway {
     });
   }
 
-  stateStatistics(state: string): Promise<StatisticGovernment> {
+  stateStatistics(state: string): Promise<Statistics> {
     const config = this.buildConfig();
 
-    return new Promise<StatisticGovernment>((resolve, reject) => {
+    return new Promise<Statistics>((resolve, reject) => {
       this.http
         .get<Response>(
           API.baseUrl +
@@ -282,13 +281,13 @@ export class DashboardService extends DashboardGateway {
     });
   }
 
-  munStatistics(munId: string): Promise<any> {
+  munStatistics(munId: number): Promise<any> {
     const config = this.buildConfig();
 
     return new Promise<any>((resolve, reject) => {
       this.http
         .get<Response>(
-          API.baseUrl + API.dashboard.munStatistics.replace('{{munId}}', munId),
+          API.baseUrl + API.dashboard.munStatistics.replace('{{munId}}', munId.toString()),
           config
         )
         .subscribe(
@@ -303,10 +302,10 @@ export class DashboardService extends DashboardGateway {
   }
 
   courseStatistics(
-    grade: string,
     collegeId: string,
+    grade: string,
     courseId: string
-  ): Promise<any> {
+  ): Promise<Statistics> {
     const config = this.buildConfig();
 
     return new Promise<any>((resolve, reject) => {
@@ -314,8 +313,8 @@ export class DashboardService extends DashboardGateway {
         .get<Response>(
           API.baseUrl +
             API.dashboard.courseStatistics
-              .replace('{{grade}}', grade)
               .replace('{{collegeId}}', collegeId)
+              .replace('{{grade}}', grade)
               .replace('{{courseId}}', courseId),
           config
         )

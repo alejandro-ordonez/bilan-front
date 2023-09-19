@@ -94,6 +94,9 @@ import { environment } from '../environments/environment';
 import { ForoComponent } from './foro/foro.component';
 import { PanelDirectivoComponent } from './panel-directivo/panel-directivo.component';
 import { TableroDirectivoComponent } from './tablero-directivo/tablero-directivo.component';
+import { GeneralInfoGateway } from '@domain/gateways';
+import { GeneralInfoService } from '@application/general-info/general-info.service';
+import { Selectv2Component } from './ui/components/selectv2/selectv2.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +118,7 @@ import { TableroDirectivoComponent } from './tablero-directivo/tablero-directivo
     InicioComponent,
     LoginPageComponent,
     SelectComponent,
+    Selectv2Component,
     ButtonComponent,
     TextfieldComponent,
     RadioSelectComponent,
@@ -160,6 +164,7 @@ import { TableroDirectivoComponent } from './tablero-directivo/tablero-directivo
     ForoComponent,
     PanelDirectivoComponent,
     TableroDirectivoComponent,
+    Selectv2Component,
   ],
   imports: [
     HttpClientXsrfModule.withOptions({
@@ -212,6 +217,10 @@ import { TableroDirectivoComponent } from './tablero-directivo/tablero-directivo
     {
       provide: ForumGateway,
       useClass: ForumService,
+    },
+    {
+      provide: GeneralInfoGateway,
+      useClass: GeneralInfoService
     },
     AuthGuardService,
   ],

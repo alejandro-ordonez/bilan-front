@@ -5,8 +5,7 @@ import {
   College,
   CourseToEnroll,
   GradeCourseResponse,
-  Statistic,
-  StatisticGovernment,
+  Statistics,
   StudentScore,
   Teacher,
 } from '@domain/models/dashboard.model';
@@ -48,31 +47,31 @@ export class DashboardUseCase {
     return this.dashboardGateway.singleStudent(document);
   }
 
-  getCollegeStatistics(collegeId: string): Promise<Statistic> {
+  getCollegeStatistics(collegeId: string): Promise<Statistics> {
     return this.dashboardGateway.collegeStatistics(collegeId);
   }
 
-  getCollegeDaneStatistics(codDane: string): Promise<Statistic> {
+  getCollegeDaneStatistics(codDane: string): Promise<Statistics> {
     return this.dashboardGateway.collegeDaneStatistics(codDane);
   }
 
-  getGovernmentStatistics(): Promise<StatisticGovernment> {
+  getGovernmentStatistics(): Promise<Statistics> {
     return this.dashboardGateway.governmentStatistics();
   }
 
-  getStateStatistics(state: string): Promise<StatisticGovernment> {
+  getStateStatistics(state: string): Promise<Statistics> {
     return this.dashboardGateway.stateStatistics(state);
   }
 
-  getMunStatistics(munId: string): Promise<any> {
+  getMunStatistics(munId: number): Promise<any> {
     return this.dashboardGateway.munStatistics(munId);
   }
 
   getCourseStatistics(
-    grade: string,
     collegeId: string,
+    grade: string,
     courseId: string
-  ): Promise<any> {
-    return this.dashboardGateway.courseStatistics(grade, collegeId, courseId);
+  ): Promise<Statistics> {
+    return this.dashboardGateway.courseStatistics(collegeId, grade, courseId);
   }
 }
