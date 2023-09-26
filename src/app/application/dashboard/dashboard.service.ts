@@ -10,16 +10,17 @@ import {
   CourseToEnroll,
   GradeCourseResponse,
   Statistics,
-  StudentScore,
+  StudentStatistics,
   Teacher,
 } from '@domain/models/dashboard.model';
 import { UserGateway } from '@domain/gateways/user.gateway';
+import { AuthService } from '@application/auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService extends DashboardGateway {
-  constructor(private http: HttpClient, private userAuth: UserGateway) {
+  constructor(private http: HttpClient, private userAuth: AuthService) {
     super();
   }
   buildConfig() {
@@ -160,10 +161,10 @@ export class DashboardService extends DashboardGateway {
     });
   }
 
-  studentClassroom(): Promise<StudentScore> {
+  studentClassroom(): Promise<StudentStatistics> {
     const config = this.buildConfig();
 
-    return new Promise<StudentScore>((resolve, reject) => {
+    return new Promise<StudentStatistics>((resolve, reject) => {
       this.http
         .get<Response>(API.baseUrl + API.dashboard.studentDashboard, config)
         .subscribe(
@@ -177,10 +178,10 @@ export class DashboardService extends DashboardGateway {
     });
   }
 
-  singleStudent(document: string): Promise<StudentScore> {
+  singleStudent(document: string): Promise<StudentStatistics> {
     const config = this.buildConfig();
 
-    return new Promise<StudentScore>((resolve, reject) => {
+    return new Promise<StudentStatistics>((resolve, reject) => {
       this.http
         .get<Response>(
           API.baseUrl +

@@ -1,12 +1,10 @@
-import { City } from "@domain/models/city.model";
-import { Course } from "@domain/models/course.model";
-import { College } from "@domain/models/dashboard.model";
+import { College, Course, State } from "@domain/models";
 
 export abstract class GeneralInfoGateway{
     
 
     abstract getAllStates(): Promise<string[]>;
-    abstract getCitiesByState(state: string): Promise<City[]>;
+    abstract getStatesAndCities(): Promise<State[]>;
     abstract getColleges(cityId: number): Promise<College[]>;
     abstract getCourses(): Promise<Course[]>;
 

@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
   mobile: boolean = false;
   switchToUpdate: boolean;
   college: CourseToEnroll;
-  tableroLink: string = '/admin/panel-control/grado/';
+  tableroLink: string = '/admin/panel-control/GovernmentStatistics/';
 
   constructor(
     private router: Router,

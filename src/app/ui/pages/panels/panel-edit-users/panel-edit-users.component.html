@@ -1,0 +1,1275 @@
+<div class="module-bar module-bar--panel-control--ministerio">
+  <button
+    class="hamburger hamburger--arrowturn"
+    id="burger-menu"
+    type="button"
+    (click)="hideShow()"
+    [ngClass]="burgerButtonIsActive ? 'is-active' : ''"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"> </span>
+    </span>
+  </button>
+  <h2 class="module-card__header__text__title">Edición de Usuarios</h2>
+  <button class="create-button" (click)="openModal(createProfileModal)">
+    Crear perfil
+  </button>
+  <button class="create-button" (click)="openModal(uploadFileModal)">
+    subir archivo
+  </button>
+</div>
+<main
+  class="panel-control--ministerio"
+  id="lateral-menu__container"
+  [ngClass]="burgerButtonIsActive ? 'is-active' : ''"
+>
+  <nav
+    class="panel-control--ministerio__nav"
+    id="lateral-menu"
+    [ngClass]="burgerButtonIsActive ? 'is-active' : ''"
+  >
+    <form [formGroup]="searchUserForm" (submit)="searchForm()">
+      <app-textfield
+        label="Documento"
+        class="input"
+        formControlName="document"
+        type="text"
+        pattern="^[a-zA-Z0-9_.-]*$"
+        placeholder="Número de documento"
+      ></app-textfield>
+      <p *ngIf="searchUserForm.controls.document.errors?.['pattern']">
+        <ngb-alert type="danger" [dismissible]="false">
+          Digitos no permitidos
+        </ngb-alert>
+      </p>
+      <p *ngIf="searchUserForm.controls.document.errors?.['maxlength']">
+        <ngb-alert type="danger" [dismissible]="false">
+          verifica la información ingresada. Excede el número de dígitos
+          permitidos
+        </ngb-alert>
+      </p>
+      <button
+        type="submit"
+        class="btn btn-outline-light btn-lg btn-block"
+        [disabled]="searchUserForm.invalid"
+      >
+        Buscar Usuario
+      </button>
+    </form>
+  </nav>
+  <section class="panel-control--ministerio__statics">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Usuario</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Asignatura</th>
+          <th scope="col">Grado</th>
+          <th scope="col">Curso</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Deshabilitar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users.data; let i = index">
+          <td>{{ user.document }}</td>
+          <td class="dark">{{ user.userType }}</td>
+          <td>{{ user.name }} {{ user.lastName }}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td >
+            <a
+              (click)="selectUserUpdate(i,user)"
+              (click)="openModal(updateProfileModal)"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="assets/images/Botones_menu/editar.png"
+                style="width: 40px"
+              />
+            </a>
+          </td>
+          <td class="dark enabled">
+            <label class="switch">
+              <input type="checkbox" [checked]="user.isEnabled" disabled />
+              <span
+                class="slider round"
+                (click)="selectUser(i, user.isEnabled)"
+              ></span>
+            </label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="next-prev" *ngIf="users.npages >= 2">
+      <a *ngIf="page > 1" [routerLink]="'../../' + (page - 1) + '/ '">
+        <li class="atra_btn_mod italic_">
+          <span class="icon_anterior"></span>Atrás
+        </li>
+      </a>
+      <a>
+        <li class="numbers_np">{{ page }}</li>
+      </a>
+      <a
+        *ngIf="users.npages >= page + 1"
+        [routerLink]="'../../' + (page + 1) + '/ '"
+      >
+        <li class="adelante_btn_mod italic_">
+          Continuar<span class="icon_proximo"></span>
+        </li>
+      </a>
+    </ul>
+  </section>
+</main>
+
+<ng-template #sureEnabledModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title">
+        Estas seguro de
+        {{ users.data[userSelected].isEnabled ? "deshabilitar" : "habilitar" }}
+        este usuario
+      </h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <div
+        class="files__button"
+        style="display: flex; justify-content: space-around; margin-top: 80px"
+      >
+        <app-button
+          (click)="changeEnabled(); modal.dismiss('Cross click')"
+          text="Aceptar"
+        ></app-button>
+        <app-button
+          (click)="modal.dismiss('Cross click')"
+          text="cancelar"
+        ></app-button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #createProfileModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title"></h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <div class="login-page">
+        <img class="logo" src="assets/images/logos/Billan_cabezote@2x.png" />
+        <h2 class="title">Crear nuevo usuario</h2>
+        <app-radio-select
+          label="Tipo de perfil"
+          styleVariant="centered-title"
+          class="input"
+          [options]="radioOptions"
+          [(ngModel)]="selectedUserType"
+        >
+        </app-radio-select>
+        {{ selectedUserType }}
+        <form
+          *ngIf="
+            selectedUserType &&
+            (selectedUserType === userTypes.Student ||
+              selectedUserType === userTypes.Teacher)
+          "
+          class="login-form create-user-form"
+          [formGroup]="createUserForm"
+          (submit)="onSubmit()"
+          novalidate
+        >
+          <app-select
+            label="Tipo de documento"
+            class="input"
+            formControlName="documentType"
+            [options]="documentTypeOptions"
+            placeholder="Tipo de documento"
+          ></app-select>
+
+          <app-textfield
+            label="Documento"
+            class="input"
+            formControlName="document"
+            type="number"
+            pattern="^[a-zA-Z0-9_.-]*$"
+            placeholder="Número de documento"
+          ></app-textfield>
+          <p *ngIf="createUserForm.controls.document.errors?.['minlength']">
+            <ngb-alert type="danger" [dismissible]="false">
+              El documento mínimo debe tener 7 caracteres y máximo 12 caracteres
+            </ngb-alert>
+          </p>
+          <app-textfield
+            label="Correo electrónico"
+            class="input"
+            formControlName="email"
+            type="email"
+            email="true"
+            placeholder="ejemplo@bilan.com"
+          ></app-textfield>
+          <p
+            *ngIf="
+              createUserForm.controls.email.dirty &&
+              createUserForm.controls.email.invalid
+            "
+          >
+            <ngb-alert type="danger" [dismissible]="false">
+              Ingresa un correo valido
+            </ngb-alert>
+          </p>
+
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+          >
+            <app-select
+              label="Departamentos"
+              class="input"
+              placeholder="Seleccionar entidad"
+              [options]="states"
+              (change)="setDepartmentMunicipality(this.createUserForm)"
+              formControlName="selectedState"
+            ></app-select>
+          </div>
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+            *ngIf="this.createUserForm.value.selectedState"
+          >
+            <app-select
+              label="Municipio"
+              class="input"
+              placeholder="Seleccionar Municipio"
+              [options]="municipalities"
+              (change)="setColleges(this.createUserForm)"
+              formControlName="selectedMunicipality"
+            ></app-select>
+          </div>
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+            *ngIf="
+              this.createUserForm.value.selectedState &&
+              this.createUserForm.value.selectedMunicipality
+            "
+          >
+            <app-select
+              label="Colegios"
+              class="input"
+              placeholder="Seleccionar entidad"
+              [options]="colleges"
+              (change)="setGrades(this.createUserForm)"
+              formControlName="selectedCollege"
+            ></app-select>
+          </div>
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+            *ngIf="
+              this.createUserForm.value.selectedState &&
+              this.createUserForm.value.selectedMunicipality &&
+              this.createUserForm.value.selectedCollege
+            "
+          >
+            <app-select
+              label="Grados"
+              class="input"
+              placeholder="Seleccionar el grado"
+              [options]="[
+                { value: '11', key: '11' },
+                { value: '10', key: '10' }
+              ]"
+              (change)="setCourses(this.createUserForm)"
+              formControlName="selectedGrade"
+            ></app-select>
+          </div>
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+            *ngIf="
+              this.createUserForm.value.selectedState &&
+              this.createUserForm.value.selectedMunicipality &&
+              this.createUserForm.value.selectedCollege &&
+              this.createUserForm.value.selectedGrade
+            "
+          >
+            <app-select
+              label="Cursos"
+              class="input"
+              placeholder="Seleccionar el curso"
+              [options]="[
+                { value: 'A', key: 1 },
+                { value: 'B', key: 2 },
+                { value: 'C', key: 3 },
+                { value: 'D', key: 4 },
+                { value: '1', key: 5 },
+                { value: '2', key: 6 },
+                { value: '3', key: 7 },
+                { value: '4', key: 8 },
+                { value: '01', key: 9 },
+                { value: '02', key: 10 },
+                { value: '03', key: 11 },
+                { value: '04', key: 12 }
+              ]"
+              formControlName="selectedCourse"
+            ></app-select>
+          </div>
+
+          <app-textfield
+            label="Codigo Dane"
+            class="input"
+            formControlName="codDane"
+            type="text"
+            placeholder="Codigo Dane"
+          ></app-textfield>
+
+          <app-textfield
+            label="Nombre"
+            class="input"
+            formControlName="name"
+            type="text"
+            placeholder="Nombre"
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Apellido"
+            class="input"
+            formControlName="lastName"
+            type="text"
+            placeholder="Apellido"
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Contraseña"
+            class="input"
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+          ></app-textfield>
+
+          <p *ngIf="createUserForm.invalid && loginButtonClicked">
+            <ngb-alert type="danger" [dismissible]="false">
+              Completa <strong>todos</strong> los <strong>campos</strong>
+            </ngb-alert>
+          </p>
+
+          <app-button
+            type="submit"
+            [isDisabled]="createUserForm.invalid"
+            (click)="loginButtonClicked = true"
+            text="crear usuario"
+          ></app-button>
+        </form>
+        <form
+          *ngIf="selectedUserType && selectedUserType === userTypes.Min"
+          class="login-form create-user-form"
+          [formGroup]="createUserMinForm"
+          (submit)="onSubmit()"
+          novalidate
+        >
+          <app-select
+            label="Tipo de documento"
+            class="input"
+            formControlName="documentType"
+            [options]="documentTypeOptions"
+            placeholder="Tipo de documento"
+          ></app-select>
+
+          <app-textfield
+            label="Documento"
+            class="input"
+            formControlName="document"
+            type="number"
+            min="1"
+            pattern="^[a-zA-Z0-9_.-]*$"
+            placeholder="Número de documento"
+          ></app-textfield>
+          <p *ngIf="createUserMinForm.controls.document.errors?.['minlength']">
+            <ngb-alert type="danger" [dismissible]="false">
+              El documento mínimo debe tener 7 caracteres y máximo 12 caracteres
+            </ngb-alert>
+          </p>
+
+          <app-textfield
+            label="Correo electrónico"
+            class="input"
+            formControlName="email"
+            type="email"
+            email="true"
+            placeholder="ejemplo@bilan.com"
+          ></app-textfield>
+          <p
+            *ngIf="
+              createUserMinForm.controls.email.dirty &&
+              createUserMinForm.controls.email.invalid
+            "
+          >
+            <ngb-alert type="danger" [dismissible]="false">
+              Ingresa un correo valido
+            </ngb-alert>
+          </p>
+
+          <app-textfield
+            label="Nombre"
+            class="input"
+            formControlName="name"
+            type="text"
+            placeholder="Nombre"
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Apellido"
+            class="input"
+            formControlName="lastName"
+            type="text"
+            placeholder="Apellido"
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Contraseña"
+            class="input"
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+          ></app-textfield>
+
+          <p *ngIf="createUserMinForm.invalid && loginButtonClicked">
+            <ngb-alert type="danger" [dismissible]="false">
+              Completa <strong>todos</strong> los <strong>campos</strong>
+            </ngb-alert>
+          </p>
+
+          <app-button
+            type="submit"
+            [isDisabled]="createUserMinForm.invalid"
+            (click)="loginButtonClicked = true"
+            text="crear usuario"
+          ></app-button>
+        </form>
+        <form
+          *ngIf="selectedUserType && selectedUserType === userTypes.SecEdu"
+          class="login-form create-user-form"
+          [formGroup]="createUserSecEduForm"
+          (submit)="onSubmit()"
+          novalidate
+        >
+          <app-select
+            label="Tipo de documento"
+            class="input"
+            formControlName="documentType"
+            [options]="documentTypeOptions"
+            placeholder="Tipo de documento"
+          ></app-select>
+
+          <app-textfield
+            label="Documento"
+            class="number"
+            formControlName="document"
+            type="number"
+            pattern="^[a-zA-Z0-9_.-]*$"
+            placeholder="Número de documento"
+          ></app-textfield>
+          <p
+            *ngIf="createUserSecEduForm.controls.document.errors?.['minlength']"
+          >
+            <ngb-alert type="danger" [dismissible]="false">
+              El documento mínimo debe tener 7 caracteres y máximo 12 caracteres
+            </ngb-alert>
+          </p>
+          <app-textfield
+            label="Correo electrónico"
+            class="input"
+            formControlName="email"
+            type="email"
+            email="true"
+            placeholder="ejemplo@bilan.com"
+          ></app-textfield>
+          <p
+            *ngIf="
+              createUserSecEduForm.controls.email.dirty &&
+              createUserSecEduForm.controls.email.invalid
+            "
+          >
+            <ngb-alert type="danger" [dismissible]="false">
+              Ingresa un correo valido
+            </ngb-alert>
+          </p>
+
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+          >
+            <app-select
+              label="Departamentos"
+              class="input"
+              placeholder="Seleccionar entidad"
+              [options]="states"
+              (change)="setDepartmentMunicipality(createUserSecEduForm)"
+              formControlName="selectedState"
+            ></app-select>
+          </div>
+
+          <app-textfield
+            label="Nombre"
+            class="input"
+            formControlName="name"
+            type="text"
+            placeholder="Nombre"
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Apellido"
+            class="input"
+            formControlName="lastName"
+            type="text"
+            placeholder="Apellido"
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Contraseña"
+            class="input"
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+          ></app-textfield>
+
+          <p *ngIf="createUserSecEduForm.invalid && loginButtonClicked">
+            <ngb-alert type="danger" [dismissible]="false">
+              Completa <strong>todos</strong> los <strong>campos</strong>
+            </ngb-alert>
+          </p>
+
+          <app-button
+            type="submit"
+            [isDisabled]="createUserSecEduForm.invalid"
+            (click)="loginButtonClicked = true"
+            text="crear usuario"
+          ></app-button>
+        </form>
+        <form
+          *ngIf="selectedUserType && selectedUserType === userTypes.Directive"
+          class="login-form create-user-form"
+          [formGroup]="createUserDirectiveForm"
+          (submit)="onSubmit()"
+          novalidate
+        >
+          <app-select
+            label="Tipo de documento"
+            class="input"
+            formControlName="documentType"
+            [options]="documentTypeOptions"
+            placeholder="Tipo de documento"
+          ></app-select>
+
+          <app-textfield
+            label="Documento"
+            class="input"
+            formControlName="document"
+            type="number"
+            pattern="^[a-zA-Z0-9_.-]*$"
+            placeholder="Número de documento"
+          ></app-textfield>
+          <p
+            *ngIf="createUserDirectiveForm.controls.document.errors?.['minlength']"
+          >
+            <ngb-alert type="danger" [dismissible]="false">
+              El documento mínimo debe tener 7 caracteres y máximo 12 caracteres
+            </ngb-alert>
+          </p>
+          <app-textfield
+            label="Correo electrónico"
+            class="input"
+            formControlName="email"
+            type="email"
+            email="true"
+            placeholder="ejemplo@bilan.com"
+          ></app-textfield>
+          <p
+            *ngIf="
+              createUserDirectiveForm.controls.email.dirty &&
+              createUserDirectiveForm.controls.email.invalid
+            "
+          >
+            <ngb-alert type="danger" [dismissible]="false">
+              Ingresa un correo valido
+            </ngb-alert>
+          </p>
+
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+          >
+            <app-select
+              label="Departamentos"
+              class="input"
+              placeholder="Seleccionar entidad"
+              [options]="states"
+              (change)="setDepartmentMunicipality(this.createUserDirectiveForm)"
+              formControlName="selectedState"
+            >
+            </app-select>
+          </div>
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+            *ngIf="this.createUserDirectiveForm.value.selectedState"
+          >
+            <app-select
+              label="Municipio"
+              class="input"
+              placeholder="Seleccionar Municipio"
+              [options]="municipalities"
+              (change)="setColleges(this.createUserDirectiveForm)"
+              formControlName="selectedMunicipality"
+            ></app-select>
+          </div>
+
+          <app-textfield
+            label="Nombre"
+            class="input"
+            formControlName="name"
+            type="text"
+            placeholder="Nombre"
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Apellido"
+            class="input"
+            formControlName="lastName"
+            type="text"
+            placeholder="Apellido"
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Codigo Dane"
+            class="input"
+            formControlName="codDane"
+            type="text"
+            placeholder="Codigo Dane"
+          ></app-textfield>
+
+          <app-textfield
+            label="Contraseña"
+            class="input"
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+          ></app-textfield>
+
+          <p *ngIf="createUserDirectiveForm.invalid && loginButtonClicked">
+            <ngb-alert type="danger" [dismissible]="false">
+              Completa <strong>todos</strong> los <strong>campos</strong>
+            </ngb-alert>
+          </p>
+
+          <app-button
+            type="submit"
+            [isDisabled]="createUserDirectiveForm.invalid"
+            (click)="loginButtonClicked = true"
+            text="crear usuario"
+          ></app-button>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!--Upload file form-->
+<ng-template #uploadFileModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <!--Title-->
+      <h2>CARGA TU ARCHIVO</h2>
+      <!--Exit button-->
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+
+    <div class="modal__text">
+      <p>
+        Puedes subir un archivo .csv con usuarios para añadirlos masivamente.
+      </p>
+      <!--???-->
+      <div class="exp-container"></div>
+
+      <form [formGroup]="uploadForm" (submit)="uploadFile()">
+        <app-textfield
+          label="Codigo Dane Sede"
+          class="input"
+          formControlName="campusCodeDane"
+          type="text"
+          placeholder="Codigo Dane Sede "
+        >
+        </app-textfield>
+
+        <app-radio-select
+          label="Tipo de perfil"
+          class="input"
+          styleVariant="centered-title"
+          formControlName="userTypeLoad"
+          [options]="userTypesFileUpload"
+        >
+        </app-radio-select>
+
+        <div
+          class="files__button"
+          style="display: flex; justify-content: space-around"
+        >
+          <label class="btn_intro">
+            Subir archivo
+            <input
+              (change)="onFileSelect($event)"
+              formControlName="file"
+              type="file"
+              name="uploadfile"
+              style="display: none"
+              accept=".csv"
+            />
+          </label>
+        </div>
+
+        <p *ngIf="this.uploadForm.value.file.name">
+          Archivo a subir:
+          {{ this.uploadForm.value.file.name }}
+        </p>
+        <div
+          class="files__button"
+          style="display: flex; justify-content: space-around"
+        >
+          <app-button
+            type="submit"
+            [isDisabled]="!isValidFile"
+            text="Crear Usuarios"
+          ></app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<!-- update user -->
+<ng-template #updateProfileModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h3 class="modal__head__title"></h3>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <div class="login-page">
+        <img class="logo" src="assets/images/logos/Billan_cabezote@2x.png" />
+        <h2 class="title">Actualizar usuario</h2>
+        <app-radio-select
+          label="Tipo de perfil"
+          styleVariant="centered-title"
+          class="input"
+          [options]="radioOptions"
+          [(ngModel)]="selectedUserType"
+        >
+        </app-radio-select>
+        {{ selectedUserType }}
+        <form
+          *ngIf="
+            selectedUserType &&
+            (selectedUserType === userTypes.Student ||
+              selectedUserType === userTypes.Teacher)
+          "
+          class="login-form create-user-form"
+          [formGroup]="updateUserMinForm"
+          (submit)="onSubmitUpdate()"
+          novalidate
+        >
+          <app-select
+            label="Tipo de documento"
+            class="input"
+            formControlName="documentType"
+            [options]="documentTypeOptions"
+            placeholder="Tipo de documento"
+            [(ngModel)]=prueba.documentType
+          ></app-select>
+
+          <app-textfield
+            label="Documento"
+            class="input"
+            formControlName="document"
+            type="text"
+            pattern="^[a-zA-Z0-9_.-]*$"
+            placeholder="Número de documento"
+            [(ngModel)]=prueba.document
+          ></app-textfield>
+
+          <!-- <app-textfield
+            label="Correo electrónico"
+            class="input"
+            formControlName="email"
+            type="email"
+            email="true"
+            placeholder="ejemplo@bilan.com"
+          ></app-textfield>
+          <p
+            *ngIf="
+              createUserForm.controls.email.dirty &&
+              createUserForm.controls.email.invalid
+            "
+          >
+            <ngb-alert type="danger" [dismissible]="false">
+              Ingresa un correo valido
+            </ngb-alert>
+          </p>
+
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+          >
+            <app-select
+              label="Departamentos"
+              class="input"
+              placeholder="Seleccionar entidad"
+              [options]="states"
+              (change)="setDepartmentMunicipality(this.createUserForm)"
+              formControlName="selectedState"
+            ></app-select>
+          </div>
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+            *ngIf="this.createUserForm.value.selectedState"
+          >
+            <app-select
+              label="Municipio"
+              class="input"
+              placeholder="Seleccionar Municipio"
+              [options]="municipalities"
+              (change)="setColleges(this.createUserForm)"
+              formControlName="selectedMunicipality"
+            ></app-select>
+          </div>
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+            *ngIf="
+              this.createUserForm.value.selectedState &&
+              this.createUserForm.value.selectedMunicipality
+            "
+          >
+            <app-select
+              label="Colegios"
+              class="input"
+              placeholder="Seleccionar entidad"
+              [options]="colleges"
+              (change)="setGrades(this.createUserForm)"
+              formControlName="selectedCollege"
+            ></app-select>
+          </div>
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+            *ngIf="
+              this.createUserForm.value.selectedState &&
+              this.createUserForm.value.selectedMunicipality &&
+              this.createUserForm.value.selectedCollege
+            "
+          >
+            <app-select
+
+              label="Grados"
+              class="input"
+              placeholder="Seleccionar el grado"
+              [options]="[{  value: '11', key: '11'}, {  value: '10', key: '10'}]"
+              (change)="setCourses(this.createUserForm)"
+              formControlName="selectedGrade"
+            ></app-select>
+          </div>
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+            *ngIf="
+              this.createUserForm.value.selectedState &&
+              this.createUserForm.value.selectedMunicipality &&
+              this.createUserForm.value.selectedCollege &&
+              this.createUserForm.value.selectedGrade
+            "
+          >
+            <app-select
+              label="Cursos"
+              class="input"
+              placeholder="Seleccionar el curso"
+              [options]="[{  value: 'A', key: 1},
+                          {  value: 'B', key: 2},
+                          {  value: 'C', key: 3},
+                          {  value: 'D', key: 4},
+                          {  value: '1', key: 5},
+                          {  value: '2', key: 6},
+                          {  value: '3', key: 7},
+                          {  value: '4', key: 8},
+                          {  value: '01', key: 9},
+                          {  value: '02', key: 10},
+                          {  value: '03', key: 11},
+                          {  value: '04', key: 12}
+
+                          ]"
+              formControlName="selectedCourse"
+            ></app-select>
+          </div>
+
+          <app-textfield
+            label="Codigo Dane"
+            class="input"
+            formControlName="codDane"
+            type="text"
+            placeholder="Codigo Dane"
+          ></app-textfield> -->
+
+          <app-textfield
+            label="Nombre"
+            class="input"
+            formControlName="name"
+            type="text"
+            placeholder="Nombre"
+            [(ngModel)]=prueba.name
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Apellido"
+            class="input"
+            formControlName="lastName"
+            type="text"
+            placeholder="Apellido"
+            [(ngModel)]=prueba.lastName
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Contraseña"
+            class="input"
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+          ></app-textfield>
+
+          <p *ngIf="updateUserMinForm.invalid && loginButtonClicked">
+            <ngb-alert type="danger" [dismissible]="false">
+              Completa <strong>todos</strong> los <strong>campos</strong>
+            </ngb-alert>
+          </p>
+
+          <app-button
+            type="submit"
+
+            text="Actualizar usuario"
+          ></app-button>
+        </form>
+        <form
+          *ngIf="selectedUserType && selectedUserType === userTypes.Min"
+          class="login-form create-user-form"
+          [formGroup]="updateUserMinForm"
+          (submit)="onSubmitUpdate()"
+          novalidate
+        >
+          <app-select
+            label="Tipo de documento"
+            class="input"
+            formControlName="documentType"
+            [options]="documentTypeOptions"
+            placeholder="Tipo de documento"
+            [(ngModel)]=prueba.documentType
+          ></app-select>
+
+          <app-textfield
+            label="Documento"
+            class="input"
+            formControlName="document"
+            type="text"
+            pattern="^[a-zA-Z0-9_.-]*$"
+            placeholder="Número de documento"
+            [(ngModel)]=prueba.document
+          ></app-textfield>
+
+          <!-- <app-textfield
+            label="Correo electrónico"
+            class="input"
+            formControlName="email"
+            type="email"
+            email="true"
+            placeholder="ejemplo@bilan.com"
+          ></app-textfield>
+          <p
+            *ngIf="
+              createUserMinForm.controls.email.dirty &&
+              createUserMinForm.controls.email.invalid
+            "
+          >
+            <ngb-alert type="danger" [dismissible]="false">
+              Ingresa un correo valido
+            </ngb-alert>
+          </p> -->
+
+          <app-textfield
+            label="Nombre"
+            class="input"
+            formControlName="name"
+            type="text"
+            placeholder="Nombre"
+            [(ngModel)]=prueba.name
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Apellido"
+            class="input"
+            formControlName="lastName"
+            type="text"
+            placeholder="Apellido"
+            [(ngModel)]=prueba.lastName
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Contraseña"
+            class="input"
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+          ></app-textfield>
+
+          <p *ngIf="updateUserMinForm.invalid && loginButtonClicked">
+            <ngb-alert type="danger" [dismissible]="false">
+              Completa <strong>todos</strong> los <strong>campos</strong>
+            </ngb-alert>
+          </p>
+
+          <app-button
+            type="submit"
+
+            text="Actualizar usuario"
+          ></app-button>
+        </form>
+        <form
+          *ngIf="selectedUserType && selectedUserType === userTypes.SecEdu"
+          class="login-form create-user-form"
+          [formGroup]="updateUserMinForm"
+          (submit)="onSubmitUpdate()"
+          novalidate
+        >
+          <app-select
+            label="Tipo de documento"
+            class="input"
+            formControlName="documentType"
+            [options]="documentTypeOptions"
+            placeholder="Tipo de documento"
+            [(ngModel)]=prueba.documentType
+          ></app-select>
+
+          <app-textfield
+            label="Documento"
+            class="input"
+            formControlName="document"
+            type="text"
+            pattern="^[a-zA-Z0-9_.-]*$"
+            placeholder="Número de documento"
+            [(ngModel)]=prueba.document
+          ></app-textfield>
+
+          <!-- <app-textfield
+            label="Correo electrónico"
+            class="input"
+            formControlName="email"
+            type="email"
+            email="true"
+            placeholder="ejemplo@bilan.com"
+          ></app-textfield>
+          <p
+            *ngIf="
+              createUserSecEduForm.controls.email.dirty &&
+              createUserSecEduForm.controls.email.invalid
+            "
+          >
+            <ngb-alert type="danger" [dismissible]="false">
+              Ingresa un correo valido
+            </ngb-alert>
+          </p> -->
+
+          <!-- <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+          >
+            <app-select
+              label="Departamentos"
+              class="input"
+              placeholder="Seleccionar entidad"
+              [options]="states"
+              (change)="setDepartmentMunicipality(createUserSecEduForm)"
+              formControlName="selectedState"
+            ></app-select>
+          </div> -->
+
+          <app-textfield
+            label="Nombre"
+            class="input"
+            formControlName="name"
+            type="text"
+            placeholder="Nombre"
+            [(ngModel)]=prueba.name
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Apellido"
+            class="input"
+            formControlName="lastName"
+            type="text"
+            placeholder="Apellido"
+            [(ngModel)]=prueba.lastName
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Contraseña"
+            class="input"
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+          ></app-textfield>
+
+          <p *ngIf="updateUserMinForm.invalid && loginButtonClicked">
+            <ngb-alert type="danger" [dismissible]="false">
+              Completa <strong>todos</strong> los <strong>campos</strong>
+            </ngb-alert>
+          </p>
+
+          <app-button
+            type="submit"
+
+            text="Actualizar usuario"
+          ></app-button>
+        </form>
+        <form
+          *ngIf="selectedUserType && selectedUserType === userTypes.Directive"
+          class="login-form create-user-form"
+          [formGroup]="updateUserMinForm"
+          (submit)="onSubmitUpdate()"
+          novalidate
+        >
+          <app-select
+            label="Tipo de documento"
+            class="input"
+            formControlName="documentType"
+            [options]="documentTypeOptions"
+            placeholder="Tipo de documento"
+            [(ngModel)]=prueba.documentType
+          ></app-select>
+
+          <app-textfield
+            label="Documento"
+            class="input"
+            formControlName="document"
+            type="text"
+            pattern="^[a-zA-Z0-9_.-]*$"
+            placeholder="Número de documento"
+            [(ngModel)]=prueba.document
+          ></app-textfield>
+
+          <!-- <app-textfield
+            label="Correo electrónico"
+            class="input"
+            formControlName="email"
+            type="email"
+            email="true"
+            placeholder="ejemplo@bilan.com"
+          ></app-textfield>
+          <p
+            *ngIf="
+              createUserDirectiveForm.controls.email.dirty &&
+              createUserDirectiveForm.controls.email.invalid
+            "
+          >
+            <ngb-alert type="danger" [dismissible]="false">
+              Ingresa un correo valido
+            </ngb-alert>
+          </p> -->
+
+          <!-- <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+          >
+            <app-select
+              label="Departamentos"
+              class="input"
+              placeholder="Seleccionar entidad"
+              [options]="states"
+              (change)="setDepartmentMunicipality(this.createUserDirectiveForm)"
+              formControlName="selectedState"
+            >
+            </app-select>
+          </div>
+          <div
+            class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
+            *ngIf="this.createUserDirectiveForm.value.selectedState"
+          >
+            <app-select
+              label="Municipio"
+              class="input"
+              placeholder="Seleccionar Municipio"
+              [options]="municipalities"
+              (change)="setColleges(this.createUserDirectiveForm)"
+              formControlName="selectedMunicipality"
+            ></app-select>
+          </div> -->
+
+          <app-textfield
+            label="Nombre"
+            class="input"
+            formControlName="name"
+            type="text"
+            placeholder="Nombre"
+            [(ngModel)]=prueba.name
+          >
+          </app-textfield>
+
+          <app-textfield
+            label="Apellido"
+            class="input"
+            formControlName="lastName"
+            type="text"
+            placeholder="Apellido"
+            [(ngModel)]=prueba.lastName
+          >
+          </app-textfield>
+
+          <!-- <app-textfield
+            label="Codigo Dane"
+            class="input"
+            formControlName="codDane"
+            type="text"
+            placeholder="Codigo Dane"
+          ></app-textfield> -->
+
+          <app-textfield
+            label="Contraseña"
+            class="input"
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+          ></app-textfield>
+
+          <p *ngIf="updateUserMinForm.invalid && loginButtonClicked">
+            <ngb-alert type="danger" [dismissible]="false">
+              Completa <strong>todos</strong> los <strong>campos</strong>
+            </ngb-alert>
+          </p>
+
+          <app-button
+            type="submit"
+            (click)="loginButtonClicked = true"
+            text="Actualizar usuario"
+          ></app-button>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>

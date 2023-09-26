@@ -4,7 +4,7 @@ import {
   CourseToEnroll,
   GradeCourseResponse,
   Statistics,
-  StudentScore,
+  StudentStatistics,
   Teacher,
 } from '@domain/models/dashboard.model';
 
@@ -15,8 +15,8 @@ export abstract class DashboardGateway {
   abstract teacherEnroll(teacher: Teacher): Promise<boolean>;
   abstract classrooms(): Promise<CourseToEnroll[]>;
   abstract classroom(classroomId: number | string): Promise<Classroom>;
-  abstract studentClassroom(): Promise<StudentScore>;
-  abstract singleStudent(document: string): Promise<StudentScore>;
+  abstract studentClassroom(): Promise<StudentStatistics>;
+  abstract singleStudent(document: string): Promise<StudentStatistics>;
   abstract collegeStatistics(collegeId: string): Promise<Statistics>;
   abstract collegeDaneStatistics(codDane: string): Promise<Statistics>;
   abstract stateStatistics(state: string): Promise<Statistics>;

@@ -1,0 +1,169 @@
+main {
+    background-color: #fff3e8;
+    background-image: url("/assets/images/fondos/texturaBG.png");
+    background-repeat: repeat;
+}
+.modal-content{
+    height: 600px !important;
+    max-height: 600px !important;
+}
+.modal-container{
+    .logo{
+        padding-top: 5px !important;
+    }
+  
+}
+
+.min-options {
+    padding: 10px;
+    background-color: #404040;
+    border-top: 1px solid #242424;
+}
+
+.create-button {
+    width: 11%;
+    background: wheat;
+    border-radius: 20px;
+    min-width: max-content;
+    padding: 3px 10px;
+    font-weight: 500;
+    margin: 0 5px;
+}
+
+.header-directivo-docente {
+    display: flex;
+
+    .module-card__header__text__title {
+        flex-grow: 1;
+    }
+}
+
+.table td,
+.table th {
+    text-align: start;
+    vertical-align: inherit;
+}
+
+.table td.enabled {
+    text-align: center;
+}
+
+.panel-control--ministerio__nav__title--ubication svg:nth-child(1) {
+    width: 50px;
+    height: 30px;
+    margin-right: 0;
+}
+
+.panel-control--ministerio__nav__title--ubication svg:last-child {
+    margin-left: 20px;
+}
+
+.panel-control--ministerio__nav__title {
+    font-weight: bold;
+}
+
+.panel-control--ministerio {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: unset;
+    display: grid;
+    grid-template-columns: 12fr;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-bottom: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(255, 0, 0);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+input:checked+.slider {
+    background-color: green;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px green;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.dark {
+    background: #d0996575;
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    .title {
+        color: #fff;
+        margin: 10px;
+    }
+
+    .logo {
+        width: 120px;
+        padding-top: 48px;
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
+
+    .input {
+        width: 100%;
+    }
+}

@@ -1090,9 +1090,9 @@ figure {
 
 @font-face {
     font-family: "Fredoka One";
-    src: url("../../assets/images/fonts/FredokaOne-Regular.ttf");
+    src: url("/assets/images/fonts/FredokaOne-Regular.ttf");
     src: local("Fredoka One"), local("Fredoka-One"),
-        url("../../assets/images/fonts/FredokaOne-Regular.ttf") format("opentype");
+        url("/assets/images/fonts/FredokaOne-Regular.ttf") format("opentype");
 }
 
 body {
@@ -1293,7 +1293,7 @@ div.student-table__data__nivel-juego {
 
 main {
     background-color: #fff3e8;
-    background-image: url("../../assets/images/fondos/texturaBG.png");
+    background-image: url("/assets/images/fondos/texturaBG.png");
     background-repeat: repeat;
 }
 

@@ -6,7 +6,8 @@
       "@frameworks/*": ["src/app/frameworks/*"],
       "@ui/*": ["src/app/ui/*"],
       "@domain/*": ["src/app/domain/*"],
-      "@application/*": ["src/app/application/*"]
+      "@application/*": ["src/app/application/*"],
+      "@utils/*": ["src/app/utils/*"]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

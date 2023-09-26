@@ -11,12 +11,13 @@ import {
   GameInfo,
 } from '@domain/models/game.model';
 import { Response } from '@domain/models/response.model';
+import { AuthService } from '@application/auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService extends GameGateway {
-  constructor(private http: HttpClient, private userAuth: UserGateway) {
+  constructor(private http: HttpClient, private userAuth: AuthService) {
     super();
   }
 

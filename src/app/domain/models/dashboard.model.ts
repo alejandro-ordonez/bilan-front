@@ -7,14 +7,14 @@ export class College {
   campusCode: string;
 }
 
-export class Course {
+export class CourseId {
   id: number;
   name: string;
 }
 
 export class GradeCourseResponse {
   grade: string;
-  courses: Course[];
+  courses: CourseId[];
 }
 
 export class CourseToEnroll {
@@ -32,32 +32,39 @@ export class Teacher {
   coursesToEnroll: CourseToEnroll[];
 }
 
-export class StudentScore {
-  document: string;
+export class StudentStatistics {
+  id: string;
   name: string;
-  lastName: string;
-  timeInPlatformPerWeek: number;
-  activityScore: any;
-  gameScore: any;
   timeInApp: number;
-  progressActivities: number;
+  percentage: number;
+
+  data: TribeScores[];
 }
+
+
 
 export class Classroom {
   groupProgress: number;
   students: number;
-  studentStatsRecords: StudentScore[];
+  studentStatsRecords: StudentStatistics[];
 }
 
 export class GameModule {
   id: number;
   name: string;
+  title?: string;
   logins: string;
   performanceActivityScore: number;
   points?: number;
   performanceGameScore: number;
 }
 
+export class TribeScores extends GameModule{
+  preActivePhase: number;
+  postActivePhase: number;
+  interactivePhase: number;
+  timeInApp: number;
+}
 
 export class RowSummary{
   id: string;

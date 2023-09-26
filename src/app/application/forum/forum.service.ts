@@ -5,12 +5,13 @@ import { ForumGateway } from '@domain/gateways/forum.gateway';
 import { UserGateway } from '@domain/gateways/user.gateway';
 import { Post, Comment, PostRequest } from '@domain/models/forum.model';
 import { Response } from '@domain/models/response.model';
+import { AuthService } from '@application/auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ForumService extends ForumGateway {
-  constructor(private http: HttpClient, private userAuth: UserGateway) {
+  constructor(private http: HttpClient, private userAuth: AuthService) {
     super();
   }
 

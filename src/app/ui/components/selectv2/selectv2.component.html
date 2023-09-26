@@ -3,7 +3,7 @@
     <label class="label" ngif="label !== ''">{{ label }}</label>
 
     <select class="app-select-input" (ngModelChange)="this.selectChanged($event)" [(ngModel)]="selectedOption">
-        <option [ngValue]="null" disabled selected>{{ label }}</option>
+        <option [ngValue]="null" disabled>{{ label }}</option>
         <option (click)="onTouched()" *ngFor="let option of options; let idx = index" [ngValue]="option">
             {{ option.value }}
         </option>

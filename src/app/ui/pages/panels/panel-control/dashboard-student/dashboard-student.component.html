@@ -1,0 +1,114 @@
+<section class="panel-control--ministerio__statics">
+    <figure class="img-title">
+      <img src="assets/images/avatars/A__2Aire.jpg" alt="" />
+    </figure>
+    <h1 class="panel-control--ministerio__statics__title">
+      {{ statistics.name }}
+    </h1>
+    <div class="stactics-cards__container">
+      <div class="statics-cards">
+        <div class="statics-cards__content">
+          <figure class="statics-card__content__img">
+            <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+          </figure>
+          <div class="statics-card__content__text">
+            <p class="statics-card__content__text__description">
+              Porcentaje de avance de actividades
+            </p>
+            <h2 class="statics-card__content__text__data">
+              {{ statistics.percentage }}%
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="statics-cards">
+        <div class="statics-cards__content">
+          <figure class="statics-card__content__img">
+            <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+          </figure>
+          <div class="statics-card__content__text">
+            <p class="statics-card__content__text__description">
+              Tiempo del estudiante en la app
+            </p>
+            <h2 class="statics-card__content__text__data">
+              {{ statistics.timeInApp }}h
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="assets/images/fondos/linea@2x.png" class="divicion_image" />
+    <div class="student-table">
+      <h2 class="student-table__title">Estudiante</h2>
+      <h2 class="student-table__title">Actividades realizadas</h2>
+      <div>
+        <h2 class="student-table__title">
+          Nivel de desempeño alcanzado por área en actividades
+        </h2>
+      </div>
+      <div>
+        <h2 class="student-table__title">
+          Nivel de desempeño alcanzado en el juego
+        </h2>
+      </div>
+
+      <div class="student-table__data" *ngFor="let module of statistics.data">
+        <div class="student-table__data__student">
+          <figure class="student-table__data__student__img">
+            <img [src]="
+                '/assets/images/iconos/Elementos/modules/name/' +
+                module.name +
+                '.png'
+              " />
+          </figure>
+          <p class="student-table__data__student__name">{{ module.name }}</p>
+        </div>
+        <div class="student-table__data__date student">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" disabled
+              [checked]="module.preActivePhase" />
+            <label class="form-check-label" for="inlineCheckbox1">FP</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" disabled
+              [checked]="module.interactivePhase" />
+            <label class="form-check-label" for="inlineCheckbox2">FI</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled
+              [checked]="module.postActivePhase" />
+            <label class="form-check-label" for="inlineCheckbox3">FP </label>
+          </div>
+        </div>
+        <div class="student-table__data__nivel-actividad">
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__number">
+              {{ module.performanceActivityScore }}
+            </div>
+          </div>
+        </div>
+        <div class="student-table__data__nivel-juego">
+          <div class="nivel-actividad__result">
+            <div class="modulo-desempeño__statics" [ngClass]="'nivel-' + module.performanceGameScore.toString()">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(100% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(75% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(50% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

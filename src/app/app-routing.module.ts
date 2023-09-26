@@ -9,11 +9,10 @@ import { AdminGuard } from '@application/guards/admin.guard';
 
 import { WelcomeRouteComponent } from './welcome-route/welcome-route.component';
 
-import { WelcomeComponent } from './welcome/welcome.component';
 import { ForosComponent } from './foros/foros.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { ModulosComponent } from './modulos/modulos.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent, WelcomeComponent } from '@ui/pages';
 import { LayoutComponent } from './layout/layout.component';
 import { ArtefactoCardComponent } from './artefacto-card/artefacto-card.component';
 import { SponsorIntroComponent } from './sponsor-intro/sponsor-intro.component';
@@ -30,13 +29,11 @@ import { ModuleActividadesCompetenciasSocioemocionalesComponent } from './module
 import { ModuleActividadesCienciasNaturalesComponent } from './module-actividades-ciencias-naturales/module-actividades-ciencias-naturales.component';
 import { ModuleActividadesLenguajeComponent } from './module-actividades-lenguaje/module-actividades-lenguaje.component';
 import { IntroRetosComponent } from './intro-retos/intro-retos.component';
-import { PanelControlComponent } from './panel-control/panel-control.component';
 import { RetosComponent } from './retos/retos.component';
 import { ModalesComponent } from './modales/modales.component';
 import { AboutBilanComponent } from './about-bilan/about-bilan.component';
 
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { PanelEditUsersComponent } from './panel-edit-users/panel-edit-users.component';
 
 import { PanelColegioComponent } from './panel-colegio/panel-colegio.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
@@ -50,8 +47,8 @@ import { RetoDeLabranzaComponent } from './retos/reto-de-labranza/reto-de-labran
 import { RetoDeLasEstacionesComponent } from './retos/reto-de-las-estaciones/reto-de-las-estaciones.component';
 import { RetoDeLosEspiritusComponent } from './retos/reto-de-los-espiritus/reto-de-los-espiritus.component';
 import { ForoComponent } from './foro/foro.component';
-import { PanelDirectivoComponent } from './panel-directivo/panel-directivo.component';
 import { TableroDirectivoComponent } from './tablero-directivo/tablero-directivo.component';
+import { PanelControlComponent, PanelDirectivoComponent, PanelEditUsersComponent } from '@ui/pages/panels';
 
 const routes: Routes = [
   {
@@ -197,36 +194,6 @@ const routes: Routes = [
       },
       {
         path: 'admin/panel-control/:type',
-        component: PanelControlComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
-      },
-      {
-        path: 'admin/panel-control/:type/:param1',
-        component: PanelControlComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
-      },
-      {
-        path: 'admin/panel-control/:type/:param1/:param2',
-        component: PanelControlComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
-      },
-      {
-        path: 'admin/panel-control/:type/:param1/:param2/:param3',
-        component: PanelControlComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
-      },
-      {
-        path: 'admin/panel-control/:type/:param1/:param2/:param3/:param4',
-        component: PanelControlComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
-      },
-      {
-        path: 'admin/panel-control/:type/:param1/:param2/:param3/:param4/:param5',
-        component: PanelControlComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
-      },
-      {
-        path: 'admin/panel-control/:type/:param1/:param2/:param3/:param4/:param5/:param6',
         component: PanelControlComponent,
         canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
       },

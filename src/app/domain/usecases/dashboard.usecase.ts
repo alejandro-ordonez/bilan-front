@@ -6,7 +6,7 @@ import {
   CourseToEnroll,
   GradeCourseResponse,
   Statistics,
-  StudentScore,
+  StudentStatistics,
   Teacher,
 } from '@domain/models/dashboard.model';
 @Injectable({
@@ -39,7 +39,7 @@ export class DashboardUseCase {
     return this.dashboardGateway.gradeCourses(collegeId);
   }
 
-  getStudentScore(): Promise<StudentScore> {
+  getStudentScore(): Promise<StudentStatistics> {
     return this.dashboardGateway.studentClassroom();
   }
 

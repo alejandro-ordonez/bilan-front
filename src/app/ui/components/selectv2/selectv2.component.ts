@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Option } from '../select/select.component';
 
@@ -28,7 +28,7 @@ export class Selectv2Component implements OnInit, ControlValueAccessor {
   onChange: (option: Option) => {};
   onTouched = () => {};
 
-  constructor() {}
+  constructor() {} 
 
   selectChanged(value: Option) {
     this.selectedOption = value;

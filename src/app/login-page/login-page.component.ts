@@ -6,7 +6,7 @@ import { UserType } from '@domain/enums/user-type.enum';
 import { Auth } from '@domain/models/auth.model';
 import { User } from '@domain/models/user.model';
 import { Response } from '@domain/models/response.model';
-import { AuthUserUseCase } from '@domain/usecases/auth-user.usecase';
+import { UserUseCase } from '@domain/usecases/user.usecase';
 import { API_RESPONSE } from '@frameworks/config/Constants';
 import { Option } from '@ui/components/select/select.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -85,7 +85,7 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authUser: AuthUserUseCase,
+    private authUser: UserUseCase,
     private router: Router,
     private modal: NgbModal
   ) {

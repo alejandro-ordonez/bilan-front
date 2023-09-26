@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { DocumentType } from '@domain/enums/document-type.enum';
 import { Auth } from '@domain/models/auth.model';
 import { User } from '@domain/models/user.model';
-import { AuthUserUseCase } from '@domain/usecases/auth-user.usecase';
+import { UserUseCase } from '@domain/usecases/user.usecase';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Option } from '@ui/components/select/select.component';
 import { API_RESPONSE } from '@frameworks/config/Constants';
@@ -28,7 +28,7 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authUser: AuthUserUseCase,
+    private authUser: UserUseCase,
     private router: Router,
     private modal: NgbModal
   ) {

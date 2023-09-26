@@ -9,9 +9,5 @@ export abstract class UserGateway {
   abstract update(auth: Auth): Promise<Response>;
   abstract create(user: User): Promise<Response>;
   abstract updateUsers(user: User): Promise<Response>;
-  abstract updateTeacher(teacher: TeacherDto): Promise<Response>;
-  abstract updateStudent(student: StudentDto): Promise<Response>;
   abstract login(auth: Auth): Promise<boolean>;
-  abstract getToken(): string;
-  abstract isLoggedIn(): boolean;
 }

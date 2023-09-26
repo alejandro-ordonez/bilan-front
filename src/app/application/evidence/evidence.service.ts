@@ -6,12 +6,13 @@ import { API } from '@frameworks/config/Constants';
 import { EvidenceGateway } from '@domain/gateways/evidence.gateway';
 import { Evaluate, Evidence, Phase } from '@domain/models/evidence.model';
 import { UserGateway } from '@domain/gateways/user.gateway';
+import { AuthService } from '@application/auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EvidenceService extends EvidenceGateway {
-  constructor(private http: HttpClient, private userAuth: UserGateway) {
+  constructor(private http: HttpClient, private userAuth: AuthService) {
     super();
   }
 

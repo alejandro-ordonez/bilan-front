@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { GeneralInfoGateway } from "@domain/gateways";
-import { City } from "@domain/models/city.model";
+import { State } from "@domain/models";
 import { Course } from "@domain/models/course.model";
 import { College } from "@domain/models/dashboard.model";
 
@@ -12,7 +12,7 @@ export class GeneralInfoUseCase{
     }
 
     getStates = (): Promise<string[]> => this._gateway.getAllStates();
-    getCities = (state: string): Promise<City[]> => this._gateway.getCitiesByState(state);
+    getStatesAndCities = (): Promise<State[]> => this._gateway.getStatesAndCities();
     getColleges = (city: number): Promise<College[]> => this._gateway.getColleges(city);
     getCourses = (): Promise<Course[]> => this._gateway.getCourses();
 }

@@ -2,7 +2,7 @@
   float: left;
   width: 100%;
   background-color: #fff3e8;
-  background-image: url("../../assets/images/fondos/texturaBG.png");
+  background-image: url("/assets/images/fondos/texturaBG.png");
   background-repeat: repeat;
 }
 
@@ -21,7 +21,7 @@
 
 .module-card {
   &.matematicas {
-    background-image: url("../../assets/images/fondos/Modulos/matematicas_2BG.png");
+    background-image: url("/assets/images/fondos/Modulos/matematicas_2BG.png");
 
     .module-card__grade {
       background-color: #bb4739;
@@ -29,7 +29,7 @@
   }
 
   &.lenguaje {
-    background-image: url("../../assets/images/fondos/Modulos/lenguaje_1BG.png");
+    background-image: url("/assets/images/fondos/Modulos/lenguaje_1BG.png");
 
     .module-card__grade {
       background-color: #50806b;
@@ -37,7 +37,7 @@
   }
 
   &.ciencias-naturales {
-    background-image: url("../../assets/images/fondos/Modulos/ciencias_1BG.png");
+    background-image: url("/assets/images/fondos/Modulos/ciencias_1BG.png");
 
     .module-card__grade {
       background-color: #37688e;
@@ -45,7 +45,7 @@
   }
 
   &.competencias-ciudadanas {
-    background-image: url("../../assets/images/fondos/Modulos/C.ciudadanasBG.png");
+    background-image: url("/assets/images/fondos/Modulos/C.ciudadanasBG.png");
 
     .module-card__grade {
       background-color: #67a9b0;
@@ -53,7 +53,7 @@
   }
 
   &.competencias-socioemocionales {
-    background-image: url("../../assets/images/fondos/Modulos/C.sociemocionalesBG.png");
+    background-image: url("/assets/images/fondos/Modulos/C.sociemocionalesBG.png");
 
     .module-card__grade {
       background-color: #a4742a;

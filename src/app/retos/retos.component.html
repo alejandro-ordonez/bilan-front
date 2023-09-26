@@ -12,7 +12,7 @@
             <div class="iz_mod act_mod-retos" [id]="currentTribeName">
               <img
                 class="icono_prin_modulo-retos"
-                src="../../assets/images/iconos/Chaman(Iconos,Retos)/{{
+                src="/assets/images/iconos/Chaman(Iconos,Retos)/{{
                   currentTribeName
                 }}.png"
               />
@@ -23,7 +23,7 @@
             <div class="sir-acts">
               <img
                 class="sir-acts-alcher"
-                src="../../assets/images/Personajes/{{
+                src="/assets/images/Personajes/{{
                   currentTribe.element
                 }}/{{ currentAction.name?.replace('ó', 'o') | lowercase }}.png"
               />
@@ -41,7 +41,7 @@
               <div class="eldom">
                 <div class="dom-t">
                   <img
-                    src="../../assets/images/iconos/retos/{{
+                    src="/assets/images/iconos/retos/{{
                     getChallengeName(challenge)
                     }}.png"
                   />
@@ -51,7 +51,7 @@
             <span class="i-dom" [id]="currentTribeName">
               <b>{{ challenge.cost }}</b>
               <img
-                src="../../assets/images/Botones_menu/totem_basico@2x_opt.png"
+                src="/assets/images/Botones_menu/totem_basico@2x_opt.png"
               />
             </span>
             <p class="tiles">{{ challenge.name  }}</p>

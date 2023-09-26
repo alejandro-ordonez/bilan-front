@@ -14,14 +14,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MalokaComponent } from './maloka/maloka.component';
 import { ForosComponent } from './foros/foros.component';
 import { ModulosComponent } from './modulos/modulos.component';
 import { ModuleBarComponent } from './module-bar/module-bar.component';
 import { LayoutComponent } from './layout/layout.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 import { LayoutModuleBarComponent } from './layout-module-bar/layout-module-bar.component';
 import { ArtefactoCardComponent } from './artefacto-card/artefacto-card.component';
 import { SponsorIntroComponent } from './sponsor-intro/sponsor-intro.component';
@@ -42,7 +41,6 @@ import { ModuleActividadesCienciasNaturalesComponent } from './module-actividade
 import { ModuleActividadesCompetenciasSocioemocionalesComponent } from './module-actividades-competencias-socioemocionales/module-actividades-competencias-socioemocionales.component';
 import { ModuleActividadesCompetenciasCiudadanasComponent } from './module-actividades-competencias-ciudadanas/module-actividades-competencias-ciudadanas.component';
 import { IntroRetosComponent } from './intro-retos/intro-retos.component';
-import { PanelControlComponent } from './panel-control/panel-control.component';
 import { RetosComponent } from './retos/retos.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { ModalesComponent } from './modales/modales.component';
@@ -54,6 +52,7 @@ import { UserGateway } from '@domain/gateways/user.gateway';
 import { AuthService } from '@application/auth/auth.service';
 import { AuthGuardService } from '@application/auth/auth-guard.service';
 
+// Components
 import { SelectComponent } from '@ui/components/select/select.component';
 import { ButtonComponent } from '@ui/components/button/button.component';
 import { TextfieldComponent } from '@ui/components/textfield/textfield.component';
@@ -62,15 +61,20 @@ import { TimerComponent } from './ui/components/timer/timer.component';
 import { TotemBasicComponent } from './ui/components/totem-basic/totem-basic.component';
 import { TotemSpecialComponent } from './ui/components/totem-special/totem-special.component';
 import { EspiritusBarComponent } from './ui/components/espiritus-bar/espiritus-bar.component';
+
+//Pages
+import { PageNotFoundComponent, WelcomeComponent } from '@ui/pages';
+import {  PanelControlComponent, PanelDirectivoComponent, DashboardComponent, DashboardStudentComponent, PanelEditUsersComponent } from '@ui/pages/panels'
+
+
 import { UserDataGateway } from '@domain/gateways/user-data.gateway';
-import { UserDataService } from '@application/user/user.service';
+import { UserDataService } from '@application/user/user-data.service';
 import { GameGateway } from '@domain/gateways/game.gateway';
 import { GameService } from '@application/game/game.service';
 import { LoaderComponent } from './ui/components/loader/loader.component';
 import { MateriaPipePipe } from './utils/pipes/materia-pipe.pipe';
 import { WelcomeRouteComponent } from './welcome-route/welcome-route.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { PanelEditUsersComponent } from './panel-edit-users/panel-edit-users.component';
 import { DashboardGateway } from '@domain/gateways/dashboard.gateway';
 import { DashboardService } from '@application/dashboard/dashboard.service';
 import { EvidenceGateway } from '@domain/gateways/evidence.gateway';
@@ -92,11 +96,11 @@ import { RetoDeLosEspiritusComponent } from './retos/reto-de-los-espiritus/reto-
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ForoComponent } from './foro/foro.component';
-import { PanelDirectivoComponent } from './panel-directivo/panel-directivo.component';
 import { TableroDirectivoComponent } from './tablero-directivo/tablero-directivo.component';
 import { GeneralInfoGateway } from '@domain/gateways';
 import { GeneralInfoService } from '@application/general-info/general-info.service';
 import { Selectv2Component } from './ui/components/selectv2/selectv2.component';
+import { UserService } from '@application/user/user.service';
 
 @NgModule({
   declarations: [
@@ -165,6 +169,8 @@ import { Selectv2Component } from './ui/components/selectv2/selectv2.component';
     PanelDirectivoComponent,
     TableroDirectivoComponent,
     Selectv2Component,
+    DashboardStudentComponent,
+    DashboardComponent,
   ],
   imports: [
     HttpClientXsrfModule.withOptions({
@@ -196,7 +202,7 @@ import { Selectv2Component } from './ui/components/selectv2/selectv2.component';
   providers: [
     {
       provide: UserGateway,
-      useClass: AuthService,
+      useClass: UserService,
     },
     {
       provide: UserDataGateway,
@@ -226,4 +232,4 @@ import { Selectv2Component } from './ui/components/selectv2/selectv2.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

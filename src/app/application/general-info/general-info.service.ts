@@ -1,17 +1,18 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { UserGateway } from "@domain/gateways/user.gateway";
 import { GeneralInfoGateway } from "@domain/gateways";
 import { City } from "@domain/models/city.model";
 import { API } from "@frameworks/config/Constants";
 import { Response, ResponseDto } from "@domain/models/response.model";
 import { College } from "@domain/models/dashboard.model";
 import { Course } from "@domain/models/course.model";
+import { AuthService } from "@application/auth/auth.service";
+import { State } from "@domain/models";
 
 @Injectable({ providedIn: 'root'})
 export class GeneralInfoService extends GeneralInfoGateway{
 
-    constructor(protected _httpClient: HttpClient, private _authService: UserGateway) {
+    constructor(protected _httpClient: HttpClient, private _authService: AuthService) {
         super();
     }
 
@@ -43,14 +44,14 @@ export class GeneralInfoService extends GeneralInfoGateway{
           });
     }
 
-    getCitiesByState(state: string): Promise<City[]> {
-        return new Promise<City[]>((resolve, reject) => {
+    getStatesAndCities(): Promise<State[]> {
+        return new Promise<State[]>((resolve, reject) => {
             const options = this.buildConfig();
             this._httpClient
-              .get<ResponseDto<City[]>>(API.baseUrl + API.generalInfo.cities.replace('{{state}}', state), options)
+              .get<ResponseDto<State[]>>(API.baseUrl + API.generalInfo.allStates, options)
               .subscribe(
                 (response: Response) => {
-                  const data: City[] = response.result;
+                  const data: State[] = response.result;
                   resolve(data);
                 },
                 () => {

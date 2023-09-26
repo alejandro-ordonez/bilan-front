@@ -1,0 +1,665 @@
+<div class="module-bar module-bar--panel-control--ministerio">
+  <button class="hamburger hamburger--arrowturn" id="burger-menu" type="button" (click)="hideShow()"
+    [ngClass]="burgerButtonIsActive ? 'is-active' : ''">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"> </span>
+    </span>
+  </button>
+  <h2 class="module-card__header__text__title">PANEL DE CONTROL</h2>
+  <button class="create-button" *ngIf="userType == userTypeValues.DirectiveTeacher" routerLink="/admin/panel-edit/0/%20">
+    Editar usuarios
+  </button>
+
+  <button class="px-3" (click)="logout()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      fill="#eabc67"
+      class="bi bi-box-arrow-right"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
+      />
+      <path
+        fill-rule="evenodd"
+        d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+      />
+    </svg>
+  </button>
+</div>
+
+
+<main class="panel-control--ministerio" id="lateral-menu__container" [ngClass]="burgerButtonIsActive ? 'is-active' : ''"
+  [ngSwitch]="dashboardSelected">
+  <nav class="panel-control--ministerio__nav" id="lateral-menu" [ngClass]="burgerButtonIsActive ? 'is-active' : ''">
+    <form class="panel-control--ministerio__nav__principal" (ngSubmit)="onSubmitFilter()" [formGroup]="filterForm">
+      <app-selectv2 class="input" [options]="states"    label="Departamentos" formControlName="state"     [hidden]="!showStateControl()"></app-selectv2>
+      <app-selectv2 class="input" [options]="cities"    label="Ciudades"      formControlName="city"      [hidden]="!showCityControl()" ></app-selectv2>
+      <app-selectv2 class="input" [options]="colleges"  label="Colegios"      formControlName="college"   [hidden]="!showCollegeControl()" ></app-selectv2>
+      <app-selectv2 class="input" [options]="courses"   label="Cursos"        formControlName="course"    [hidden]="!showCourseControl()" ></app-selectv2>
+
+      <div class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication">
+        <button type="submit" class="btn btn-outline-light btn-lg btn-block"
+          routerLinkActive="active">
+          Buscar
+        </button>
+      </div>
+
+    </form>
+  </nav>
+
+  <!--Dashboards-->
+
+  <app-dashboard *ngSwitchCase="dashboardCases.GovermentStatistics"
+    title="Entidades Territoriales"
+    category="Departamentos"
+    [statistics]="this.statistics"
+    [dashboardType]="dashboardCases.GovermentStatistics">
+  </app-dashboard>
+
+  <app-dashboard *ngSwitchCase="dashboardCases.StateStatistics"
+    [title]="this.stateControl?.value.value"
+    category="Ciudades"
+    [statistics]="this.statistics"
+    [dashboardType]="dashboardCases.StateStatistics">
+  </app-dashboard>
+
+  <app-dashboard *ngSwitchCase="dashboardCases.CityStatistics"
+    [title]="this.cityControl?.value.value"
+    category="Instituciones"
+    [statistics]="this.statistics"
+    [dashboardType]="dashboardCases.CityStatistics">
+  </app-dashboard>
+
+  <app-dashboard *ngSwitchCase="dashboardCases.CollegeStatistics"
+      [title]="this.collegeControl?.value.value"
+      category="Instituciones"
+      [statistics]="this.statistics"
+      [dashboardType]="dashboardCases.CollegeStatistics">
+  </app-dashboard>
+
+  <app-dashboard *ngSwitchCase="dashboardCases.CourseStatistics"
+      [title]="this.collegeControl?.value.value"
+      category="Estudiante"
+      subCategory="# de ingresos total a la plataforma"
+      [statistics]="this.statistics"
+      [dashboardType]="dashboardCases.CourseStatistics">
+  </app-dashboard>
+
+  <app-dashboard-student 
+    [statistics]="studentStatistics" 
+    *ngSwitchCase="dashboardCases.StudentStatistics">
+  </app-dashboard-student>
+
+ 
+  <section class="panel-control--ministerio__statics" *ngSwitchCase="'camilo'">
+    <figure class="img-title">
+      <img src="/assets/images/logos/Colegio@2x.png" alt="" />
+    </figure>
+    <h1 class="panel-control--ministerio__statics__title">
+      I.E.D. Camilo Torres
+    </h1>
+    <div class="stactics-cards__container">
+      <div class="statics-cards">
+        <div class="statics-cards__content">
+          <figure class="statics-card__content__img">
+            <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+          </figure>
+          <div class="statics-card__content__text">
+            <p class="statics-card__content__text__description">
+              Estudiantes registrados
+            </p>
+            <h2 class="statics-card__content__text__data">157</h2>
+          </div>
+        </div>
+      </div>
+      <div class="statics-cards">
+        <div class="statics-cards__content">
+          <figure class="statics-card__content__img">
+            <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+          </figure>
+          <div class="statics-card__content__text">
+            <p class="statics-card__content__text__description">
+              Tiempo de los estudiantes en la app
+            </p>
+            <h2 class="statics-card__content__text__data">95h</h2>
+          </div>
+        </div>
+      </div>
+      <div class="statics-cards">
+        <div class="statics-cards__content">
+          <figure class="statics-card__content__img">
+            <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+          </figure>
+          <div class="statics-card__content__text">
+            <p class="statics-card__content__text__description">
+              Total respuestas en foros
+            </p>
+            <h2 class="statics-card__content__text__data">0</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="assets/images/fondos/linea@2x.png" class="divicion_image" />
+    <div class="student-table">
+      <h2 class="student-table__title">Módulo</h2>
+      <h2 class="student-table__title">Estado de ingreso de los estudiantes</h2>
+      <div>
+        <h2 class="student-table__title">
+          Nivel de desempeño alcanzado por área en actividades
+        </h2>
+      </div>
+      <div>
+        <h2 class="student-table__title">
+          Nivel de desempeño alcanzado en el juego
+        </h2>
+      </div>
+
+      <div class="student-table__data">
+        <div class="student-table__data__student">
+          <figure class="student-table__data__student__img">
+            <img src="/assets/images/iconos/Elementos/Fuego_tribu-full.png" />
+          </figure>
+          <p class="student-table__data__student__name">Matemáticas</p>
+        </div>
+        <div class="student-table__data__date student">
+          <p class="student-table__data__student__name">0/0</p>
+        </div>
+        <div class="student-table__data__nivel-actividad">
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__number">2</div>
+          </div>
+        </div>
+        <div class="student-table__data__nivel-juego">
+          <div class="nivel-actividad__result">
+            <div class="modulo-desempeño__statics">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(100% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(75% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line active" style="width: calc(50% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="student-table__data">
+        <div class="student-table__data__student">
+          <figure class="student-table__data__student__img">
+            <img src="/assets/images/iconos/Elementos/Tierra_tribu-full.png" />
+          </figure>
+          <p class="student-table__data__student__name">Lenguaje</p>
+        </div>
+        <div class="student-table__data__date student">
+          <p class="student-table__data__student__name">0/0</p>
+        </div>
+        <div class="student-table__data__nivel-actividad">
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__number">2</div>
+          </div>
+        </div>
+        <div class="student-table__data__nivel-juego">
+          <div class="nivel-actividad__result">
+            <div class="modulo-desempeño__statics">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(100% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(75% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line active" style="width: calc(50% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="student-table__data">
+        <div class="student-table__data__student">
+          <figure class="student-table__data__student__img">
+            <img src="/assets/images/iconos/Elementos/Agua_tribu-full.png" />
+          </figure>
+          <p class="student-table__data__student__name">Ciencias naturales</p>
+        </div>
+        <div class="student-table__data__date student">
+          <p class="student-table__data__student__name">0/0</p>
+        </div>
+        <div class="student-table__data__nivel-actividad">
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__number">2</div>
+          </div>
+        </div>
+        <div class="student-table__data__nivel-juego">
+          <div class="nivel-actividad__result">
+            <div class="modulo-desempeño__statics">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(100% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(75% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line active" style="width: calc(50% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="student-table__data">
+        <div class="student-table__data__student">
+          <figure class="student-table__data__student__img">
+            <img src="/assets/images/iconos/Elementos/Aire_tribu-full.png" />
+          </figure>
+          <p class="student-table__data__student__name">
+            Competencias ciudadanas
+          </p>
+        </div>
+        <div class="student-table__data__date student">
+          <p class="student-table__data__student__name">0/0</p>
+        </div>
+        <div class="student-table__data__nivel-actividad">
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__number">2</div>
+          </div>
+        </div>
+        <div class="student-table__data__nivel-juego">
+          <div class="nivel-actividad__result">
+            <div class="modulo-desempeño__statics">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(100% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line active" style="width: calc(75% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(50% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="student-table__data">
+        <div class="student-table__data__student">
+          <figure class="student-table__data__student__img">
+            <img src="/assets/images/iconos/Elementos/Luz_tribu-full.png" />
+          </figure>
+          <p class="student-table__data__student__name">
+            Competencias socioemocionales
+          </p>
+        </div>
+        <div class="student-table__data__date student">
+          <p class="student-table__data__student__name">0/0</p>
+        </div>
+        <div class="student-table__data__nivel-actividad">
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__number">2</div>
+          </div>
+        </div>
+        <div class="student-table__data__nivel-juego">
+          <div class="nivel-actividad__result">
+            <div class="modulo-desempeño__statics">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(100% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line active" style="width: calc(75% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(50% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"
+                  ng-reflect-ng-class="[object Object]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section class="panel-control--ministerio__statics" *ngSwitchCase="'modulos'">
+    <figure class="img-title">
+      <img src="/assets/images/iconos/Elementos/Fuego_tribu-full.png" alt="" />
+    </figure>
+    <h1 class="panel-control--ministerio__statics__title">Matemáticas</h1>
+    <div class="stactics-cards__container">
+      <div class="statics-cards">
+        <div class="statics-cards__content">
+          <figure class="statics-card__content__img">
+            <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+          </figure>
+          <div class="statics-card__content__text">
+            <p class="statics-card__content__text__description">
+              Estudiantes registrados
+            </p>
+            <h2 class="statics-card__content__text__data">2.540</h2>
+          </div>
+        </div>
+      </div>
+      <div class="statics-cards">
+        <div class="statics-cards__content">
+          <figure class="statics-card__content__img">
+            <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+          </figure>
+          <div class="statics-card__content__text">
+            <p class="statics-card__content__text__description">
+              Porcentaje actividades resueltos
+            </p>
+            <h2 class="statics-card__content__text__data">33%</h2>
+          </div>
+        </div>
+      </div>
+      <div class="statics-cards">
+        <div class="statics-cards__content">
+          <figure class="statics-card__content__img">
+            <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+          </figure>
+          <div class="statics-card__content__text">
+            <p class="statics-card__content__text__description">
+              Total respuestas en foros
+            </p>
+            <h2 class="statics-card__content__text__data">120</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="assets/images/fondos/linea@2x.png" class="divicion_image" />
+    <div class="student-table">
+      <h2 class="student-table__title">Estudiante</h2>
+      <h2 class="student-table__title"># de ingresos total a la plataforma</h2>
+      <div>
+        <h2 class="student-table__title">
+          Nivel de desempeño alcanzado por área en actividades
+        </h2>
+      </div>
+      <div>
+        <h2 class="student-table__title">
+          Nivel de desempeño alcanzado en el juego
+        </h2>
+      </div>
+
+      <div class="student-table__data">
+        <div class="student-table__data__student">
+          <figure class="student-table__data__student__img">
+            <img src="assets/images/avatars/A__2Aire.jpg" alt="" />
+          </figure>
+          <p class="student-table__data__student__name">
+            Nombre del estudiante
+          </p>
+        </div>
+        <div class="student-table__data__date">
+          <p class="student-table__data__student__name">8 veces / 1 semana</p>
+        </div>
+        <div class="student-table__data__nivel-actividad">
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">cn</div>
+            <div class="nivel-actividad__result__number">1</div>
+          </div>
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">l</div>
+            <div class="nivel-actividad__result__number">3</div>
+          </div>
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">m</div>
+            <div class="nivel-actividad__result__number">4</div>
+          </div>
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">cc</div>
+            <div class="nivel-actividad__result__number">2</div>
+          </div>
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">cs</div>
+            <div class="nivel-actividad__result__number">2</div>
+          </div>
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">cp</div>
+            <div class="nivel-actividad__result__number">2</div>
+          </div>
+        </div>
+        <div class="student-table__data__nivel-juego">
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">cn</div>
+            <div class="modulo-desempeño__statics">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line active" style="width: calc(100% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(75% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(50% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"></div>
+              </div>
+            </div>
+          </div>
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">l</div>
+            <div class="modulo-desempeño__statics">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line active" style="width: calc(100% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(75% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(50% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"></div>
+              </div>
+            </div>
+          </div>
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">m</div>
+            <div class="modulo-desempeño__statics">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line active" style="width: calc(100% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(75% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(50% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"></div>
+              </div>
+            </div>
+          </div>
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">cc</div>
+            <div class="modulo-desempeño__statics">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line active" style="width: calc(100% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(75% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(50% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"></div>
+              </div>
+            </div>
+          </div>
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">cs</div>
+            <div class="modulo-desempeño__statics">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line active" style="width: calc(100% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(75% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(50% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"></div>
+              </div>
+            </div>
+          </div>
+          <div class="nivel-actividad__result">
+            <div class="nivel-actividad__result__modulo">cp</div>
+            <div class="modulo-desempeño__statics">
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">4</p>
+                <div class="modulo-desempeño__statics__bar__line active" style="width: calc(100% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">3</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(75% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">2</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(50% - 9px)"></div>
+              </div>
+              <div class="modulo-desempeño__statics__bar">
+                <p class="modulo-desempeño__statics__bar__text">1</p>
+                <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+</main>
+
+<ng-template #nivelActividadesModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>Nivel alcanzado por competencia en plataforma</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Este es el nivel promedio que asigna el docente según las actividades
+        realizadas en la plataforma, bajo una rubricas construidas teniendo en
+        cuenta el diseño de construcción y evaluación de las pruebas Saber 11.
+      </p>
+      <p>
+        Existen dos tipos de rúbricas: las globales y las analíticas. Las
+        primeras, llamadas también holísticas, utilizan descriptores de
+        valoración general que corresponden a los niveles de desempeño sobre la
+        calidad, comprensión o dominio globales de la competencia. Las segundas,
+        las rúbricas analíticas, que es la que se utilizará en la plataforma.
+      </p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #nivelJuegoModal let-modal>
+  <div class="modal-container">
+    <div class="modal__head">
+      <h2>Nivel de desempeño</h2>
+      <button class="close" (click)="modal.dismiss('Cross click')">
+        <img src="assets/images/Botones_menu/boto_exit@2x.png" />
+      </button>
+    </div>
+    <div class="modal__text">
+      <p>
+        Los niveles de desempeño se establecieron con el objetivo de
+        complementar el puntaje numérico que se otorga a los estudiantes por las
+        diferentes acciones que realizará en la plataforma.
+      </p>
+      <p>
+        Los niveles definidos por el Icfes, agrupan a los estudiantes en 4
+        niveles (1, 2, 3 y 4) de acuerdo al desempeño observado en cada uno de
+        los módulos. Cada nivel de desempeño incluye una descripción cualitativa
+        de las habilidades y conocimientos que se estima ha desarrollado el
+        evaluado en cada nivel. Dichos descriptores son construidos y validados
+        de manera conjunta con expertos de la comunidad académica en cada una de
+        las áreas.
+      </p>
+    </div>
+  </div>
+</ng-template>

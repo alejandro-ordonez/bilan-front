@@ -3,7 +3,7 @@
   font-family: "Fredoka One", cursive;
   width: 80px;
   height: 80px;
-  background-image: url("../../assets/images/Botones_menu/contenedor@2x.png");
+  background-image: url("/assets/images/Botones_menu/contenedor@2x.png");
 
   background-size: contain;
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 .btn-square--background.active {
-  background-image: url("../../assets/images/Botones_menu/Contenedor_B@2x.png");
+  background-image: url("/assets/images/Botones_menu/Contenedor_B@2x.png");
   color: #5e4228;
 }
 .grados {

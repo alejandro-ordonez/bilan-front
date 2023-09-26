@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { Auth } from '@domain/models/auth.model';
 import { User } from '@domain/models/user.model';
 import { Response } from '@domain/models/response.model';
-import { AuthUserUseCase } from '@domain/usecases/auth-user.usecase';
+import { UserUseCase } from '@domain/usecases/user.usecase';
 import { API_RESPONSE } from '@frameworks/config/Constants';
 import { Option } from '@ui/components/select/select.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -47,7 +47,7 @@ export class AdminLoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authUser: AuthUserUseCase,
+    private authUser: UserUseCase,
     private router: Router,
     private modal: NgbModal
   ) {
@@ -65,7 +65,7 @@ export class AdminLoginComponent implements OnInit {
         value: 'Secretaría de Educación',
       },
       {
-        key: UserType.Directive,
+        key: UserType.DirectiveTeacher,
         value: 'Directivo Docente',
       },
     ];
@@ -94,26 +94,34 @@ export class AdminLoginComponent implements OnInit {
   }
 
   async login() {
-    let response;
+    let response: boolean = false;
     try {
       response = await this.authUser.login(this.auth);
-    } catch (error) {}
 
-    if (response) {
-      if (this.auth.userType === 'Admin') {
-        this.router.navigateByUrl('/admin/panel-edit/1/ ');
-      }else if(this.auth.userType === UserType.Directive ){
-        this.router.navigateByUrl(
-          '/admin/panel-directivo'
-        );
-      } else {
-        this.router.navigateByUrl(
-          '/admin/panel-control/entidades-territoriales'
-        );
+      if(!response){
+        alert('Ups! algo paso mientras buscabamos tú identificacíon');
+        return;
       }
-    } else {
-      alert('Ups! algo paso mientras buscabamos tú identificacíon');
-    }
+
+      switch(this.auth.userType){
+        case UserType.Admin:
+          this.router.navigateByUrl('/admin/panel-edit/1/ ');
+          break;
+
+        case UserType.DirectiveTeacher:
+          this.router.navigateByUrl('/admin/panel-directivo');
+          break;
+
+        case UserType.Min:
+        default:
+          this.router.navigateByUrl(
+            '/admin/panel-control/GovermentStatistics'
+          );
+          break;
+      }
+
+
+    } catch (error) {}
   }
 
   openModal(contenido: any) {

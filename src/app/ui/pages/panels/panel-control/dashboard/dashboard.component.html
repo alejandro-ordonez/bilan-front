@@ -1,0 +1,98 @@
+<section class="panel-control--ministerio__statics">
+    <h1 class="panel-control--ministerio__statics__title">{{ this.title ?? 'Titulo' }}</h1>
+    <div class="stactics-cards__container">
+        <div class="statics-cards">
+            <div class="statics-cards__content">
+                <figure class="statics-card__content__img">
+                    <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+                </figure>
+                <div class="statics-card__content__text">
+                    <p class="statics-card__content__text__description">
+                        Estudiantes registrados
+                    </p>
+                    <h2 class="statics-card__content__text__data">
+                        {{ statistics?.students }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="statics-cards">
+            <div class="statics-cards__content">
+                <figure class="statics-card__content__img">
+                    <img src="assets/images/Botones_menu/boton_perfil@2x.png" alt="" />
+                </figure>
+                <div class="statics-card__content__text">
+                    <p class="statics-card__content__text__description">
+                        Tiempo de los estudiantes en la app
+                    </p>
+                    <h2 class="statics-card__content__text__data">
+                        {{ statistics?.timeInApp }}h
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="assets/images/fondos/linea@2x.png" class="divicion_image" />
+    <div class="student-table">
+        <h2 class="student-table__title">{{ this.category?? 'Category' }}</h2>
+        <h2 class="student-table__title">{{ this.subCategory?? 'Ingreso de los estudiantes'}}</h2>
+        <div>
+            <h2 class="student-table__title">
+                Nivel de desempeño alcanzado por área en actividades
+            </h2>
+        </div>
+        <div>
+            <h2 class="student-table__title">
+                Nivel de desempeño alcanzado en el juego
+            </h2>
+        </div>
+
+        <div class="student-table__data" *ngFor="let statistic of statistics?.data">
+            <div class="student-table__data__student" [routerLink]="this.buildPath(statistic)">
+                <p class="student-table__data__student__name">
+                    {{ statistic.name }}
+                </p>
+            </div>
+            <div class="student-table__data__date">
+                <p class="student-table__data__student__name">
+                    {{ statistic.logins || 0 }} veces / 1 semana
+                </p>
+            </div>
+            <div class="student-table__data__nivel-actividad">
+                <div class="nivel-actividad__result" *ngFor="let module of statistic.modules">
+                    <div class="nivel-actividad__result__modulo">
+                        {{ module.title }}
+                    </div>
+                    <div class="nivel-actividad__result__number">
+                        {{ module.performanceActivityScore }}
+                    </div>
+                </div>
+            </div>
+            <div class="student-table__data__nivel-juego">
+                <div class="nivel-actividad__result" *ngFor="let module of statistic.modules">
+                  <div class="nivel-actividad__result__modulo">
+                        {{ module.title }}
+                    </div>
+                    <div class="modulo-desempeño__statics" [ngClass]="'nivel-' + module.performanceGameScore">
+                        <div class="modulo-desempeño__statics__bar">
+                            <p class="modulo-desempeño__statics__bar__text">4</p>
+                            <div class="modulo-desempeño__statics__bar__line" style="width: calc(100% - 9px)"></div>
+                        </div>
+                        <div class="modulo-desempeño__statics__bar">
+                            <p class="modulo-desempeño__statics__bar__text">3</p>
+                            <div class="modulo-desempeño__statics__bar__line" style="width: calc(75% - 9px)"></div>
+                        </div>
+                        <div class="modulo-desempeño__statics__bar">
+                            <p class="modulo-desempeño__statics__bar__text">2</p>
+                            <div class="modulo-desempeño__statics__bar__line" style="width: calc(50% - 9px)"></div>
+                        </div>
+                        <div class="modulo-desempeño__statics__bar">
+                            <p class="modulo-desempeño__statics__bar__text">1</p>
+                            <div class="modulo-desempeño__statics__bar__line" style="width: calc(25% - 9px)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

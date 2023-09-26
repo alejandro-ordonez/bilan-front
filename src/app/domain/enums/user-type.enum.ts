@@ -4,6 +4,9 @@ export enum UserType {
   DirectiveUser = 'DirectiveUser',
   Min = 'MinUser',
   Admin = 'Admin',
-  Directive = 'DirectiveTeacher',
+  DirectiveTeacher = 'DirectiveTeacher',
   SecEdu = 'SecEdu',
 }
+
+
+export const UserTypeValues: typeof UserType = UserType;
