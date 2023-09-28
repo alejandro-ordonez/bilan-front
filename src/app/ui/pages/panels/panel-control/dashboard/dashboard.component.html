@@ -48,7 +48,7 @@
         </div>
 
         <div class="student-table__data" *ngFor="let statistic of statistics?.data">
-            <div class="student-table__data__student" [routerLink]="this.buildPath(statistic)">
+            <div class="student-table__data__student" (click)="this.navigateToDashboard(statistic)">
                 <p class="student-table__data__student__name">
                     {{ statistic.name }}
                 </p>

@@ -30,7 +30,7 @@ export class ModuleActividadesCienciasNaturalesComponent implements OnInit {
 
  		<img class="divicion_image" src="assets/images/fondos/Fondo_division_mod.png">
  		<h2 class="ct-naturales">→ Actividad 1:</h2><br>
-		 <img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+		 <img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -84,7 +84,7 @@ export class ModuleActividadesCienciasNaturalesComponent implements OnInit {
  		<b>Desarrollo</b>
 
  		<p>En este apartado se sientan las bases para establecer las relaciones entre soberanía alimentaria y Cambio Climático.</p>
-		 <img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+		 <img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
  		<ul class="menu_momento_introductivo">
  			<li class="btn_foro"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -293,7 +293,7 @@ export class ModuleActividadesCienciasNaturalesComponent implements OnInit {
       {
         content: `
  		<h1>FASE POSTACTIVA O DE APLICACIÓN</h1>
-		 <img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+		 <img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>

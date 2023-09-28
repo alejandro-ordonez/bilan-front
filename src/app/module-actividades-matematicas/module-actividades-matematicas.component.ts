@@ -34,7 +34,7 @@ export class ModuleActividadesMatematicasComponent implements OnInit {
  			Para iniciar, te presentamos esta actividad de crucigrama que permitirá identificar cómo diferentes grupos humanos, se han beneficiado de las matemáticas a través del tiempo, otorgándole usos sociales, culturales y laborales. Además, Podrán identificar conceptos propios de la matemática que trascienden lo teórico y se convierten en nociones y percepciones o formas de ver el mundo.
  		</p>
 
- 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entrgable.">
+ 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entregable.">
 
  		<ul class="menu_momento_introductivo">
  			<li class="btn_foro" data-toggle="tooltip"
@@ -150,7 +150,7 @@ export class ModuleActividadesMatematicasComponent implements OnInit {
       },
       {
         content: `
- 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entrgable.">
+ 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entregable.">
 
  		<ul class="menu_momento_introductivo">
  			<li class="btn_foro" data-toggle="tooltip"
@@ -299,7 +299,7 @@ export class ModuleActividadesMatematicasComponent implements OnInit {
  			En esta sección se dará fundamento teórico y contextual al proyecto de reutilización de aguas grises y aguas lluvias mediante el cual cada estudiante, y posteriormente cada equipo de trabajo colaborativo podrá demostrar su nivel de dominio de conocimientos matemáticos básicos, su interiorización de las posibles aplicaciones y usos de los mismos en contextos específicos, y por último, cómo esta propuesta puede impactar su situación individual, familiar y a su comunidad.
  		</p>
 
- 			<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entrgable.">
+ 			<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entregable.">
  		<ul class="menu_momento_introductivo">
  			<li class="btn_foro" data-toggle="tooltip"
          data-placement="left"
@@ -366,7 +366,7 @@ export class ModuleActividadesMatematicasComponent implements OnInit {
       {
         content: `
 
- 			<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entrgable.">
+ 			<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entregable.">
  		<ul class="menu_momento_introductivo">
  			<li class="btn_foro" data-toggle="tooltip"
          data-placement="left"
@@ -564,7 +564,7 @@ export class ModuleActividadesMatematicasComponent implements OnInit {
       {
         content: `
 
- 			<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entrgable.">
+ 			<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entregable.">
  		<ul class="menu_momento_introductivo">
  			<li class="btn_foro" data-toggle="tooltip"
          data-placement="left"
@@ -876,7 +876,7 @@ export class ModuleActividadesMatematicasComponent implements OnInit {
 
  		<img class="divicion_image" src="assets/images/fondos/Fondo_division_mod.png">
 
- 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entrgable.">
+ 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entregable.">
 
  		<p>
  			<strong>
@@ -986,7 +986,7 @@ export class ModuleActividadesMatematicasComponent implements OnInit {
 
  		<img class="divicion_image" src="assets/images/fondos/Fondo_division_mod.png">
 
- 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entrgable.">
+ 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" data-toggle="tooltip" data-placement="top" title="Recuerda, en esta actividad debes hacer un entregable.">
 
  		<p>
  			En los grupos de trabajo colaborativo deben realizar el siguiente análisis:

@@ -30,7 +30,7 @@ export class ModuleActividadesLenguajeComponent implements OnInit {
 
  		<img src="assets/images/fondos/Fondo_division_mod.png">
  		<h2>→ Actividad 1.</h2>
- 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+ 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -139,7 +139,7 @@ export class ModuleActividadesLenguajeComponent implements OnInit {
 
  		<img src="assets/images/fondos/Fondo_division_mod.png">
  		<h2>→ Actividad 2.</h2>
- 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+ 		<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -346,7 +346,7 @@ export class ModuleActividadesLenguajeComponent implements OnInit {
 
 						<img src="assets/images/fondos/Fondo_division_mod.png">
 						<h2>→ Actividad 1.</h2>
-						<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+						<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  		</ul>
@@ -392,7 +392,7 @@ export class ModuleActividadesLenguajeComponent implements OnInit {
         content: `
 						<img src="assets/images/fondos/Fondo_division_mod.png">
 						<h2>→ Actividad 2.</h2>
-						<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+						<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -567,7 +567,7 @@ export class ModuleActividadesLenguajeComponent implements OnInit {
       {
         content: `
 						<h2>→ Actividad 3.</h2>
-						<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+						<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  		</ul>
@@ -621,7 +621,7 @@ export class ModuleActividadesLenguajeComponent implements OnInit {
 				</ul>
 				<img src="assets/images/fondos/Fondo_division_mod.png">
 				<h2> Actividad 4.</h2>
-				<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+				<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -644,7 +644,7 @@ export class ModuleActividadesLenguajeComponent implements OnInit {
 				<p>El propósito de las actividades que conforman esta fase, es que los estudiantes analicen algunas experiencias de desarrollo de la identidad cultural como eje de transformación de las comunidades, además, que caractericen algunas tradiciones culturales, para que, a partir de los aprendizajes, documenten en profundidad una tradición de la región en que viven, y, elaboren algunos productos académicos que contribuyan a fortalecer su conocimiento y divulgación, así como a la formulación de propuestas.</p>
 				<img src="assets/images/fondos/Fondo_division_mod.png">
 				<h2> Actividad 5.</h2>
-<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -775,7 +775,7 @@ export class ModuleActividadesLenguajeComponent implements OnInit {
       {
         content: `
 				<h2>→ Actividad 6. </h2>
-				<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+				<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -930,7 +930,7 @@ export class ModuleActividadesLenguajeComponent implements OnInit {
 				<h3>
 					Actividad 7
 				</h3>
-				<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+				<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  		</ul>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Params } from '@angular/router';
+import { ActivatedRoute, NavigationBehaviorOptions, Params, Router } from '@angular/router';
 import { RowSummary, Statistics } from '@domain/models';
 import { DashboardToDisplay } from '../panel-control/panel-control.component';
 import * as paramBuilder from '@utils/paramBuilder';
@@ -28,66 +28,65 @@ export class DashboardComponent implements OnInit {
 
   baseUrl: string;
 
-  constructor() { }
+  constructor(private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.baseUrl = `/admin/panel-control/${DashboardToDisplay[this.dashboardType]}`;
   }
 
-
-  buildPathToDashboard(params: RowSummary): string{
+  navigateToDashboard(params: RowSummary){
    
     switch (this.dashboardType) {
-      case DashboardToDisplay.StateStatistics:
-        return this.buildPathStateDashboard(params);
+      case DashboardToDisplay.GovermentStatistics:
+        this.navigateStateDashboard(params);
+        break;
     
-      case DashboardToDisplay.CityStatistics:
-        return this.buildPathCityDashboard(params);
+      case DashboardToDisplay.StateStatistics:
+        this.navigateCityDashboard(params);
+        break;
 
-      case DashboardToDisplay.CollegeStatistics:
-        return this.buildPathCollegeDashboard(params);
+      case DashboardToDisplay.CityStatistics:
+        this.navigateCollegeDashboard(params);
+        break;
 
       case DashboardToDisplay.CourseStatistics:
-      case DashboardToDisplay.GovermentStatistics:
       default:
-        return this.baseUrl;
+        break;
 
-  }
-}
-
-  buildPath(params: Params){
-    let url = this.baseUrl;
-    let keyParams: string[] = Object.keys(params);
-    url +='?'
-
-    for(let key of keyParams){
-      url += `${key}=${params[key]}`;
     }
-
-    return url;
   }
 
-
-
-  buildPathStateDashboard(data: RowSummary): string{
+  navigateStateDashboard(data: RowSummary){
     const params = paramBuilder.buildStateStatisticsParams(data.name);
-    return this.buildPath(params);
+    this.navigate(params, DashboardToDisplay.StateStatistics);
   }
 
-  buildPathCityDashboard(data: RowSummary): string{
+  navigateCityDashboard(data: RowSummary){
     const params: Params = paramBuilder.buildCityStatisticsParams(data.id);
-    return this.buildPath(params);
+    this.navigate(params, DashboardToDisplay.CityStatistics);
   }
 
-  buildPathCollegeDashboard(data: RowSummary): string{
+  navigateCollegeDashboard(data: RowSummary){
     const params: Params = paramBuilder.buildCollegetatisticsParams(data.id);
-    return this.buildPath(params);
+    this.navigate(params, DashboardToDisplay.CollegeStatistics);
   }
 
-  buildPathStudentDashboard(data: RowSummary): string{
+  navigateStudentDashboard(data: RowSummary){
     const params: Params = paramBuilder.buildUserStatisticsParams(data.id);
-    return this.buildPath(params);
+    this.navigate(params, DashboardToDisplay.StudentStatistics);
   }
 
+  navigate(params: Params, targetDashboard: DashboardToDisplay){
+    this._router.navigate(
+      [ `../${DashboardToDisplay[targetDashboard]}` ],
+      {
+        relativeTo:  this._route,
+        queryParams: params,
+        queryParamsHandling: 'merge'
+      }
+    ).then(loaded => {
+      if(loaded)
+        window.location.reload()
+    })
+  }
 
 }

@@ -35,7 +35,7 @@ export class ModuleActividadesCompetenciasSocioemocionalesComponent
 
  		<img class="divicion_image" src="assets/images/fondos/Fondo_division_mod.png">
  		<h2 class="ct-socio">→ Actividad 1:</h2>
-<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
 
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -105,7 +105,7 @@ export class ModuleActividadesCompetenciasSocioemocionalesComponent
  		<img class="divicion_image" src="assets/images/fondos/Fondo_division_mod.png">
  		<h2 class="ct-socio">→ Actividad 4:</h2>
 
-<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
 
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -286,7 +286,7 @@ export class ModuleActividadesCompetenciasSocioemocionalesComponent
  		<img class="divicion_image" src="assets/images/fondos/Fondo_division_mod.png">
  		<h2 class="ct-socio">→ Actividad 8:</h2>
 
-<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
 
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -352,7 +352,7 @@ export class ModuleActividadesCompetenciasSocioemocionalesComponent
  		<img class="divicion_image" src="assets/images/fondos/Fondo_division_mod.png">
  		<h2 class="ct-socio">→ Actividad 1:</h2>
 
-<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
 
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -559,7 +559,7 @@ export class ModuleActividadesCompetenciasSocioemocionalesComponent
  		<img class="divicion_image" src="assets/images/fondos/Fondo_division_mod.png">
  		<h2 class="ct-socio">→ Actividad 4:</h2>
 
-<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
 
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -708,7 +708,7 @@ export class ModuleActividadesCompetenciasSocioemocionalesComponent
 
  		<h2 class="ct-socio">→ Actividad 7.</h2>
 
-<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-mate.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
 
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>

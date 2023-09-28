@@ -230,7 +230,7 @@ export class DashboardService extends DashboardGateway {
       this.http
         .get<Response>(
           API.baseUrl +
-            API.dashboard.collegeDaneStatistics.replace('{{codDane}}', codDane),
+            API.dashboard.collegeStatistics.replace('{{collegeId}}', codDane),
           config
         )
         .subscribe(

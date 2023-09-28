@@ -57,7 +57,6 @@ const API = {
     studentDashboardSingle:
       '/dashboard/statistics/student?document={{studentDocument}}',
     collegeStatistics: '/dashboard/statistics/college?collegeId={{collegeId}}',
-    collegeDaneStatistics: '/dashboard/statistics/college?codDane={{codDane}}',
     governmentStatistics: '/dashboard/statistics',
     stateStatistics: '/dashboard/statistics/state?state={{state}}',
     munStatistics: '/dashboard/statistics/municipality?munId={{munId}}&page=0',

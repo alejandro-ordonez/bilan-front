@@ -239,7 +239,7 @@ export class ModuleActividadesCompetenciasCiudadanasComponent
 
 				<img class="divicion_image" src="assets/images/fondos/Fondo_division_mod.png">
 				<h2>Actividad 3</h2>
-				<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+				<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
 
  			<li class="btn_perfil" title="Competencias Ciudadanas"><span><a alt="Competencias Ciudadanas" href=""></a></span></li>
@@ -568,7 +568,7 @@ export class ModuleActividadesCompetenciasCiudadanasComponent
 				<h2>
 					Actividad 5.
 				</h2>
-				<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+				<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -757,7 +757,7 @@ TELÉFONOS DE CONTACTO:    _______________________
 				<h2>
 					Actividad 6
 				</h2>
-<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
 
@@ -904,7 +904,7 @@ TELÉFONOS DE CONTACTO:    _______________________
 	 		<h2>
 	 			Actividad 1.
 	 		</h2>
-<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
 
@@ -998,7 +998,7 @@ TELÉFONOS DE CONTACTO:    _______________________
 
 	 		<img class="divicion_image" src="assets/images/fondos/Fondo_division_mod.png">
 	 		<h2>Actividad 2.</h2>
-<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -1182,7 +1182,7 @@ TELÉFONOS DE CONTACTO:    _______________________
 
 	 		<img class="divicion_image" src="assets/images/fondos/Fondo_division_mod.png">
 	 		<h2>Actividad 3</h2>
-<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
 
  			<li class="btn_perfil" title="Competencias Ciudadanas"><span><a alt="Competencias Ciudadanas" href=""></a></span></li>
@@ -1380,7 +1380,7 @@ TELÉFONOS DE CONTACTO:    _______________________
 	 		<h2>
 	 			Actividad 4.
 	 		</h2>
-<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
 
  			<li class="btn_perfil" title="Competencias Ciudadanas"><span><a alt="Competencias Ciudadanas" href=""></a></span></li>
@@ -1445,7 +1445,7 @@ TELÉFONOS DE CONTACTO:    _______________________
 	 		<h2>
 	 			Actividad 5.
 	 		</h2>
-	 		<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+	 		<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
@@ -1652,7 +1652,7 @@ TELÉFONOS DE CONTACTO:    _______________________
 	 		<h2>
 	 			Actividad 6
 	 		</h2>
-<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entrgable.">
+<img src="https://i.postimg.cc/tgbw01Qx/diana-ciudad.png" title="Recuerda, en esta actividad debes hacer un entregable.">
 <ul class="menu_momento_introductivo">
  			<li class="btn_foro" title="Competencias Básicas"><span><a alt="Competencias Básicas" href=""></a></span></li>
  			<li class="btn_maloka" title="Competencias Socioemocionales"><span><a alt="Competencias Socioemocionales" href=""></a></span></li>
