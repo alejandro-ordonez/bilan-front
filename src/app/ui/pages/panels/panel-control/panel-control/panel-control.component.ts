@@ -97,6 +97,11 @@ export class
     // Load params
     const queryParams = this.route.snapshot.queryParams;
     this.setStateControl(queryParams.State);
+
+    if(!queryParams.CityId && queryParams.State){
+
+    }
+
     this.setCityControl(queryParams.CityId);
     await this.setCollegeControl(queryParams.CollegeId);
     this.setCourseControl(queryParams.Course);
@@ -242,6 +247,9 @@ export class
   async displayCourseStatistics() {
     this.dashboardSelected = DashboardToDisplay.CourseStatistics;
     const college = this.collegeControl?.value;
+    if(!this.isCourseSet())
+      return;
+
     const courseValue = this.courseControl?.value.key as string;
 
     const params: Params ={
@@ -387,14 +395,16 @@ export class
   }
 
   setCityControl(city: string) {
-    if (!city)
-      return;
-
     let option: Option = { key: '', value: '' };
 
-    if (this.cities.length === 0) {
+    if (this.cities.length === 0 && city) {
       this.cities = this.getCityOptionsByCityId(Number.parseInt(city));
     }
+    else if(!city && this.isStateSet()){
+      this.cities = this.getCityOptionsByStateName(this.stateControl?.value.key);
+    }
+    else
+      return;
 
     option = this.cities.find(cityOption => cityOption.key == city) ?? option;
     this.cityControl?.setValue(option);
@@ -421,8 +431,18 @@ export class
     return this.filterForm.get('course');
   }
 
-  setCourseControl(course: string) {
-    this.courseControl?.setValue(course);
+  async setCourseControl(courseName: string) {
+    if(!courseName)
+      return;
+
+    let option: Option = { key: courseName, value: courseName };
+
+    if(this.courses.length == 0)
+      this.courses = await this.getCoursesOption()
+
+    option = this.courses.find(course => course.key == courseName) ?? option;
+
+    this.courseControl?.setValue(option);
   }
   //#endregion
 }

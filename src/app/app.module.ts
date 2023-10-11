@@ -97,10 +97,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ForoComponent } from './foro/foro.component';
 import { TableroDirectivoComponent } from './tablero-directivo/tablero-directivo.component';
-import { GeneralInfoGateway } from '@domain/gateways';
+import { GeneralInfoGateway, StudenGateway, TeacherDataGateway } from '@domain/gateways';
 import { GeneralInfoService } from '@application/general-info/general-info.service';
 import { Selectv2Component } from './ui/components/selectv2/selectv2.component';
 import { UserService } from '@application/user/user.service';
+import { TeacherService } from '@application/teacher/teacher.service';
+import { StudentService } from '@application/student/student.service';
 
 @NgModule({
   declarations: [
@@ -227,6 +229,14 @@ import { UserService } from '@application/user/user.service';
     {
       provide: GeneralInfoGateway,
       useClass: GeneralInfoService
+    },
+    {
+      provide: TeacherDataGateway,
+      useClass: TeacherService
+    },
+    {
+      provide: StudenGateway,
+      useClass: StudentService
     },
     AuthGuardService,
   ],

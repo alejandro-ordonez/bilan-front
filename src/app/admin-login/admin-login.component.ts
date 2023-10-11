@@ -18,6 +18,7 @@ import { UserType } from '@domain/enums/user-type.enum';
 import { DocumentType } from '@domain/enums/document-type.enum';
 
 import { AuthService } from '@application/auth/auth.service';
+import { UserDataUseCase } from '@domain/usecases';
 
 @Component({
   selector: 'app-admin-login',
@@ -48,6 +49,7 @@ export class AdminLoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authUser: UserUseCase,
+    private userData: UserDataUseCase,
     private router: Router,
     private modal: NgbModal
   ) {
@@ -103,6 +105,8 @@ export class AdminLoginComponent implements OnInit {
         return;
       }
 
+      this.user = await this.userData.info();
+
       switch(this.auth.userType){
         case UserType.Admin:
           this.router.navigateByUrl('/admin/panel-edit/1/ ');
@@ -110,6 +114,10 @@ export class AdminLoginComponent implements OnInit {
 
         case UserType.DirectiveTeacher:
           this.router.navigateByUrl('/admin/panel-directivo');
+          break;
+
+        case UserType.SecEdu:
+          this.router.navigateByUrl(`/admin/panel-control/StateStatistics?State=${this.user.metadata.state}`);
           break;
 
         case UserType.Min:

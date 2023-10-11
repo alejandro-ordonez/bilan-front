@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
   mobile: boolean = false;
   switchToUpdate: boolean;
   college: CourseToEnroll;
-  tableroLink: string = '/admin/panel-control/GovernmentStatistics/';
+  tableroLink: string = '/admin/panel-control';
 
   constructor(
     private router: Router,
@@ -107,8 +107,20 @@ export class HeaderComponent implements OnInit {
   }
 
   onClick() {
+    switch (this.user.userType) {
+      case UserType.DirectiveTeacher:
+        this.router.navigateByUrl(`${this.tableroLink}/CollegeStatistics?State=${this.user.metadata.state}&&CityId=${this.user.metadata.cityId}&&CollegeId=${this.user.metadata.collegeId}`);
+        break;
+    
+      case UserType.Min:
+        this.router.navigateByUrl(`${this.tableroLink}/GovernmentStatistics`);
+        break;
+
+      default:
+        break;
+    }
+
     if (this.user.userType === "DirectiveTeacher") {
-      this.router.navigateByUrl("/admin/tablero-directivo");
 
     } else {
       this.router.navigateByUrl(this.tableroLink);

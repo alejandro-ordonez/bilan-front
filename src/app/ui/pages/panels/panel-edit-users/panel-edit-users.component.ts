@@ -9,7 +9,7 @@ import { UserDataUseCase } from '@domain/usecases/user-data.usecase';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import depmun from '../../../../login-page/dep-mun.json';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-import { UserUseCase, DashboardUseCase } from '@domain/usecases';
+import { UserUseCase, DashboardUseCase, GeneralInfoUseCase } from '@domain/usecases';
 import { GradeCourseResponse } from '@domain/models';
 import { UserService } from '@application/user/user.service';
 
@@ -97,6 +97,7 @@ export class PanelEditUsersComponent implements OnInit {
     private fb: FormBuilder,
     private modal: NgbModal,
     private userData: UserDataUseCase,
+    private generalInfo: GeneralInfoUseCase,
     private router: Router,
     private route: ActivatedRoute,
     private authUser: UserService,
@@ -225,13 +226,14 @@ export class PanelEditUsersComponent implements OnInit {
       document: ['', [Validators.required, Validators.maxLength(15)]],
     });
   }
-  ngOnInit(): void {
-    this.states = depmun.map<Option>((dep) => {
+  async ngOnInit(): Promise<void> {
+    this.states = (await this.generalInfo.getStatesAndCities()).map(state => {
       return {
-        key: dep.state,
-        value: dep.state,
-      };
+        key: state.stateName,
+        value: state.stateName
+      }
     });
+
     this.route.params.subscribe((params: Params) => {
       this.page = Number(params.page);
       this.partialDocument = params.partialDocument;

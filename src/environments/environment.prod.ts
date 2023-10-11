@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://172.19.0.91:8080',
+  apiUrl: 'https://bilanapi.colombiaaprende.edu.co',
 };
