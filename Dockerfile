@@ -1,9 +1,14 @@
+ARG TARGET="prod"
+
 ### STAGE 1:BUILD ###
 # Defining a node image to be used as giving it an alias of "build"
 # Which version of Node image to use depends on project dependencies 
 # This is needed to build and compile our code 
 # while generating the docker image
 FROM node:16.20-alpine AS build
+
+ARG TARGET
+
 # Create a Virtual directory inside the docker image
 WORKDIR /app
 # Copy files to virtual directory
@@ -14,7 +19,7 @@ RUN npm cache clean --force
 # Copy files from local machine to virtual directory in docker image
 COPY . .
 RUN npm install
-RUN npm run build:prod
+RUN npm run build:${TARGET}
 
 
 ### STAGE 2:RUN ###

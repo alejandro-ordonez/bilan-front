@@ -54,6 +54,27 @@
               ],
               "outputHashing": "all"
             },
+            "salle": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500000kb",
+                  "maximumError": "500mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2000kb",
+                  "maximumError": "4000kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.salle.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "staging": {
               "budgets": [
                 {
@@ -72,7 +93,7 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.staging.ts"
                 }
-              ],
+              ]
             },
             "development": {
               "buildOptimizer": false,
