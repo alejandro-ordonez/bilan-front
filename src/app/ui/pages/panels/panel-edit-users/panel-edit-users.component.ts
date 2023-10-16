@@ -317,7 +317,7 @@ export class PanelEditUsersComponent implements OnInit {
             email: this.createUserSecEduForm.value.email,
             name: this.createUserSecEduForm.value.name,
             lastName: this.createUserSecEduForm.value.lastName,
-            selectedState: this.createUserSecEduForm.value.selectedState,
+            selectedState: this.createUserSecEduForm.value.selectedState.value,
             grantedAuthorities: [],
           });
           break;

@@ -100,11 +100,6 @@ export class AdminLoginComponent implements OnInit {
     try {
       response = await this.authUser.login(this.auth);
 
-      if(!response){
-        alert('Ups! algo paso mientras buscabamos tú identificacíon');
-        return;
-      }
-
       this.user = await this.userData.info();
 
       switch(this.auth.userType){
@@ -129,7 +124,9 @@ export class AdminLoginComponent implements OnInit {
       }
 
 
-    } catch (error) {}
+    } catch (error) {
+       this.openModal("Credenciales incorrectas. Por favor verifique sus datos");
+    }
   }
 
   openModal(contenido: any) {

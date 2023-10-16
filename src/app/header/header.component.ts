@@ -109,22 +109,20 @@ export class HeaderComponent implements OnInit {
   onClick() {
     switch (this.user.userType) {
       case UserType.DirectiveTeacher:
-        this.router.navigateByUrl(`${this.tableroLink}/CollegeStatistics?State=${this.user.metadata.state}&&CityId=${this.user.metadata.cityId}&&CollegeId=${this.user.metadata.collegeId}`);
+        this.router.navigateByUrl(`${this.tableroLink}/CollegeStatistics?State=${this.user.metadata.state}&&CityId=${this.user.metadata.cityId}&&CollegeId=${this.user.metadata.collegeId}`)
+          .then(() => window.location.reload());
         break;
     
       case UserType.Min:
-        this.router.navigateByUrl(`${this.tableroLink}/GovernmentStatistics`);
+        this.router.navigateByUrl(`${this.tableroLink}/GovernmentStatistics`)
+          .then(() => window.location.reload());
+        
         break;
 
       default:
+        this.router.navigateByUrl(this.tableroLink)
+          .then(() => window.location.reload());
         break;
-    }
-
-    if (this.user.userType === "DirectiveTeacher") {
-
-    } else {
-      this.router.navigateByUrl(this.tableroLink);
-
     }
   }
 }
