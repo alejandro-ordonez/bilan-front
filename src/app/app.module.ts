@@ -103,6 +103,7 @@ import { Selectv2Component } from './ui/components/selectv2/selectv2.component';
 import { UserService } from '@application/user/user.service';
 import { TeacherService } from '@application/teacher/teacher.service';
 import { StudentService } from '@application/student/student.service';
+import { DashboardCollegeComponent } from './ui/pages/panels/panel-control/dashboard-college/dashboard-college.component';
 
 @NgModule({
   declarations: [
@@ -173,6 +174,7 @@ import { StudentService } from '@application/student/student.service';
     Selectv2Component,
     DashboardStudentComponent,
     DashboardComponent,
+    DashboardCollegeComponent,
   ],
   imports: [
     HttpClientXsrfModule.withOptions({

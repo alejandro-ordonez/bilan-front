@@ -74,12 +74,12 @@
     [dashboardType]="dashboardCases.CityStatistics">
   </app-dashboard>
 
-  <app-dashboard *ngSwitchCase="dashboardCases.CollegeStatistics"
+  <app-dashboard-college *ngSwitchCase="dashboardCases.CollegeStatistics"
       [title]="this.collegeControl?.value.value"
       category="Instituciones"
       [statistics]="this.statistics"
       [dashboardType]="dashboardCases.CollegeStatistics">
-  </app-dashboard>
+  </app-dashboard-college>
 
   <app-dashboard *ngSwitchCase="dashboardCases.CourseStatistics"
       [title]="this.collegeControl?.value.value"
@@ -89,9 +89,9 @@
       [dashboardType]="dashboardCases.CourseStatistics">
   </app-dashboard>
 
-  <app-dashboard-student 
-    [statistics]="studentStatistics" 
-    *ngSwitchCase="dashboardCases.StudentStatistics">
+  <app-dashboard-student *ngSwitchCase="dashboardCases.StudentStatistics"
+      [statistics]="studentStatistics"
+      [dashboardType]="dashboardCases.StudentStatistics">
   </app-dashboard-student>
 
  

@@ -48,7 +48,16 @@ export class DashboardComponent implements OnInit {
         this.navigateCollegeDashboard(params);
         break;
 
+
+      case DashboardToDisplay.CollegeStatistics:
+        this.navigateCollegeDashboard(params);
+        break;
+      
       case DashboardToDisplay.CourseStatistics:
+        this.navigateStudentDashboard(params);
+        break;
+
+      case DashboardToDisplay.StudentStatistics:
       default:
         break;
 
@@ -83,8 +92,7 @@ export class DashboardComponent implements OnInit {
         queryParams: params,
         queryParamsHandling: 'merge'
       }
-    ).then(loaded => {
-      if(loaded)
+    ).then(() => {
         window.location.reload()
     })
   }

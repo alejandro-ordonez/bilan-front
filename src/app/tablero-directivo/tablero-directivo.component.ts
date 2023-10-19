@@ -26,15 +26,9 @@ export class TableroDirectivoComponent implements OnInit {
     const response = await this.userData.info();
 
     this.userInfo = response;
-    this.userInfoData = await this.userData.searchTeacher(
-      this.userInfo.document as string
-    );
 
     this.dashboardData = await this.dashboard.getCollegeDaneStatistics(
-      this.userInfoData.codDaneSede
+      this.userInfo.metadata.collegeId
     );
-      console.table(this.dashboardData.data[0].modules);
-      
-    console.log(response, this.userInfoData, this.dashboardData);
   }
 }

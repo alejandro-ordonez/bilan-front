@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { StudentStatistics } from '@domain/models';
+import { DashboardToDisplay } from '../panel-control/panel-control.component';
 
 @Component({
   selector: 'app-dashboard-student',
@@ -9,8 +10,11 @@ import { StudentStatistics } from '@domain/models';
 export class DashboardStudentComponent implements OnInit {
 
   @Input()
-  statistics: StudentStatistics;
+  statistics?: StudentStatistics;
 
+  @Input()
+  dashboardType: DashboardToDisplay;
+  
   constructor() { }
 
   ngOnInit(): void {

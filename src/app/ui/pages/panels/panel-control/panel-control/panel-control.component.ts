@@ -78,7 +78,8 @@ export class
       state: ['', Validators.required],
       city: [''],
       college: [''],
-      course: ['']
+      course: [''],
+      document: ['']
     });
   }
 
@@ -105,7 +106,7 @@ export class
     this.setCityControl(queryParams.CityId);
     await this.setCollegeControl(queryParams.CollegeId);
     this.setCourseControl(queryParams.Course);
-
+    this.setDocumentControl(queryParams.Document);
 
     this.loadDashboard(this.dashboardSelected);
 
@@ -200,6 +201,10 @@ export class
         await this.displayCourseStatistics();
         break;
 
+      case DashboardToDisplay.StudentStatistics:
+        await this.displayStudentStatistics();
+        break;
+
       case DashboardToDisplay.GovermentStatistics:
       default:
         await this.displayGovermentStatistics();
@@ -269,14 +274,22 @@ export class
     );
   }
 
-  async displayStudentStatistics(document: string) {
+  async displayStudentStatistics() {
     this.dashboardSelected = DashboardToDisplay.StudentStatistics;
-    this.studentStatistics = await this.dashboard.getSingleStudent(document);
+    const document = this.documentControl?.value;
+    const courseValue = this.courseControl?.value.key as string;
 
-    this.setParams({
-      type: DashboardToDisplay[this.dashboardSelected],
-      id: document
-    })
+    const params: Params = {
+      ...paramBuilder.buildStateStatisticsParams(this.stateControl?.value.value),
+      ...paramBuilder.buildCityStatisticsParams(this.cityControl?.value.key),
+      ...paramBuilder.buildCourseStatisticsParams(this.collegeControl?.value.key, courseValue),
+      ...paramBuilder.buildUserStatisticsParams(document)
+    }
+
+    this.studentStatistics = await this.dashboard.getSingleStudent(document);
+    if (params && params != null) {
+      this.setParams(params);
+    }
   }
 
   async displayGovermentStatistics() {
@@ -288,7 +301,6 @@ export class
 
   async displayStatistics(getStatistics: () => Promise<Statistics>, params: Params | undefined = undefined) {
     this.statistics = await getStatistics();
-
     if (params && params != null) {
       this.setParams(params);
     }
@@ -443,6 +455,14 @@ export class
     option = this.courses.find(course => course.key == courseName) ?? option;
 
     this.courseControl?.setValue(option);
+  }
+
+  get documentControl(): AbstractControl | null {
+    return this.filterForm.get('document');
+  }
+
+  setDocumentControl(document: string){
+    this.documentControl?.setValue(document);
   }
   //#endregion
 }

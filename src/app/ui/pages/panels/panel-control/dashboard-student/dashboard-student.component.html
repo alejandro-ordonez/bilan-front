@@ -3,7 +3,7 @@
       <img src="assets/images/avatars/A__2Aire.jpg" alt="" />
     </figure>
     <h1 class="panel-control--ministerio__statics__title">
-      {{ statistics.name }}
+      {{ statistics?.name }}
     </h1>
     <div class="stactics-cards__container">
       <div class="statics-cards">
@@ -16,7 +16,7 @@
               Porcentaje de avance de actividades
             </p>
             <h2 class="statics-card__content__text__data">
-              {{ statistics.percentage }}%
+              {{ statistics?.percentage }}%
             </h2>
           </div>
         </div>
@@ -31,7 +31,7 @@
               Tiempo del estudiante en la app
             </p>
             <h2 class="statics-card__content__text__data">
-              {{ statistics.timeInApp }}h
+              {{ statistics?.timeInApp }}h
             </h2>
           </div>
         </div>
@@ -52,7 +52,7 @@
         </h2>
       </div>
 
-      <div class="student-table__data" *ngFor="let module of statistics.data">
+      <div class="student-table__data" *ngFor="let module of statistics?.data">
         <div class="student-table__data__student">
           <figure class="student-table__data__student__img">
             <img [src]="
