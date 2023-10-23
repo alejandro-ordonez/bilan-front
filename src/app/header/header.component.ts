@@ -96,6 +96,9 @@ export class HeaderComponent implements OnInit {
   async getClassrooms() {
     const classRooms = await this.dashboard.getClassrooms();
 
+    if(classRooms.length == 0)
+      return;
+
     const obColleges: any = new Object();
     classRooms.forEach((cls: CourseToEnroll) => {
       obColleges[cls.collegeId.toString()] = cls;
