@@ -302,8 +302,7 @@ export class PanelEditUsersComponent implements OnInit {
             name: this.createUserDirectiveForm.value.name,
             lastName: this.createUserDirectiveForm.value.lastName,
             selectedState: this.createUserDirectiveForm.value.selectedState,
-            selectedMunicipality:
-              this.createUserDirectiveForm.value.selectedMunicipality,
+            selectedMunicipality: this.createUserDirectiveForm.value.selectedMunicipality,
             codDane: this.createUserDirectiveForm.value.codDane,
             grantedAuthorities: [],
           });
@@ -317,7 +316,7 @@ export class PanelEditUsersComponent implements OnInit {
             email: this.createUserSecEduForm.value.email,
             name: this.createUserSecEduForm.value.name,
             lastName: this.createUserSecEduForm.value.lastName,
-            selectedState: this.createUserSecEduForm.value.selectedState.value,
+            selectedState: this.createUserSecEduForm.get("selectedState")?.value.value,
             grantedAuthorities: [],
           });
           break;
@@ -513,6 +512,7 @@ export class PanelEditUsersComponent implements OnInit {
           };
         }) || [];
   }
+  
   async setColleges(form: FormGroup, option?: any) {
     form.value.selectedCollege = '';
     form.value.selectedGrade = '';

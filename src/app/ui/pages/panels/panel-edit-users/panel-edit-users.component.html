@@ -176,6 +176,8 @@
         >
         </app-radio-select>
         {{ selectedUserType }}
+
+        <!--Student|Teacher-->
         <form
           *ngIf="
             selectedUserType &&
@@ -230,14 +232,13 @@
           <div
             class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
           >
-            <app-select
+            <app-selectv2
               label="Departamentos"
               class="input"
               placeholder="Seleccionar entidad"
               [options]="states"
-              (change)="setDepartmentMunicipality(this.createUserForm)"
               formControlName="selectedState"
-            ></app-select>
+            ></app-selectv2>
           </div>
           <div
             class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
@@ -366,6 +367,7 @@
             text="crear usuario"
           ></app-button>
         </form>
+        <!--Min-->
         <form
           *ngIf="selectedUserType && selectedUserType === userTypes.Min"
           class="login-form create-user-form"
@@ -454,6 +456,7 @@
             text="crear usuario"
           ></app-button>
         </form>
+        <!--Sec Edu-->
         <form
           *ngIf="selectedUserType && selectedUserType === userTypes.SecEdu"
           class="login-form create-user-form"
@@ -506,14 +509,13 @@
           <div
             class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
           >
-            <app-select
+            <app-selectv2
               label="Departamentos"
               class="input"
               placeholder="Seleccionar entidad"
               [options]="states"
-              (change)="setDepartmentMunicipality(createUserSecEduForm)"
               formControlName="selectedState"
-            ></app-select>
+            ></app-selectv2>
           </div>
 
           <app-textfield
@@ -555,6 +557,7 @@
             text="crear usuario"
           ></app-button>
         </form>
+        <!--Directive Teacher-->
         <form
           *ngIf="selectedUserType && selectedUserType === userTypes.DirectiveTeacher"
           class="login-form create-user-form"
@@ -607,15 +610,14 @@
           <div
             class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
           >
-            <app-select
+            <app-selectv2
               label="Departamentos"
               class="input"
               placeholder="Seleccionar entidad"
               [options]="states"
-              (change)="setDepartmentMunicipality(this.createUserDirectiveForm)"
               formControlName="selectedState"
             >
-            </app-select>
+            </app-selectv2>
           </div>
           <div
             class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
