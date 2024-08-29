@@ -13,7 +13,7 @@ check_sudo() {
 
 # Function to check if a package is installed
 check_package() {
-    if rpm -q $1 &> /dev/null;; then
+    if rpm -q $1 &> /dev/null; then
         echo "Package '$1' is installed."
         return 0
     else
