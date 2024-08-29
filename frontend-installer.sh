@@ -13,7 +13,7 @@ check_sudo() {
 
 # Function to check if a package is installed
 check_package() {
-    if dpkg -l | grep -q "^ii  $1 "; then
+    if rpm -q $1 &> /dev/null;; then
         echo "Package '$1' is installed."
         return 0
     else
@@ -51,7 +51,7 @@ echo "Checking for dependencies"
 # Check if docker is installed
 DOCKER="docker"
 
-if check_package $DOCKER; then
+if command -v $DOCKER &> /dev/null; then
     echo "Docker is installed proceeding with installation..."
 else
     # Set up the repository
