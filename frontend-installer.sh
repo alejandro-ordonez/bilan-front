@@ -41,7 +41,7 @@ echo "Starting installation...."
 
 # Check if a file path parameter is provided
 if [ -z "$1" ]; then
-    echo "Usage: sudo $0 <target> (prod, salle)"
+    echo "Usage: sudo $0 <target> (prod, salle, cert)"
     exit 1
 fi
 
