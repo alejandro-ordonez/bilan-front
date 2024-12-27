@@ -100,13 +100,16 @@ SERVICE_NAME="bilan-web.service"
 SERVICE_PATH="/etc/systemd/system/$SERVICE_NAME"
 
 # Check if the service is enabled
-if systemctl is-enabled --quiet "$SERVICE_NAME"; then
-    echo "The service '$SERVICE_NAME' is enabled."
-    systemctl disable $SERVICE_NAME
-fi
 
 if check_file_exists $SERVICE_PATH; then
     echo "The service is already created, copying latest version"
+else
+    echo "The application will copy the service file from the resource folder."
+fi
+
+if systemctl is-enabled --quiet "$SERVICE_NAME"; then
+    echo "The service '$SERVICE_NAME' is enabled."
+    systemctl disable $SERVICE_NAME
 fi
 
 cp ./resources/$SERVICE_NAME /etc/systemd/system/
