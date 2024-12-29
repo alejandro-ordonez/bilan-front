@@ -66,6 +66,20 @@ fi
 
 ###############################################
 
+############### Stop the service ##############
+SERVICE_NAME="bilan-web.service"
+
+# Check if the service is running
+if systemctl is-active --quiet $SERVICE_NAME; then
+        echo "Service $SERVICE_NAME is running. Stopping it..."
+        # Stop the service
+        systemctl stop $SERVICE_NAME
+        echo "Service $SERVICE_NAME has been stopped."
+else
+        echo "Service $SERVICE_NAME is not running."
+fi
+
+
 ############### Run the conatiner #############
 
 CONTAINER_NAME=bilan-web-container
@@ -73,6 +87,8 @@ CONTAINER_NAME=bilan-web-container
 if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
     echo "The container '$CONTAINER_NAME' is running. Stopping it."
     docker stop $CONTAINER_NAME
+    echo "Container $CONTAINER_NAME stopped."
+    docker rm $CONTAINER_NAME
 else
     echo "The container '$CONTAINER_NAME' is not running."
 fi
@@ -81,7 +97,7 @@ echo ""
 
 # Clean any previous installation
 echo "Cleaning any previous containers and images..."
-docker prune images -a
+docker image prune -a
 docker system prune -a
 
 # Builds the image
@@ -96,20 +112,16 @@ docker run -d --name=$CONTAINER_NAME -p 80:80 bilan/front
 ############ Configure Docker service #########
 echo "Configuring service"
 echo ""
-SERVICE_NAME="bilan-web.service"
 SERVICE_PATH="/etc/systemd/system/$SERVICE_NAME"
 
 # Check if the service is enabled
-
-if check_file_exists $SERVICE_PATH; then
-    echo "The service is already created, copying latest version"
-else
-    echo "The application will copy the service file from the resource folder."
-fi
-
 if systemctl is-enabled --quiet "$SERVICE_NAME"; then
     echo "The service '$SERVICE_NAME' is enabled."
     systemctl disable $SERVICE_NAME
+fi
+
+if check_file_exists $SERVICE_PATH; then
+    echo "The service is already created, copying latest version"
 fi
 
 cp ./resources/$SERVICE_NAME /etc/systemd/system/
