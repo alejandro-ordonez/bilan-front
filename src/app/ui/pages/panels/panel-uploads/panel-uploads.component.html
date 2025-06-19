@@ -25,7 +25,10 @@
                         {{ upload.processed}}
                     </td>
                     <td>
-                        {{ upload.rejected}}
+                        <a *ngIf="upload.rejected > 0"
+                            (click)="downloadRejected(upload.requestId)">{{upload.rejected}}</a>
+                        <span *ngIf="upload.rejected == 0"> {{ upload.rejected}}</span>
+
                     </td>
                     <td>
                         {{ upload.requestId}}

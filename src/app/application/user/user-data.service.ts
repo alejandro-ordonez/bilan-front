@@ -56,12 +56,33 @@ export class UserDataService extends UserDataGateway {
         .get<Response>(API.baseUrl + API.user.getUploads.replace('{{page}}', page), options)
         .subscribe(
           (response: any) => {
-            console.log({response});
-            
+
             resolve(response.data);
           },
           () => {
             reject(null);
+          }
+        );
+    });
+  }
+
+  downloadRejected(requestId: string): Promise<any> {
+    const config = this.buildConfig();
+    return new Promise<any>((resolve, reject) => {
+      const url =
+        API.baseUrl +
+        API.user.downloadRejected.replace('{{importId}}', requestId);
+      this.http
+        .get<any>(url, {
+          headers: config.headers,
+          responseType: 'blob' as 'json',
+        })
+        .subscribe(
+          (response: any) => {
+            resolve(response);
+          },
+          (err: any) => {
+            reject(err.error);
           }
         );
     });

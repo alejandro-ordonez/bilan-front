@@ -14,6 +14,7 @@ const API = {
     stats: '/stats',
     info: '/user/info',
     getUploads: '/user/import?page={{page}}',
+    downloadRejected: '/user/import/rejected?importId={{importId}}',
     load: '/user/import?importType={{userType}}&campusCodeDane={{campusCodeDane}}',
     loadDirectivo: '/user/import?importType={{userType}}',
     updateInfo: '/user/updateInfo',

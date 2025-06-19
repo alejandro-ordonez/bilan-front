@@ -41,6 +41,7 @@ export abstract class UserDataGateway {
   ): Promise<boolean>;
 
   abstract getUploads(page: string): Promise<any>
+  abstract downloadRejected(requestId: string): Promise<any>
 
   abstract loadDirective(
     userType: string | undefined,

@@ -54,16 +54,39 @@ export class PanelUploadsComponent implements OnInit {
     }
 
 
+    async downloadRejected(requestId: string) {
+        let dataFile;
+
+        try {
+            dataFile = await this.userData.downloadRejected(requestId);
+
+            const url = URL.createObjectURL(
+                new Blob([dataFile], { type: dataFile.type })
+            );
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = requestId;
+
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        } catch (error) {
+            console.error(error);
+            alert('Lo sentimos descarga fallida, intentalo mas tarde');
+        }
+    }
+
     async getUploads() {
         this.uploads = [];
         try {
             const ups = await this.userData.getUploads(this.page.toString());
-            this.uploads = ups.map((up: any)=> {
+            this.uploads = ups.map((up: any) => {
                 const tipo = up.importType as string;
                 return {
-                ...up,
-                tipo: this.tipos[tipo]
-            }
+                    ...up,
+                    tipo: this.tipos[tipo]
+                }
             })
         } catch (error) { }
     }

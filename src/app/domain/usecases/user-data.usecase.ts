@@ -14,6 +14,10 @@ import { UploadModel } from '@domain/models/upload.model';
 export class UserDataUseCase {
   constructor(private userDataGateway: UserDataGateway) { }
 
+  downloadRejected(requestId: string): any {
+    return this.downloadRejected(requestId)
+  }
+
   stats(): Observable<Stat> {
     return this.userDataGateway.stats();
   }
