@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '@application/auth/auth.service';
 import { CoursesOptions } from '@domain/data';
 import { gradeOptions } from '@domain/data/grades';
@@ -28,6 +29,17 @@ export class PanelDirectivoComponent implements OnInit {
   private sureEnabledModalTpl: TemplateRef<any>;
   @ViewChild('updateProfileModal')
   private updateProfileModalTpl: TemplateRef<any>;
+
+  userTypesFileUpload: Option[] = [
+    {
+      key: "StudentImport",
+      value: 'Estudiantes',
+    },
+    {
+      key: UserType.TeacherEnrollment,
+      value: 'Vincular Profesores',
+    },
+  ];
 
   userInfo: User;
   students: StudentDto[];
@@ -78,6 +90,7 @@ export class PanelDirectivoComponent implements OnInit {
     private dashboard: DashboardUseCase,
     private teacherData: TeacherUseCase,
     private studentData: StudentUseCase,
+    private router: Router,
     private userService: AuthService
   ) {
 
@@ -115,7 +128,7 @@ export class PanelDirectivoComponent implements OnInit {
       name: ['', Validators.required],
       lastName: ['', Validators.required],
     });
-    
+
   }
 
   ngOnInit(): void {
@@ -152,7 +165,7 @@ export class PanelDirectivoComponent implements OnInit {
       });
       this.students = response.data;
       this.totalPages = response.npages;
-    } catch (error) {}
+    } catch (error) { }
   }
 
   async searchTeachers() {
@@ -164,7 +177,7 @@ export class PanelDirectivoComponent implements OnInit {
       });
       this.teachers = response.data;
       this.totalPages = response.npages;
-    } catch (error) {}
+    } catch (error) { }
   }
 
   searchUsers() {
@@ -203,6 +216,10 @@ export class PanelDirectivoComponent implements OnInit {
   lastPage() {
     this.page--;
     this.searchUsers();
+  }
+
+   openUploads() {
+    this.router.navigateByUrl("/admin/panel-uploads")
   }
 
   searchUser($event: any) {
@@ -271,12 +288,18 @@ export class PanelDirectivoComponent implements OnInit {
       this.isValidFile = false;
       const formData = new FormData();
       formData.append('file', this.uploadForm.value.file);
+
       await this.userData.loadDirectivo(
-        this.showStudents ? UserType.Student : UserType.Teacher,
+        this.uploadForm.value.userTypeLoad,
         formData
       );
+
+
       this.uploadForm.value.file = '';
       alert('Enviado con exito');
+      this.router.navigateByUrl(
+        `/admin/panel-directivo`
+      );
     } catch {
       this.isValidFile = true;
       alert('Lo sentimos hubo un error, inténtelo más tarde');
@@ -303,33 +326,33 @@ export class PanelDirectivoComponent implements OnInit {
 
   async update() {
     try {
-      if(this.editStudentForm.value.document == ''){
+      if (this.editStudentForm.value.document == '') {
         delete this.editStudentForm.value.document
       }
-      if(this.editStudentForm.value.documentType == ''){
+      if (this.editStudentForm.value.documentType == '') {
         delete this.editStudentForm.value.documentType
       }
-      if(this.editStudentForm.value.password == ''){
+      if (this.editStudentForm.value.password == '') {
         delete this.editStudentForm.value.password
       }
-      if(this.editStudentForm.value.name == ''){
+      if (this.editStudentForm.value.name == '') {
         delete this.editStudentForm.value.name
       }
-      if(this.editStudentForm.value.lastName == ''){
+      if (this.editStudentForm.value.lastName == '') {
         delete this.editStudentForm.value.lastName
       }
-      if(this.editStudentForm.value.email == ''){
+      if (this.editStudentForm.value.email == '') {
         delete this.editStudentForm.value.email
       }
-      if(this.editStudentForm.value.grade == ''){
+      if (this.editStudentForm.value.grade == '') {
         delete this.editStudentForm.value.grade
       }
-      if(this.editStudentForm.value.courses == ''){
+      if (this.editStudentForm.value.courses == '') {
         delete this.editStudentForm.value.courses
       }
 
       if (this.showStudents) {
-        const FormatDocument = this.editStudentForm.value.documentType.slice(3,5) || this.editStudentForm.value.documentType
+        const FormatDocument = this.editStudentForm.value.documentType.slice(3, 5) || this.editStudentForm.value.documentType
         await this.studentData.update({
           document: this.editStudentForm.value.document || this.userSelected.document,
           documentType: FormatDocument,
@@ -342,7 +365,7 @@ export class PanelDirectivoComponent implements OnInit {
       } else {
         const teacher = this.userSelected as TeacherDto;
         console.log(teacher, "TEACHER");
-        const FormatDocument = this.editTeacherForm.value.documentType.slice(3,5) || this.editTeacherForm.value.documentType
+        const FormatDocument = this.editTeacherForm.value.documentType.slice(3, 5) || this.editTeacherForm.value.documentType
         await this.teacherData.update({
           document: this.userSelected.document,
           documentType: FormatDocument,

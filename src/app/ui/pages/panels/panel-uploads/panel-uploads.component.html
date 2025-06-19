@@ -1,0 +1,64 @@
+<div class="module-bar module-bar--panel-control--ministerio header-directivo-docente">
+    <h2 class="module-card__header__text__title">Panel de estados de importación</h2>
+</div>
+<main class="panel-control--ministerio" id="lateral-menu__container">
+    <section class="panel-control--ministerio__statics">
+        <table class="table">
+            <thead>
+
+                <tr>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">ID Colegio</th>
+                    <th scope="col">Procesado</th>
+                    <th scope="col">Rechazado</th>
+                    <th scope="col">ID Solicitud</th>
+                    <th scope="col">ID Solicitante</th>
+                    <th scope="col">Fecha solicitud</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let upload of uploads; let i = index">
+                    <td>{{ upload.tipo}}</td>
+                    <td class="dark">{{ upload.collegeId ?? '-' }}</td>
+                    <td>
+                        {{ upload.processed}}
+                    </td>
+                    <td>
+                        <a *ngIf="upload.rejected > 0"
+                            (click)="downloadRejected(upload.requestId)">{{upload.rejected}}</a>
+                        <span *ngIf="upload.rejected == 0"> {{ upload.rejected}}</span>
+
+                    </td>
+                    <td>
+                        {{ upload.requestId}}
+                    </td>
+                    <td>
+                        {{ upload.requestorId}}
+                    </td>
+                    <td>
+                        {{ upload.created}}
+                    </td>
+                    <td>
+                        {{ upload.status}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul class="next-prev" *ngIf="totalPages - 1 >= 1">
+            <a *ngIf="page > 0" (click)="lastPage()">
+                <li class="atra_btn_mod italic_">
+                    <span class="icon_anterior"></span>Atrás
+                </li>
+            </a>
+            <a>
+                <li class="numbers_np">{{ page }}</li>
+            </a>
+            <a *ngIf="totalPages - 1 >= page" (click)="nextPage()">
+                <li class="adelante_btn_mod italic_">
+                    Continuar<span class="icon_proximo"></span>
+                </li>
+            </a>
+        </ul>
+    </section>
+</main>

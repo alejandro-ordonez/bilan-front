@@ -6,12 +6,17 @@ import { Response } from '@domain/models/response.model';
 import { Action, Challenge, Tribe } from '@domain/models/game.model';
 import { Observable } from 'rxjs';
 import { DocumentType } from '@domain/enums/document-type.enum';
+import { UploadModel } from '@domain/models/upload.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserDataUseCase {
   constructor(private userDataGateway: UserDataGateway) { }
+
+  downloadRejected(requestId: string): any {
+    return this.downloadRejected(requestId)
+  }
 
   stats(): Observable<Stat> {
     return this.userDataGateway.stats();
@@ -73,6 +78,10 @@ export class UserDataUseCase {
     form: FormData
   ): Promise<boolean> {
     return this.userDataGateway.loadDirective(userType, form);
+  }
+
+  getUploads(page: string): Promise<any> {
+    return this.userDataGateway.getUploads(page)
   }
 
   calculateStats(

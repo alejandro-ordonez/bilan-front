@@ -1,15 +1,13 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ThemePalette } from '@angular/material/core';
 import { Option } from '@ui/components/select/select.component';
 import { DocumentType } from '@domain/enums/document-type.enum';
 import { UserType } from '@domain/enums/user-type.enum';
 import { UserDataUseCase } from '@domain/usecases/user-data.usecase';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import depmun from '../../../../login-page/dep-mun.json';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-import { UserUseCase, DashboardUseCase, GeneralInfoUseCase } from '@domain/usecases';
+import { DashboardUseCase, GeneralInfoUseCase } from '@domain/usecases';
 import { GradeCourseResponse } from '@domain/models';
 import { UserService } from '@application/user/user.service';
 
@@ -30,13 +28,20 @@ export class PanelEditUsersComponent implements OnInit {
   courses: Option[];
   userTypesFileUpload: Option[] = [
     {
-      key: UserType.Student,
-      value: 'Estudiante',
+      key: "StudentImport",
+      value: 'Estudiantes',
     },
-
     {
-      key: UserType.Teacher,
-      value: 'Profesor',
+      key: "TeacherImport",
+      value: 'Profesores',
+    },
+    {
+      key: "CollegesImport",
+      value: 'Colegios',
+    },
+    {
+      key: UserType.TeacherEnrollment,
+      value: 'Vincular Profesores',
     },
   ];
 
@@ -263,18 +268,25 @@ export class PanelEditUsersComponent implements OnInit {
     }
   }
 
+  openUploads() {
+    this.router.navigateByUrl("/admin/panel-uploads")
+  }
+
   async uploadFile() {
     try {
       this.isValidFile = false;
       const formData = new FormData();
       formData.append('file', this.uploadForm.value.file);
       await this.userData.load(
-        this.uploadForm.value.campusCodeDane,
+        this.uploadForm.value.campusCodeDane ?? '',
         this.uploadForm.value.userTypeLoad,
         formData
       );
       this.uploadForm.value.file = '';
       alert('Enviado con exito');
+      this.router.navigateByUrl(
+        `/admin/panel-edit/1/%20`
+      );
     } catch {
       this.isValidFile = true;
       alert('Lo sentimos hubo un error, intentelo mas tarde');
@@ -295,7 +307,7 @@ export class PanelEditUsersComponent implements OnInit {
         case UserType.DirectiveTeacher:
           await this.authUser.create({
             document: this.createUserDirectiveForm.value.document,
-            documentType: this.createUserDirectiveForm.value.documentType.slice(3,5),
+            documentType: this.createUserDirectiveForm.value.documentType.slice(3, 5),
             userType: this.selectedUserType,
             password: this.createUserDirectiveForm.value.password,
             email: this.createUserDirectiveForm.value.email,
@@ -310,7 +322,7 @@ export class PanelEditUsersComponent implements OnInit {
         case UserType.SecEdu:
           await this.authUser.create({
             document: this.createUserSecEduForm.value.document,
-            documentType: this.createUserSecEduForm.value.documentType.slice(3,5),
+            documentType: this.createUserSecEduForm.value.documentType.slice(3, 5),
             userType: this.selectedUserType,
             password: this.createUserSecEduForm.value.password,
             email: this.createUserSecEduForm.value.email,
@@ -323,7 +335,7 @@ export class PanelEditUsersComponent implements OnInit {
         case UserType.Min:
           await this.authUser.create({
             document: this.createUserMinForm.value.document,
-            documentType: this.createUserMinForm.value.documentType.slice(3,5),
+            documentType: this.createUserMinForm.value.documentType.slice(3, 5),
             userType: this.selectedUserType,
             password: this.createUserMinForm.value.password,
             email: this.createUserMinForm.value.email,
@@ -335,7 +347,7 @@ export class PanelEditUsersComponent implements OnInit {
         default:
           await this.authUser.create({
             document: this.createUserForm.value.document,
-            documentType: this.createUserForm.value.documentType.slice(3,5),
+            documentType: this.createUserForm.value.documentType.slice(3, 5),
             userType: this.selectedUserType,
             password: this.createUserForm.value.password,
             email: this.createUserForm.value.email,
@@ -366,22 +378,22 @@ export class PanelEditUsersComponent implements OnInit {
 
   async update() {
     try {
-      if(this.updateUserMinForm.value.document == ''){
+      if (this.updateUserMinForm.value.document == '') {
         delete this.updateUserMinForm.value.document
       }
-      if(this.updateUserMinForm.value.documentType == ''){
+      if (this.updateUserMinForm.value.documentType == '') {
         delete this.updateUserMinForm.value.documentType
       }
-      if(this.selectedUserType == ''){
+      if (this.selectedUserType == '') {
         delete this.selectedUserType
       }
-      if(this.updateUserMinForm.value.password == ''){
+      if (this.updateUserMinForm.value.password == '') {
         delete this.updateUserMinForm.value.password
       }
-      if(this.updateUserMinForm.value.name == ''){
+      if (this.updateUserMinForm.value.name == '') {
         delete this.updateUserMinForm.value.name
       }
-      if(this.updateUserMinForm.value.lastName == ''){
+      if (this.updateUserMinForm.value.lastName == '') {
         delete this.updateUserMinForm.value.lastName
       }
 
@@ -451,9 +463,8 @@ export class PanelEditUsersComponent implements OnInit {
     this.openModal(this.sureEnabledModalTpl);
   }
 
-  async selectUserUpdate (index: number, user:any){
-    console.log(user);
-    this.prueba=user;
+  async selectUserUpdate(index: number, user: any) {
+    this.prueba = user;
   }
 
   async changeEnabled() {
@@ -484,13 +495,21 @@ export class PanelEditUsersComponent implements OnInit {
         page: Number(this.page).toString(),
         document: this.partialDocument,
       });
-    } catch (error) {}
+    } catch (error) { }
   }
 
   searchForm() {
-    this.router.navigateByUrl(
-      `/admin/panel-edit/0/${this.searchUserForm.value.document}`
-    );
+
+    if (this.searchUserForm.value.document === '') {
+      this.router.navigateByUrl(
+        `/admin/panel-edit/1/%20`
+      );
+    } else {
+      this.router.navigateByUrl(
+        `/admin/panel-edit/0/${this.searchUserForm.value.document}`
+      );
+    }
+
   }
 
   setDepartmentMunicipality(form: FormGroup, option?: any) {
@@ -512,7 +531,7 @@ export class PanelEditUsersComponent implements OnInit {
           };
         }) || [];
   }
-  
+
   async setColleges(form: FormGroup, option?: any) {
     form.value.selectedCollege = '';
     form.value.selectedGrade = '';
@@ -554,11 +573,11 @@ export class PanelEditUsersComponent implements OnInit {
     this.courses = !grade
       ? []
       : grade.courses.map((c) => {
-          return {
-            key: c.id,
-            value: c.name,
-          };
-        }) || [];
+        return {
+          key: c.id,
+          value: c.name,
+        };
+      }) || [];
   }
   resetForm(): void {
     this.createUserMinForm.reset();
@@ -568,5 +587,5 @@ export class PanelEditUsersComponent implements OnInit {
     this.createUserMinForm.reset();
     this.updateUserMinForm.reset();
   }
-  check() {}
+  check() { }
 }

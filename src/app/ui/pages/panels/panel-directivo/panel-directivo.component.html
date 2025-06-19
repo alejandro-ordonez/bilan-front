@@ -1,42 +1,27 @@
-<div
-  class="module-bar module-bar--panel-control--ministerio header-directivo-docente"
->
+<div class="module-bar module-bar--panel-control--ministerio header-directivo-docente">
   <h2 class="module-card__header__text__title">Panel Directivo Docente</h2>
-  <app-textfield
-    class="input"
-    type="text"
-    pattern="^[a-zA-Z0-9_.-]*$"
-    placeholder="Buscar por documento"
-    (input)="searchUser($event)"
-  ></app-textfield>
+  <app-textfield class="input" type="text" pattern="^[a-zA-Z0-9_.-]*$" placeholder="Buscar por documento"
+    (input)="searchUser($event)"></app-textfield>
 
   <button class="create-button" (click)="openModal(uploadFileModal)">
-    subir archivo
+    Subir archivo
+  </button>
+
+  <button class="create-button" (click)="openUploads()">
+    Ver archivos subidos
   </button>
 </div>
 
 <div class="min-options">
-  <button
-    [disabled]="showStudents"
-    (click)="setShowStudents()"
-    class="create-button"
-  >
+  <button [disabled]="showStudents" (click)="setShowStudents()" class="create-button">
     Ver estudiantes
   </button>
-  <button
-    [disabled]="!showStudents"
-    (click)="setShowTeachers()"
-    class="create-button"
-  >
+  <button [disabled]="!showStudents" (click)="setShowTeachers()" class="create-button">
     Ver docentes
   </button>
 </div>
 
-<main
-  *ngIf="showStudents"
-  class="panel-control--ministerio"
-  id="lateral-menu__container"
->
+<main *ngIf="showStudents" class="panel-control--ministerio" id="lateral-menu__container">
   <section class="panel-control--ministerio__statics">
     <table class="table">
       <thead>
@@ -58,24 +43,14 @@
           <td>{{ user.grade }}</td>
           <td class="dark">{{ user.course }}</td>
           <td>
-            <a
-              (click)="editUser(user, true)"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="assets/images/Botones_menu/editar.png"
-                style="width: 40px"
-              />
+            <a (click)="editUser(user, true)" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/Botones_menu/editar.png" style="width: 40px" />
             </a>
           </td>
           <td class="dark enabled">
             <label class="switch">
               <input type="checkbox" [checked]="user.isEnabled" disabled />
-              <span
-                class="slider round"
-                (click)="selectUser(user, user.isEnabled || false)"
-              ></span>
+              <span class="slider round" (click)="selectUser(user, user.isEnabled || false)"></span>
             </label>
           </td>
         </tr>
@@ -98,11 +73,7 @@
     </ul>
   </section>
 </main>
-<main
-  *ngIf="!showStudents"
-  class="panel-control--ministerio"
-  id="lateral-menu__container"
->
+<main *ngIf="!showStudents" class="panel-control--ministerio" id="lateral-menu__container">
   <section class="panel-control--ministerio__statics">
     <table class="table">
       <thead>
@@ -126,24 +97,14 @@
           <td>{{ user.grade }}</td>
           <td class="dark">{{ user.course }}</td>
           <td>
-            <a
-              (click)="editUser(user, false)"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="assets/images/Botones_menu/editar.png"
-                style="width: 40px"
-              />
+            <a (click)="editUser(user, false)" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/Botones_menu/editar.png" style="width: 40px" />
             </a>
           </td>
           <td class="dark enabled">
             <label class="switch">
               <input type="checkbox" [checked]="user.isEnabled" disabled />
-              <span
-                class="slider round"
-                (click)="selectUser(user, user.isEnabled || false)"
-              ></span>
+              <span class="slider round" (click)="selectUser(user, user.isEnabled || false)"></span>
             </label>
           </td>
         </tr>
@@ -186,20 +147,16 @@
       <div class="exp-container"></div>
 
       <form [formGroup]="uploadForm" (submit)="uploadFile()">
-        <div
-          class="files__button"
-          style="display: flex; justify-content: space-around"
-        >
+        <app-radio-select label="Tipo de perfil" class="input" styleVariant="centered-title"
+          formControlName="userTypeLoad" [options]="userTypesFileUpload">
+        </app-radio-select>
+        <div class="files__button" style="display: flex;  justify-content: space-around">
+
+
           <label class="btn_intro">
             Subir archivo
-            <input
-              (change)="onFileSelect($event)"
-              formControlName="file"
-              type="file"
-              name="uploadfile"
-              style="display: none"
-              accept=".csv"
-            />
+            <input (change)="onFileSelect($event)" formControlName="file" type="file" name="uploadfile"
+              style="display: none" accept=".csv" />
           </label>
         </div>
 
@@ -207,15 +164,8 @@
           Archivo a subir:
           {{ this.uploadForm.value.file.name }}
         </p>
-        <div
-          class="files__button"
-          style="display: flex; justify-content: space-around"
-        >
-          <app-button
-            type="submit"
-            [isDisabled]="!isValidFile"
-            text="Crear Usuarios"
-          ></app-button>
+        <div class="files__button" style="display: flex; justify-content: space-around">
+          <app-button type="submit" [isDisabled]="!isValidFile" text="Crear Usuarios"></app-button>
         </div>
       </form>
     </div>
@@ -235,18 +185,9 @@
       </button>
     </div>
     <div class="modal__text">
-      <div
-        class="files__button"
-        style="display: flex; justify-content: space-around; margin-top: 80px"
-      >
-        <app-button
-          (click)="changeEnabled(); modal.dismiss('Cross click')"
-          text="Aceptar"
-        ></app-button>
-        <app-button
-          (click)="modal.dismiss('Cross click')"
-          text="cancelar"
-        ></app-button>
+      <div class="files__button" style="display: flex; justify-content: space-around; margin-top: 80px">
+        <app-button (click)="changeEnabled(); modal.dismiss('Cross click')" text="Aceptar"></app-button>
+        <app-button (click)="modal.dismiss('Cross click')" text="cancelar"></app-button>
       </div>
     </div>
   </div>
@@ -266,116 +207,53 @@
         <h2 class="title">Actualizar usuario</h2>
 
         {{ showStudents ? "Estudiante" : "Docente" }}
-        <form
-          *ngIf="showStudents"
-          class="login-form create-user-form"
-          [formGroup]="editStudentForm"
-          (submit)="onSubmitUpdate()"
-          novalidate
-        >
-          <app-select
-            label="Tipo de documento"
-            class="input"
-            formControlName="documentType"
-            [options]="documentTypeOptions"
-            placeholder="Tipo de documento"
-            [(ngModel)]="userSelected.documentType"
-          ></app-select>
+        <form *ngIf="showStudents" class="login-form create-user-form" [formGroup]="editStudentForm"
+          (submit)="onSubmitUpdate()" novalidate>
+          <app-select label="Tipo de documento" class="input" formControlName="documentType"
+            [options]="documentTypeOptions" placeholder="Tipo de documento"
+            [(ngModel)]="userSelected.documentType"></app-select>
 
-          <app-textfield
-            label="Documento"
-            class="input"
-            formControlName="document"
-            type="text"
-            pattern="^[a-zA-Z0-9_.-]*$"
-            placeholder="Número de documento"
-            [(ngModel)]=userSelected.document
-          ></app-textfield>
+          <app-textfield label="Documento" class="input" formControlName="document" type="text"
+            pattern="^[a-zA-Z0-9_.-]*$" placeholder="Número de documento"
+            [(ngModel)]=userSelected.document></app-textfield>
 
-          <app-textfield
-            label="Correo electrónico"
-            class="input"
-            formControlName="email"
-            type="email"
-            email="true"
-            [(ngModel)]=userSelected.email
-            placeholder="ejemplo@bilan.com"
-          ></app-textfield>
-          <p
-            *ngIf="
+          <app-textfield label="Correo electrónico" class="input" formControlName="email" type="email" email="true"
+            [(ngModel)]=userSelected.email placeholder="ejemplo@bilan.com"></app-textfield>
+          <p *ngIf="
               editStudentForm.controls.email.dirty &&
               editStudentForm.controls.email.invalid
-            "
-          >
+            ">
             <ngb-alert type="danger" [dismissible]="false">
               Ingresa un correo valido
             </ngb-alert>
           </p>
 
-          <app-textfield
-            label="Nombre"
-            class="input"
-            formControlName="name"
-            type="text"
-            placeholder="Nombre"
-            [(ngModel)]=userSelected.name
-          >
+          <app-textfield label="Nombre" class="input" formControlName="name" type="text" placeholder="Nombre"
+            [(ngModel)]=userSelected.name>
           </app-textfield>
 
-          <app-textfield
-            label="Apellido"
-            class="input"
-            formControlName="lastName"
-            type="text"
-            placeholder="Apellido"
-            [(ngModel)]=userSelected.lastName
-          >
+          <app-textfield label="Apellido" class="input" formControlName="lastName" type="text" placeholder="Apellido"
+            [(ngModel)]=userSelected.lastName>
           </app-textfield>
 
-          <app-textfield
-            label="Grado"
-            class="input"
-            formControlName="grade"
-            type="text"
-            placeholder="Grado"
-            [(ngModel)]=userSelected.grade
-          >
+          <app-textfield label="Grado" class="input" formControlName="grade" type="text" placeholder="Grado"
+            [(ngModel)]=userSelected.grade>
           </app-textfield>
 
-          <app-textfield
-            label="Curso"
-            class="input"
-            formControlName="course"
-            type="text"
-            placeholder="Curso"
-            [(ngModel)]=userSelected.course
-          >
+          <app-textfield label="Curso" class="input" formControlName="course" type="text" placeholder="Curso"
+            [(ngModel)]=userSelected.course>
           </app-textfield>
           <p *ngIf="editStudentForm.invalid">
             <ngb-alert type="danger" [dismissible]="false">
               Completa <strong>todos</strong> los <strong>campos</strong>
             </ngb-alert>
           </p>
-          <app-button
-            type="submit"
-            [isDisabled]="editStudentForm.invalid"
-            text="Actualizar usuario"
-          ></app-button>
+          <app-button type="submit" [isDisabled]="editStudentForm.invalid" text="Actualizar usuario"></app-button>
         </form>
 
-        <form
-          *ngIf="!showStudents"
-          class="login-form create-user-form"
-          [formGroup]="editTeacherForm"
-          novalidate
-        >
-          <app-select
-            label="Tipo de documento"
-            class="input"
-            formControlName="documentType"
-            [options]="documentTypeOptions"
-            placeholder="Tipo de documento"
-          ></app-select>
+        <form *ngIf="!showStudents" class="login-form create-user-form" [formGroup]="editTeacherForm" novalidate>
+          <app-select label="Tipo de documento" class="input" formControlName="documentType"
+            [options]="documentTypeOptions" placeholder="Tipo de documento"></app-select>
 
           <!-- <app-textfield
             label="Documento"
@@ -388,68 +266,32 @@
             [value]="userSelected.document || ''"
           ></app-textfield> -->
 
-          <app-textfield
-            label="Nombre"
-            class="input"
-            formControlName="name"
-            type="text"
-            placeholder="Nombre"
-          >
+          <app-textfield label="Nombre" class="input" formControlName="name" type="text" placeholder="Nombre">
           </app-textfield>
 
-          <app-textfield
-            label="Apellido"
-            class="input"
-            formControlName="lastName"
-            type="text"
-            placeholder="Apellido"
-          >
+          <app-textfield label="Apellido" class="input" formControlName="lastName" type="text" placeholder="Apellido">
           </app-textfield>
 
-          <app-textfield
-            label="email"
-            class="input"
-            formControlName="email"
-            type="email"
-            placeholder="Apellido"
-          >
+          <app-textfield label="email" class="input" formControlName="email" type="email" placeholder="Apellido">
           </app-textfield>
 
           <table class="table">
             <tbody>
-              <tr
-                formArrayName="classRooms"
-                *ngFor="let classRoom of this.classRooms.controls; index as i"
-              >
+              <tr formArrayName="classRooms" *ngFor="let classRoom of this.classRooms.controls; index as i">
                 <div [formGroupName]="i">
                   <td>
-                    <app-select
-                      label="Asignatura"
-                      class="input"
-                      formControlName="tribe"
-                      [options]="tribesOptions"
-                      placeholder="Asignatura"
-                    >
+                    <app-select label="Asignatura" class="input" formControlName="tribe" [options]="tribesOptions"
+                      placeholder="Asignatura">
                     </app-select>
                   </td>
                   <td>
-                    <app-select
-                      label="Curso"
-                      class="input"
-                      formControlName="course"
-                      [options]="this.courses"
-                      placeholder="Curso"
-                    >
+                    <app-select label="Curso" class="input" formControlName="course" [options]="this.courses"
+                      placeholder="Curso">
                     </app-select>
                   </td>
                   <td>
-                    <app-select
-                      label="Grade"
-                      class="input"
-                      formControlName="grade"
-                      [options]="gradeOptions"
-                      placeholder="Curso"
-                    >
+                    <app-select label="Grade" class="input" formControlName="grade" [options]="gradeOptions"
+                      placeholder="Curso">
                     </app-select>
                   </td>
                 </div>
@@ -462,12 +304,8 @@
               Completa <strong>todos</strong> los <strong>campos</strong>
             </ngb-alert>
           </p>
-          <app-button
-            type="submit"
-            [isDisabled]="editTeacherForm.invalid"
-            text="Actualizar usuario"
-            (click)="update()"
-          ></app-button>
+          <app-button type="submit" [isDisabled]="editTeacherForm.invalid" text="Actualizar usuario"
+            (click)="update()"></app-button>
         </form>
       </div>
     </div>

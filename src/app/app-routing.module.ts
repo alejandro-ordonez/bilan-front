@@ -49,6 +49,7 @@ import { RetoDeLosEspiritusComponent } from './retos/reto-de-los-espiritus/reto-
 import { ForoComponent } from './foro/foro.component';
 import { TableroDirectivoComponent } from './tablero-directivo/tablero-directivo.component';
 import { PanelControlComponent, PanelDirectivoComponent, PanelEditUsersComponent } from '@ui/pages/panels';
+import { PanelUploadsComponent } from '@ui/pages/panels/panel-uploads/panel-uploads.component';
 
 const routes: Routes = [
   {
@@ -215,6 +216,11 @@ const routes: Routes = [
       {
         path: 'admin/panel-directivo',
         component: PanelDirectivoComponent,
+        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
+      },
+       {
+        path: 'admin/panel-uploads',
+        component: PanelUploadsComponent,
         canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
       },
       {

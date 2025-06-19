@@ -13,8 +13,10 @@ const API = {
   user: {
     stats: '/stats',
     info: '/user/info',
-    load: '/user/load?userType={{userType}}&campusCodeDane={{campusCodeDane}}',
-    loadDirectivo: '/user/load?userType={{userType}}',
+    getUploads: '/user/import?page={{page}}',
+    downloadRejected: '/user/import/rejected?importId={{importId}}',
+    load: '/user/import?importType={{userType}}&campusCodeDane={{campusCodeDane}}',
+    loadDirectivo: '/user/import?importType={{userType}}',
     updateInfo: '/user/updateInfo',
     enableUser: '/user/enable',
     gets: '/user?page={{page}}&partialDocument={{partialDocument}}',

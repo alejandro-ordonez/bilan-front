@@ -104,6 +104,7 @@ import { UserService } from '@application/user/user.service';
 import { TeacherService } from '@application/teacher/teacher.service';
 import { StudentService } from '@application/student/student.service';
 import { DashboardCollegeComponent } from './ui/pages/panels/panel-control/dashboard-college/dashboard-college.component';
+import { PanelUploadsComponent } from '@ui/pages/panels/panel-uploads/panel-uploads.component';
 
 @NgModule({
   declarations: [
@@ -175,6 +176,7 @@ import { DashboardCollegeComponent } from './ui/pages/panels/panel-control/dashb
     DashboardStudentComponent,
     DashboardComponent,
     DashboardCollegeComponent,
+    PanelUploadsComponent,
   ],
   imports: [
     HttpClientXsrfModule.withOptions({

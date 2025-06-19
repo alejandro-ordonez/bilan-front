@@ -1,0 +1,46 @@
+main {
+    background-color: #fff3e8;
+    background-image: url("/assets/images/fondos/texturaBG.png");
+    background-repeat: repeat;
+}
+
+.header-directivo-docente {
+    display: flex;
+
+    .module-card__header__text__title {
+        flex-grow: 1;
+    }
+}
+
+.table td,
+.table th {
+    text-align: start;
+    vertical-align: inherit;
+}
+
+.table td.enabled {
+    text-align: center;
+}
+
+.panel-control--ministerio__nav__title--ubication svg:nth-child(1) {
+    width: 50px;
+    height: 30px;
+    margin-right: 0;
+}
+
+.panel-control--ministerio__nav__title--ubication svg:last-child {
+    margin-left: 20px;
+}
+
+.panel-control--ministerio__nav__title {
+    font-weight: bold;
+}
+
+.panel-control--ministerio {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: unset;
+    display: grid;
+    grid-template-columns: 12fr;
+}

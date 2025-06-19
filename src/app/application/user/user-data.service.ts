@@ -17,11 +17,13 @@ import { Observable } from 'rxjs';
 import { DocumentType } from '@domain/enums/document-type.enum';
 import { UserType } from '@domain/enums/user-type.enum';
 import { AuthService } from '@application/auth/auth.service';
+import { UploadModel } from '@domain/models/upload.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserDataService extends UserDataGateway {
+
   constructor(private http: HttpClient, private userAuth: AuthService) {
     super();
   }
@@ -44,6 +46,46 @@ export class UserDataService extends UserDataGateway {
         tribesBalance: JSON.parse(response.result.tribesBalance) || [],
       }))
     );
+  }
+
+  getUploads(page: string): Promise<Response> {
+    return new Promise<Response>((resolve, reject) => {
+      const options = this.buildConfig();
+
+      this.http
+        .get<Response>(API.baseUrl + API.user.getUploads.replace('{{page}}', page), options)
+        .subscribe(
+          (response: any) => {
+
+            resolve(response.data);
+          },
+          () => {
+            reject(null);
+          }
+        );
+    });
+  }
+
+  downloadRejected(requestId: string): Promise<any> {
+    const config = this.buildConfig();
+    return new Promise<any>((resolve, reject) => {
+      const url =
+        API.baseUrl +
+        API.user.downloadRejected.replace('{{importId}}', requestId);
+      this.http
+        .get<any>(url, {
+          headers: config.headers,
+          responseType: 'blob' as 'json',
+        })
+        .subscribe(
+          (response: any) => {
+            resolve(response);
+          },
+          (err: any) => {
+            reject(err.error);
+          }
+        );
+    });
   }
 
   updateStats(data: Stat): Promise<Response> {
@@ -187,7 +229,7 @@ export class UserDataService extends UserDataGateway {
           API.baseUrl +
           API.user.getTeacher
             .replace(
-              '{{document}}',document
+              '{{document}}', document
             ),
           options
         )
