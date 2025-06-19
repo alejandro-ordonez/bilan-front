@@ -6,6 +6,8 @@ export enum UserType {
   Admin = 'Admin',
   DirectiveTeacher = 'DirectiveTeacher',
   SecEdu = 'SecEdu',
+  College = 'College',
+  TeacherEnrollment = 'TeacherEnrollment'
 }
 
 

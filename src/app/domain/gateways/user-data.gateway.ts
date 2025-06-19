@@ -40,6 +40,8 @@ export abstract class UserDataGateway {
     form: FormData
   ): Promise<boolean>;
 
+  abstract getUploads(page: string): Promise<any>
+
   abstract loadDirective(
     userType: string | undefined,
     form: FormData
