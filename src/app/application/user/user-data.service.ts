@@ -17,7 +17,6 @@ import { Observable } from 'rxjs';
 import { DocumentType } from '@domain/enums/document-type.enum';
 import { UserType } from '@domain/enums/user-type.enum';
 import { AuthService } from '@application/auth/auth.service';
-import { UploadModel } from '@domain/models/upload.model';
 
 @Injectable({
   providedIn: 'root',

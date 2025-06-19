@@ -11,7 +11,6 @@ import { UserType } from '@domain/enums/user-type.enum';
 import { ClassRoom } from '@domain/models/classroom.model';
 import { StudentDto } from '@domain/models/student.model';
 import { TeacherDto } from '@domain/models/teacher.model';
-import { UploadModel } from '@domain/models/upload.model';
 import { User } from '@domain/models/user.model';
 import { TeacherUseCase } from '@domain/usecases';
 
@@ -32,10 +31,21 @@ export class PanelUploadsComponent implements OnInit {
 
     uploads: any;
     tipos: any = {
-        TeacherImport: "Docentes",
+        TeacherImport: "Anexo 3",
         StudentImport: "Estudiantes",
         TeacherEnrollment: "Vincular Docentes",
         CollegeImport: "Colegios"
+    }
+
+    estados: any = {
+        ReadyForVerification: "Listo para verificación",
+        Verifying: "Verificando",
+        ApprovedWithErrors: "Aprobado con errores",
+        Queued: "Encolado",
+        Processing: "Procesando",
+        Ok: "OK",
+        Rejected: "Rechazado",
+        Failed: "Fallido"
     }
 
     async ngOnInit(): Promise<void> {
@@ -83,9 +93,11 @@ export class PanelUploadsComponent implements OnInit {
             const ups = await this.userData.getUploads(this.page.toString());
             this.uploads = ups.map((up: any) => {
                 const tipo = up.importType as string;
+                const estado = up.status as string;
                 return {
                     ...up,
-                    tipo: this.tipos[tipo]
+                    tipo: this.tipos[tipo],
+                    status: this.estados[estado]
                 }
             })
         } catch (error) { }

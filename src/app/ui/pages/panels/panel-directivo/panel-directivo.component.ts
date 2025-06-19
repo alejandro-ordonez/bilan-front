@@ -37,7 +37,7 @@ export class PanelDirectivoComponent implements OnInit {
     },
     {
       key: UserType.TeacherEnrollment,
-      value: 'Vincular Profesores',
+      value: 'Vincular Docentes',
     },
   ];
 

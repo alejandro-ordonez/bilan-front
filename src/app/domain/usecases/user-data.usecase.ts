@@ -6,7 +6,6 @@ import { Response } from '@domain/models/response.model';
 import { Action, Challenge, Tribe } from '@domain/models/game.model';
 import { Observable } from 'rxjs';
 import { DocumentType } from '@domain/enums/document-type.enum';
-import { UploadModel } from '@domain/models/upload.model';
 
 @Injectable({
   providedIn: 'root',

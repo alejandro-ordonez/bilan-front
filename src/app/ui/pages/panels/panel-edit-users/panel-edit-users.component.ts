@@ -33,7 +33,7 @@ export class PanelEditUsersComponent implements OnInit {
     },
     {
       key: "TeacherImport",
-      value: 'Profesores',
+      value: 'Anexo 3',
     },
     {
       key: "CollegesImport",
@@ -41,7 +41,7 @@ export class PanelEditUsersComponent implements OnInit {
     },
     {
       key: UserType.TeacherEnrollment,
-      value: 'Vincular Profesores',
+      value: 'Vincular Docentes',
     },
   ];
 
