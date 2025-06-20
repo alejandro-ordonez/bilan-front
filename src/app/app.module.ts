@@ -105,6 +105,7 @@ import { TeacherService } from '@application/teacher/teacher.service';
 import { StudentService } from '@application/student/student.service';
 import { DashboardCollegeComponent } from './ui/pages/panels/panel-control/dashboard-college/dashboard-college.component';
 import { PanelUploadsComponent } from '@ui/pages/panels/panel-uploads/panel-uploads.component';
+import { PanelResetComponent } from '@ui/pages/panels/panel-reset/panel-reset.component';
 
 @NgModule({
   declarations: [
@@ -177,6 +178,7 @@ import { PanelUploadsComponent } from '@ui/pages/panels/panel-uploads/panel-uplo
     DashboardComponent,
     DashboardCollegeComponent,
     PanelUploadsComponent,
+    PanelResetComponent
   ],
   imports: [
     HttpClientXsrfModule.withOptions({

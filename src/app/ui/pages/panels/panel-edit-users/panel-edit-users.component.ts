@@ -272,6 +272,10 @@ export class PanelEditUsersComponent implements OnInit {
     this.router.navigateByUrl("/admin/panel-uploads")
   }
 
+  openReset() {
+    this.router.navigateByUrl("/admin/panel-reset")
+  }
+
   async uploadFile() {
     try {
       this.isValidFile = false;
@@ -285,7 +289,7 @@ export class PanelEditUsersComponent implements OnInit {
       this.uploadForm.value.file = '';
       alert('Enviado con exito');
       this.router.navigateByUrl(
-        `/admin/panel-edit/1/%20`
+        `/admin/panel-edit/0/%20`
       );
     } catch {
       this.isValidFile = true;
@@ -502,7 +506,7 @@ export class PanelEditUsersComponent implements OnInit {
 
     if (this.searchUserForm.value.document === '') {
       this.router.navigateByUrl(
-        `/admin/panel-edit/1/%20`
+        `/admin/panel-edit/0/%20`
       );
     } else {
       this.router.navigateByUrl(

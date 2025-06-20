@@ -12,4 +12,6 @@ export abstract class GameGateway {
   abstract validateQuestion(data: ValidateQuestionRequest): Promise<boolean>;
   abstract getGameInfo(): Promise<GameInfo>;
   abstract getAllActivities(): Promise<Activity[]>;
+  abstract resetGame(): Promise<any>;
+  abstract getResets(page: string): Promise<any>;
 }

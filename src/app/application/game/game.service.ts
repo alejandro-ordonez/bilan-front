@@ -17,6 +17,7 @@ import { AuthService } from '@application/auth/auth.service';
   providedIn: 'root',
 })
 export class GameService extends GameGateway {
+
   constructor(private http: HttpClient, private userAuth: AuthService) {
     super();
   }
@@ -29,6 +30,40 @@ export class GameService extends GameGateway {
       },
     };
     return options;
+  }
+
+  resetGame(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      const options = this.buildConfig();
+      this.http
+        .get<Response>(API.baseUrl + API.game.resetGame, options)
+        .subscribe(
+          (response: Response) => {
+            resolve(true);
+          },
+          () => {
+            reject(null);
+          }
+        );
+    });
+  }
+
+  getResets(page: string): Promise<any> {
+    return new Promise<Response>((resolve, reject) => {
+      const options = this.buildConfig();
+
+      this.http
+        .get<Response>(API.baseUrl + API.game.getResets.replace('{{page}}', page), options)
+        .subscribe(
+          (response: any) => {
+
+            resolve(response.result.data);
+          },
+          () => {
+            reject(null);
+          }
+        );
+    });
   }
 
   getQuestions(request: QuestionRequest): Promise<Question[]> {

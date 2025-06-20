@@ -33,9 +33,11 @@ const API = {
     validateQuestions: '/questions/validate',
     gameInfo: '/game-info',
     allActivities: '/activities/all',
+    getResets: '/game-cycle?page={{page}}',
+    resetGame: '/game-cycle/reset-game'
   },
 
-  generalInfo:{
+  generalInfo: {
     allStates: '/general/states',
     cities: '/general/city?state={{state}}',
     colleges: '/college?stateMunId={{locationId}}',

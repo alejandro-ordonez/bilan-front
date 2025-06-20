@@ -50,6 +50,7 @@ import { ForoComponent } from './foro/foro.component';
 import { TableroDirectivoComponent } from './tablero-directivo/tablero-directivo.component';
 import { PanelControlComponent, PanelDirectivoComponent, PanelEditUsersComponent } from '@ui/pages/panels';
 import { PanelUploadsComponent } from '@ui/pages/panels/panel-uploads/panel-uploads.component';
+import { PanelResetComponent } from '@ui/pages/panels/panel-reset/panel-reset.component';
 
 const routes: Routes = [
   {
@@ -218,10 +219,15 @@ const routes: Routes = [
         component: PanelDirectivoComponent,
         canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
       },
-       {
+      {
         path: 'admin/panel-uploads',
         component: PanelUploadsComponent,
         canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
+      },
+      {
+        path: 'admin/panel-reset',
+        component: PanelResetComponent,
+        canActivate: [AuthGuardService, AdminGuard],
       },
       {
         path: 'admin/tablero-directivo',
