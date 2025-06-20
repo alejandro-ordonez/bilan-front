@@ -56,7 +56,7 @@ export class UserDataService extends UserDataGateway {
         .subscribe(
           (response: any) => {
 
-            resolve(response.data);
+            resolve(response);
           },
           () => {
             reject(null);

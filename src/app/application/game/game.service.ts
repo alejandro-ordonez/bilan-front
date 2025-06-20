@@ -56,8 +56,7 @@ export class GameService extends GameGateway {
         .get<Response>(API.baseUrl + API.game.getResets.replace('{{page}}', page), options)
         .subscribe(
           (response: any) => {
-
-            resolve(response.result.data);
+            resolve(response.result);
           },
           () => {
             reject(null);

@@ -53,13 +53,14 @@ export class PanelResetComponent implements OnInit {
     async getResets() {
         this.resets = [];
         try {
-            const ups = await this.gateGateway.getResets(this.page.toString());
-            this.resets = ups.map((reset: any)=> {
+            const response = await this.gateGateway.getResets(this.page.toString());
+            this.resets = response.data.map((reset: any) => {
                 return {
                     ...reset,
                     gameStatus: this.estados[reset.gameStatus]
                 }
-            })
+            });
+            this.totalPages = response.npages;
         } catch (error) { }
     }
 

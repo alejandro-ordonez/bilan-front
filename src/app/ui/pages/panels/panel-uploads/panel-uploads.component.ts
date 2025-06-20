@@ -90,8 +90,8 @@ export class PanelUploadsComponent implements OnInit {
     async getUploads() {
         this.uploads = [];
         try {
-            const ups = await this.userData.getUploads(this.page.toString());
-            this.uploads = ups.map((up: any) => {
+            const response = await this.userData.getUploads(this.page.toString());
+            this.uploads = response.data.map((up: any) => {
                 const tipo = up.importType as string;
                 const estado = up.status as string;
                 return {
@@ -100,6 +100,7 @@ export class PanelUploadsComponent implements OnInit {
                     status: this.estados[estado]
                 }
             })
+            this.totalPages = response.npages;
         } catch (error) { }
     }
 
