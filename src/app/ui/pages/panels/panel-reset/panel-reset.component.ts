@@ -50,6 +50,29 @@ export class PanelResetComponent implements OnInit {
 
     }
 
+    async downloadReport(cycleId: string, fileName: string) {
+        let dataFile;
+
+        try {
+            dataFile = await this.gateGateway.downloadReport(cycleId, fileName);
+
+            const url = URL.createObjectURL(
+                new Blob([dataFile], { type: dataFile.type })
+            );
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = cycleId + fileName + Date.now();
+
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        } catch (error) {
+            console.error(error);
+            alert('Lo sentimos descarga fallida, intentalo mas tarde');
+        }
+    }
+
     async getResets() {
         this.resets = [];
         try {

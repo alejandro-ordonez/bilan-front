@@ -34,7 +34,8 @@ const API = {
     gameInfo: '/game-info',
     allActivities: '/activities/all',
     getResets: '/game-cycle?page={{page}}',
-    resetGame: '/game-cycle/reset-game'
+    resetGame: '/game-cycle/reset-game',
+    downloadReport: '/game-cycle/report?cycleId={{cycleId}}&fileName={{fileName}}'
   },
 
   generalInfo: {

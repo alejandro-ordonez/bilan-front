@@ -25,7 +25,7 @@
                         {{ upload.processed}}
                     </td>
                     <td>
-                        <a *ngIf="upload.rejected > 0"
+                        <a href="javascript:void(0)" *ngIf="upload.rejected > 0"
                             (click)="downloadRejected(upload.requestId)">{{upload.rejected}}</a>
                         <span *ngIf="upload.rejected == 0"> {{ upload.rejected}}</span>
 
