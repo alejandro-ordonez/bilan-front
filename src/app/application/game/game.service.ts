@@ -65,6 +65,27 @@ export class GameService extends GameGateway {
     });
   }
 
+  downloadReport(cycleId: string, fileName: string): Promise<any> {
+    const config = this.buildConfig();
+    return new Promise<any>((resolve, reject) => {
+      const url =
+        API.baseUrl +
+        API.game.downloadReport.replace('{{cycleId}}', cycleId).replace('{{fileName}}', fileName);
+      this.http
+        .get<any>(url, {
+          headers: config.headers,
+          responseType: 'blob' as 'json',
+        })
+        .subscribe(
+          (response: any) => {
+            resolve(response);
+          },
+          (err: any) => {
+            reject(err.error);
+          }
+        );
+    });
+  }
   getQuestions(request: QuestionRequest): Promise<Question[]> {
     return new Promise<Question[]>((resolve, reject) => {
       const options = this.buildConfig();

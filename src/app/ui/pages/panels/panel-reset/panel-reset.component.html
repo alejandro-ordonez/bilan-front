@@ -30,7 +30,8 @@
                         {{ reset.gameStatus}}
                     </td>
                     <td>
-                        <div *ngFor="let fileName of reset.fileNames">{{fileName}}</div>
+                        <div *ngFor="let fileName of reset.fileNames"><a href="javascript:void(0)"
+                                (click)="downloadReport(reset.gameId, fileName)">{{fileName}}</a></div>
                     </td>
 
                 </tr>
