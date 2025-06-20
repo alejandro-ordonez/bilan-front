@@ -6,6 +6,7 @@ figure {
 }
 
 .module-bar {
+  width: 100%;
   background-color: black;
   color: white;
   border-top: 10px solid grey;
@@ -13,6 +14,7 @@ figure {
   padding: 0 200px;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .module-bar--matematicas {
