@@ -14,7 +14,7 @@ export class UserDataUseCase {
   constructor(private userDataGateway: UserDataGateway) { }
 
   downloadRejected(requestId: string): any {
-    return this.downloadRejected(requestId)
+    return this.userDataGateway.downloadRejected(requestId)
   }
 
   stats(): Observable<Stat> {
