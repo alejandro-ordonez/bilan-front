@@ -13,7 +13,7 @@ import { UserDataService } from '../user/user-data.service';
   providedIn: 'root',
 })
 export class AdminGuard implements CanActivate {
-  constructor(private router: Router, private userService: UserDataService) {}
+  constructor(private router: Router, private userService: UserDataService) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -23,10 +23,6 @@ export class AdminGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.userService.isAdminIn()) {
-      this.router.navigate(['admin/panel-edit']);
-      return false;
-    }
-    return true;
+    return this.userService.isAdminIn() ? true : this.router.createUrlTree(["/inicio"])
   }
 }

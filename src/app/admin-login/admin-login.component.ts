@@ -104,7 +104,7 @@ export class AdminLoginComponent implements OnInit {
 
       switch(this.auth.userType){
         case UserType.Admin:
-          this.router.navigateByUrl('/admin/panel-edit/1/ ');
+          this.router.navigateByUrl('/admin/panel-edit/0/ ');
           break;
 
         case UserType.DirectiveTeacher:
