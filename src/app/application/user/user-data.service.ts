@@ -116,7 +116,6 @@ export class UserDataService extends UserDataGateway {
         (response: Response) => {
           const info: User = response.result;
 
-          setItem(STORAGE.userInfo, response.result);
           resolve(info);
         },
         () => {
@@ -148,7 +147,6 @@ export class UserDataService extends UserDataGateway {
           (response: Response) => {
             const info: User = response.result;
 
-            setItem(STORAGE.userInfo, response.result);
             resolve(info);
           },
           () => {
