@@ -24,7 +24,6 @@ export class RetosComponent implements OnInit {
   currentAction: Action;
   challenges: Challenge[];
   stats: Stat;
-  totalTotems: number = 0;
   user: User;
 
   constructor(
@@ -33,6 +32,10 @@ export class RetosComponent implements OnInit {
     private userData: UserDataUseCase,
     private router: Router
   ) {}
+
+  public get totalTotems(): number{
+    return this.stats.analyticalTotems + this.stats.criticalTotems + this.stats.generalTotems;
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -46,12 +49,6 @@ export class RetosComponent implements OnInit {
   manageData = async () => {
     const gameInfo: GameInfo = getItem(STORAGE.gameInfo);
     this.stats = getItem(STORAGE.userStats);
-
-    const analyticalTotems = Math.max(0, this.stats.analyticalTotems);
-    const criticalTotems = Math.max(0, this.stats.criticalTotems);
-    const generalTotems = Math.max(0, this.stats.generalTotems);
-
-    this.totalTotems = analyticalTotems + criticalTotems + generalTotems;
 
     this.currentTribe =
       gameInfo.tribes?.find((tribe: any) => {
@@ -98,16 +95,10 @@ export class RetosComponent implements OnInit {
     this.user = await this.userData.info();
   };
 
-  async subtractTotems(totemCost: number) {
-    this.totalTotems =
-      this.totalTotems - totemCost < 0 ? 0 : this.totalTotems - totemCost;
-  }
-
   async goToReto(challenge: Challenge) {
     if (this.totalTotems < challenge.cost) {
       return;
     }
-    this.subtractTotems(challenge.cost);
     
     let debt = challenge.cost;
 
