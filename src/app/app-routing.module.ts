@@ -121,47 +121,47 @@ const routes: Routes = [
       {
         path: 'modulos/:materia/retos/:type/1/:grade/:name',
         component: RetosPreguntasComponent,
-        canActivate: [AuthGuardService, AdminGuard],
+        canActivate: [AuthGuardService],
       },
       {
         path: 'modulos/:materia/retos/:type/2/:grade/:name',
         component: RetoDePlaneacionComponent,
-        canActivate: [AuthGuardService, AdminGuard],
+        canActivate: [AuthGuardService],
       },
       {
         path: 'modulos/:materia/retos/:type/3/:grade/:name',
         component: RetoDeValentiaComponent,
-        canActivate: [AuthGuardService, AdminGuard],
+        canActivate: [AuthGuardService],
       },
       {
         path: 'modulos/:materia/retos/:type/4/:grade/:name',
         component: RetoDelElementoComponent,
-        canActivate: [AuthGuardService, AdminGuard],
+        canActivate: [AuthGuardService],
       },
       {
         path: 'modulos/:materia/retos/:type/5/:grade/:name',
         component: RetoDeMagiaComponent,
-        canActivate: [AuthGuardService, AdminGuard],
+        canActivate: [AuthGuardService],
       },
       {
         path: 'modulos/:materia/retos/:type/6/:grade/:name',
         component: RetoDeLabranzaComponent,
-        canActivate: [AuthGuardService, AdminGuard],
+        canActivate: [AuthGuardService],
       },
       {
         path: 'modulos/:materia/retos/:type/7/:grade/:name',
         component: RetoDelTrabajoComponent,
-        canActivate: [AuthGuardService, AdminGuard],
+        canActivate: [AuthGuardService],
       },
       {
         path: 'modulos/:materia/retos/:type/8/:grade/:name',
         component: RetoDeLasEstacionesComponent,
-        canActivate: [AuthGuardService, AdminGuard],
+        canActivate: [AuthGuardService],
       },
       {
         path: 'modulos/:materia/retos/:type/9/:grade/:name',
         component: RetoDeLosEspiritusComponent,
-        canActivate: [AuthGuardService, AdminGuard],
+        canActivate: [AuthGuardService],
       },
       //--------------------------------------- retos
       // {

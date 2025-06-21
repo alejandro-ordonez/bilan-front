@@ -108,31 +108,30 @@ export class RetosComponent implements OnInit {
       return;
     }
     this.subtractTotems(challenge.cost);
+    
+    let debt = challenge.cost;
+
+    this.stats.analyticalTotems -= debt;
+      
+    // Cascade until it deducts from general totems.
+    if(this.stats.analyticalTotems < 0)
+      this.stats.criticalTotems += this.stats.analyticalTotems;
+      this.stats.analyticalTotems = 0;
+
+    if(this.stats.criticalTotems < 0){
+      this.stats.generalTotems += this.stats.criticalTotems;
+      this.stats.criticalTotems = 0;
+    }
+
     const newStats: Stat = {
       ...this.stats,
-      generalTotems: Math.max(0, this.totalTotems <= 4 ? this.totalTotems : 4),
-      analyticalTotems: Math.max(
-        0,
-        this.totalTotems > 4 || this.totalTotems <= 7
-          ? this.totalTotems - 4
-          : this.totalTotems > 7
-          ? 3
-          : 0
-      ),
-      criticalTotems: Math.max(
-        0,
-        this.totalTotems > 7 ? this.totalTotems - 7 : 0
-      ),
       actionsPoints: this.stats.actionsPoints ? this.stats.actionsPoints : [],
     };
 
     await this.statsService.updateStats(newStats);
 
-    this.router.navigateByUrl(
-      `modulos/${this.currentTribeName}/retos/${this.currentActionName}/${
-        challenge.id
-      }/${this.user.metadata.grade || 10}/${challenge.name}`
-    );
+    const path = `modulos/${this.currentTribeName}/retos/${this.currentActionName}/${challenge.id}/${this.user.metadata.grade || 10}/${challenge.name}`
+    this.router.navigateByUrl(path);
   }
 
   getChallengeName(challenge: Challenge) {

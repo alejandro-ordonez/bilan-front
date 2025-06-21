@@ -66,7 +66,7 @@
         </svg>
       </button>
     </section>
-    <app-totem-special *ngIf="stats" [activeTotems]="stats.analyticalTotems">
+    <app-totem-special *ngIf="stats" [activeTotems]="stats.analyticalTotems + stats.criticalTotems">
     </app-totem-special>
 
     <ul class="totems">
@@ -155,7 +155,7 @@
         </svg>
       </button>
     </section>
-    <app-totem-special *ngIf="stats" [activeTotems]="stats.analyticalTotems">
+    <app-totem-special *ngIf="stats" [activeTotems]="stats.analyticalTotems + stats.criticalTotems">
     </app-totem-special>
 
     <ul class="totems">
@@ -211,7 +211,7 @@
           <img src="assets/images/Botones_menu/division_totem_opt.png" />
         </li>
       </ul>
-      <app-totem-special [activeTotems]="stats.analyticalTotems">
+      <app-totem-special [activeTotems]="stats.analyticalTotems + stats.analyticalTotems">
       </app-totem-special>
     </div>
   </div>
@@ -304,7 +304,7 @@
           <img src="assets/images/Botones_menu/division_totem_opt.png" />
         </li>
       </ul>
-      <app-totem-special [activeTotems]="stats.analyticalTotems">
+      <app-totem-special [activeTotems]="stats.analyticalTotems + stats.criticalTotems">
       </app-totem-special>
     </div>
   </div>

@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TotemSpecialComponent implements OnInit {
   @Input() activeTotems: number = 2;
-  @Input() totalTotems: number = 4;
+  @Input() totalTotems: number = 6;
   totems: Array<any> = [];
 
   constructor() {}
