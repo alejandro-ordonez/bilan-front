@@ -388,7 +388,7 @@
       <!--Title-->
       <h2>CARGA TU ARCHIVO</h2>
       <!--Exit button-->
-      <button class="close" (click)="modal.dismiss('Cross click')">
+      <button class="close" (click)="modal.dismiss('Cross click'); onModalClose()">
         <img src="assets/images/Botones_menu/boto_exit@2x.png" />
       </button>
     </div>
@@ -414,14 +414,13 @@
         <div class="files__button" style="display: flex; justify-content: space-around">
           <label class="btn_intro">
             Seleccionar archivo
-            <input (change)="onFileSelect($event)" formControlName="file" type="file" name="uploadfile"
-              style="display: none" accept=".csv" />
+            <input #fileInput type="file" (change)="onFileSelect($event)" style="display: none" accept=".csv" />
           </label>
         </div>
 
-        <p *ngIf="this.uploadForm.value.file.name">
+        <p *ngIf="selectedFile">
           Archivo a subir:
-          {{ this.uploadForm.value.file.name }}
+          {{ selectedFile.name }}
         </p>
         <div class="files__button" style="display: flex; justify-content: space-around">
           <app-button type="submit" [isDisabled]="!isValidFile" text="Subir archivo"></app-button>

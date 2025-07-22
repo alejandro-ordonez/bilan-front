@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Option } from '@ui/components/select/select.component';
@@ -19,6 +19,7 @@ import { UserService } from '@application/user/user.service';
 export class PanelEditUsersComponent implements OnInit {
   @ViewChild('sureEnabledModal')
   private sureEnabledModalTpl: TemplateRef<any>;
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
   states: Option[];
   municipalities: Option[];
@@ -51,6 +52,7 @@ export class PanelEditUsersComponent implements OnInit {
   selectedUserTypeLoad: any = '';
 
   uploadForm: FormGroup;
+  selectedFile: File | null = null;
 
   documentTypeOptions: Option[] = [
     {
@@ -253,21 +255,6 @@ export class PanelEditUsersComponent implements OnInit {
     this.isAdmin = (await (await this.userData.info()).userType) === 'Admin';
   }
 
-  onFileSelect(event: any) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      const fileSize = file.size / 1024 / 1024;
-      if (fileSize <= 5) {
-        this.uploadForm.value.file = file;
-        this.isValidFile = true;
-      } else {
-        this.isValidFile = false;
-        alert('Archivo muy grande, máximo 5MB');
-        this.uploadForm.value.file = '';
-      }
-    }
-  }
-
   openUploads() {
     this.router.navigateByUrl("/admin/panel-uploads")
   }
@@ -276,25 +263,72 @@ export class PanelEditUsersComponent implements OnInit {
     this.router.navigateByUrl("/admin/panel-reset")
   }
 
+  onFileSelect(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+
+    if (!file) return;
+
+    const fileSizeMB = file.size / 1024 / 1024;
+    const fileName = file.name.toLowerCase();
+
+    const isCsv = fileName.endsWith('.csv');
+    const isSizeValid = fileSizeMB <= 5;
+
+    if (!isCsv) {
+      alert('El archivo debe ser .csv');
+    } else if (!isSizeValid) {
+      alert('Archivo muy grande. Máximo 5MB.');
+    }
+
+    if (isCsv && isSizeValid) {
+      this.selectedFile = file;
+      this.isValidFile = true;
+    } else {
+      this.selectedFile = null;
+      this.isValidFile = false;
+      this.resetFileInput();
+    }
+  }
+
   async uploadFile() {
+    if (!this.selectedFile) return;
+
     try {
       this.isValidFile = false;
+
       const formData = new FormData();
-      formData.append('file', this.uploadForm.value.file);
+      formData.append('file', this.selectedFile);
+
       await this.userData.load(
         this.uploadForm.value.campusCodeDane ?? '',
         this.uploadForm.value.userTypeLoad,
         formData
       );
-      this.uploadForm.value.file = '';
-      alert('Enviado con exito');
-      this.router.navigateByUrl(
-        `/admin/panel-edit/0/%20`
-      );
+
+      alert('Enviado con éxito');
+      this.uploadForm.reset();
+      this.resetFileInput();
+      this.selectedFile = null;
     } catch {
-      this.isValidFile = true;
-      alert('Lo sentimos hubo un error, intentelo mas tarde');
+      alert('Hubo un error. Intenta más tarde.');
+      this.resetFileInput();
+      this.selectedFile = null;
+      this.isValidFile = false;
     }
+  }
+
+
+  resetFileInput() {
+    if (this.fileInput?.nativeElement) {
+      this.fileInput.nativeElement.value = '';
+    }
+  }
+
+  onModalClose() {
+    this.uploadForm.reset();
+    this.resetFileInput();
+
   }
 
   async onSubmit() {
