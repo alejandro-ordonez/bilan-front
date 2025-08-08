@@ -27,10 +27,32 @@ export class LoginPageComponent implements OnInit {
       key: DocumentType.CE,
       value: 'Cédula de extranjería',
     },
+
     {
       key: DocumentType.TI,
       value: 'Tarjeta de identidad',
     },
+
+    {
+      key: DocumentType.RC,
+      value: 'Registro civil',
+    },
+
+    {
+      key: DocumentType.PEP,
+      value: 'Persona expuesta políticamente',
+    },
+
+    {
+      key: DocumentType.NES,
+      value: 'Número establecido por Sec. Educación.',
+    },
+
+    {
+      key: DocumentType.TMF,
+      value: 'Tarjeta de movilidad fronteriza',
+    },
+
     {
       key: DocumentType.OT,
       value: 'Otro',
