@@ -32,6 +32,12 @@ export class AuthService {
     return getItem(STORAGE.auth);
   }
 
+  clearSession(){
+    setItem(STORAGE.auth, "");
+    setItem(STORAGE.userInfo, undefined);
+    this._user = undefined;
+  }
+
   isLoggedIn() {
     const token = this.getToken();
     const helper = new JwtHelperService();
