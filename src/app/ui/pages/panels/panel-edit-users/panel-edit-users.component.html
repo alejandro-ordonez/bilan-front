@@ -23,7 +23,7 @@
   [ngClass]="burgerButtonIsActive ? 'is-active' : ''">
   <nav class="panel-control--ministerio__nav" id="lateral-menu" [ngClass]="burgerButtonIsActive ? 'is-active' : ''">
     <form [formGroup]="searchUserForm" (submit)="searchForm()">
-      <app-textfield label="Documento" class="input" formControlName="document" type="text" pattern="^[a-zA-Z0-9_.-]*$"
+      <app-textfield label="Documento" class="input" formControlName="document" type="text" pattern="^[a-zA-Z0-9]*$"
         placeholder="Número de documento"></app-textfield>
       <p *ngIf="searchUserForm.controls.document.errors?.['pattern']">
         <ngb-alert type="danger" [dismissible]="false">
@@ -144,7 +144,7 @@
             [options]="documentTypeOptions" placeholder="Tipo de documento"></app-select>
 
           <app-textfield label="Documento" class="input" formControlName="document" type="number"
-            pattern="^[a-zA-Z0-9_.-]*$" placeholder="Número de documento"></app-textfield>
+            pattern="^[a-zA-Z0-9]*$" placeholder="Número de documento"></app-textfield>
           <p *ngIf="createUserForm.controls.document.errors?.['minlength']">
             <ngb-alert type="danger" [dismissible]="false">
               El documento mínimo debe tener 7 caracteres y máximo 12 caracteres
@@ -162,36 +162,14 @@
           </p>
 
           <div class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication">
-            <app-selectv2 label="Departamentos" class="input" placeholder="Seleccionar entidad" [options]="states"
-              formControlName="selectedState"></app-selectv2>
-          </div>
-          <div class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
-            *ngIf="this.createUserForm.value.selectedState">
-            <app-select label="Municipio" class="input" placeholder="Seleccionar Municipio" [options]="municipalities"
-              (change)="setColleges(this.createUserForm)" formControlName="selectedMunicipality"></app-select>
-          </div>
-          <div class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication" *ngIf="
-              this.createUserForm.value.selectedState &&
-              this.createUserForm.value.selectedMunicipality
-            ">
-            <app-select label="Colegios" class="input" placeholder="Seleccionar entidad" [options]="colleges"
-              (change)="setGrades(this.createUserForm)" formControlName="selectedCollege"></app-select>
-          </div>
-          <div class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication" *ngIf="
-              this.createUserForm.value.selectedState &&
-              this.createUserForm.value.selectedMunicipality &&
-              this.createUserForm.value.selectedCollege
-            ">
-            <app-select label="Grados" class="input" placeholder="Seleccionar el grado" [options]="[
+            <app-select label="Grado" class="input" placeholder="Seleccionar el grado" [options]="[
                 { value: '11', key: '11' },
                 { value: '10', key: '10' }
               ]" (change)="setCourses(this.createUserForm)" formControlName="selectedGrade"></app-select>
           </div>
-          <div class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication" *ngIf="
-              this.createUserForm.value.selectedState &&
-              this.createUserForm.value.selectedMunicipality &&
-              this.createUserForm.value.selectedCollege &&
-              this.createUserForm.value.selectedGrade
+
+          <div class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication" 
+            *ngIf="this.createUserForm.value.selectedGrade
             ">
             <app-select label="Cursos" class="input" placeholder="Seleccionar el curso" [options]="[
                 { value: 'A', key: 1 },
@@ -237,7 +215,7 @@
             [options]="documentTypeOptions" placeholder="Tipo de documento"></app-select>
 
           <app-textfield label="Documento" class="input" formControlName="document" type="number" min="1"
-            pattern="^[a-zA-Z0-9_.-]*$" placeholder="Número de documento"></app-textfield>
+            pattern="^[a-zA-Z0-9]*$" placeholder="Número de documento"></app-textfield>
           <p *ngIf="createUserMinForm.controls.document.errors?.['minlength']">
             <ngb-alert type="danger" [dismissible]="false">
               El documento mínimo debe tener 7 caracteres y máximo 12 caracteres
@@ -280,7 +258,7 @@
             [options]="documentTypeOptions" placeholder="Tipo de documento"></app-select>
 
           <app-textfield label="Documento" class="number" formControlName="document" type="number"
-            pattern="^[a-zA-Z0-9_.-]*$" placeholder="Número de documento"></app-textfield>
+            pattern="^[a-zA-Z0-9]*$" placeholder="Número de documento"></app-textfield>
           <p *ngIf="createUserSecEduForm.controls.document.errors?.['minlength']">
             <ngb-alert type="danger" [dismissible]="false">
               El documento mínimo debe tener 7 caracteres y máximo 12 caracteres
@@ -298,8 +276,14 @@
           </p>
 
           <div class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication">
-            <app-selectv2 label="Departamentos" class="input" placeholder="Seleccionar entidad" [options]="states"
-              formControlName="selectedState"></app-selectv2>
+            <app-selectv2 
+              label="Departamentos" 
+              class="input" 
+              placeholder="Seleccionar entidad" 
+              [options]="states"
+              formControlName="selectedState"
+              (change)="setDepartmentMunicipality(this.createUserSecEduForm)">
+            </app-selectv2>
           </div>
 
           <app-textfield label="Nombre" class="input" formControlName="name" type="text" placeholder="Nombre">
@@ -327,7 +311,7 @@
             [options]="documentTypeOptions" placeholder="Tipo de documento"></app-select>
 
           <app-textfield label="Documento" class="input" formControlName="document" type="number"
-            pattern="^[a-zA-Z0-9_.-]*$" placeholder="Número de documento"></app-textfield>
+            pattern="^[a-zA-Z0-9]*$" placeholder="Número de documento"></app-textfield>
           <p *ngIf="createUserDirectiveForm.controls.document.errors?.['minlength']">
             <ngb-alert type="danger" [dismissible]="false">
               El documento mínimo debe tener 7 caracteres y máximo 12 caracteres
@@ -343,17 +327,6 @@
               Ingresa un correo valido
             </ngb-alert>
           </p>
-
-          <div class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication">
-            <app-selectv2 label="Departamentos" class="input" placeholder="Seleccionar entidad" [options]="states"
-              formControlName="selectedState">
-            </app-selectv2>
-          </div>
-          <div class="panel-control--ministerio__nav__title panel-control--ministerio__nav__title--ubication"
-            *ngIf="this.createUserDirectiveForm.value.selectedState">
-            <app-select label="Municipio" class="input" placeholder="Seleccionar Municipio" [options]="municipalities"
-              (change)="setColleges(this.createUserDirectiveForm)" formControlName="selectedMunicipality"></app-select>
-          </div>
 
           <app-textfield label="Nombre" class="input" formControlName="name" type="text" placeholder="Nombre">
           </app-textfield>
@@ -457,7 +430,7 @@
             [(ngModel)]=prueba.documentType></app-select>
 
           <app-textfield label="Documento" class="input" formControlName="document" type="text"
-            pattern="^[a-zA-Z0-9_.-]*$" placeholder="Número de documento" [(ngModel)]=prueba.document></app-textfield>
+            pattern="^[a-zA-Z0-9]*$" placeholder="Número de documento" [(ngModel)]=prueba.document></app-textfield>
 
           <!-- <app-textfield
             label="Correo electrónico"
@@ -602,7 +575,7 @@
             [(ngModel)]=prueba.documentType></app-select>
 
           <app-textfield label="Documento" class="input" formControlName="document" type="text"
-            pattern="^[a-zA-Z0-9_.-]*$" placeholder="Número de documento" [(ngModel)]=prueba.document></app-textfield>
+            pattern="^[a-zA-Z0-9]*$" placeholder="Número de documento" [(ngModel)]=prueba.document></app-textfield>
 
           <!-- <app-textfield
             label="Correo electrónico"
@@ -649,7 +622,7 @@
             [(ngModel)]=prueba.documentType></app-select>
 
           <app-textfield label="Documento" class="input" formControlName="document" type="text"
-            pattern="^[a-zA-Z0-9_.-]*$" placeholder="Número de documento" [(ngModel)]=prueba.document></app-textfield>
+            pattern="^[a-zA-Z0-9]*$" placeholder="Número de documento" [(ngModel)]=prueba.document></app-textfield>
 
           <!-- <app-textfield
             label="Correo electrónico"
@@ -709,7 +682,7 @@
             [(ngModel)]=prueba.documentType></app-select>
 
           <app-textfield label="Documento" class="input" formControlName="document" type="text"
-            pattern="^[a-zA-Z0-9_.-]*$" placeholder="Número de documento" [(ngModel)]=prueba.document></app-textfield>
+            pattern="^[a-zA-Z0-9]*$" placeholder="Número de documento" [(ngModel)]=prueba.document></app-textfield>
 
           <!-- <app-textfield
             label="Correo electrónico"

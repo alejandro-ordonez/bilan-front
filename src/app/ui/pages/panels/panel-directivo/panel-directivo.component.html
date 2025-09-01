@@ -1,6 +1,6 @@
 <div class="module-bar module-bar--panel-control--ministerio header-directivo-docente">
   <h2 class="module-card__header__text__title">Panel Directivo Docente</h2>
-  <app-textfield class="input" type="text" pattern="^[a-zA-Z0-9_.-]*$" placeholder="Buscar por documento"
+  <app-textfield class="input" type="text" pattern="^[a-zA-Z0-9]*$" placeholder="Buscar por documento"
     (input)="searchUser($event)"></app-textfield>
 
   <button class="create-button" (click)="openModal(uploadFileModal)">
@@ -214,7 +214,7 @@
             [(ngModel)]="userSelected.documentType"></app-select>
 
           <app-textfield label="Documento" class="input" formControlName="document" type="text"
-            pattern="^[a-zA-Z0-9_.-]*$" placeholder="Número de documento"
+            pattern="^[a-zA-Z0-9]*$" placeholder="Número de documento"
             [(ngModel)]=userSelected.document></app-textfield>
 
           <app-textfield label="Correo electrónico" class="input" formControlName="email" type="email" email="true"
@@ -260,7 +260,7 @@
             class="input"
             formControlName="document"
             type="text"
-            pattern="^[a-zA-Z0-9_.-]*$"
+            pattern="^[a-zA-Z0-9]*$"
             placeholder="Número de documento"
             [(ngModel)]="userSelected.document"
             [value]="userSelected.document || ''"

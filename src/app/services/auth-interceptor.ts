@@ -13,15 +13,24 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          // Show session expired message
-          this.showSessionExpiredMessage();
-          
-          // Redirect to login page
-          this.router.navigate(['/login']);
+
+          // Check if we're currently on the login page
+          const currentUrl = this.router.url;
+          console.log(currentUrl);
+          const isOnLoginPage = currentUrl === '/login' || currentUrl.startsWith('/login?') ||
+            currentUrl === '/admin/login' || currentUrl.startsWith('/admin/login');
+
+          if (isOnLoginPage){
+            // Show session expired message
+            this.showSessionExpiredMessage();
+            
+            // Redirect to login page
+            this.router.navigate(['/login']);
+          }
         }
         
         // Re-throw the error so components can still handle it if needed
-        return throwError(() => error);
+        return throwError(error);
       })
     );
   }

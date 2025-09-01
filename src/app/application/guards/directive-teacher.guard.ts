@@ -11,13 +11,13 @@ import { UserDataService } from '../user/user-data.service';
 @Injectable({
   providedIn: 'root',
 })
-export class TeacherGuard implements CanActivate {
+export class DirectiveTeacherGuard implements CanActivate {
   constructor(private router: Router, private userService: UserDataService) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
-    if (this.userService.isTeacherIn()) {
+    if (this.userService.isDirectiveTeacherIn()) {
       return true;
     }
 

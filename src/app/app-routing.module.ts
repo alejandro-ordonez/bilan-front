@@ -51,6 +51,7 @@ import { TableroDirectivoComponent } from './tablero-directivo/tablero-directivo
 import { PanelControlComponent, PanelDirectivoComponent, PanelEditUsersComponent } from '@ui/pages/panels';
 import { PanelUploadsComponent } from '@ui/pages/panels/panel-uploads/panel-uploads.component';
 import { PanelResetComponent } from '@ui/pages/panels/panel-reset/panel-reset.component';
+import { DirectiveTeacherGuard } from '@application/guards/directive-teacher.guard';
 
 const routes: Routes = [
   {
@@ -197,32 +198,32 @@ const routes: Routes = [
       {
         path: 'admin/panel-control/:type',
         component: PanelControlComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
+        canActivate: [AuthGuardService, AdminGuard],
       },
       {
         path: 'admin/panel-edit/:page/:partialDocument',
         component: PanelEditUsersComponent,
-        canActivate: [AuthGuardService, TeacherGuard],
+        canActivate: [AuthGuardService, AdminGuard],
       },
       {
         path: 'teacher/:materia/:grade/:course/:phase/modulo',
         component: ModuloTeacherComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
+        canActivate: [AuthGuardService, TeacherGuard],
       },
       {
         path: 'teacher/:materia/:grade/:course/:phase/panel-evaluacion',
         component: PanelEvaluacionComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
+        canActivate: [AuthGuardService, TeacherGuard],
       },
       {
         path: 'admin/panel-directivo',
         component: PanelDirectivoComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
+        canActivate: [AuthGuardService, DirectiveTeacherGuard],
       },
       {
         path: 'admin/panel-uploads',
         component: PanelUploadsComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
+        canActivate: [AuthGuardService, AdminGuard],
       },
       {
         path: 'admin/panel-reset',
@@ -232,7 +233,7 @@ const routes: Routes = [
       {
         path: 'admin/tablero-directivo',
         component: TableroDirectivoComponent,
-        canActivate: [AuthGuardService, TeacherGuard, AdminGuard],
+        canActivate: [AuthGuardService, DirectiveTeacherGuard, AdminGuard],
       },
       {
         path: 'acerca-de-bilan/:about',

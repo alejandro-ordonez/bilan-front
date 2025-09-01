@@ -45,7 +45,7 @@ import { RetosComponent } from './retos/retos.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { ModalesComponent } from './modales/modales.component';
 import { AboutBilanComponent } from './about-bilan/about-bilan.component';
-import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserGateway } from '@domain/gateways/user.gateway';
@@ -106,6 +106,7 @@ import { StudentService } from '@application/student/student.service';
 import { DashboardCollegeComponent } from './ui/pages/panels/panel-control/dashboard-college/dashboard-college.component';
 import { PanelUploadsComponent } from '@ui/pages/panels/panel-uploads/panel-uploads.component';
 import { PanelResetComponent } from '@ui/pages/panels/panel-reset/panel-reset.component';
+import { AuthInterceptor } from './services/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -208,6 +209,11 @@ import { PanelResetComponent } from '@ui/pages/panels/panel-reset/panel-reset.co
     }),
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     {
       provide: UserGateway,
       useClass: UserService,

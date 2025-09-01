@@ -438,11 +438,19 @@ export class UserDataService extends UserDataGateway {
     return getItem(STORAGE.userInfo).userType === 'Teacher';
   }
 
+  isDirectiveTeacherIn() {
+    return getItem(STORAGE.userInfo).userType === 'DirectiveTeacher';
+  }
+
   isStudentIn() {
     return getItem(STORAGE.userInfo).userType === 'Student';
   }
   isAdminIn() {
-    return getItem(STORAGE.userInfo).userType === 'Admin';
+    const userType = getItem(STORAGE.userInfo).userType
+    return  userType === 'Admin' ||
+      userType === 'DirectiveTeacher'||
+      userType === 'MinUser' ||
+      userType === 'SecEdu';
   }
   isMinIn() {
     return getItem(STORAGE.userInfo).userType === 'MinUser';

@@ -153,11 +153,8 @@ export class PanelEditUsersComponent implements OnInit {
       email: ['', Validators.required],
       name: ['', Validators.required],
       lastName: ['', Validators.required],
-      selectedState: ['', Validators.required],
-      selectedMunicipality: ['', Validators.required],
-      selectedCollege: ['', Validators.required],
-      selectedGrade: ['', Validators.required],
-      selectedCourse: ['', Validators.required],
+      selectedGrade: [''],
+      selectedCourse: [''],
       codDane: ['', Validators.required],
     });
 
@@ -175,8 +172,6 @@ export class PanelEditUsersComponent implements OnInit {
       email: ['', Validators.required],
       name: ['', Validators.required],
       lastName: ['', Validators.required],
-      selectedState: ['', Validators.required],
-      selectedMunicipality: ['', Validators.required],
       codDane: ['', Validators.required],
     });
 
@@ -351,8 +346,6 @@ export class PanelEditUsersComponent implements OnInit {
             email: this.createUserDirectiveForm.value.email,
             name: this.createUserDirectiveForm.value.name,
             lastName: this.createUserDirectiveForm.value.lastName,
-            selectedState: this.createUserDirectiveForm.value.selectedState,
-            selectedMunicipality: this.createUserDirectiveForm.value.selectedMunicipality,
             codDane: this.createUserDirectiveForm.value.codDane,
             grantedAuthorities: [],
           });
@@ -559,9 +552,11 @@ export class PanelEditUsersComponent implements OnInit {
     this.grades = [];
     this.courses = [];
 
+    console.log(form.value.selectedState);
+
     this.municipalities =
       depmun
-        .find((dep) => dep.state === form.value.selectedState.slice(3))
+        .find((dep) => dep.state === form.value.selectedState.key)
         ?.municipalities.map((mun) => {
           return {
             value: mun.name,
