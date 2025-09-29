@@ -8,7 +8,7 @@ import { UserDataUseCase } from '@domain/usecases/user-data.usecase';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import depmun from '../../../../login-page/dep-mun.json';
 import { DashboardUseCase, GeneralInfoUseCase } from '@domain/usecases';
-import { GradeCourseResponse } from '@domain/models';
+import { GradeCourseResponse, ResponseDto } from '@domain/models';
 import { UserService } from '@application/user/user.service';
 
 @Component({
@@ -268,12 +268,12 @@ export class PanelEditUsersComponent implements OnInit {
     const fileName = file.name.toLowerCase();
 
     const isCsv = fileName.endsWith('.csv');
-    const isSizeValid = fileSizeMB <= 5;
+    const isSizeValid = fileSizeMB <= 50;
 
     if (!isCsv) {
       alert('El archivo debe ser .csv');
     } else if (!isSizeValid) {
-      alert('Archivo muy grande. Máximo 5MB.');
+      alert('Archivo muy grande. Máximo 50MB.');
     }
 
     if (isCsv && isSizeValid) {
@@ -394,8 +394,12 @@ export class PanelEditUsersComponent implements OnInit {
       }
       this.resetForm();
       alert('Usuario creado con exito');
-    } catch (error) {
-      alert('Lo sentimos hubo un error');
+    } catch (error: any) {
+      if(error.result == 'CollegeNotFound')
+        alert('Colegio no encontrado');
+
+      else
+        alert('Lo sentimos hubo un error');
     }
   }
 
