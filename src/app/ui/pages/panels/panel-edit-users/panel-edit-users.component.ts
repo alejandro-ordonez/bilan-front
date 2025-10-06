@@ -335,6 +335,7 @@ export class PanelEditUsersComponent implements OnInit {
   }
 
   async register() {
+    console.log(this.createUserForm.value);
     try {
       switch (this.selectedUserType) {
         case UserType.DirectiveTeacher:
@@ -384,7 +385,6 @@ export class PanelEditUsersComponent implements OnInit {
             email: this.createUserForm.value.email,
             grade: this.createUserForm.value.selectedGrade.slice(3),
             courseId: this.createUserForm.value.selectedCourse.slice(3),
-            collegeId: this.createUserForm.value.selectedCollege.slice(3),
             name: this.createUserForm.value.name,
             lastName: this.createUserForm.value.lastName,
             codDane: this.createUserForm.value.codDane,
@@ -400,6 +400,8 @@ export class PanelEditUsersComponent implements OnInit {
 
       else
         alert('Lo sentimos hubo un error');
+
+      console.log(error);
     }
   }
 
@@ -602,20 +604,6 @@ export class PanelEditUsersComponent implements OnInit {
     });
   }
 
-  setCourses(form: FormGroup, option?: any) {
-    form.value.selectedCourse = '';
-    const grade = this.gradeCourses.find(
-      (gd) => gd.grade === form.value.selectedGrade
-    );
-    this.courses = !grade
-      ? []
-      : grade.courses.map((c) => {
-        return {
-          key: c.id,
-          value: c.name,
-        };
-      }) || [];
-  }
   resetForm(): void {
     this.createUserMinForm.reset();
     this.createUserForm.reset()
