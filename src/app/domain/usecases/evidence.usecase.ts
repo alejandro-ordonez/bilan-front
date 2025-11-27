@@ -28,4 +28,8 @@ export class EvidenceUseCase {
   upload(phase: Phase, tribeId: number, form: FormData): Promise<boolean> {
     return this.evidenceGateway.upload(phase, tribeId, form);
   }
+
+  checkIfAlreadySubmitted(phase: Phase, tribeId: number): Promise<boolean>{
+    return this.evidenceGateway.checkIfAlreadySubmitted(phase, tribeId);
+  }
 }

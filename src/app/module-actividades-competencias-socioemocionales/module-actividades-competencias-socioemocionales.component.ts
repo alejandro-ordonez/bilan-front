@@ -20,6 +20,7 @@ export class ModuleActividadesCompetenciasSocioemocionalesComponent
   phases: Phase[] = ['PRE_ACTIVE', 'INTERACTIVE', 'POST_ACTIVE'];
   phase: Phase;
   isValidFile: boolean = false;
+  isEvidenceSubmitted: boolean = false;
   uploadForm: FormGroup;
 
   grade: any;
@@ -855,7 +856,7 @@ export class ModuleActividadesCompetenciasSocioemocionalesComponent
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
+    this.route.params.subscribe(async (params: Params) => {
       this.grade = params.grade;
       this.page = parseInt(params.page);
 
@@ -873,7 +874,12 @@ export class ModuleActividadesCompetenciasSocioemocionalesComponent
       }
 
       this.indexPage = `${this.page}/${this.modules[this.grade].length}`;
-      this.phase = this.phases[this.modules[this.grade][this.page - 1].phase];
+
+      const currentModule = this.modules[this.grade][this.page - 1];
+      if (currentModule.upload) {
+        this.phase = this.phases[currentModule.phase];
+        this.isEvidenceSubmitted = await this.checkIfAlreadySubmitted(this.phase, 1);
+      }
     });
   }
 
@@ -916,5 +922,9 @@ export class ModuleActividadesCompetenciasSocioemocionalesComponent
       centered: true,
       scrollable: true,
     });
+  }
+
+  async checkIfAlreadySubmitted(phase: Phase, tribeId: number){
+    return await this.evidence.checkIfAlreadySubmitted(phase, tribeId);
   }
 }

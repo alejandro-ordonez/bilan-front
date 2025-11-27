@@ -7,11 +7,16 @@ export abstract class EvidenceGateway {
     courseId: number,
     phase: Phase
   ): Promise<Evidence[]>;
+
   abstract evaluate(evaluateData: Evaluate): Promise<boolean>;
+
   abstract upload(
     phase: Phase,
     tribeId: number,
     form: FormData
   ): Promise<boolean>;
+
   abstract download(evidenceId: string): Promise<any>;
+
+  abstract checkIfAlreadySubmitted(phase: Phase, tribeId: number): Promise<boolean>;
 }

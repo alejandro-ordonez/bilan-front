@@ -74,6 +74,7 @@ const API = {
     evaluate: '/evidences/evaluate',
     upload: '/evidences/upload?phase={{phase}}&tribeId={{tribeId}}',
     download: '/evidences/download/{{evidenceId}}',
+    checkAlreadySubmitted: '/evidences/check-submitted?phase={{phase}}&tribeId={{tribeId}}'
   },
 };
 

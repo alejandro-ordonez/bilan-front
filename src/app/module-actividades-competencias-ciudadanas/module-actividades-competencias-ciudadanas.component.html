@@ -189,7 +189,8 @@
           <div class="mod_tar_iz">
             <p
               class="btn_form btn_intro"
-              (click)="openModal(subirArchvioModal)"
+              [class.disabled]="isEvidenceSubmitted"
+              (click)="!isEvidenceSubmitted && openModal(subirArchvioModal)"
             >
               Subir Archivo
             </p>

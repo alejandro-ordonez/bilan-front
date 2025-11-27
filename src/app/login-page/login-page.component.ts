@@ -163,8 +163,10 @@ export class LoginPageComponent implements OnInit {
   async onLogin(event: any) {
     event.preventDefault();
     try {
-      await this.authUser.validate(this.buildNewUserAuth());
+      const result = await this.authUser.validate(this.buildNewUserAuth());
+      this.parseAuthError(result as Response);
     } catch (error) {
+      console.error("Someting went wrong");
       this.parseAuthError(error as Response);
     }
   }

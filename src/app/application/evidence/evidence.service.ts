@@ -112,4 +112,24 @@ export class EvidenceService extends EvidenceGateway {
       );
     });
   }
+
+  checkIfAlreadySubmitted(phase: Phase, tribeId: number): Promise<boolean> {
+    const config = this.buildConfig();
+
+    return new Promise<boolean>((resolve, reject) => {
+      const url =
+        API.baseUrl +
+        API.evidence.checkAlreadySubmitted
+          .replace('{{phase}}', phase)
+          .replace('{{tribeId}}', tribeId.toString());
+      this.http.get<Response>(url, config).subscribe(
+        (response: Response) => {
+          resolve(response.result);
+        },
+        (err: any) => {
+          reject(err.error);
+        }
+      );
+    });
+  }
 }
