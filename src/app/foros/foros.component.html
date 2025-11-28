@@ -17,7 +17,7 @@
       <h1> No hay foros abiertos en este momento</h1>
     </div>
     <h1 *ngIf="!forums">cargando...</h1>
-    <div class="foro" *ngFor="let forum of forums.data">
+    <div class="foro" *ngFor="let forum of forums?.data ?? []">
       <article class="foro__content">
         <a
           [routerLink]="'/foro/' + page + '/' + forum.id"
